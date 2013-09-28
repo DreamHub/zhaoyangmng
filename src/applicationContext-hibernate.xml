@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${DriverName}">
+		</property>
+		<property name="url" value="${JdbcURL}">
+		</property>
+		<property name="username" value="${UserName}"></property>
+		<property name="password" value="${Password}"></property>
+	</bean>
+	<!-- 配置会话工厂 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/zhaoyang/orm/DBNews.hbm.xml</value>
+				<value>com/zhaoyang/orm/DBRule.hbm.xml</value>
+				<value>com/zhaoyang/orm/DBDownload.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+</beans>

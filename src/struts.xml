@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.multipart.maxSize" value="52428800" />
+	<!-- 配置两个拦截例外 -->
+	<constant name="struts.action.excludePattern" value="/[a-zA-Z]*Servlet.servlet" />
+	<!-- 拦截器 -->
+	<package name="struts-abstract" extends="struts-default"
+		namespace="/">
+		<interceptors>
+			<interceptor name="authorityInterceptor"
+				class="com.zhaoyang.interceptor.BackgroundAdminAuthorityInterceptor" />
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authorityInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myStack" />
+		<global-results>
+			<result name="error">/background/login.jsp</result>
+		</global-results>
+	</package>
+	<!-- 游客权限 -->
+	<package name="zylogin" namespace="/usr" extends="struts-default">
+		<action name="LoginAction" class="loginAction">
+			<result name="success">/WEB-INF/page/index-digital.jsp</result>
+			<result name="error">/background/login.jsp</result>
+		</action>
+	</package>
+	<!-- 新闻模块 -->
+	<package name="zyNews" namespace="/news" extends="struts-abstract">
+		<action name="NewsMngAction" class="newsMngAction">
+			<result name="success">/WEB-INF/page/newsMng.jsp</result>
+			<result name="error">/background/login.jsp</result>
+		</action>
+		<action name="NewsAddPreAction" class="newsMngAction" method="newsAddPre">
+			<result name="success">/WEB-INF/page/newsAdd.jsp</result>
+			<result name="error">/background/login.jsp</result>
+		</action>
+		<action name="NewsAddAction" class="newsMngAction" method="newsAdd">
+			<result name="success">/WEB-INF/page/newsAdd.jsp</result>
+		</action>
+		<action name="NewsDelAction" class="newsMngAction" method="newsDel">
+			<result name="success">/WEB-INF/page/newsAdd.jsp</result>
+		</action>
+		<action name="NewsEditPreAction" class="newsMngAction" method="newsEditPre">
+			<result name="success">/WEB-INF/page/newsEdit.jsp</result>
+		</action>
+		<action name="NewsEditAction" class="newsMngAction" method="newsEdit">
+			<result name="error">/WEB-INF/page/newsEdit.jsp</result>
+			<result name="success">/WEB-INF/page/newsEdit.jsp</result>
+		</action>
+
+		<action name="IndexNewsSetPreAction" class="newsSettingAction"
+			method="indexNewsSetPre">
+			<result name="success">/WEB-INF/page/indexNewsSetting.jsp</result>
+		</action>
+		<action name="IndexNewsSetAction" class="newsSettingAction"
+			method="indexNewsSet">
+			<result name="success">/WEB-INF/page/indexNewsSetting.jsp</result>
+		</action>
+		<action name="HotNewsSetPreAction" class="newsSettingAction"
+			method="hotNewsSetPre">
+			<result name="success">/WEB-INF/page/hotNewsSetting.jsp</result>
+		</action>
+		<action name="HotNewsSetAction" class="newsSettingAction"
+			method="hotNewsSet">
+			<result name="success">/WEB-INF/page/hotNewsSetting.jsp</result>
+		</action>
+	</package>
+	<!-- 上传 -->
+	<package name="upload" namespace="/upl" extends="struts-abstract">
+		<action name="UploadPicAction" class="uploadPicAction">
+			<result name="success">/WEB-INF/page/newsMng.jsp</result>
+		</action>
+	</package>
+	<!-- 学校简介 -->
+	<package name="school" namespace="/scl" extends="struts-abstract">
+		<action name="SchoolDescSetPreAction" class="schoolSettingAction"
+			method="schoolDescSetPre">
+			<result name="success">/WEB-INF/page/schoolDescEdit.jsp</result>
+		</action>
+		<action name="SchoolDescSetAction" class="schoolSettingAction"
+			method="schoolDescSet">
+			<result name="success">/WEB-INF/page/schoolDescEdit.jsp</result>
+		</action>
+		<action name="WatchAboutHTMLAction" class="schoolSettingAction"
+			method="watchAboutHTML">
+			<result name="success">/about.jsp</result>
+		</action>
+		<action name="ConditionSetPreAction" class="conditionSettingAction"
+			method="conditionSetPre">
+			<result name="success">/WEB-INF/page/schoolConditionEdit.jsp</result>
+		</action>
+		<action name="ConditionSetAction" class="conditionSettingAction"
+			method="conditionSet">
+			<result name="success">/WEB-INF/page/schoolConditionEdit.jsp</result>
+		</action>
+		<action name="WatchConditionHTMLAction" class="conditionSettingAction"
+			method="watchConditionHTML">
+			<result name="success">/about_detail/condition.jsp</result>
+		</action>
+		<action name="AddressSetPreAction" class="addressSettingAction"
+			method="addressSetPre">
+			<result name="success">/WEB-INF/page/schoolAddressEdit.jsp</result>
+		</action>
+		<action name="AddressSetAction" class="addressSettingAction"
+			method="addressSet">
+			<result name="success">/WEB-INF/page/schoolAddressEdit.jsp</result>
+		</action>
+		<action name="WatchAddressHTMLAction" class="addressSettingAction"
+			method="watchAddressHTML">
+			<result name="success">/about_detail/address.jsp</result>
+		</action>
+	</package>
+	<!-- 上传 -->
+	<package name="download" namespace="/dld" extends="struts-abstract">
+		<action name="DownloadSrcTypeMngPreAction" class="downloadMngAction"
+			method="downloadSrcTypeMngPre">
+			<result name="success">/WEB-INF/page/downTypeMng.jsp</result>
+		</action>
+		<action name="NewDownloadSrcTypeAction" class="downloadMngAction"
+			method="newDownloadSrcType">
+			<result name="success" type="chain">DownloadSrcTypeMngPreAction
+			</result>
+		</action>
+		<action name="DeleteDownloadSrcTypeAction" class="downloadMngAction"
+			method="deleteDownloadSrcType">
+			<result name="success">/WEB-INF/page/downTypeMng.jsp</result>
+		</action>
+		<action name="DownloadSrcTypeEditAction" class="downloadMngAction"
+			method="downloadSrcTypeEdit">
+			<result name="success">/WEB-INF/page/downTypeMng.jsp</result>
+		</action>
+		<action name="DownloadMngAction" class="downloadMngAction">
+			<result name="success">/WEB-INF/page/downloadsMng.jsp</result>
+		</action>
+		<action name="DownloadAddPreAction" class="downloadMngAction" method="downloadAddPre"> 
+			<result name="success">/WEB-INF/page/downloadAdd.jsp</result>
+		</action>
+		<action name="DownloadAddAction" class="downloadMngAction" method="downloadAdd"> 
+			<result name="success" type="chain">DownloadAddPreAction</result>
+			<result name="error" type="chain">DownloadAddPreAction</result>
+		</action>
+		<action name="DownloadDelAction" class="downloadMngAction" method="downloadDel"> 
+			<result name="success" type="chain">DownloadMngAction</result>
+		</action>
+		<action name="DownloadEditPreAction" class="downloadMngAction" method="downloadEditPre"> 
+			<result name="success">/WEB-INF/page/downloadEdit.jsp</result>
+		</action>
+		<action name="DownloadEditAction" class="downloadMngAction" method="downloadEdit"> 
+			<result name="success" type="chain">DownloadEditPreAction</result>
+		</action>
+	</package>
+</struts>    

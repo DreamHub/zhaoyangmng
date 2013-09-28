@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="loginAction" class="com.zhaoyang.action.LoginAction" scope="prototype">
+	</bean>
+	<bean id="newsMngAction" class="com.zhaoyang.action.NewsMngAction" scope="prototype">
+		<property name="newsDao" ref="newsDao"></property>
+		<property name="sysConfigParameter" ref="sysConfigParameter"></property>
+	</bean>
+	<bean id="newsSettingAction" class="com.zhaoyang.action.NewsSettingAction" scope="prototype">
+		<property name="sysConfigParameter" ref="sysConfigParameter"></property>
+		<property name="ruleDao" ref="ruleDao"></property>
+	</bean>
+	<bean id="uploadPicAction" class="com.zhaoyang.action.UploadPicAction" scope="prototype">
+	</bean>
+	<bean id="schoolSettingAction" class="com.zhaoyang.action.SchoolSettingAction" scope="prototype">
+		<property name="ruleDao" ref="ruleDao"></property>
+	</bean>
+	<bean id="conditionSettingAction" class="com.zhaoyang.action.ConditionSettingAction" scope="prototype">
+		<property name="ruleDao" ref="ruleDao"></property>
+	</bean>
+	
+	<bean id="addressSettingAction" class="com.zhaoyang.action.AddressSettingAction" scope="prototype">
+		<property name="ruleDao" ref="ruleDao"></property>
+	</bean>
+	<bean id="downloadMngAction" class="com.zhaoyang.action.DownloadMngAction" scope="prototype">
+		<property name="downloadDao" ref="downloadDao"></property>
+		<property name="ruleDao" ref="ruleDao"></property>
+		<property name="sysConfigParameter" ref="sysConfigParameter"></property>
+	</bean>
+	
+	
+</beans>
