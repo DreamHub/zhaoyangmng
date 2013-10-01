@@ -19,6 +19,7 @@ public abstract class AbstractActionSupport extends ActionSupport{
 		return pageNum;
 	}
 	public void setPageNum(Integer pageNum) {
+		String sss="aada";
 		this.pageNum = pageNum;
 	}
 	public Integer getMaxPage() {
