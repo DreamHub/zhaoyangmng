@@ -20,6 +20,7 @@ public abstract class AbstractActionSupport extends ActionSupport{
 	}
 	public void setPageNum(Integer pageNum) {
 		this.pageNum = pageNum;
+		
 	}
 	public Integer getMaxPage() {
 		return maxPage;
