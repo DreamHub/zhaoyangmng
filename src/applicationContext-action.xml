@@ -8,6 +8,7 @@
 		<property name="newsDao" ref="newsDao"></property>
 		<property name="sysConfigParameter" ref="sysConfigParameter"></property>
 	</bean>
+	
 	<bean id="newsSettingAction" class="com.zhaoyang.action.NewsSettingAction" scope="prototype">
 		<property name="sysConfigParameter" ref="sysConfigParameter"></property>
 		<property name="ruleDao" ref="ruleDao"></property>

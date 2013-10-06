@@ -13,7 +13,7 @@ create table rule(
 	ruledef varchar(200),
 	ruletype varchar(100)
 );
-image/index/2013-36_6116457.jpg
+
 insert into rule(ruleid,ruledef) values('IndexNewsSmallImg','image/index/2013-36_6116457.jpg');
 select * from zynews;
 
