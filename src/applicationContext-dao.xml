@@ -17,5 +17,10 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="noticeDao" class="com.zhaoyang.dao.NoticeDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 	
 </beans>

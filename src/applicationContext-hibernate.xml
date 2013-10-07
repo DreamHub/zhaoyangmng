@@ -29,6 +29,7 @@
 				<value>com/zhaoyang/orm/DBNews.hbm.xml</value>
 				<value>com/zhaoyang/orm/DBRule.hbm.xml</value>
 				<value>com/zhaoyang/orm/DBDownload.hbm.xml</value>
+				<value>com/zhaoyang/orm/DBNotice.hbm.xml</value>
 			</list>
 		</property>
 	</bean>

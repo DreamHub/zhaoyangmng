@@ -40,6 +40,12 @@ create table download(
 	upltime datetime,
 	srctype int(5)
 );
+create table notice(
+	id bigint(20) primary key auto_increment,
+	title varchar(200),
+	createtime datetime,
+	content text
+);
 
 
 
