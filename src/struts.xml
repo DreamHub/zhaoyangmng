@@ -153,4 +153,25 @@
 			<result name="success" type="chain">DownloadEditPreAction</result>
 		</action>
 	</package>
+	<package name="notice" namespace="/ntc" extends="struts-abstract">
+		<action name="NoticeAddPreAction" class="noticeMngAction" method="noticeAddPre"> 
+			<result name="success">/WEB-INF/page/noticeAdd.jsp</result>
+		</action>
+		<action name="NoticeAddAction" class="noticeMngAction" method="noticeAdd"> 
+			<result name="success">/WEB-INF/page/noticeAdd.jsp</result>
+		</action>
+		<action name="NoticeMngAction" class="noticeMngAction"> 
+			<result name="success">/WEB-INF/page/noticeMng.jsp</result>
+		</action>
+		
+		<action name="NoticeDelAction" class="noticeMngAction" method="noticeDel">
+			<result name="success">/WEB-INF/page/newsAdd.jsp</result>
+		</action>
+		<action name="NoticePanelSetPreAction" class="noticeMngAction" method="noticePanelSetPre">
+			<result name="success">/WEB-INF/page/noticePanelSetting.jsp</result>
+		</action>
+		<action name="NoticePanelSetAction" class="noticeMngAction" method="noticePanelSet">
+			<result name="success" type="chain">NoticePanelSetPreAction</result>
+		</action>
+	</package>
 </struts>    

@@ -64,11 +64,10 @@
 	<div class="sidebar_box">
 		<div class="sidebar_box_top"></div>
 		<div class="sidebar_box_content">
-			<h4>Important notice</h4>
+			<h4>如何快速建站</h4>
 			<img src="${bgpath}images/notice.png" alt="" title=""
 				class="sidebar_icon_right" />
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-				do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			<p>当数据库中数据更新后，如果想把内容挂到服务器上，那么只需要点击快速建站之后，系统处理完成后.</p>
 		</div>
 		<div class="sidebar_box_bottom"></div>
 	</div>

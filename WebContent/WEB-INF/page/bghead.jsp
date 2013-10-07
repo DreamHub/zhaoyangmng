@@ -52,31 +52,12 @@
 				<li><a href="" title="">其他管理</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
-		<li><a href="login.html">公告管理<!--[if IE 7]><!--> </a> <!--<![endif]-->
+		<li><a href="${path}ntc/NoticeMngAction?pageNum=1">公告管理<!--[if IE 7]><!--> </a> <!--<![endif]-->
 			<!--[if lte IE 6]><table><tr><td><![endif]-->
 			<ul>
-				<li><a href="" title="">浏览</a></li>
-				<li><a href="" title="">新增</a></li>
-				<li><a href="" title="">Lorem ipsum dolor sit amet</a></li>
-				<li><a class="sub1" href="" title="">sublevel2<!--[if IE 7]><!-->
-				</a> <!--<![endif]--> <!--[if lte IE 6]><table><tr><td><![endif]-->
-					<ul>
-						<li><a href="" title="">sublevel link</a></li>
-						<li><a href="" title="">sulevel link</a></li>
-						<li><a class="sub2" href="#nogo">sublevel3<!--[if IE 7]><!-->
-						</a> <!--<![endif]--> <!--[if lte IE 6]><table><tr><td><![endif]-->
-							<ul>
-								<li><a href="#nogo">Third level-1</a></li>
-								<li><a href="#nogo">Third level-2</a></li>
-								<li><a href="#nogo">Third level-3</a></li>
-								<li><a href="#nogo">Third level-4</a></li>
-							</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
-						</li>
-						<li><a href="" title="">sulevel link</a></li>
-					</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
-				</li>
-
-				<li><a href="" title="">Lorem ipsum dolor sit amet</a></li>
+				<li><a href="${path}ntc/NoticeMngAction?pageNum=1" title="">浏览</a></li>
+				<li><a href="${path}ntc/NoticeAddPreAction" title="">新增</a></li>
+				<li><a href="${path}ntc/NoticePanelSetPreAction" title="">公告栏展示</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
 		<li><a href="">Templates</a></li>
