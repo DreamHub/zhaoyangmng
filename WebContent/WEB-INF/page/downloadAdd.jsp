@@ -78,17 +78,7 @@
 </head>
 <body>
 	<div id="main_container">
-		<div class="header">
-			<div class="logo">
-				<a href="#"><img src="${bgpath}images/logo.gif" alt="" title=""
-					border="0" /> </a>
-			</div>
-			<div class="right_header">
-				欢迎您, ${sessionScope.userInfo}, <a href="#">朝之阳官网</a> | <a href="#"
-					class="messages">(3) 消息</a> | <a href="#" class="logout">退出</a>
-			</div>
-			<div class="jclock"></div>
-		</div>
+		<jsp:include page="bgtop.jsp" flush="true" />
 		<div class="main_content">
 			<jsp:include page="bghead.jsp" flush="true" />
 			<div class="center_content">
@@ -147,7 +137,7 @@
 					</s:if>
 					<h3>效果展示：</h3>
 					<div style="text-align: center;padding: 10px;border: 1px solid #CCEAC4;background: #EDFCE9;">
-						<img src="${bgpath}images/20130925200232.jpg"/>	
+						<img src="${bgpath}images/20130922212907.jpg" width="100%"/>	
 					</div>
 
 				</div>

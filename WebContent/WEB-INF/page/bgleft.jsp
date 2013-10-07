@@ -32,16 +32,19 @@
 		<a class="menuitem submenuheader" href="">下载管理</a>
 		<div class="submenu">
 			<ul>
-				<li><a href="">Sidebar submenu</a></li>
-				<li><a href="">Sidebar submenu</a></li>
-				<li><a href="">Sidebar submenu</a></li>
-				<li><a href="">Sidebar submenu</a></li>
-				<li><a href="">Sidebar submenu</a></li>
+				<li><a href="${path}dld/DownloadAddPreAction">上传</a></li>
+				<li><a href="${path}dld/DownloadMngAction?pageNum=1">浏览</a></li>
 			</ul>
 		</div>
-		<a class="menuitem" href="">User Reference</a> <a class="menuitem"
-			href="">Blue button</a> <a class="menuitem_green" href="">Green
-			button</a> <a class="menuitem_red" href="">Red button</a>
+		<a class="menuitem submenuheader" href="">公告管理</a>
+		<div class="submenu">
+			<ul>
+				<li><a href="${path}dld/DownloadAddPreAction">新增</a></li>
+				<li><a href="${path}dld/DownloadMngAction?pageNum=1">浏览</a></li>
+			</ul>
+		</div>
+		<a class="menuitem" href="">快速建站</a> <a class="menuitem"
+			href="">Blue button</a> <a class="menuitem_green" href="">快速建站</a> <a class="menuitem_red" href="">系统设置</a>
 
 	</div>
 

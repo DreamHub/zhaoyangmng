@@ -38,11 +38,11 @@
 				</li>
 			</ul>
 		</li>
-		<li><a href="login.html">资源下载管理<!--[if IE 7]><!--> </a> <!--<![endif]-->
+		<li><a href="${path}dld/DownloadMngAction?pageNum=1">资源下载管理<!--[if IE 7]><!--> </a> <!--<![endif]-->
 			<!--[if lte IE 6]><table><tr><td><![endif]-->
 			<ul>
 				<li><a href="${path}dld/DownloadSrcTypeMngPreAction" title="">资源类型管理</a></li>
-				<li><a class="sub1" href="" title="">资源下载管理<!--[if IE 7]><!-->
+				<li><a class="sub1" href="${path}dld/DownloadMngAction?pageNum=1" title="">资源下载管理<!--[if IE 7]><!-->
 				</a> <!--<![endif]--> <!--[if lte IE 6]><table><tr><td><![endif]-->
 					<ul>
 						<li><a href="${path}dld/DownloadAddPreAction" title="">上传新的资源</a></li>
@@ -52,11 +52,11 @@
 				<li><a href="" title="">其他管理</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
-		<li><a href="login.html">Settings<!--[if IE 7]><!--> </a> <!--<![endif]-->
+		<li><a href="login.html">公告管理<!--[if IE 7]><!--> </a> <!--<![endif]-->
 			<!--[if lte IE 6]><table><tr><td><![endif]-->
 			<ul>
-				<li><a href="" title="">Lorem ipsum dolor sit amet</a></li>
-				<li><a href="" title="">Lorem ipsum dolor sit amet</a></li>
+				<li><a href="" title="">浏览</a></li>
+				<li><a href="" title="">新增</a></li>
 				<li><a href="" title="">Lorem ipsum dolor sit amet</a></li>
 				<li><a class="sub1" href="" title="">sublevel2<!--[if IE 7]><!-->
 				</a> <!--<![endif]--> <!--[if lte IE 6]><table><tr><td><![endif]-->
@@ -81,6 +81,6 @@
 		</li>
 		<li><a href="">Templates</a></li>
 		<li><a href="">系统设置</a></li>
-		<li><a href="">Contact</a></li>
+		<li><a href="">联系我们</a></li>
 	</ul>
 </div>

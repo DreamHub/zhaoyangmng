@@ -69,7 +69,7 @@ clear:both;
 
 		<div class="header_login">
 			<div class="logo">
-				<a href="#"><img src="${bgpath}images/logo.gif" alt="" title=""
+				<a href="#"><img width="50" src="${bgpath}images/3488345_104156604480_1.png" alt="" title=""
 					border="0" /> </a>
 			</div>
 
@@ -77,9 +77,9 @@ clear:both;
 
 		<div class="login_form">
 
-			<h3>Admin Panel Login</h3>
+			<h3>管理员登录</h3>
 
-			<a href="#" class="forgot_pass">Forgot password</a>
+			<a href="#" class="forgot_pass">忘记密码</a>
 
 			<form action="/zhaoyang/usr/LoginAction" method="get"
 				class="niceform">
@@ -87,7 +87,7 @@ clear:both;
 				<fieldset>
 					<dl>
 						<dt>
-							<label for="email">Username:</label>
+							<label for="email">用户名:</label>
 						</dt>
 						<dd>
 							<s:if test="#request.errMsg == null">
@@ -100,7 +100,7 @@ clear:both;
 					</dl>
 					<dl>
 						<dt>
-							<label for="password">Password:</label>
+							<label for="password">密码:</label>
 						</dt>
 						<dd>
 							<input type="password" name="userPwd" size="54" />
@@ -113,11 +113,11 @@ clear:both;
 						</dt>
 						<dd>
 							<input type="checkbox" name="interests" id="" value="" /> <label
-								class="check_label">Remember me</label>
+								class="check_label">记住我</label>
 						</dd>
 					</dl>
 					<dl class="submit">
-						<input type="submit" name="submit" id="submit" value="Enter" />
+						<input type="submit" name="submit" id="submit" value="登录" />
 					</dl>
 				</fieldset>
 
