@@ -49,7 +49,7 @@ public class UploadPicAction extends ActionSupport{
 		HttpServletRequest request=ServletActionContext.getRequest();
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter pw=response.getWriter();
-		String realPath = ServletActionContext.getServletContext().getRealPath("/image/news");
+		String realPath = ServletActionContext.getServletContext().getRealPath("/image/upload");
 		String exp=filedataFileName.substring(filedataFileName.lastIndexOf('.')+1);
 		String path=realPath+"/news_"+System.currentTimeMillis()+"."+exp;
 		File file=new File(path);
