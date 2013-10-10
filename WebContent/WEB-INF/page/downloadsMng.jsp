@@ -92,7 +92,7 @@
 						</thead>
 						<tfoot>
 							<tr>
-								<td colspan="6" class="rounded-foot-left"><em>Lorem
+								<td colspan="7" class="rounded-foot-left"><em>Lorem
 										ipsum dolor sit amet, consectetur adipisicing elit, sed do
 										eiusmod tempor incididunt ut.</em>
 								</td>
