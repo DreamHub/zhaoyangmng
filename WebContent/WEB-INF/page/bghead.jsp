@@ -5,6 +5,7 @@
 	<ul>
 		<li><a class="current" href="index.html">管理员主页</a></li>
 		<li><a href="${path}news/NewsMngAction?pageNum=1">新闻管理<!--[if IE 7]><!-->
+		
 		</a> <!--<![endif]--> <!--[if lte IE 6]><table><tr><td><![endif]-->
 			<ul>
 				<li><a href="${path}news/NewsMngAction?pageNum=1" title="">浏览新闻</a></li>
