@@ -16,8 +16,6 @@ import com.zhaoyang.orm.News;
 import com.zhaoyang.orm.Rule;
 
 public class DownloadMngAction extends AbstractActionSupport {
-	
-	//jjj
 	private DownloadDao downloadDao;
 	private RuleDao ruleDao;
 	private String srcName;
@@ -102,7 +100,7 @@ public class DownloadMngAction extends AbstractActionSupport {
 	}
 	public String newDownloadSrcType() throws Exception {
 		if(newtype==null||"".equals(newtype)){
-			setErrMsg("鏂板绫诲瀷涓嶈兘涓虹┖");
+			setErrMsg("新增类型不能为空");
 			return SUCCESS;
 		}
 		Rule rule =ruleDao.findRuleByRuleId("DownloadSrcType");
@@ -111,7 +109,7 @@ public class DownloadMngAction extends AbstractActionSupport {
 		String newIds=rule.getRuleDef()+","+newId;
 		String newNames=rule.getRuleType()+","+newtype;
 		ruleDao.update("DownloadSrcType", newIds,newNames);
-		setSucMsg("鏂板["+newtype+"]绫诲瀷鎴愬姛");
+		setSucMsg("新增["+newtype+"]类型成功");
 		return SUCCESS;
 	}
 	public String deleteDownloadSrcType()throws Exception {
@@ -119,7 +117,7 @@ public class DownloadMngAction extends AbstractActionSupport {
 		String newIds=rule.getRuleDef().substring(0, rule.getRuleDef().lastIndexOf(","));
 		String newNames=rule.getRuleType().substring(0, rule.getRuleType().lastIndexOf(","));
 		ruleDao.update("DownloadSrcType", newIds,newNames);
-		setSucMsg("鍒犻櫎绫诲瀷鎴愬姛");
+		setSucMsg("删除类型成功");
 		forward("DownloadSrcTypeMngPreAction");
 		return SUCCESS;
 	}
@@ -127,14 +125,14 @@ public class DownloadMngAction extends AbstractActionSupport {
 		//if(ids==null||names==null){
 		Rule rule =ruleDao.findRuleByRuleId("DownloadSrcType");
 		if(names==null||names.length==0){
-			setErrMsg("绫诲瀷鎬绘暟涓嶈兘涓虹┖");
+			setErrMsg("类型总数不能为空");
 			forward("DownloadSrcTypeMngPreAction");
 			return SUCCESS;
 		}
 		String newnames="";
 		for (int i = 0; i < names.length; i++) {
 			if(names[i]==null||"".equals(names[i])){
-				setErrMsg("绫诲瀷涓嶈兘涓虹┖");
+				setErrMsg("类型不能为空");
 				forward("DownloadSrcTypeMngPreAction");
 				return SUCCESS;
 			}else{
@@ -147,12 +145,12 @@ public class DownloadMngAction extends AbstractActionSupport {
 		
 		String[] oldIds=rule.getRuleDef().split(",");
 		if(names.length!=oldIds.length){
-			setErrMsg("绫诲瀷鏁扮洰涓嶅");
+			setErrMsg("类型数目不对");
 			forward("DownloadSrcTypeMngPreAction");
 			return SUCCESS;
 		}
 		ruleDao.updateRuleType("DownloadSrcType",newnames);
-		setSucMsg("淇敼鎴愬姛");
+		setSucMsg("修改成功");
 		forward("DownloadSrcTypeMngPreAction");
 		return SUCCESS;
 	}
@@ -171,7 +169,7 @@ public class DownloadMngAction extends AbstractActionSupport {
 		downloads = downloadDao.findDownloads(getPageNum(), getSysConfigParameter().getPageSize());
 		Long max=downloadDao.downloadsCount();
 		initMaxPage(max);
-		//寰楀埌涓嬭浇绫诲瀷
+		//得到下载类型
 		this.downloadSrcTypeMngPre();
 		return SUCCESS;
 	}
@@ -180,15 +178,15 @@ public class DownloadMngAction extends AbstractActionSupport {
 	}
 	public String downloadAdd() throws Exception {
 		if(srcType==null||srcType==0){
-			setErrMsg("璧勬簮绫诲瀷涓嶈兘涓虹┖");
+			setErrMsg("资源类型不能为空");
 			return ERROR;
 		}
 		if(srcName==null||"".equals(srcName)){
-			setErrMsg("鏍囬涓嶈兘涓虹┖");
+			setErrMsg("标题不能为空");
 			return ERROR;
 		}
 		if(href==null){
-			setErrMsg("璧勬簮鏂囦欢涓嶈兘涓虹┖");
+			setErrMsg("资源文件不能为空");
 			return ERROR;
 		}
 		String realPath = ServletActionContext.getServletContext().getRealPath("/downloads");
@@ -203,7 +201,7 @@ public class DownloadMngAction extends AbstractActionSupport {
 		download.setUplTime(new Date());
 		download.setSrcType(srcType);
 		downloadDao.save(download);
-		setSucMsg("鏂板鎴愬姛锛�a href='DownloadMngAction?pageNum=1'>鍘荤湅鐪�/a>");
+		setSucMsg("新增成功，<a href='DownloadMngAction?pageNum=1'>去看看</a>");
 		return SUCCESS;
 	}
 	private Long id;
@@ -216,13 +214,13 @@ public class DownloadMngAction extends AbstractActionSupport {
 	}
 	public String downloadDel() throws Exception {
 		if(id==null||id==0l){
-			setErrMsg("浣犲皻鏈�鎷╄鍒犻櫎鐨勮褰�);
+			setErrMsg("你尚未选择要删除的记录");
 		}else{
 			try{
 				String srcname=downloadDao.delete(id);
-				setSucMsg("鍒犻櫎["+srcname+"]鎴愬姛!");
+				setSucMsg("删除["+srcname+"]成功!");
 			}catch(Exception e){
-				setErrMsg("鎿嶄綔澶辫触,璇风‘瀹氭偍姝ｅ父鎿嶄綔");
+				setErrMsg("操作失败,请确定您正常操作");
 			}
 			
 		}
@@ -250,19 +248,19 @@ public class DownloadMngAction extends AbstractActionSupport {
 	}
 	public String downloadEdit() throws Exception {
 		if (id == null) {
-			setErrMsg("鍙傛暟涓嶅");
+			setErrMsg("参数不对");
 			return SUCCESS;
 		}
 		if (href == null) {
-			setErrMsg("涓婁紶璧勬簮鏂囦欢涓嶈兘涓虹┖");
+			setErrMsg("上传资源文件不能为空");
 			return SUCCESS;
 		}
 		if (srcType == null || srcType==0) {
-			setErrMsg("绫诲瀷涓嶈兘涓虹┖");
+			setErrMsg("类型不能为空");
 			return SUCCESS;
 		}
 		if (srcName == null || "".equals(srcName)) {
-			setErrMsg("鏍囬涓嶈兘涓虹┖");
+			setErrMsg("标题不能为空");
 			return SUCCESS;
 		}
 		String realPath = ServletActionContext.getServletContext().getRealPath("/downloads");
@@ -278,7 +276,7 @@ public class DownloadMngAction extends AbstractActionSupport {
 		download.setUplTime(new Date());
 		download.setSrcType(srcType);
 		downloadDao.updateDownload(download);
-		setSucMsg("淇敼鎴愬姛锛�a href='DownloadMngAction?pageNum=1'>鍘荤湅鐪�/a>");
+		setSucMsg("修改成功，<a href='DownloadMngAction?pageNum=1'>去看看</a>");
 		return SUCCESS;
 	}
 }
