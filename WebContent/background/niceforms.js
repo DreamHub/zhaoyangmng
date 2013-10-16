@@ -559,14 +559,17 @@ function getInputsByName(name) {
 	for(var q = 0; q < inputs.length; q++) {if(inputs[q].name == name) {results[w] = inputs[q]; ++w;}}
 	return results;
 }
-
+$(function(){
+	existingLoadEvent();
+    NFInit();
+});
 //Add events
 var existingLoadEvent = window.onload || function () {};
 var existingResizeEvent = window.onresize || function() {};
-window.onload = function () {
+/*window.onload = function () {
     existingLoadEvent();
     NFInit();
-}
+}*/
 window.onresize = function() {
 	if(resizeTest != document.documentElement.clientHeight) {
 		existingResizeEvent();
