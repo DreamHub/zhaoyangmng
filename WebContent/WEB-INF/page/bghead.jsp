@@ -61,7 +61,13 @@
 				<li><a href="${path}ntc/NoticePanelSetPreAction" title="">公告栏展示</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
-		<li><a href="">Templates</a></li>
+		<li><a href="#">首页设置</a>
+		    <ul>
+				<li><a href="${path}ntc/NoticeMngAction?pageNum=1" title="">首页图片轮播设置</a></li>
+				<li><a href="${path}ntc/NoticeAddPreAction" title="">新增</a></li>
+				<li><a href="${path}ntc/NoticePanelSetPreAction" title="">公告栏展示</a></li>
+			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+		</li>
 		<li><a href="">系统设置</a></li>
 		<li><a href="">联系我们</a></li>
 	</ul>
