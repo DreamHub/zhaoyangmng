@@ -127,7 +127,7 @@ clear:both;
 		<div class="footer_login">
 
 			<div class="left_footer_login">
-				IN ADMIN PANEL | Powered by <a href="http://indeziner.com">INDEZINER</a>
+				朝之阳后台管理 | Powered by <a href="http://indeziner.com">DreamHub</a>
 			</div>
 			<div class="right_footer_login">
 				<a href="http://indeziner.com"><img

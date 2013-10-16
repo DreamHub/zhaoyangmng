@@ -35,5 +35,9 @@
 		<property name="ruleDao" ref="ruleDao"></property>
 		<property name="sysConfigParameter" ref="sysConfigParameter"></property>
 	</bean>
+	<bean id="recruitmentMngAction" class="com.zhaoyang.action.RecruitmentMngAction" scope="prototype">
+		<property name="noticeDao" ref="noticeDao"></property>
+		<property name="ruleDao" ref="ruleDao"></property>
+	</bean>
 	
 </beans>

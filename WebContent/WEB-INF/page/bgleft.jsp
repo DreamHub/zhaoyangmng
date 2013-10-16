@@ -2,13 +2,13 @@
 	contentType="text/html; charset=UTF-8"%>
 <%@ include file="variable.jsp"%>
 <div class="left_content">
-	<div class="sidebar_search">
+	<%-- <div class="sidebar_search">
 		<form>
 			<input type="text" name="" class="search_input" value="搜索关键字"
 				onclick="this.value=''" /> <input type="image"
 				class="search_submit" src="${bgpath}images/search.png" />
 		</form>
-	</div>
+	</div> --%>
 
 	<div class="sidebarmenu">
 

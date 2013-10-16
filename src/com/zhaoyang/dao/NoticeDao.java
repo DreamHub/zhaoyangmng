@@ -62,4 +62,7 @@ public class NoticeDao extends HibernateDaoSupport {
 		this.getHibernateTemplate().delete(news);
 		return news.getTitle();
 	}
+	public Notice findById(Long id){
+		return (Notice)this.getHibernateTemplate().get(Notice.class, id);
+	}
 }

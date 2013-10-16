@@ -3,7 +3,7 @@
 <%@ include file="variable.jsp"%>
 <div class="footer">
 	<div class="left_footer">
-		朝之阳后台管理 | Powered by <a href="http://indeziner.com">诚彬工作室</a>
+		朝之阳后台管理 | Powered by <a href="http://indeziner.com">DreamHub</a>
 	</div>
 	<div class="right_footer">
 		<a href="http://indeziner.com"><img

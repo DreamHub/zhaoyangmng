@@ -153,6 +153,7 @@
 			<result name="success" type="chain">DownloadEditPreAction</result>
 		</action>
 	</package>
+	<!-- 公告 -->
 	<package name="notice" namespace="/ntc" extends="struts-abstract">
 		<action name="NoticeAddPreAction" class="noticeMngAction" method="noticeAddPre"> 
 			<result name="success">/WEB-INF/page/noticeAdd.jsp</result>
@@ -172,6 +173,12 @@
 		</action>
 		<action name="NoticePanelSetAction" class="noticeMngAction" method="noticePanelSet">
 			<result name="success" type="chain">NoticePanelSetPreAction</result>
+		</action>
+	</package>
+	<!-- 招聘 -->
+	<package name="recruitment" namespace="/rcmt" extends="struts-abstract">
+		<action name="WatchRecruitmentHTMLAction" class="recruitmentMngAction" method="watchRecruitmentHTML"> 
+			<result name="success">/recruitment.jsp</result>
 		</action>
 	</package>
 </struts>    
