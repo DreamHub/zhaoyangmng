@@ -282,6 +282,7 @@ border-collapse: collapse;
 {
 width:26px;
 background: #60c8f2 url('images/left.jpg') left top no-repeat;
+text-align: left;
 }
 #rounded-corner thead th.rounded-q4
 {

@@ -115,7 +115,33 @@ public class NewsMngAction extends AbstractActionSupport {
 		return SUCCESS;
 	}
 
+	private Long[] delids;
+	
+	public Long[] getDelids() {
+		return delids;
+	}
+
+	public void setDelids(Long[] delids) {
+		this.delids = delids;
+	}
+
 	public String newsDel() throws Exception {
+		setPageNum(1);
+		if(delids!=null&&delids.length>0){
+			int i=0;
+			for (;i < delids.length; i++) {
+				try{
+					newsDao.delete(delids[i]);
+				}catch(Exception e){
+					setErrMsg("操作失败,请确定您正常操作");
+					break;
+				}
+			}
+			if(i==delids.length){
+				setSucMsg("删除成功!");
+			}
+			return SUCCESS;
+		}
 		if(id==null||id==0l){
 			setErrMsg("你尚未选择要删除的记录");
 		}else{
@@ -124,11 +150,8 @@ public class NewsMngAction extends AbstractActionSupport {
 				setSucMsg("删除["+title+"]成功!");
 			}catch(Exception e){
 				setErrMsg("操作失败,请确定您正常操作");
-				//return SUCCESS;
 			}
-			
 		}
-		forward("NewsMngAction?pageNum=1", ServletActionContext.getRequest(),ServletActionContext.getResponse());
 		return SUCCESS;
 	}
 	public String newsEditPre() throws Exception {

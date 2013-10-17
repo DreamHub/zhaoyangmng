@@ -299,7 +299,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
     <thead>
     	<tr>
-        	<th scope="col" class="rounded-company"></th>
+        	<th scope="col" class="rounded-company"><input type="checkbox"/></th>
             <th scope="col" class="rounded">Product</th>
             <th scope="col" class="rounded">Details</th>
             <th scope="col" class="rounded">Price</th>

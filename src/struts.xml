@@ -42,7 +42,7 @@
 			<result name="success">/WEB-INF/page/newsAdd.jsp</result>
 		</action>
 		<action name="NewsDelAction" class="newsMngAction" method="newsDel">
-			<result name="success">/WEB-INF/page/newsAdd.jsp</result>
+			<result name="success" type="chain">NewsMngAction</result>
 		</action>
 		<action name="NewsEditPreAction" class="newsMngAction" method="newsEditPre">
 			<result name="success">/WEB-INF/page/newsEdit.jsp</result>

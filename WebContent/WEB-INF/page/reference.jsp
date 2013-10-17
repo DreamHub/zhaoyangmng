@@ -43,11 +43,22 @@
 		var temp = document.createElement("form");
 		temp.method = "post";
 		temp.action = url;
+		
 		for(var x in PARAMS){        
-		   var opt = document.createElement("input");        
-		   opt.name = x;        
-		   opt.value = PARAMS[x];        
-		   temp.appendChild(opt);        
+		   //alert(x);
+		   if(PARAMS[x] instanceof Array){
+			   for(var i=0;i<PARAMS[x].length;i++){
+				   var opt = document.createElement("input");        
+				   opt.name = x;        
+				   opt.value = PARAMS[x][i];
+				   temp.appendChild(opt);
+			   }
+		   }else{
+			   var opt = document.createElement("input");        
+			   opt.name = x;        
+			   opt.value = PARAMS[x];
+			   temp.appendChild(opt);	   
+		   }
 		}
 		document.body.appendChild(temp);
 		temp.submit();

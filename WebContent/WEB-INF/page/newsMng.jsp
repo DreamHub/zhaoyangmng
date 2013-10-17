@@ -58,6 +58,24 @@
 			$('.pagination').empty();
 			$('.pagination').append(str);
 		}
+		
+		/*删除按钮*/
+		$(".rounded-company input").click(function(){
+			var flag=this.checked;
+			if(flag==true){
+				$('.delids:not(:checked)').attr("checked",true);
+			}else{
+				$('.delids:checked').attr("checked",false);
+			}
+		});
+		$('#delrecords').click(function(){
+			//alert("123");
+			var str='{"delids":[';
+			$('.delids:checked').each(function(i){
+				str +=$(this).val()+',';
+			});
+			postData('${path}news/NewsDelAction',$.parseJSON(str.substring(0,str.length-1)+']}'));
+		});
 	});
 </script>
 </head>
@@ -80,7 +98,7 @@
 						summary="2007 Major IT Companies' Profit">
 						<thead>
 							<tr>
-								<th scope="col" class="rounded-company"></th>
+								<th scope="col" class="rounded-company"><input type="checkbox"/></th>
 								<th scope="col" class="rounded">序号</th>
 								<th scope="col" class="rounded">标题</th>
 								<th scope="col" class="rounded">关键字</th>
@@ -102,7 +120,7 @@
 						<tbody>
 							<s:iterator value="newses">
 								<tr>
-									<td><input type="checkbox" name="" />
+									<td><input type="checkbox" name="delids" class="delids" value="<s:property value="id"/>"/>
 									</td>
 									<td><s:property value="id"/> </td>
 									<td><s:property value="title"/></td>
@@ -127,7 +145,7 @@
 						class="bt_green_r"></span>
 					</a> <a href="#" class="bt_blue"><span class="bt_blue_lft"></span><strong>View
 							all items from category</strong><span class="bt_blue_r"></span>
-					</a> <a href="#" class="bt_red"><span class="bt_red_lft"></span><strong>删除记录</strong><span
+					</a> <a href="#" class="bt_red" id="delrecords"><span class="bt_red_lft"></span><strong>删除记录</strong><span
 						class="bt_red_r"></span>
 					</a>
 

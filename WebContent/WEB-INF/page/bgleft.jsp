@@ -44,7 +44,7 @@
 			</ul>
 		</div>
 		<a class="menuitem" href="">快速建站</a> <a class="menuitem"
-			href="">Blue button</a> <a class="menuitem_green" href="">快速建站</a> <a class="menuitem_red" href="">系统设置</a>
+			href="">网站导航</a> <a class="menuitem_green" href="">快速建站</a> <a class="menuitem_red" href="">系统设置</a>
 
 	</div>
 
