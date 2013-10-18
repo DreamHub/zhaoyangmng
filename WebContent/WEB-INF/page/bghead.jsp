@@ -4,7 +4,7 @@
 <div class="menu">
 	<ul>
 		<li><a class="current" href="${path}other/HomePagePreAction">主页</a></li>
-		<li><a href="#">首页设置</a>
+		<li><a href="${path}index/IndexSetPreAction">首页设置</a>
 		    <ul>
 				<li><a href="${path}ntc/NoticeMngAction?pageNum=1" title="">首页图片轮播设置</a></li>
 				<li><a href="${path}ntc/NoticeAddPreAction" title="">新增</a></li>

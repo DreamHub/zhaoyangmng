@@ -202,4 +202,10 @@
 			<result name="success">/WEB-INF/page/index-digital.jsp</result>
 		</action>
 	</package>
+	<!-- 首页设置-->
+	<package name="index" namespace="/index" extends="struts-abstract">
+		<action name="IndexSetPreAction" class="indexSettingAction"> 
+			<result name="success">/WEB-INF/page/indexMngPre.jsp</result>
+		</action>
+	</package>
 </struts>    

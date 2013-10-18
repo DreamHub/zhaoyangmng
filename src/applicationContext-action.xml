@@ -41,5 +41,7 @@
 	</bean>
 	<bean id="otherMngAction" class="com.zhaoyang.action.OtherMngAction" scope="prototype">
 	</bean>
+	<bean id="indexSettingAction" class="com.zhaoyang.action.IndexSettingAction" scope="prototype">
+	</bean>
 	
 </beans>
