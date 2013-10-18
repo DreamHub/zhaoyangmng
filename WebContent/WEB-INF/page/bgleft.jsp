@@ -12,6 +12,15 @@
 
 	<div class="sidebarmenu">
 
+		<a class="menuitem submenuheader" href="">页面预览</a>
+		<div class="submenu">
+			<ul>
+				<li><a href="${path}rcmt/WatchRecruitmentHTMLAction" target="_blank">*人才招聘*预览</a></li>
+				<li><a href="${path}news/NewsAddPreAction">新增新闻</a></li>
+				<li><a href="${path}news/IndexNewsSetPreAction">首页新闻设置</a></li>
+				<li><a href="${path}news/HotNewsSetPreAction">热门话题设置</a></li>
+			</ul>
+		</div>
 		<a class="menuitem submenuheader" href="">新闻管理</a>
 		<div class="submenu">
 			<ul>
