@@ -25,7 +25,7 @@
 				<jsp:include page="bgleft.jsp" flush="true" />
 				<div class="right_content">
 
-					<h2>人才招聘</h2>
+					<h2>学校简介</h2>
 					<table>
 						<tr>
 							<td valign="top">
@@ -36,29 +36,14 @@
 										<img src="${bgpath}images/info.png" alt="" title=""
 											class="sidebar_icon_right" />
 										<p style="line-height: 25px;">
-											招聘页面可更改的内容有<br /> <a href="#">宣传横幅</a>， <a href="#">招聘信息列表</a>还有<br />
-											<a href="${path}ntc/NoticePanelSetPreAction">公告</a>，
-											其它地方目前不提供更改功能，如需改动，请及时与我们联系。 您可以直接点此<a
-												href="${path}rcmt/WatchRecruitmentHTMLAction"
-												target="_blank">预览</a>效果。
+											学校简介部分可更改的内容为<br/><a href="${path}scl/AddressSetPreAction">办学地址页面修改</a>,<br/>
+											<a href="${path}scl/SchoolDescSetPreAction">学校简介页面修改</a>，<br/><a href="${path}scl/ConditionSetPreAction">教学环境页面修改</a>，在编辑页面内容时，你不必担心预览的格式会出现混乱，因为
+											我们的编辑器严格设置在1：1的宽度比例，所以你编辑的内容就是页面上显示的内容。
+											
 										</p>
 									</div>
 									<div class="sidebar_box_bottom"></div>
 								</div></td>
-							<td valign="top">
-								<div class="sidebar_box">
-									<div class="sidebar_box_top"></div>
-									<div class="sidebar_box_content">
-										<h4>公告栏设置</h4>
-										<img src="${bgpath}images/notice.png" alt="" title=""
-											class="sidebar_icon_right" />
-										<p style="line-height: 25px;">公告栏列表显示设置里面的公告序号必须是最新的公告序号。当你更新公告过后，最好将公告栏重新设置一下，否则可能会出现公告栏显示部分为空的问题。<br/>
-											<a href="${path}ntc/NoticePanelSetPreAction">公告栏设置</a>
-										</p>
-									</div>
-									<div class="sidebar_box_bottom"></div>
-								</div>
-							</td>
 						</tr>
 					</table>
 

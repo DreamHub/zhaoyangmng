@@ -77,6 +77,11 @@
 	</package>
 	<!-- 学校简介 -->
 	<package name="school" namespace="/scl" extends="struts-abstract">
+	
+		<action name="AboutMngAction" class="schoolSettingAction"
+			method="aboutMng">
+			<result name="success">/WEB-INF/page/aboutMng.jsp</result>
+		</action>
 		<action name="SchoolDescSetPreAction" class="schoolSettingAction"
 			method="schoolDescSetPre">
 			<result name="success">/WEB-INF/page/schoolDescEdit.jsp</result>

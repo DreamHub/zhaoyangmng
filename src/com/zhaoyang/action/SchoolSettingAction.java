@@ -49,6 +49,10 @@ public class SchoolSettingAction extends AbstractActionSupport {
 		return SUCCESS;
 	}
 	
+	public String aboutMng() throws Exception {
+		return SUCCESS;
+	}
+	
 	
 	
 
