@@ -39,5 +39,7 @@
 		<property name="noticeDao" ref="noticeDao"></property>
 		<property name="ruleDao" ref="ruleDao"></property>
 	</bean>
+	<bean id="otherMngAction" class="com.zhaoyang.action.OtherMngAction" scope="prototype">
+	</bean>
 	
 </beans>

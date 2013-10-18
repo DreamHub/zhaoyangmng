@@ -82,7 +82,10 @@ public class NewsMngAction extends AbstractActionSupport {
 		initMaxPage(max);
 		return SUCCESS;
 	}
-
+	
+	public String newsMngPre() throws Exception {
+		return SUCCESS;
+	}
 	public String newsAddPre() throws Exception {
 		return SUCCESS;
 	}

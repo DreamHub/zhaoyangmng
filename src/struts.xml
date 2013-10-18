@@ -21,6 +21,7 @@
 			<result name="error">/background/login.jsp</result>
 		</global-results>
 	</package>
+	
 	<!-- 游客权限 -->
 	<package name="zylogin" namespace="/usr" extends="struts-default">
 		<action name="LoginAction" class="loginAction">
@@ -30,6 +31,10 @@
 	</package>
 	<!-- 新闻模块 -->
 	<package name="zyNews" namespace="/news" extends="struts-abstract">
+	
+		<action name="NewsMngPreAction" class="newsMngAction" method="newsMngPre">
+			<result name="success">/WEB-INF/page/newsMngPre.jsp</result>
+		</action>
 		<action name="NewsMngAction" class="newsMngAction">
 			<result name="success">/WEB-INF/page/newsMng.jsp</result>
 			<result name="error">/background/login.jsp</result>
@@ -189,6 +194,12 @@
 		</action>
 		<action name="RecruitmentMngPreAction" class="recruitmentMngAction" method="recruitmentMngPre"> 
 			<result name="success">/WEB-INF/page/recruitmentMng.jsp</result>
+		</action>
+	</package>
+	<!-- 其他设置 -->
+	<package name="other" namespace="/other" extends="struts-abstract">
+		<action name="HomePagePreAction" class="otherMngAction"> 
+			<result name="success">/WEB-INF/page/index-digital.jsp</result>
 		</action>
 	</package>
 </struts>    
