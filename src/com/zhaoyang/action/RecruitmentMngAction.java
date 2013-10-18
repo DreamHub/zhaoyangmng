@@ -48,4 +48,7 @@ public class RecruitmentMngAction extends AbstractActionSupport {
 		}
 		return SUCCESS;
 	}
+	public String recruitmentMngPre() throws Exception{
+		return SUCCESS;
+	}
 }

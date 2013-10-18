@@ -109,9 +109,8 @@
 						</thead>
 						<tfoot>
 							<tr>
-								<td colspan="6" class="rounded-foot-left"><em>Lorem
-										ipsum dolor sit amet, consectetur adipisicing elit, sed do
-										eiusmod tempor incididunt ut.</em>
+								<td colspan="6" class="rounded-foot-left"><em>
+								   当前是第${pageNum}页，共${maxPage}页，每页显示${sysConfigParameter.pageSize}条数据，每页显示数据条数可以在系统设置里面更改。</em>
 								</td>
 								<td class="rounded-foot-right">&nbsp;</td>
 
@@ -143,9 +142,8 @@
 
 					<a href="${path}news/NewsAddPreAction" class="bt_green"><span class="bt_green_lft"></span><strong>新增新闻</strong><span
 						class="bt_green_r"></span>
-					</a> <a href="#" class="bt_blue"><span class="bt_blue_lft"></span><strong>View
-							all items from category</strong><span class="bt_blue_r"></span>
-					</a> <a href="#" class="bt_red" id="delrecords"><span class="bt_red_lft"></span><strong>删除记录</strong><span
+					</a> 
+					<a href="#" class="bt_red" id="delrecords"><span class="bt_red_lft"></span><strong>删除记录</strong><span
 						class="bt_red_r"></span>
 					</a>
 
@@ -167,116 +165,6 @@
 							${errMsg}
 						</div>
 					</s:if>
-					
-
-					<h2>Nice Form example</h2>
-
-					<div class="form">
-						<form action="" method="post" class="niceform">
-
-							<fieldset>
-								<dl>
-									<dt>
-										<label for="email">Email Address:</label>
-									</dt>
-									<dd>
-										<input type="text" name="" id="" size="54" />
-									</dd>
-								</dl>
-								<dl>
-									<dt>
-										<label for="password">Password:</label>
-									</dt>
-									<dd>
-										<input type="text" name="" id="" size="54" />
-									</dd>
-								</dl>
-
-
-								<dl>
-									<dt>
-										<label for="gender">Select categories:</label>
-									</dt>
-									<dd>
-										<select size="1" name="gender" id="">
-											<option value="">Select option 1</option>
-											<option value="">Select option 2</option>
-											<option value="">Select option 3</option>
-											<option value="">Select option 4</option>
-											<option value="">Select option 5</option>
-										</select>
-									</dd>
-								</dl>
-								<dl>
-									<dt>
-										<label for="interests">Select tags:</label>
-									</dt>
-									<dd>
-										<input type="checkbox" name="interests[]" id="" value="" /><label
-											class="check_label">Web design</label> <input type="checkbox"
-											name="interests[]" id="" value="" /><label
-											class="check_label">Business</label> <input type="checkbox"
-											name="interests[]" id="" value="" /><label
-											class="check_label">Simple</label> <input type="checkbox"
-											name="interests[]" id="" value="" /><label
-											class="check_label">Clean</label>
-									</dd>
-								</dl>
-
-								<dl>
-									<dt>
-										<label for="color">Select type</label>
-									</dt>
-									<dd>
-										<input type="radio" name="type" id="" value="" /><label
-											class="check_label">Basic</label> <input type="radio"
-											name="type" id="" value="" /><label class="check_label">Medium</label>
-										<input type="radio" name="type" id="" value="" /><label
-											class="check_label">Premium</label>
-									</dd>
-								</dl>
-
-
-
-								<dl>
-									<dt>
-										<label for="upload">Upload a File:</label>
-									</dt>
-									<dd>
-										<input type="file" name="upload" id="upload" />
-									</dd>
-								</dl>
-
-								<dl>
-									<dt>
-										<label for="comments">Message:</label>
-									</dt>
-									<dd>
-										<textarea name="comments" id="comments" rows="5" cols="36"></textarea>
-									</dd>
-								</dl>
-
-								<dl>
-									<dt>
-										<label></label>
-									</dt>
-									<dd>
-										<input type="checkbox" name="interests[]" id="" value="" /><label
-											class="check_label">I agree to the <a href="#">terms
-												&amp; conditions</a>
-										</label>
-									</dd>
-								</dl>
-
-								<dl class="submit">
-									<input type="submit" name="submit" id="submit" value="Submit" />
-								</dl>
-							</fieldset>
-
-						</form>
-					</div>
-
-
 				</div>
 				<!-- end of right content-->
 			</div>

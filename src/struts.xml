@@ -180,5 +180,8 @@
 		<action name="WatchRecruitmentHTMLAction" class="recruitmentMngAction" method="watchRecruitmentHTML"> 
 			<result name="success">/recruitment.jsp</result>
 		</action>
+		<action name="RecruitmentMngPreAction" class="recruitmentMngAction" method="recruitmentMngPre"> 
+			<result name="success">/WEB-INF/page/recruitmentMng.jsp</result>
+		</action>
 	</package>
 </struts>    

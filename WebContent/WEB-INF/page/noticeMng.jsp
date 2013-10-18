@@ -90,9 +90,8 @@
 						</thead>
 						<tfoot>
 							<tr>
-								<td colspan="5" class="rounded-foot-left"><em>Lorem
-										ipsum dolor sit amet, consectetur adipisicing elit, sed do
-										eiusmod tempor incididunt ut.</em>
+								<td colspan="5" class="rounded-foot-left">
+								<em>当前是第${pageNum}页，共${maxPage}页，每页显示${sysConfigParameter.pageSize}条数据，每页显示数据条数可以在系统设置里面更改。</em>
 								</td>
 								<td class="rounded-foot-right">&nbsp;</td>
 
@@ -122,9 +121,8 @@
 
 					<a href="${path}ntc/NoticeAddPreAction" class="bt_green"><span class="bt_green_lft"></span><strong>新增公告</strong><span
 						class="bt_green_r"></span>
-					</a> <a href="#" class="bt_blue"><span class="bt_blue_lft"></span><strong>View
-							all items from category</strong><span class="bt_blue_r"></span>
-					</a> <a href="#" class="bt_red"><span class="bt_red_lft"></span><strong>删除记录</strong><span
+					</a> 
+					<a href="#" class="bt_red"><span class="bt_red_lft"></span><strong>删除记录</strong><span
 						class="bt_red_r"></span>
 					</a>
 
