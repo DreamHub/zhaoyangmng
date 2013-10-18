@@ -164,9 +164,11 @@
 		<action name="NoticeMngAction" class="noticeMngAction"> 
 			<result name="success">/WEB-INF/page/noticeMng.jsp</result>
 		</action>
-		
+		<action name="NoticeEditPreAction" class="noticeMngAction" method="noticeEditPre"> 
+			<result name="success">/WEB-INF/page/noticeEdit.jsp</result>
+		</action>
 		<action name="NoticeDelAction" class="noticeMngAction" method="noticeDel">
-			<result name="success">/WEB-INF/page/newsAdd.jsp</result>
+			<result name="success" type="chain">NoticeMngAction</result>
 		</action>
 		<action name="NoticePanelSetPreAction" class="noticeMngAction" method="noticePanelSetPre">
 			<result name="success">/WEB-INF/page/noticePanelSetting.jsp</result>

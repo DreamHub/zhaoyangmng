@@ -64,6 +64,54 @@
 		temp.submit();
 		document.body.removeChild(temp);
 	}
+	function pagaable(pageNum,maxPage,url){
+		//共一页
+		if(maxPage==1){
+			$('.pagination').empty();
+			$('.pagination').append('<span class="disabled"><< prev</span><span class="current">1</span><span class="disabled">next >></span>');
+		}else
+		//第一页
+		if(maxPage>1&&pageNum==1){
+			var str='<span class="disabled"><< prev</span><span class="current">1</span>';
+			for(var i=2;i<=maxPage;i++){
+				var a='<a href="'+url+'?pageNum='+i+'">'+i+'</a>';
+				str += a;
+			}
+			var next='<a href="'+url+'?pageNum='+(pageNum+1)+'">next >></a>';
+			str+=next;
+			$('.pagination').empty();
+			$('.pagination').append(str);
+		}else
+		//最后一页
+		if(maxPage>1&&pageNum==maxPage){
+			var str='<a href="'+url+'?pageNum='+(pageNum-1)+'"><< prev</a>';
+			for(var i=1;i<maxPage;i++){
+				var a='<a href="'+url+'?pageNum='+i+'">'+i+'</a>';
+				str += a;
+			}
+			var next='<span class="current">'+maxPage+'</span><span class="disabled">next >></span>';
+			str+=next;
+			$('.pagination').empty();
+			$('.pagination').append(str);
+		}else{
+		//其他
+			var str='<a href="'+url+'?pageNum='+(pageNum-1)+'"><< prev</a>';
+			for(var i=1;i<=maxPage;i++){
+				if(i!=pageNum){
+					var a='<a href="'+url+'?pageNum='+i+'">'+i+'</a>';
+					str += a;
+				}else{
+					var span='<span class="current">'+pageNum+'</span>';
+					str +=span;
+				}
+				
+			}
+			var next='<a href="'+url+'?pageNum='+(pageNum+1)+'">next >></a>';
+			str+=next;
+			$('.pagination').empty();
+			$('.pagination').append(str);
+		}
+	}
 </script>
 <link rel="stylesheet" type="text/css" media="all" href="${bgpath}niceforms-default.css" />
 <script type="text/javascript" src="${bgpath}niceforms.js"></script>

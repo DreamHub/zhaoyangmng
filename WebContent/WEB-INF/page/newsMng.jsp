@@ -70,6 +70,13 @@
 		});
 		$('#delrecords').click(function(){
 			//alert("123");
+			if($('.delids:checked').size()<1){
+				alert("请选择你要删除的条目");
+				return;
+			}
+			if(!confirm("确定删除吗?")){
+				return;
+			}
 			var str='{"delids":[';
 			$('.delids:checked').each(function(i){
 				str +=$(this).val()+',';

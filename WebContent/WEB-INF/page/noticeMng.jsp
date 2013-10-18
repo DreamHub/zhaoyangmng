@@ -12,52 +12,31 @@
 	$(function(){
 		var pageNum=${pageNum};
 		var maxPage=${maxPage};
-		//共一页
-		if(maxPage==1){
-			$('.pagination').empty();
-			$('.pagination').append('<span class="disabled"><< prev</span><span class="current">1</span><span class="disabled">next >></span>');
-		}else
-		//第一页
-		if(maxPage>1&&pageNum==1){
-			var str='<span class="disabled"><< prev</span><span class="current">1</span>';
-			for(var i=2;i<=maxPage;i++){
-				var a='<a href="${path}news/NewsMngAction?pageNum='+i+'">'+i+'</a>';
-				str += a;
+		var url='${path}ntc/NoticeMngAction';
+		pagaable(pageNum,maxPage,url);
+		$(".rounded-company input").click(function(){
+			var flag=this.checked;
+			if(flag==true){
+				$('.delids:not(:checked)').attr("checked",true);
+			}else{
+				$('.delids:checked').attr("checked",false);
 			}
-			var next='<a href="${path}news/NewsMngAction?pageNum='+(pageNum+1)+'">next >></a>';
-			str+=next;
-			$('.pagination').empty();
-			$('.pagination').append(str);
-		}else
-		//最后一页
-		if(maxPage>1&&pageNum==maxPage){
-			var str='<a href="${path}news/NewsMngAction?pageNum='+(pageNum-1)+'"><< prev</a>';
-			for(var i=1;i<maxPage;i++){
-				var a='<a href="${path}news/NewsMngAction?pageNum='+i+'">'+i+'</a>';
-				str += a;
+		});
+		$('#delrecords').click(function(){
+			//alert("123");
+			if($('.delids:checked').size()<1){
+				alert("请选择你要删除的条目");
+				return;
 			}
-			var next='<span class="current">'+maxPage+'</span><span class="disabled">next >></span>';
-			str+=next;
-			$('.pagination').empty();
-			$('.pagination').append(str);
-		}else{
-		//其他
-			var str='<a href="${path}news/NewsMngAction?pageNum='+(pageNum-1)+'"><< prev</a>';
-			for(var i=1;i<=maxPage;i++){
-				if(i!=pageNum){
-					var a='<a href="${path}news/NewsMngAction?pageNum='+i+'">'+i+'</a>';
-					str += a;
-				}else{
-					var span='<span class="current">'+pageNum+'</span>';
-					str +=span;
-				}
-				
+			if(!confirm("确定删除吗?")){
+				return;
 			}
-			var next='<a href="${path}news/NewsMngAction?pageNum='+(pageNum+1)+'">next >></a>';
-			str+=next;
-			$('.pagination').empty();
-			$('.pagination').append(str);
-		}
+			var str='{"delids":[';
+			$('.delids:checked').each(function(i){
+				str +=$(this).val()+',';
+			});
+			postData('${path}ntc/NoticeDelAction',$.parseJSON(str.substring(0,str.length-1)+']}'));
+		});
 	});
 </script>
 </head>
@@ -80,7 +59,7 @@
 						summary="2007 Major IT Companies' Profit">
 						<thead>
 							<tr>
-								<th scope="col" class="rounded-company"></th>
+								<th scope="col" class="rounded-company"><input type="checkbox" /></th>
 								<th scope="col" class="rounded">序号</th>
 								<th scope="col" class="rounded">标题</th>
 								<th scope="col" class="rounded">时间</th>
@@ -100,12 +79,12 @@
 						<tbody>
 							<s:iterator value="notices">
 								<tr>
-									<td><input type="checkbox" name="" />
+									<td><input type="checkbox" name="delids" class="delids" value="<s:property value="id"/>"/>
 									</td>
 									<td><s:property value="id"/> </td>
 									<td><s:property value="title"/></td>
 									<td><s:date name="createTime" format="yyyy-MM-dd"/></td>
-									<td><a href="${path}news/NewsEditPreAction?id=<s:property value="id"/>"><img
+									<td><a href="${path}ntc/NoticeEditPreAction?id=<s:property value="id"/>"><img
 											src="${bgpath}images/user_edit.png" alt="" title=""
 											border="0" />
 									</a>
@@ -122,7 +101,7 @@
 					<a href="${path}ntc/NoticeAddPreAction" class="bt_green"><span class="bt_green_lft"></span><strong>新增公告</strong><span
 						class="bt_green_r"></span>
 					</a> 
-					<a href="#" class="bt_red"><span class="bt_red_lft"></span><strong>删除记录</strong><span
+					<a href="#" class="bt_red" id="delrecords"><span class="bt_red_lft"></span><strong>删除记录</strong><span
 						class="bt_red_r"></span>
 					</a>
 
