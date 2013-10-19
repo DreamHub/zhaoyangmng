@@ -1,5 +1,6 @@
 package com.zhaoyang.action;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -7,7 +8,11 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.zhaoyang.dao.NewsDao;
+import com.zhaoyang.dao.RuleDao;
 import com.zhaoyang.orm.News;
+import com.zhaoyang.orm.Notice;
+import com.zhaoyang.orm.Rule;
+import com.zhaoyang.util.UtilForNewsDetail;
 
 public class NewsMngAction extends AbstractActionSupport {
 	private NewsDao newsDao;
@@ -197,6 +202,11 @@ public class NewsMngAction extends AbstractActionSupport {
 		news.setTitle(title);
 		newsDao.updateNews(news);
 		setSucMsg("修改成功，<a href='NewsMngAction?pageNum=1'>去看看</a>");
+		return SUCCESS;
+	}
+	
+	public String watchNewsHTML() throws Exception {
+		newses=new UtilForNewsDetail().hotNewsList();
 		return SUCCESS;
 	}
 	

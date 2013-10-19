@@ -42,7 +42,7 @@ public class PagesGenerateAction extends AbstractActionSupport {
 
 			sb.append("{\"title\":\"" + news.getTitle() + "\",\"datatime\":\""
 					+ news.getCreateTime() + "\",\"id\":" + news.getId()
-					+ ",\"url\":\"news_detail/" + news.getId() + ".html\"},");
+					+ ",\"url\":\"/zhaoyang/news_detail/" + news.getId() + ".html\"},");
 
 			String path = "http://localhost:8080/zhaoyang/news_detail/112.jsp?id="+news.getId();
 			HttpURLConnection conn = (HttpURLConnection) new URL(path)
@@ -72,7 +72,7 @@ public class PagesGenerateAction extends AbstractActionSupport {
 		bw.write(sb.toString());
 		bw.flush();
 		bw.close();
-		setSucMsg("新闻页面生成成功,<a href=\"/zhaoyang/news.html\" target=\"_blank\">预览一下</a>");
+		setSucMsg("新闻页面生成成功,<a href=\"WatchNewsHTMLAction\" target=\"_blank\">预览一下</a>");
 		return SUCCESS;
 	}
 

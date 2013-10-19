@@ -36,8 +36,8 @@ function lable_show(width, height, color, imgPath, obj, font_color) {
 }
 
 $(function() {
-	pagable_show($('#xl'), $('#page'), '<ul>[data]<li>[{datatime}]<a href="{url}">{title}</a></li>[/data]</ul>', 'js/news/datasrc_news.js');
-	lable_show('240px', '175px', "#2B8CFF", 'image/news/notic_bg.jpg', $('#lables'), 'white');
+	pagable_show($('#xl'), $('#page'), '<ul>[data]<li>[{datatime}]<a href="{url}">{title}</a></li>[/data]</ul>', '/zhaoyang/js/news/datasrc_news.js');
+	lable_show('240px', '175px', "#2B8CFF", '/zhaoyang/image/news/notic_bg.jpg', $('#lables'), 'white');
 	$("#text").fsrPMD({
 		Event : 'mouseover', //事件
 		Id : 'text', //容器ID

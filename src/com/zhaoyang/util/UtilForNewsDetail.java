@@ -3,6 +3,7 @@ package com.zhaoyang.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.zhaoyang.dao.NewsDao;
 import com.zhaoyang.dao.NoticeDao;
 import com.zhaoyang.dao.RuleDao;
 import com.zhaoyang.orm.News;
@@ -26,4 +27,19 @@ public class UtilForNewsDetail {
 		}
 		return notices;
 	}
+	public List<News> hotNewsList(){
+		NewsDao newsDao=DaoGenerate.getNewsDao();
+		RuleDao ruleDao=DaoGenerate.getRuleDao();
+		Rule rule=ruleDao.findRuleByRuleId("HotNewsList");
+		String ruledef=rule.getRuleDef();
+		String[] ids=ruledef.split(",");
+		List<News> newses=new ArrayList<News>();
+		for (int i = 0; i < ids.length; i++) {
+			News news=newsDao.findById(Long.parseLong(ids[i]));
+			newses.add(news);
+		}
+		return newses;
+	}
+	
+	
 }
