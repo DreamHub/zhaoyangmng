@@ -22,7 +22,7 @@ public class NewsDao extends HibernateDaoSupport {
 	}
 
 	public List<News> findAll() {
-		List<News> newses = this.getHibernateTemplate().find("from News");
+		List<News> newses = this.getHibernateTemplate().find("from News c order by c.createTime desc");
 		if (newses != null && newses.size() > 0) {
 			return newses;
 		}

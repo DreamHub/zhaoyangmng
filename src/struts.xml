@@ -31,7 +31,9 @@
 	</package>
 	<!-- 新闻模块 -->
 	<package name="zyNews" namespace="/news" extends="struts-abstract">
-	
+		<action name="GenerateNewsHTMLAction" class="pagesGenerateAction" method="generateNewsHTML">
+			<result name="success">/WEB-INF/page/newsMngPre.jsp</result>
+		</action>
 		<action name="NewsMngPreAction" class="newsMngAction" method="newsMngPre">
 			<result name="success">/WEB-INF/page/newsMngPre.jsp</result>
 		</action>

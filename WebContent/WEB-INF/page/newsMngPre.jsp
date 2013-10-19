@@ -36,16 +36,25 @@
 										<img src="${bgpath}images/info.png" alt="" title=""
 											class="sidebar_icon_right" />
 										<p style="line-height: 25px;">
-											学校简介部分可更改的内容为<br/><a href="${path}scl/AddressSetPreAction">办学地址页面修改</a>,<br/>
-											<a href="${path}scl/SchoolDescSetPreAction">学校简介页面修改</a>，<br/><a href="${path}scl/ConditionSetPreAction">教学环境页面修改</a>，在编辑页面内容时，你不必担心预览的格式会出现混乱，因为
-											我们的编辑器严格设置在1：1的宽度比例，所以你编辑的内容就是页面上显示的内容。
-											
+											<a href="${path}news/GenerateNewsHTMLAction">生产新闻页面</a><br/>
 										</p>
 									</div>
 									<div class="sidebar_box_bottom"></div>
 								</div></td>
 						</tr>
 					</table>
+					
+					
+					<s:if test="#request.sucMsg != null">
+						<div class="valid_box">
+							${sucMsg}
+						</div>
+					</s:if>
+					<s:if test="#request.errMsg != null">
+						<div class="error_box">
+							${errMsg}
+						</div>
+					</s:if>
 
 
 

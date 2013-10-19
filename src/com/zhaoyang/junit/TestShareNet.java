@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-import com.zhaoyang.dao.NewsDao;
+import com.zhaoyang.action.PagesGenerateAction;
 import com.zhaoyang.orm.News;
 
 public class TestShareNet {
@@ -22,9 +22,10 @@ public class TestShareNet {
 		ApplicationContext ac = new FileSystemXmlApplicationContext(
 				applicationFile.getAbsolutePath());
 
-		NewsDao newsDao = (NewsDao) ac.getBean("newsDao");
+		PagesGenerateAction pagesGenerateAction = (PagesGenerateAction) ac.getBean("pagesGenerateAction");
 		try {
-			newsDao.save(new News("asd","asd"));
+			//newsDao.save(new News("asd","asd"));
+			pagesGenerateAction.generateNewsHTML();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
