@@ -135,10 +135,6 @@
 							${sucMsg}
 						</div>
 					</s:if>
-					<h3>效果展示：</h3>
-					<div style="text-align: center;padding: 10px;border: 1px solid #CCEAC4;background: #EDFCE9;">
-						<img src="${bgpath}images/20130922212907.jpg" width="100%"/>	
-					</div>
 
 				</div>
 				<!-- end of right content-->

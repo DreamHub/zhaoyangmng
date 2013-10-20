@@ -37,7 +37,15 @@ public class PagesGenerateAction extends AbstractActionSupport {
 		// 所有新闻按时间降序排列
 		List<News> newes = newsDao.findAll();
 		StringBuilder sb = new StringBuilder();
-		sb.append("{\"code\":1,\"recordCount\":46,\"pageCount\":5,\"data\":[");
+		Long newsCount=newsDao.newsCount();
+		Long pageSize=10l;
+		int maxSize=0;;
+		if(newsCount%pageSize==0){
+			maxSize=(new Long(newsCount/pageSize)).intValue();
+		}else{
+			maxSize=(new Long(newsCount/pageSize)).intValue()+1;
+		}
+		sb.append("{\"code\":1,\"recordCount\":"+newsCount+",\"pageCount\":"+maxSize+",\"data\":[");
 
 		String news_detail = ServletActionContext.getServletContext()
 				.getRealPath("/news_detail");

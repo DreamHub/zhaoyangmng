@@ -130,8 +130,13 @@
 			<result name="success">/about_detail/address.jsp</result>
 		</action>
 	</package>
-	<!-- 上传 -->
+	<!-- 下载管理 -->
 	<package name="download" namespace="/dld" extends="struts-abstract">
+		<action name="DownloadMngPreAction" class="downloadMngAction"
+			method="downloadMngPre">
+			<result name="success">/WEB-INF/page/downloadsMngPre.jsp</result>
+		</action>
+		
 		<action name="DownloadSrcTypeMngPreAction" class="downloadMngAction"
 			method="downloadSrcTypeMngPre">
 			<result name="success">/WEB-INF/page/downTypeMng.jsp</result>
