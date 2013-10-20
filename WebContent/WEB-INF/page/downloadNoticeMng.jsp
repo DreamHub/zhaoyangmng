@@ -92,7 +92,7 @@
 									<td><a
 										href="${path}dld/DownloadEditPreAction?id=<s:property value="id"/>"><img
 											src="${bgpath}images/user_edit.png" alt="" title=""
-											border="0" /> </a>
+											border="0" onclick="javascript:alert('抱歉,目前版本不支持此项操作');return false;"/> </a>
 									</td>
 									<td><a
 										href="${path}dld/DownloadDelAction?id=<s:property value="id"/>"
