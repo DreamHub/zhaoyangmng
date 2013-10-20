@@ -1,4 +1,7 @@
-show tables;
+--数据库名称zhaoydb
+
+--show tables;
+--下面是建表语句
 create table zynews(
 	id bigint(20) primary key auto_increment,
 	title varchar(100),
@@ -15,11 +18,11 @@ create table rule(
 );
 
 insert into rule(ruleid,ruledef) values('IndexNewsSmallImg','image/index/2013-36_6116457.jpg');
-select * from zynews;
+--select * from zynews;
 
-update zynews set title='怎样报名参加淘宝一周年庆典',content='xxxxx',createtime='2012-2-2',newskwd='aaaa',newsdesc='afdsdsd';
+--update zynews set title='怎样报名参加淘宝一周年庆典',content='xxxxx',createtime='2012-2-2',newskwd='aaaa',newsdesc='afdsdsd';
 
-select * from rule where ruleid="IndexNewsList";
+--select * from rule where ruleid="IndexNewsList";
 insert into rule(ruleid,ruledef) values("IndexNewsList","1,2,3");
 insert into rule(ruleid,ruledef) values("IndexNewsDesc","美国海军作战部副部长格林纳特上将9月5日在华盛顿的讲话中首次提到，美国将在日本部署濒海战斗");
 insert into rule(ruleid,ruledef) values("HotNewsBgImg","image/news/notic_bg.jpg");
