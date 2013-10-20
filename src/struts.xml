@@ -132,6 +132,14 @@
 	</package>
 	<!-- 下载管理 -->
 	<package name="download" namespace="/dld" extends="struts-abstract">
+		<action name="DownloadNoticeAddAction" class="downloadMngAction"
+			method="downloadNoticeAdd">
+			<result name="success">/WEB-INF/page/downloadNoticeMng.jsp</result>
+		</action>
+		<action name="DownloadNoticeMngPreAction" class="downloadMngAction"
+			method="downloadNoticeMngPre">
+			<result name="success">/WEB-INF/page/downloadNoticeMng.jsp</result>
+		</action>
 		<action name="DownloadMngPreAction" class="downloadMngAction"
 			method="downloadMngPre">
 			<result name="success">/WEB-INF/page/downloadsMngPre.jsp</result>

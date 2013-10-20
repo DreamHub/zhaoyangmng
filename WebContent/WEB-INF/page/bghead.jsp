@@ -57,7 +57,7 @@
 						<li><a href="${path}dld/DownloadMngAction?pageNum=1" title="">查看所有资源</a></li>
 					</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 				</li>
-				<li><a href="" title="">切换广告管理</a></li>
+				<li><a href="${path}dld/DownloadNoticeMngPreAction" title="">切换广告管理</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
 		<li><a href="${path}ntc/NoticeMngAction?pageNum=1">公告<!--[if IE 7]><!--> </a> <!--<![endif]-->

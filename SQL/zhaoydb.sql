@@ -32,6 +32,8 @@ insert into rule(ruleid,ruledef) values("DownloadDesc","您同样可以通过Nib
 insert into rule(ruleid,ruledef) values("DownloadNoticeList","矿院;马鞍山;朝阳");
 insert into rule(ruleid,ruledef,ruletype) values("DownloadSrcType","1,2,3,4","语文,数学,英语,历史");
 insert into rule(ruleid,ruledef) values("NoticePanelList","1,2,3")
+insert into rule(ruleid,ruledef) values("DownloadNoticeList",);
+update rule set ruledef='[{"content":"把被选元素逐渐改变至给定的不透明度","href":"http://www.baidu.com","id":1}]' where ruleid="DownloadNoticeList";
 
 create table download(
 	id bigint(20) primary key auto_increment,

@@ -1,6 +1,7 @@
 package com.zhaoyang.action;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -8,9 +9,12 @@ import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.zhaoyang.dao.DownloadDao;
 import com.zhaoyang.dao.RuleDao;
+import com.zhaoyang.data.DownloadNotice;
 import com.zhaoyang.orm.Download;
 import com.zhaoyang.orm.News;
 import com.zhaoyang.orm.Rule;
@@ -347,6 +351,82 @@ public class DownloadMngAction extends AbstractActionSupport {
 	}
 
 	public String downloadMngPre() throws Exception {
+		return SUCCESS;
+	}
+	private List<DownloadNotice> downloadNotices;
+	
+	public List<DownloadNotice> getDownloadNotices() {
+		return downloadNotices;
+	}
+
+	public void setDownloadNotices(List<DownloadNotice> downloadNotices) {
+		this.downloadNotices = downloadNotices;
+	}
+
+	public String downloadNoticeMngPre()throws Exception {
+		Rule rule =ruleDao.findRuleByRuleId("DownloadNoticeList");
+		JSONArray array=new JSONArray(rule.getRuleDef());
+		downloadNotices=new ArrayList<DownloadNotice>();
+		for(int i=0;i<array.length();i++){
+			JSONObject jobj=(JSONObject)array.get(i);
+			DownloadNotice downloadNotice=new DownloadNotice();
+			downloadNotice.setId(jobj.getLong("id"));
+			downloadNotice.setContent(jobj.getString("content"));
+			downloadNotice.setHref(jobj.getString("href"));
+			downloadNotices.add(downloadNotice);
+		}
+		return SUCCESS;
+	}
+	private String newhref;
+	private String newcontent;
+	
+	public String getNewhref() {
+		return newhref;
+	}
+
+	public void setNewhref(String newhref) {
+		this.newhref = newhref;
+	}
+
+	public String getNewcontent() {
+		return newcontent;
+	}
+
+	public void setNewcontent(String newcontent) {
+		this.newcontent = newcontent;
+	}
+
+	public String downloadNoticeAdd()throws Exception {
+		if(newhref==null||"".equals(newhref)){
+			setErrMsg("链接不能为空");
+			return SUCCESS;
+		}
+		if(newcontent==null||"".equals(newcontent)){
+			setErrMsg("内容不能为空");
+			return SUCCESS;
+		}
+		DownloadNotice downloadNoticeTemp=new DownloadNotice();
+		downloadNoticeTemp.setHref(newhref);
+		downloadNoticeTemp.setContent(newcontent);
+		
+		Rule rule =ruleDao.findRuleByRuleId("DownloadNoticeList");
+		JSONArray array=new JSONArray(rule.getRuleDef());
+		downloadNotices=new ArrayList<DownloadNotice>();
+		for(int i=0;i<array.length();i++){
+			JSONObject jobj=(JSONObject)array.get(0);
+			DownloadNotice downloadNotice=new DownloadNotice();
+			downloadNotice.setId(jobj.getLong("id"));
+			downloadNotice.setContent(jobj.getString("content"));
+			downloadNotice.setHref(jobj.getString("href"));
+			downloadNotices.add(downloadNotice);
+		}
+		Long newid=downloadNotices.get(downloadNotices.size()-1).getId()+1;
+		downloadNoticeTemp.setId(newid);
+		downloadNotices.add(downloadNoticeTemp);
+		net.sf.json.JSONArray jsonArray=net.sf.json.JSONArray.fromObject(downloadNotices);
+		
+		String AAA=jsonArray.toString();
+		ruleDao.update("DownloadNoticeList", AAA);
 		return SUCCESS;
 	}
 }
