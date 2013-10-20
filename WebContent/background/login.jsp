@@ -81,7 +81,7 @@ clear:both;
 
 			<a href="#" class="forgot_pass">忘记密码</a>
 
-			<form action="/zhaoyang/usr/LoginAction" method="get"
+			<form action="/zhaoyang/usr/LoginAction" method="post"
 				class="niceform">
 
 				<fieldset>
