@@ -106,7 +106,7 @@
 									<dt>
 										<label for="email">当前背景图:</label>
 									</dt>
-									<dd>
+									<dd style="overflow: hidden;">
 										<img src="${path}${imgPath}" alt="" />
 									</dd>
 								</dl>
@@ -126,7 +126,7 @@
 										<input type="text" name="newsNoList" id="" size="54" value="${newsNoList}"/>
 									</dd>
 									<dd>
-										<font color="green"><span style="color:red;">*</span>请填写你要依次展示的新闻序号，以逗号隔开。</font>
+										<font color="green"><span style="color:red;">*</span>请填写你要依次展示的新闻序号，以逗号隔开。上传图片时图片不宜过大，以免浪费网络资源。</font>
 									</dd>
 								</dl>
 								<dl class="submit">
