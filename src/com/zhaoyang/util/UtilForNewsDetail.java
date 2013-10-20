@@ -40,6 +40,10 @@ public class UtilForNewsDetail {
 		}
 		return newses;
 	}
-	
+	public String lableBgImg(){
+		RuleDao ruleDao=DaoGenerate.getRuleDao();
+		Rule rule=ruleDao.findRuleByRuleId("HotNewsBgImg");
+		return rule.getRuleDef();
+	}
 	
 }
