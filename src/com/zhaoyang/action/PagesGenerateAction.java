@@ -27,6 +27,12 @@ public class PagesGenerateAction extends AbstractActionSupport {
 		this.newsDao = newsDao;
 	}
 
+	/**
+	 * 新闻页面生成，包括datasrc_news.js的生成，新闻详细页面生成，以及news.js的生成 以及news_detail.js的生成
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	public String generateNewsHTML() throws Exception {
 		// 所有新闻按时间降序排列
 		List<News> newes = newsDao.findAll();
@@ -42,19 +48,17 @@ public class PagesGenerateAction extends AbstractActionSupport {
 
 			sb.append("{\"title\":\"" + news.getTitle() + "\",\"datatime\":\""
 					+ news.getCreateTime() + "\",\"id\":" + news.getId()
-					+ ",\"url\":\"/zhaoyang/news_detail/" + news.getId() + ".html\"},");
+					+ ",\"url\":\"/zhaoyang/news_detail/" + news.getId()
+					+ ".html\"},");
 
-			String path = "http://localhost:8080/zhaoyang/news_detail/112.jsp?id="+news.getId();
+			String path = "http://localhost:8080/zhaoyang/news_detail/112.jsp?id="
+					+ news.getId();
 			HttpURLConnection conn = (HttpURLConnection) new URL(path)
 					.openConnection();
 			conn.setRequestMethod("GET");
 			if (conn.getResponseCode() == 200) {
 				InputStream is = conn.getInputStream();
 				String str = new String(OtherUtil.read(is), "UTF-8");
-				File dir = new File("D:/MENBANG");
-				if (!dir.exists()) {
-					dir.mkdirs();
-				}
 				File detailHtml = new File(news_detail + "/" + news.getId()
 						+ ".html");
 				PrintWriter pw = new PrintWriter(detailHtml, "UTF-8");
@@ -72,6 +76,34 @@ public class PagesGenerateAction extends AbstractActionSupport {
 		bw.write(sb.toString());
 		bw.flush();
 		bw.close();
+		// news.js的生成
+		HttpURLConnection conn1 = (HttpURLConnection) new URL(
+				"http://localhost:8080/zhaoyang/js/news/news.jsp")
+				.openConnection();
+		if (conn1.getResponseCode() == 200) {
+			InputStream is = conn1.getInputStream();
+			String str = new String(OtherUtil.read(is), "UTF-8");
+			String newsjs = ServletActionContext.getServletContext()
+					.getRealPath("/js/news/news.js");
+			File newsjsfile = new File(newsjs);
+			PrintWriter pw = new PrintWriter(newsjsfile, "UTF-8");
+			pw.print(str);
+			pw.close();
+		}
+		// news_detail.js的生成
+		HttpURLConnection conn2 = (HttpURLConnection) new URL(
+				"http://localhost:8080/zhaoyang/js/news/news_detail.jsp")
+				.openConnection();
+		if (conn2.getResponseCode() == 200) {
+			InputStream is = conn2.getInputStream();
+			String str = new String(OtherUtil.read(is), "UTF-8");
+			String newsjs = ServletActionContext.getServletContext()
+					.getRealPath("/js/news/news_detail.js");
+			File newsjsfile = new File(newsjs);
+			PrintWriter pw = new PrintWriter(newsjsfile, "UTF-8");
+			pw.print(str);
+			pw.close();
+		}
 		setSucMsg("新闻页面生成成功,<a href=\"WatchNewsHTMLAction\" target=\"_blank\">预览一下</a>");
 		return SUCCESS;
 	}
