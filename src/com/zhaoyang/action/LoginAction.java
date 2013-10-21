@@ -37,6 +37,10 @@ public class LoginAction extends AbstractActionSupport{
 		ServletActionContext.getRequest().getSession().setAttribute("userInfo", "admin");
 		return SUCCESS;
 	}
+	public String logout() throws Exception{
+		ServletActionContext.getRequest().getSession().removeAttribute("userInfo");
+		return SUCCESS;
+	}
 	
 
 }

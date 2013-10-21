@@ -28,7 +28,15 @@
 			<result name="success">/WEB-INF/page/index-digital.jsp</result>
 			<result name="error">/background/login.jsp</result>
 		</action>
+		
 	</package>
+	<!-- 用户 -->
+	<package name="user2" namespace="/usr2" extends="struts-abstract">
+		<action name="LogoutAction" class="loginAction" method="logout">
+			<result name="success">/background/login.jsp</result>
+		</action>
+	</package>
+	
 	<!-- 新闻模块 -->
 	<package name="zyNews" namespace="/news" extends="struts-abstract">
 		
