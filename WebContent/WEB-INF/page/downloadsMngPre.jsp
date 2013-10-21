@@ -51,8 +51,8 @@
 										<img src="${bgpath}images/info.png" alt="" title=""
 											class="sidebar_icon_right" />
 										<p style="line-height: 25px;">
-											热门新闻必须是是最新的新闻序号，当你更新新闻列表后，最好将热门新闻列表重新设置一下，否则可能出现部分为空的问题。<br/>
-											<a href="${path}news/HotNewsSetPreAction">热门新闻设置</a>
+											您可以自定义定时切换的广告的内容，点击<br/>
+											<a href="${path}dld/DownloadNoticeMngPreAction">切换广告设置</a>进行处理。
 										</p>
 									</div>
 									<div class="sidebar_box_bottom"></div>
@@ -62,17 +62,17 @@
 								<div class="sidebar_box">
 									<div class="sidebar_box_top"></div>
 									<div class="sidebar_box_content">
-										<h3>设置须知</h3>
-										<img src="${bgpath}images/info.png" alt="" title=""
+										<h4>注意</h4>
+										<img src="${bgpath}images/notice.png" alt="" title=""
 											class="sidebar_icon_right" />
 										<p style="line-height: 25px;">
-											公告栏列表显示设置里面的公告序号必须是最新的公告序号。当你更新公告过后，最好将公告栏重新设置一下，否则可能会出现公告栏显示部分为空的问题。<br/>
-											<a href="${path}ntc/NoticePanelSetPreAction">公告栏设置</a>
+											在您管理下载的时候，需要注意的是已经有某资源类型的下载存在的时候，如果删除了该资源类型，会出现下载类型为空的现象。<br/>
+											点击<a href="${path}dld/DownloadSrcTypeMngPreAction">资源类型管理</a><br/>
+											点击<a href="${path}dld/DownloadMngAction?pageNum=1">浏览全部下载</a><br/>
 										</p>
 									</div>
 									<div class="sidebar_box_bottom"></div>
-								</div>
-							</td>
+								</div></td>
 						</tr>
 					</table>
 

@@ -420,13 +420,52 @@ public class DownloadMngAction extends AbstractActionSupport {
 			downloadNotice.setHref(jobj.getString("href"));
 			downloadNotices.add(downloadNotice);
 		}
-		Long newid=downloadNotices.get(downloadNotices.size()-1).getId()+1;
+		Long newid;
+		if(downloadNotices.size()>0){
+			newid=downloadNotices.get(downloadNotices.size()-1).getId()+1;
+		}else{
+			newid=1l;
+		}
 		downloadNoticeTemp.setId(newid);
 		downloadNotices.add(downloadNoticeTemp);
 		net.sf.json.JSONArray jsonArray=net.sf.json.JSONArray.fromObject(downloadNotices);
 		
 		String AAA=jsonArray.toString();
 		ruleDao.update("DownloadNoticeList", AAA);
+		return SUCCESS;
+	}
+	/**
+	 * 删除广告
+	 * @return
+	 * @throws Exception
+	 */
+	public String downloadNoticeDel()throws Exception {
+		Rule rule =ruleDao.findRuleByRuleId("DownloadNoticeList");
+		JSONArray array=new JSONArray(rule.getRuleDef());
+		downloadNotices=new ArrayList<DownloadNotice>();
+		for(int i=0;i<array.length();i++){
+			JSONObject jobj=(JSONObject)array.get(i);
+			DownloadNotice downloadNotice=new DownloadNotice();
+			downloadNotice.setId(jobj.getLong("id"));
+			downloadNotice.setContent(jobj.getString("content"));
+			downloadNotice.setHref(jobj.getString("href"));
+			downloadNotices.add(downloadNotice);
+		}
+		int flag=0;
+		for (DownloadNotice downloadNotice : downloadNotices) {
+			if(downloadNotice.getId().equals(id)){
+				downloadNotices.remove(downloadNotice);
+				net.sf.json.JSONArray jsonArray=net.sf.json.JSONArray.fromObject(downloadNotices);
+				String AAA=jsonArray.toString();
+				ruleDao.update("DownloadNoticeList", AAA);
+				setSucMsg("删除["+downloadNotice.getContent()+"]成功");
+				flag=1;
+				break;
+			}
+		}
+		if(flag==0){
+			setErrMsg("操作失败,请确定您正常操作");
+		}
 		return SUCCESS;
 	}
 }

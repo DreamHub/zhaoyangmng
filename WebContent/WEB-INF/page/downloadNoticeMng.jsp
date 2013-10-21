@@ -95,7 +95,7 @@
 											border="0" onclick="javascript:alert('抱歉,目前版本不支持此项操作');return false;"/> </a>
 									</td>
 									<td><a
-										href="${path}dld/DownloadDelAction?id=<s:property value="id"/>"
+										href="${path}dld/DownloadNoticeDelAction?id=<s:property value="id"/>"
 										class="ask"><img src="${bgpath}images/trash.png" alt=""
 											title="" border="0" /> </a>
 									</td>
