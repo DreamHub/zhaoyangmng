@@ -36,7 +36,7 @@
 										<img src="${bgpath}images/info.png" alt="" title=""
 											class="sidebar_icon_right" />
 										<p style="line-height: 25px;">
-											招聘页面可更改的内容有<br /> <a href="#">宣传横幅</a>， <a href="#">招聘信息列表</a>还有<br />
+											招聘页面可更改的内容有<br /> <a href="#">宣传横幅</a>， <a href="${path}rcmt/RecruitmentInfoMngAction">招聘信息列表</a>还有<br />
 											<a href="${path}ntc/NoticePanelSetPreAction">公告</a>，
 											其它地方目前不提供更改功能，如需改动，请及时与我们联系。 您可以直接点此<a
 												href="${path}rcmt/WatchRecruitmentHTMLAction"

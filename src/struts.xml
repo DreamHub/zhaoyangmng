@@ -226,6 +226,19 @@
 		<action name="RecruitmentMngPreAction" class="recruitmentMngAction" method="recruitmentMngPre"> 
 			<result name="success">/WEB-INF/page/recruitmentMng.jsp</result>
 		</action>
+		<action name="RecruitmentInfoMngAction" class="recruitmentMngAction" method="recruitmentInfoMng"> 
+			<result name="success">/WEB-INF/page/recruitmentInfoMng.jsp</result>
+		</action>
+		<action name="RecruitmentInfoAddAction" class="recruitmentMngAction" method="recruitmentInfoAdd"> 
+			<result name="success">/WEB-INF/page/recruitmentInfoMng.jsp</result>
+		</action>
+		<action name="RecruitmentInfoDelAction" class="recruitmentMngAction" method="recruitmentInfoDel"> 
+			<result name="success">/WEB-INF/page/recruitmentInfoMng.jsp</result>
+		</action>
+		<action name="RecruitmentInfoEditAction" class="recruitmentMngAction" method="recruitmentInfoEdit"> 
+			<result name="success">/WEB-INF/page/recruitmentInfoMng.jsp</result>
+		</action>
+		
 	</package>
 	<!-- 其他设置 -->
 	<package name="other" namespace="/other" extends="struts-abstract">

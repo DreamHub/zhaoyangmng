@@ -78,7 +78,7 @@
 		
 		<li><a href="${path}rcmt/RecruitmentMngPreAction">招聘</a>
 		    <ul>
-				<li><a href="${path}ntc/NoticeMngAction?pageNum=1" title="">首页预览</a></li>
+				<li><a href="${path}rcmt/RecruitmentInfoMngAction" title="">招聘信息管理</a></li>
 				<li><a href="${path}ntc/NoticeAddPreAction" title="">新增</a></li>
 				<li><a href="${path}rcmt/WatchRecruitmentHTMLAction" title="" target="_blank">人才招聘预览</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->

@@ -51,7 +51,9 @@ create table notice(
 	content text
 );
 insert into notice(title) values('脏');
-
+insert into rule(ruleid,ruledef) values('RecruitmentInfoList','[{"id":1,"content","“Nibiru”他是众神中最伟大的天体，它的回归预示着新的时代的开始。而在触摸游戏大肆横行的当下神"}]');
+select * from rule;
+update rule set ruledef='[{"id":1,"content":"“Nibiru”他是众神中最伟大的天体，它的回归预示着新的时代的开始。而在触摸游戏大肆横行的当下神"}]' where ruleid='RecruitmentInfoList';
 
 
 
