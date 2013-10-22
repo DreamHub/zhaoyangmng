@@ -1,0 +1,154 @@
+@charset "utf-8";
+/* CSS Document */
+#shisheng {
+	width: 900px;
+	margin: 10px auto 10px;
+}
+#shisheng h2{
+	margin-bottom: 10px;
+}
+#shisheng1{
+	position: relative;
+}
+#shisheng1 div{
+	position: absolute;
+	left: 590px;
+	top:100px;
+	width: 100px;
+	height: 100px;
+}
+.toTeacher{
+	display: block;
+	width: 170px;
+	height: 60px;
+	background:no-repeat url("../image/people/peoples_10.gif") -5px -5px;
+}
+.toStudent{
+	display: block;
+	margin-top: 10px;
+	width: 170px;
+	height: 60px;
+	background:no-repeat url("../image/people/peoples_10.gif") -5px -82px;
+}
+/*student.html*/
+.stuimg{
+	margin-left: 50px;
+	display: block;
+	width: 164px;
+	height: 130px;
+	float: left;
+	background:no-repeat url("../image/student/stu01.gif");
+	text-align: center;
+	padding-top: 9px;
+}
+.studesc{
+	margin-left:10px;
+	float: left;
+	width: 200px;
+	height: 139px;
+}
+.studesc li h4{
+	color: #ff8200;
+	font-size: 16px;
+}
+.studesc li{
+	color:#837d77;
+	height: 24px;
+}
+#stuleft{
+	float: left;
+	width: 723px;
+}
+#sturight{
+	float: left;
+	width: 257;
+}
+#stuul{
+	border: 1px solid #F3DFAA;
+	width: 702px;
+	margin: 0 auto;
+	padding-bottom: 30px;
+}
+.stuinfoli{
+	height: 160px;
+	padding-top: 30px;
+	
+	background:no-repeat 20px 184px url("../image/student/long.gif");
+}
+#newspanel{
+	width: 230px;
+	border: 1px solid #CBCEF7;
+	height: 255px;
+	margin-bottom: 10px;
+}
+#newspanel ul li{
+	height: 30px;
+	line-height: 30px;
+	background:no-repeat url("../image/student/short.gif") 1px 23px;
+	padding-left: 20px;
+}
+#newspanel ul li a{
+	color: #6BAAF1;
+	font-size:13px;
+}
+#adpanel a{
+	display: block;
+	height: 60px;
+	line-height:60px;
+}
+.teacherli{
+	width: 670px;
+	background: #F1F8FC;
+	margin: 10px auto;
+	padding-bottom: 20px;
+}
+.teaimg{
+	float: left;
+}
+.teadesc{
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	width: 300px;
+}
+.teaimg > a{
+	display: block;
+	border: 1px solid #2092A3;
+	margin-left: 20px;
+	margin-top: 10px;
+	text-align: center;
+	width: 198px;
+	height: 226px;
+}
+.teaimg p a:first-child{
+	display: block;
+	float: left;
+	width: 92px;
+	height: 38px;
+	background:no-repeat url("../image/teacher/tea1.gif");
+	margin-left: 20px;
+	margin-top: 10px;
+}
+.last_child{
+	display: block;
+	float: left;
+	width: 92px;
+	height: 38px;
+	background:no-repeat url("../image/teacher/tea1.gif") -92px 0;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.teadesc li{
+	line-height: 40px;
+	font-size:12px;
+}
+.teadesc li h4{
+	font-size:18px;
+	color:#D53E3F;
+}
+.teadesc li span{
+	font-style: italic;
+	color:#D53E3F;
+	font-size:14px;
+	font-weight: bold;
+}
