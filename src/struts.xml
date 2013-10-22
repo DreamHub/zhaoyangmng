@@ -238,6 +238,14 @@
 		<action name="RecruitmentInfoEditAction" class="recruitmentMngAction" method="recruitmentInfoEdit"> 
 			<result name="success">/WEB-INF/page/recruitmentInfoMng.jsp</result>
 		</action>
+		<action name="HengfuSetPreAction" class="recruitmentMngAction" method="hengfuSetPre"> 
+			<result name="success">/WEB-INF/page/hengfuImgSet.jsp</result>
+		</action>
+		<action name="HengfuSetAction" class="recruitmentMngAction" method="hengfuSet"> 
+			<result name="success" type="chain">HengfuSetPreAction</result>
+		</action>
+		
+		
 		
 	</package>
 	<!-- 其他设置 -->

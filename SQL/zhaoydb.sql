@@ -55,5 +55,5 @@ insert into rule(ruleid,ruledef) values('RecruitmentInfoList','[{"id":1,"content
 select * from rule;
 update rule set ruledef='[{"id":1,"content":"“Nibiru”他是众神中最伟大的天体，它的回归预示着新的时代的开始。而在触摸游戏大肆横行的当下神"}]' where ruleid='RecruitmentInfoList';
 
-
-
+insert into rule(ruleid,ruledef) values('RecruitmentImg','image/recruitment/04.gif');
+update rule set ruledef='image/recruitment/01.gif' where ruleid='RecruitmentImg';

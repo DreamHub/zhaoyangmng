@@ -21,6 +21,7 @@
 			'</p>'+
 			'</div>';
 	$(function() {
+		
 		if($('#content').val()==null||$('#content').val()==""){
 			$('.warning_box').css("display","block");
 		}else{
@@ -56,7 +57,7 @@
 			});
 			$('#dialog-form2').css("display","block");
 			$('#elm1').xheditor({
-				upImgUrl : "/sharenet/upl/UploadPicAction",
+				upImgUrl : "${path}upl/UploadPicAction",
 				upImgExt : "jpg,jpeg,gif,png",
 				onUpload : insertUpload,
 				tools:'Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,FontColor,BackColor,Removeformat,Align,List,Link,Img,Emot,Table,Source,Preview',

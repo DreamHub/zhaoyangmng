@@ -54,7 +54,7 @@ public class UploadPicAction extends ActionSupport{
 		String path=realPath+"/news_"+System.currentTimeMillis()+"."+exp;
 		File file=new File(path);
 		FileUtils.copyFile(filedata,file);
-		String photoPath="/zhaoyang/image/news/"+file.getName();
+		String photoPath="/zhaoyang/image/upload/"+file.getName();
 		pw.print("{\"err\":\"\",\"msg\":\""+photoPath+"\"}");
 		pw.flush();
 		pw.close();

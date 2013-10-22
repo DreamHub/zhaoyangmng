@@ -21,61 +21,10 @@
 			'</p>'+
 			'</div>';
 	$(function() {
-		if($('#content').val()==null||$('#content').val()==""){
-			$('.warning_box').css("display","block");
-		}else{
-			$('#showNews').html($('#content').val());
-		}
-		$('.bt_green').bind('click', function(e) {
-			$('body').append($(div));
-			$('#elm1').val($('#showNews').html());
-			e.preventDefault();
-			$.Zebra_Dialog('<strong>Some dummy content:</strong><br><br>', {
-				source : {
-					'inline' : $('#dialog-form2')
-				},
-				width : 900,
-				position : ['center','top + 50'],
-				buttons : [{caption:'确定',callback:function(){
-					if($('#elm1').val()==null||$('#elm1').val()==""){
-						$('.warning_box').css("display","block");
-						$('#showNews').empty();
-						$('#content').val("");
-					}else{
-						$('#showNews').html($('#elm1').val());
-						$('#showNews').hide();
-						$('#showNews').show("slow");
-						$('.warning_box').css("display","none");
-						$('#content').val($('#elm1').val());
-					}
-					$('#dialog-form2').remove();
-					return true;
-				}}],
-				title : '新闻内容编辑框',
-				type:false
-			});
-			$('#dialog-form2').css("display","block");
-			$('#elm1').xheditor({
-				upImgUrl : "/sharenet/upl/UploadPicAction",
-				upImgExt : "jpg,jpeg,gif,png",
-				onUpload : insertUpload,
-				tools:'Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,FontColor,BackColor,Removeformat,Align,List,Link,Img,Emot,Table,Source,Preview',
-				emotPath:'${bgpath}/xheditor_emot/',
-				urlType:'root',
-				html5Upload:false
-			});
-		});
+		
 	    
 	});
-	function insertUpload(msg) {
-		//alert(msg);
-		if(msg == "上传失败"){
-			alert("上传被拦截,请先登录");
-			msg="";
-			return;
-		}
-		alert("上传成功");
-	}
+	
 </script>
 </head>
 <body>
@@ -86,11 +35,11 @@
 			<div class="center_content">
 				<jsp:include page="bgleft.jsp" flush="true" />
 				<div class="right_content">
-					<h2>热门新闻设置</h2>
-					<h3>热门新闻：</h3>
+					<h2>条幅修改</h2>
+					<h3>条幅修改：</h3>
 					
 					<div class="form">
-						<form action="${path}news/HotNewsSetAction" method="post" class="niceform" enctype="multipart/form-data">
+						<form action="${path}rcmt/HengfuSetAction" method="post" class="niceform" enctype="multipart/form-data">
 							<fieldset>
 								<dl>
 									<dt>
@@ -105,18 +54,7 @@
 										<label for="upload">上传新图片:</label>
 									</dt>
 									<dd>
-										<input type="file" name="newsImg" id="upload" />
-									</dd>
-								</dl>
-								<dl>
-									<dt>
-										<label for="comments">新闻列表:</label>
-									</dt>
-									<dd>
-										<input type="text" name="newsNoList" id="" size="54" value="${newsNoList}"/>
-									</dd>
-									<dd>
-										<font color="green"><span style="color:red;">*</span>请填写你要依次展示的新闻序号，以逗号隔开。上传图片时图片不宜过大，以免浪费网络资源。</font>
+										<input type="file" name="hengfuImg" id="upload" />
 									</dd>
 								</dl>
 								<dl class="submit">
@@ -137,11 +75,7 @@
 							${sucMsg}
 						</div>
 					</s:if>
-					<!-- 预览部分 -->
-					<h3>效果展示：</h3>
-					<div style="text-align: center;padding: 10px;border: 1px solid #CCEAC4;background: #EDFCE9;">
-						<img src="${bgpath}images/20130921193904.jpg"/>	
-					</div>
+					
 					
 
 				</div>

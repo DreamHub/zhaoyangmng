@@ -1,8 +1,11 @@
 package com.zhaoyang.action;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -51,6 +54,8 @@ public class RecruitmentMngAction extends AbstractActionSupport {
 			Notice notice=noticeDao.findById(Long.parseLong(ids[i]));
 			notices.add(notice);
 		}
+		this.hengfuSetPre();
+		this.recruitmentInfoMng();
 		return SUCCESS;
 	}
 	public String recruitmentMngPre() throws Exception{
@@ -193,6 +198,57 @@ public class RecruitmentMngAction extends AbstractActionSupport {
 		if(flag==0){
 			setErrMsg("操作失败,请确定您正常操作");
 		}
+		return SUCCESS;
+	}
+	private File hengfuImg;
+	private String hengfuImgFileName;
+	
+	public File getHengfuImg() {
+		return hengfuImg;
+	}
+
+	public void setHengfuImg(File hengfuImg) {
+		this.hengfuImg = hengfuImg;
+	}
+
+	public String getHengfuImgFileName() {
+		return hengfuImgFileName;
+	}
+
+	public void setHengfuImgFileName(String hengfuImgFileName) {
+		this.hengfuImgFileName = hengfuImgFileName;
+	}
+
+	private String imgPath;
+	
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+
+	public String hengfuSetPre() throws Exception{
+		imgPath=ruleDao.findRuleByRuleId("RecruitmentImg").getRuleDef();
+		return SUCCESS;
+	}
+	public String hengfuSet() throws Exception{
+		if(hengfuImg==null){
+			setErrMsg("上传图片不能为空");
+			forward("HotNewsSetPreAction", ServletActionContext.getRequest(),ServletActionContext.getResponse());
+			return SUCCESS;
+		}
+		
+		String realPath = ServletActionContext.getServletContext().getRealPath("/image/recruitment");
+		String exp=hengfuImgFileName.substring(hengfuImgFileName.lastIndexOf('.')+1);
+		String fileName="/news_"+System.currentTimeMillis()+"."+exp;
+		String newPath=realPath+fileName;
+		File file=new File(newPath);
+		FileUtils.copyFile(hengfuImg, file);
+		ruleDao.update("RecruitmentImg","image/recruitment"+fileName);
+		setSucMsg("条幅图片修改成功");
+		//forward("HotNewsSetPreAction", ServletActionContext.getRequest(),ServletActionContext.getResponse());
 		return SUCCESS;
 	}
 	

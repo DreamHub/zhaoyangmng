@@ -32,6 +32,15 @@
 	$(function() {
 		$('#common_head').load("${path}head.html");
 		$('#common_foot').load("${path}foot.html");
+		$('.news_text img').each(function(i){
+			var img=$(this);
+			var width=img.css("width");
+			var neww=parseInt(width.substring(0,width.indexOf('p')));
+			if(neww>684){
+				img.css("width","684px");
+			}
+			
+		});
 	});
 </script>
 </head>
