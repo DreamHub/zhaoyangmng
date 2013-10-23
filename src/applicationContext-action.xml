@@ -46,5 +46,9 @@
 	<bean id="pagesGenerateAction" class="com.zhaoyang.action.PagesGenerateAction" scope="prototype">
 		<property name="newsDao" ref="newsDao"></property>
 	</bean>
+	<bean id="peoplesMngAction" class="com.zhaoyang.action.PeoplesMngAction" scope="prototype">
+		<property name="teacherDao" ref="teacherDao"></property>
+		<property name="studentDao" ref="studentDao"></property>
+	</bean>
 	
 </beans>

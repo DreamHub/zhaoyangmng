@@ -68,10 +68,10 @@
 				<li><a href="${path}ntc/NoticePanelSetPreAction" title="">公告栏展示</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
-		<li><a href="#">师生风采</a>
+		<li><a href="${path}peo/PeoplesMngPreAction">师生风采</a>
 		    <ul>
-				<li><a href="${path}ntc/NoticeMngAction?pageNum=1" title="">首页图片轮播设置</a></li>
-				<li><a href="${path}ntc/NoticeAddPreAction" title="">新增</a></li>
+				<li><a href="${path}ntc/NoticeMngAction?pageNum=1" title="">教师信息管理</a></li>
+				<li><a href="${path}ntc/NoticeAddPreAction" title="">学生信息管理</a></li>
 				<li><a href="${path}ntc/NoticePanelSetPreAction" title="">公告栏展示</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>

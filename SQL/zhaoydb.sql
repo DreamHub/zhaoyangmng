@@ -57,3 +57,7 @@ update rule set ruledef='[{"id":1,"content":"“Nibiru”他是众神中最伟�
 
 insert into rule(ruleid,ruledef) values('RecruitmentImg','image/recruitment/04.gif');
 update rule set ruledef='image/recruitment/01.gif' where ruleid='RecruitmentImg';
+insert into rule(ruleid,ruledef) values('TeachersList','[{"id":1,"teaName":"张鹏","service":"初中各层次水平学生","feature":"1965年7月出生的朱界飞当教师已有二十五个年头了，二十多年的教学生涯铸","project":"数学","photoImg":"image/teacher/zhangpeng.jpg"}]');
+insert into rule(ruleid,ruledef) values('StudentsList','[{"id":1,"stuName":"王见","fromSchool":"xxxx","toSchool":"gggg","score":231,"desc":"dssss","imgPath":"image/student/stu02.gif"}]');
+
+

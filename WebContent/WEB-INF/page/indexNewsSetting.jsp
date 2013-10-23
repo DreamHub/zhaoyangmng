@@ -96,7 +96,7 @@
 									<dt>
 										<label for="email">当前缩略图:</label>
 									</dt>
-									<dd>
+									<dd style="overflow: hidden;">
 										<img src="${path}${imgPath}" alt="" />
 									</dd>
 								</dl>

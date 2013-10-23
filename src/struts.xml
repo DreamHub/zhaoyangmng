@@ -260,4 +260,18 @@
 			<result name="success">/WEB-INF/page/indexMngPre.jsp</result>
 		</action>
 	</package>
+	<!-- 师生风采 -->
+	<package name="people" namespace="/peo" extends="struts-abstract">
+		<action name="PeoplesMngPreAction" class="peoplesMngAction" method="peoplesMngPre"> 
+			<result name="success">/WEB-INF/page/peoplesMngPre.jsp</result>
+		</action>
+		<action name="TeacherMngAction" class="peoplesMngAction" method="teacherMng"> 
+			<result name="success">/WEB-INF/page/teacherMng.jsp</result>
+		</action>
+		<action name="StudentMngAction" class="peoplesMngAction" method="studentMng"> 
+			<result name="success">/WEB-INF/page/studentMng.jsp</result>
+		</action>
+		
+	</package>
+	
 </struts>    
