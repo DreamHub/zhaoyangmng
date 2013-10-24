@@ -40,20 +40,7 @@ public class TeacherDao {
 		return teachers;
 	}
 	public Teacher findById(Long id) throws Exception{
-		Rule rule =ruleDao.findRuleByRuleId("TeachersList");
-		JSONArray array=new JSONArray(rule.getRuleDef());
-		List<Teacher> teachers=new ArrayList<Teacher>();
-		for(int i=0;i<array.length();i++){
-			JSONObject jobj=(JSONObject)array.get(i);
-			Teacher teacher=new Teacher();
-			teacher.setId(jobj.getLong("id"));
-			teacher.setTeaName(jobj.getString("teaName"));
-			teacher.setService(jobj.getString("service"));
-			teacher.setFeature(jobj.getString("feature"));
-			teacher.setProject(jobj.getString("project"));
-			teacher.setPhotoImg(jobj.getString("photoImg"));
-			teachers.add(teacher);
-		}
+		List<Teacher> teachers=findAll();
 		for (Teacher teacher : teachers) {
 			if(teacher.getId().equals(id)){
 				return teacher;

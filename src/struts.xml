@@ -287,6 +287,22 @@
 			<result name="success" type="chain">TeacherEditPreAction</result>
 		</action>
 		
+		<action name="StudentDelAction" class="peoplesMngAction" method="studentDel"> 
+			<result name="success">/WEB-INF/page/studentMng.jsp</result>
+		</action>
+		<action name="StudentAddPreAction" class="peoplesMngAction" method="studentAddPre"> 
+			<result name="success">/WEB-INF/page/studentAdd.jsp</result>
+		</action>
+		<action name="StudentAddAction" class="peoplesMngAction" method="studentAdd"> 
+			<result name="success">/WEB-INF/page/studentAdd.jsp</result>
+		</action>
+		<action name="StudentEditPreAction" class="peoplesMngAction" method="studentEditPre"> 
+			<result name="success">/WEB-INF/page/studentEdit.jsp</result>
+		</action>
+		<action name="StudentEditAction" class="peoplesMngAction" method="studentEdit"> 
+			<result name="success" type="chain">StudentEditPreAction</result>
+		</action>
+		
 	</package>
 	
 </struts>    

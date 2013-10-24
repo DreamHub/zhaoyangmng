@@ -187,5 +187,106 @@ public class PeoplesMngAction extends AbstractActionSupport {
 		setSucMsg("修改成功,<a href='TeacherMngAction'>去看看</a>");
 		return SUCCESS;
 	}
+	public String studentDel() throws Exception {
+		boolean result=studentDao.delete(id);
+		if(result==false){
+			setErrMsg("操作失败,请确定您正常操作");
+		}else{
+			setSucMsg("删除成功");
+		}
+		return SUCCESS;
+	}
+	private Student student;
+	
+	public Student getStudent() {
+		return student;
+	}
 
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public String studentAddPre() throws Exception {
+		return SUCCESS;
+	}
+	public String studentAdd() throws Exception {
+		if(imgPhoto==null){
+			setErrMsg("上传图片不能为空");
+			return SUCCESS;
+		}
+		if(student.getStuName()==null||"".equals(student.getStuName())){
+			setErrMsg("姓名不能为空");
+			return SUCCESS;
+		}
+		if(student.getFromSchool()==null||"".equals(student.getFromSchool())){
+			setErrMsg("来自学校不能为空");
+			return SUCCESS;
+		}
+		if(student.getToSchool()==null||"".equals(student.getToSchool())){
+			setErrMsg("考入不能为空");
+			return SUCCESS;
+		}
+		if(student.getScore()==null||"".equals(student.getScore())){
+			setErrMsg("得分不能为空");
+			return SUCCESS;
+		}
+		if(student.getDesc()==null||"".equals(student.getDesc())){
+			setErrMsg("简介不能为空");
+			return SUCCESS;
+		}
+		String realPath = ServletActionContext.getServletContext().getRealPath("/image/student");
+		String exp=imgPhotoFileName.substring(imgPhotoFileName.lastIndexOf('.')+1);
+		String fileName="/news_"+System.currentTimeMillis()+"."+exp;
+		String newPath=realPath+fileName;
+		File file=new File(newPath);
+		FileUtils.copyFile(imgPhoto, file);
+		student.setImgPath("image/student"+fileName);
+		studentDao.save(student);
+		setSucMsg("新增成功,<a href='StudentMngAction'>去看看</a>");
+		return SUCCESS;
+	}
+	public String studentEditPre() throws Exception {
+		student=studentDao.findById(id);
+		return SUCCESS;
+	}
+	
+	public String studentEdit() throws Exception {
+		if(student.getId()==null||"".equals(student.getId())){
+			setErrMsg("参数不合法");
+			return SUCCESS;
+		}
+		setId(student.getId());
+		if(student.getStuName()==null||"".equals(student.getStuName())){
+			setErrMsg("姓名不能为空");
+			return SUCCESS;
+		}
+		if(student.getFromSchool()==null||"".equals(student.getFromSchool())){
+			setErrMsg("来自学校不能为空");
+			return SUCCESS;
+		}
+		if(student.getToSchool()==null||"".equals(student.getToSchool())){
+			setErrMsg("考入不能为空");
+			return SUCCESS;
+		}
+		if(student.getScore()==null||"".equals(student.getScore())){
+			setErrMsg("得分不能为空");
+			return SUCCESS;
+		}
+		if(student.getDesc()==null||"".equals(student.getDesc())){
+			setErrMsg("简介不能为空");
+			return SUCCESS;
+		}
+		if(imgPhoto!=null){
+			String realPath = ServletActionContext.getServletContext().getRealPath("/image/student");
+			String exp=imgPhotoFileName.substring(imgPhotoFileName.lastIndexOf('.')+1);
+			String fileName="/news_"+System.currentTimeMillis()+"."+exp;
+			String newPath=realPath+fileName;
+			File file=new File(newPath);
+			FileUtils.copyFile(imgPhoto, file);
+			student.setImgPath("image/student"+fileName);
+		}
+		studentDao.update(student);
+		setSucMsg("修改成功,<a href='StudentMngAction'>去看看</a>");
+		return SUCCESS;
+	}
 }

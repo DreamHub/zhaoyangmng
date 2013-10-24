@@ -37,11 +37,25 @@
 											class="sidebar_icon_right" />
 										<p style="line-height: 25px;">
 											新闻预览必须确保您手动生成了相关页面，请先点击<br/>
-											<a href="${path}news/GenerateNewsHTMLAction">生成新闻页面</a><br/>
+											<a href="${path}news/GenerateNewsHTMLAction">教师页面预览</a><br/>
 										</p>
 									</div>
 									<div class="sidebar_box_bottom"></div>
-								</div></td>
+								</div>
+								<div class="sidebar_box">
+									<div class="sidebar_box_top"></div>
+									<div class="sidebar_box_content">
+										<h4>首页新闻展示设置</h4>
+										<img src="${bgpath}images/notice.png" alt="" title=""
+											class="sidebar_icon_right" />
+										<p style="line-height: 25px;">
+											新闻预览必须确保您手动生成了相关页面，请先点击<br/>
+											<a href="${path}news/IndexNewsSetPreAction">首页新闻展示设置</a><br/>
+										</p>
+									</div>
+									<div class="sidebar_box_bottom"></div>
+								</div>
+							</td>
 							<td valign="top">
 								<div class="sidebar_box">
 									<div class="sidebar_box_top"></div>

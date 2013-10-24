@@ -99,4 +99,14 @@ public class StudentDao {
 		
 	}
 
+	public Student findById(Long id) throws Exception{
+		List<Student> students=findAll();
+		for (Student student : students) {
+			if(student.getId().equals(id)){
+				return student;
+			}
+		}
+		return null;
+	}
+
 }
