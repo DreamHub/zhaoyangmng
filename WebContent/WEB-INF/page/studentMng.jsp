@@ -113,7 +113,7 @@
 				<jsp:include page="bgleft.jsp" flush="true" />
 				<div class="right_content">
 
-					<h2>招聘信息管理</h2>
+					<h2>学生信息管理</h2>
 
 
 					<table id="rounded-corner"
