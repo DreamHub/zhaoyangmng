@@ -302,6 +302,9 @@
 		<action name="StudentEditAction" class="peoplesMngAction" method="studentEdit"> 
 			<result name="success" type="chain">StudentEditPreAction</result>
 		</action>
+		<action name="GeneratePeopleHTMLAction" class="pagesGenerateAction" method="generatePeopleHTML"> 
+			<result name="success">/WEB-INF/page/peoplesMngPre.jsp</result>
+		</action>
 		
 	</package>
 	
