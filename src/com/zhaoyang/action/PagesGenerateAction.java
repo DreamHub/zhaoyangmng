@@ -99,19 +99,10 @@ public class PagesGenerateAction extends AbstractActionSupport {
 			pw.close();
 		}
 		// news_detail.js的生成
-		HttpURLConnection conn2 = (HttpURLConnection) new URL(
-				"http://localhost:8080/zhaoyang/js/news/news_detail.jsp")
-				.openConnection();
-		if (conn2.getResponseCode() == 200) {
-			InputStream is = conn2.getInputStream();
-			String str = new String(OtherUtil.read(is), "UTF-8");
-			String newsjs = ServletActionContext.getServletContext()
-					.getRealPath("/js/news/news_detail.js");
-			File newsjsfile = new File(newsjs);
-			PrintWriter pw = new PrintWriter(newsjsfile, "UTF-8");
-			pw.print(str);
-			pw.close();
-		}
+		String newsjs = ServletActionContext.getServletContext().getRealPath("/js/news/news_detail.js");
+		File newsjsfile = new File(newsjs);
+		URL url=new URL("http://localhost:8080/zhaoyang/js/news/news_detail.jsp");
+		OtherUtil.copyResourceFromUrl(url, newsjsfile);
 		setSucMsg("新闻页面生成成功,<a href=\"WatchNewsHTMLAction\" target=\"_blank\">预览一下</a>");
 		return SUCCESS;
 	}
@@ -127,6 +118,16 @@ public class PagesGenerateAction extends AbstractActionSupport {
 	}
 
 	public String generateNewsDetailHTML() throws Exception {
+
+		return SUCCESS;
+	}
+	/**
+	 * 生成师生风采页面包括student.html,teacher.html
+	 * @return
+	 * @throws Exception
+	 */
+	public String generatePeopleHTML() throws Exception {
+		
 
 		return SUCCESS;
 	}
