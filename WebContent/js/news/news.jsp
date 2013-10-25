@@ -1,8 +1,8 @@
-<%@page import="com.zhaoyang.util.UtilForNewsDetail"%>
+<%@page import="com.zhaoyang.util.UtilForGenerateNews"%>
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=UTF-8"%>
 <%
-	UtilForNewsDetail util=new UtilForNewsDetail();
+	UtilForGenerateNews util=new UtilForGenerateNews();
 	String imgpath=util.lableBgImg();
 %>
 function pagable_show(content_div, page_div, data_format, datasrc_url) {

@@ -1,8 +1,8 @@
-<%@page import="com.zhaoyang.util.UtilForNewsDetail"%>
+<%@page import="com.zhaoyang.util.UtilForGenerateNews"%>
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=UTF-8"%>
 <%
-	UtilForNewsDetail util=new UtilForNewsDetail();
+	UtilForGenerateNews util=new UtilForGenerateNews();
 	String imgpath=util.lableBgImg();
 %>
 function lable_show(width, height, color, imgPath, obj, font_color) {
