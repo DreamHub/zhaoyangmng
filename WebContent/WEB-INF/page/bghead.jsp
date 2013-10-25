@@ -72,7 +72,7 @@
 		    <ul>
 				<li><a href="${path}peo/TeacherMngAction" title="">教师信息管理</a></li>
 				<li><a href="${path}peo/StudentMngAction" title="">学生信息管理</a></li>
-				<li><a href="${path}ntc/NoticePanelSetPreAction" title="">公告栏展示</a></li>
+				<li><a href="${path}peo/StudentMngAction" title="">师生风采预览</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
 		
