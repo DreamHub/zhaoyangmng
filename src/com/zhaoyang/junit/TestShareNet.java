@@ -2,6 +2,9 @@ package com.zhaoyang.junit;
 
 import java.io.File;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -22,14 +25,23 @@ public class TestShareNet {
 		ApplicationContext ac = new FileSystemXmlApplicationContext(
 				applicationFile.getAbsolutePath());
 
-		PagesGenerateAction pagesGenerateAction = (PagesGenerateAction) ac.getBean("pagesGenerateAction");
+		PagesGenerateAction pagesGenerateAction = (PagesGenerateAction) ac
+				.getBean("pagesGenerateAction");
 		try {
-			//newsDao.save(new News("asd","asd"));
+			// newsDao.save(new News("asd","asd"));
 			pagesGenerateAction.generateNewsHTML();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Test
+	public void testClassSave() {
+		Configuration configuration = new Configuration();
+		SessionFactory factory = configuration.configure().buildSessionFactory();
+//		Session session = factory.openSession();
+		
 	}
 
 }
