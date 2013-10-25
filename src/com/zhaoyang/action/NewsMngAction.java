@@ -12,7 +12,7 @@ import com.zhaoyang.dao.RuleDao;
 import com.zhaoyang.orm.News;
 import com.zhaoyang.orm.Notice;
 import com.zhaoyang.orm.Rule;
-import com.zhaoyang.util.UtilForNewsDetail;
+import com.zhaoyang.util.UtilForGenerateNews;
 
 public class NewsMngAction extends AbstractActionSupport {
 	private NewsDao newsDao;
@@ -206,7 +206,7 @@ public class NewsMngAction extends AbstractActionSupport {
 	}
 	
 	public String watchNewsHTML() throws Exception {
-		newses=new UtilForNewsDetail().hotNewsList();
+		newses=new UtilForGenerateNews().hotNewsList();
 		return SUCCESS;
 	}
 	
