@@ -10,7 +10,7 @@ import com.zhaoyang.orm.News;
 import com.zhaoyang.orm.Notice;
 import com.zhaoyang.orm.Rule;
 
-public class UtilForNewsDetail {
+public class UtilForGenerateNews {
 	public News findById(Long id){
 		return DaoGenerate.getNewsDao().findById(id);
 	}
