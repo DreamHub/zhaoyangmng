@@ -1,12 +1,12 @@
 <%@page import="com.zhaoyang.orm.Notice"%>
-<%@page import="com.zhaoyang.util.UtilForNewsDetail"%>
+<%@page import="com.zhaoyang.util.UtilForGenerateNews"%>
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ include file="variable.jsp"%>
 
 <%
-	UtilForNewsDetail util = new UtilForNewsDetail();
+	UtilForGenerateNews util = new UtilForGenerateNews();
 	List<Notice> notices=util.gonggaolan();
 	request.setAttribute("notices",notices);
 %>
