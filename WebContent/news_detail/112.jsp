@@ -1,6 +1,6 @@
 <%@page import="com.zhaoyang.orm.Notice"%>
 <%@page import="com.zhaoyang.orm.News"%>
-<%@page import="com.zhaoyang.util.UtilForNewsDetail"%>
+<%@page import="com.zhaoyang.util.UtilForGenerateNews"%>
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -9,7 +9,7 @@
 
 <%
 	Long a = Long.parseLong(request.getParameter("id"));
-	UtilForNewsDetail util = new UtilForNewsDetail();
+	UtilForGenerateNews util = new UtilForGenerateNews();
 	News news = util.findById(a);
 	request.setAttribute("news", news);
 	List<Notice> notices=util.gonggaolan();
