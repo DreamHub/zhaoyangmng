@@ -51,4 +51,15 @@
 		<property name="studentDao" ref="studentDao"></property>
 	</bean>
 	
+	<!-- coolBean start -->
+	<bean id="subjectMngAction" class="com.zhaoyang.action.SubjectMngAction" scope="prototype">
+		<property name="subjectDao" ref="subjectDao"></property>
+		<property name="sysConfigParameter" ref="sysConfigParameter"></property>
+	</bean>
+	<bean id="zyClassMngAction" class="com.zhaoyang.action.ZYClassMngAction" scope="prototype">
+		<property name="zyClassDao" ref="zyClassDao"></property>
+		<property name="sysConfigParameter" ref="sysConfigParameter"></property>
+	</bean>
+	<!-- coolBean end -->
+	
 </beans>

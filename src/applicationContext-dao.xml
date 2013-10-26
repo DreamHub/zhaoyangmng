@@ -19,7 +19,7 @@
 	</bean>
 	<bean id="noticeDao" class="com.zhaoyang.dao.NoticeDao">
 		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
+			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
 	<bean id="teacherDao" class="com.zhaoyang.dao.TeacherDao">
@@ -28,4 +28,18 @@
 	<bean id="studentDao" class="com.zhaoyang.dao.StudentDao">
 		<property name="ruleDao" ref="ruleDao"></property>
 	</bean>
+	<!-- coolBean start -->
+	<bean id="subjectDao" class="com.zhaoyang.dao.SubjectDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="zyclassDao" class="com.zhaoyang.dao.ZYClassDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+		<property name="subjectDao" ref="subjectDao"></property>
+	</bean>
+	
+	<!-- coolBean end -->
 </beans>

@@ -91,9 +91,8 @@
 		</li>
 		<li><a href="${path}rcmt/RecruitmentMngPreAction">课程</a>
 		    <ul>
-				<li><a href="${path}ntc/NoticeMngAction?pageNum=1" title="">首页预览</a></li>
-				<li><a href="${path}ntc/NoticeAddPreAction" title="">新增</a></li>
-				<li><a href="${path}rcmt/WatchRecruitmentHTMLAction" title="" target="_blank">人才招聘预览</a></li>
+		    	<li><a href="${path}class/SubjectMngAction?pageNum=1" title="">学科信息管理</a></li>
+				<li><a href="${path}class/ZYClassMngAction?pageNum=1" title="">课程信息管理</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
 		<li><a href="${path}rcmt/RecruitmentMngPreAction">其他设置</a>

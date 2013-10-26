@@ -308,4 +308,31 @@
 		
 	</package>
 	
+	<!-- coolBean start -->
+		<!-- 课程 -->
+	<package name="class" namespace="/class" extends="struts-abstract">
+		<action name="SubjectMngAction" class="subjectMngAction">
+			<result name="success">/WEB-INF/page/subjectMng.jsp</result>
+			<result name="error">/background/login.jsp</result>
+		</action>
+		<action name="SubjectDelAction" class="subjectMngAction" method="subjectDel">
+			<result name="success" type="chain">SubjectMngAction</result>
+		</action>
+		<action name="SubjectEditPreAction" class="subjectMngAction" method="subjectEditPre">
+			<result name="success">/WEB-INF/page/subjectEdit.jsp</result>
+		</action>
+		<action name="SubjectEditAction" class="subjectMngAction" method="subjectEdit">
+			<result name="error">/WEB-INF/page/subjectEdit.jsp</result>
+			<result name="success">/WEB-INF/page/subjectEdit.jsp</result>
+		</action>
+		<action name="SubjectAddPreAction" class="subjectMngAction" method="subjectAddPre">
+			<result name="success">/WEB-INF/page/subjectAdd.jsp</result>
+			<result name="error">/background/login.jsp</result>
+		</action>
+		<action name="SubjectAddAction" class="subjectMngAction" method="subjectAdd">
+			<result name="success">/WEB-INF/page/subjectAdd.jsp</result>
+		</action>
+	</package>
+		<!-- coolBean end -->
+	
 </struts>    

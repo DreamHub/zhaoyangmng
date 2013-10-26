@@ -61,3 +61,34 @@ insert into rule(ruleid,ruledef) values('TeachersList','[{"id":1,"teaName":"张�
 insert into rule(ruleid,ruledef) values('StudentsList','[{"id":1,"stuName":"王见","fromSchool":"xxxx","toSchool":"gggg","score":231,"desc":"dssss","imgPath":"image/student/stu02.gif"}]');
 
 
+--学科表
+create table subject (
+	id bigint(20) primary key auto_increment,
+	grade varchar(10),
+	gradeCode int(2),
+	subjectName varchar(10)
+);
+
+insert into subject(grade, gradecode, subjectname) values('一年级', 1, '语文');
+insert into subject(grade, gradecode, subjectname) values('一年级', 1, '数学');
+insert into subject(grade, gradecode, subjectname) values('二年级', 2, '语文');
+insert into subject(grade, gradecode, subjectname) values('二年级', 2, '数学');
+insert into subject(grade, gradecode, subjectname) values('三年级', 3, '语文');
+
+select * from subject;
+delete from subject where id=3;
+commit;
+
+--课程表
+create table zyclass (
+	id bigint(20) primary key auto_increment,
+	classname varchar(20),
+	imgurl varchar(50),
+	teachername varchar(10),
+	volumn int(1),
+	subjectid bigint(20) references subject(id)
+);
+
+commit;
+
+

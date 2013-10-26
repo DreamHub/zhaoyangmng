@@ -9,8 +9,17 @@ public class ZYClass {
 	private String imgUrl;
 	//教师姓名
 	private String teacherName;
-	//上册或下册（0为上册，1为下册）
+	//学期（1为上学期，2为下学期）
 	private Integer volumn;
+	//课程对应的学科
+	private Subject subject;
+	
+	public Subject getSubject() {
+		return subject;
+	}
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
 	public Long getId() {
 		return id;
 	}
