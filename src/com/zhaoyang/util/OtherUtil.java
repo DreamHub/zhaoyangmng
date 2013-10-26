@@ -35,8 +35,8 @@ public class OtherUtil {
 	 * @param toFile
 	 * @throws Exception
 	 */
-	public static void copyResourceFromUrl(URL url, File toFile) throws Exception {
-		HttpURLConnection conn2 = (HttpURLConnection)url.openConnection();
+	public static void copyResourceFromUrl(String url, File toFile) throws Exception {
+		HttpURLConnection conn2 = (HttpURLConnection)new URL(url).openConnection();
 		if (conn2.getResponseCode() == 200) {
 			InputStream is = conn2.getInputStream();
 			String str = new String(OtherUtil.read(is), "UTF-8");

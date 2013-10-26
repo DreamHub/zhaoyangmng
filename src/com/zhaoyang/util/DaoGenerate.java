@@ -8,12 +8,24 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 import com.zhaoyang.dao.NewsDao;
 import com.zhaoyang.dao.NoticeDao;
 import com.zhaoyang.dao.RuleDao;
+import com.zhaoyang.dao.StudentDao;
+import com.zhaoyang.dao.TeacherDao;
 
 public class DaoGenerate {
 	private static NewsDao newsDao;
 	private static RuleDao ruleDao;
 	private static NoticeDao noticeDao;
+	private static StudentDao studentDao;
+	private static TeacherDao teacherDao;
 	
+	public static StudentDao getStudentDao() {
+		return studentDao;
+	}
+
+	public static TeacherDao getTeacherDao() {
+		return teacherDao;
+	}
+
 	public static NoticeDao getNoticeDao() {
 		return noticeDao;
 	}
@@ -29,6 +41,8 @@ public class DaoGenerate {
 		newsDao = (NewsDao) ac.getBean("newsDao");
 		ruleDao = (RuleDao) ac.getBean("ruleDao");
 		noticeDao = (NoticeDao) ac.getBean("noticeDao");
+		studentDao = (StudentDao) ac.getBean("studentDao");
+		teacherDao = (TeacherDao) ac.getBean("teacherDao");
 	}
 	
 	public static NewsDao getNewsDao() {
