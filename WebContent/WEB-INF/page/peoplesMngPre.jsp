@@ -37,7 +37,7 @@
 											class="sidebar_icon_right" />
 										<p style="line-height: 25px;">
 											新闻预览必须确保您手动生成了相关页面，请先点击<br/>
-											<a href="${path}news/GenerateNewsHTMLAction">生成相关页面</a><br/>
+											<a href="${path}peo/GeneratePeopleHTMLAction">生成相关页面</a><br/>
 										</p>
 									</div>
 									<div class="sidebar_box_bottom"></div>
