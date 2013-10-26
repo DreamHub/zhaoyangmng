@@ -99,10 +99,9 @@ public class PagesGenerateAction extends AbstractActionSupport {
 			pw.close();
 		}
 		// news_detail.js的生成
-		String newsjs = ServletActionContext.getServletContext().getRealPath("/js/news/news_detail.js");
+		String newsjs = absolutePath("/js/news/news_detail.js");
 		File newsjsfile = new File(newsjs);
-		URL url=new URL("http://localhost:8080/zhaoyang/js/news/news_detail.jsp");
-		OtherUtil.copyResourceFromUrl(url, newsjsfile);
+		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/js/news/news_detail.jsp", newsjsfile);
 		setSucMsg("新闻页面生成成功,<a href=\"WatchNewsHTMLAction\" target=\"_blank\">预览一下</a>");
 		return SUCCESS;
 	}
@@ -127,8 +126,12 @@ public class PagesGenerateAction extends AbstractActionSupport {
 	 * @throws Exception
 	 */
 	public String generatePeopleHTML() throws Exception {
-		
-
+		String peopleDir=absolutePath("/people");
+		String teacherHtml=peopleDir+"/teacher.html";
+		String studentHtml=peopleDir+"/student.html";
+		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/people/teacher.jsp", new File(teacherHtml));
+		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/people/student.jsp", new File(studentHtml));
+		setSucMsg("生成成功,<a href='/zhaoyang/people.html' target='_blank'>预览一下</a>");
 		return SUCCESS;
 	}
 }
