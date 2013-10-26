@@ -1,5 +1,15 @@
+<%@page import="com.zhaoyang.data.Student"%>
+<%@page import="com.zhaoyang.util.UtilForGeneratePeople"%>
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ include file="../variable.jsp"%>
+<%
+UtilForGeneratePeople util=new UtilForGeneratePeople();
+List<Student> students=util.findAllStudent();
+request.setAttribute("students",students);
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -28,106 +38,31 @@
 						
 						<ul id="stuul">
 							<h2><img src="../image/student/stuhd.jpg"/></h2>
+							<s:iterator value="#request.students">
 							<li class="clearfix stuinfoli">
-								<a class="stuimg"><img align="middle" src="../image/student/stu02.gif"/></a>
+								<div class="stuimg"><div><img align="middle" src="../<s:property value="imgPath"/>"/></div></div>
 								<ul class="studesc">
-									<li>
-										<h4>黄晓明同学</h4>
-									</li>
-									<li>
-										来自:合林小学
-									</li>
-									<li>
-										考入:同济高中
-									</li>
-									<li>
-										成绩:512分
-									</li>
-									<li>
-										朝之阳陪伴我一起成长....
-									</li>
+									
+										<li>
+											<h4><s:property value="stuName"/> </h4>
+										</li>
+										<li>
+											来自:<s:property value="fromSchool"/>
+										</li>
+										<li>
+											考入:<s:property value="toSchool"/>
+										</li>
+										<li>
+											成绩:512<s:property value="score"/>分
+										</li>
+										<li>
+											<s:property value="desc"/>
+										</li>
+									
+									
 								</ul>
 							</li>
-							<li class="clearfix stuinfoli">
-								<a class="stuimg"><img align="middle" src="../image/student/stu02.gif"/></a>
-								<ul class="studesc">
-									<li>
-										<h4>黄晓明同学</h4>
-									</li>
-									<li>
-										来自:合林小学
-									</li>
-									<li>
-										考入:同济高中
-									</li>
-									<li>
-										成绩:512分
-									</li>
-									<li>
-										朝之阳陪伴我一起成长....
-									</li>
-								</ul>
-							</li>
-							<li class="clearfix stuinfoli">
-								<a class="stuimg"><img align="middle" src="../image/student/stu02.gif"/></a>
-								<ul class="studesc">
-									<li>
-										<h4>黄晓明同学</h4>
-									</li>
-									<li>
-										来自:合林小学
-									</li>
-									<li>
-										考入:同济高中
-									</li>
-									<li>
-										成绩:512分
-									</li>
-									<li>
-										朝之阳陪伴我一起成长....
-									</li>
-								</ul>
-							</li>
-							<li class="clearfix stuinfoli">
-								<a class="stuimg"><img align="middle" src="../image/student/stu02.gif"/></a>
-								<ul class="studesc">
-									<li>
-										<h4>黄晓明同学</h4>
-									</li>
-									<li>
-										来自:合林小学
-									</li>
-									<li>
-										考入:同济高中
-									</li>
-									<li>
-										成绩:512分
-									</li>
-									<li>
-										朝之阳陪伴我一起成长....
-									</li>
-								</ul>
-							</li>
-							<li class="clearfix stuinfoli">
-								<a class="stuimg"><img align="middle" src="../image/student/stu02.gif"/></a>
-								<ul class="studesc">
-									<li>
-										<h4>黄晓明同学</h4>
-									</li>
-									<li>
-										来自:合林小学
-									</li>
-									<li>
-										考入:同济高中
-									</li>
-									<li>
-										成绩:512分
-									</li>
-									<li>
-										朝之阳陪伴我一起成长....
-									</li>
-								</ul>
-							</li>
+							</s:iterator>		
 						</ul>
 					</div>
 					<div id="sturight">

@@ -1,3 +1,20 @@
+<%@page import="com.zhaoyang.util.UtilForGenerateNews"%>
+<%@page import="com.zhaoyang.orm.News"%>
+<%@page import="com.zhaoyang.data.Teacher"%>
+<%@page import="com.zhaoyang.util.UtilForGeneratePeople"%>
+<%@ page language="java" import="java.util.*"
+	contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ include file="../variable.jsp"%>
+<%
+UtilForGeneratePeople util=new UtilForGeneratePeople();
+UtilForGenerateNews util2 = new UtilForGenerateNews();
+List<News> news=util2.indexNewsList();
+List<Teacher> teachers=util.findAllTeacher();
+request.setAttribute("teachers",teachers);
+request.setAttribute("news",news);
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -26,9 +43,10 @@
 						
 						<ul id="stuul">
 							<h2><img src="../image/teacher/tea2.gif"/></h2>
+							<s:iterator value="#request.teachers">
 							<li class="clearfix teacherli">
 								<div class="teaimg">
-									<a href="#"><img align="middle" src="../image/teacher/zhangpeng.jpg"/></a>
+									<a href="#" style="overflow: hidden;"><img align="middle" src="../<s:property value="photoImg"/>"/></a>
 									<p class="clearfix">
 										<a href="#"></a>
 										<a href="#" class="last_child"></a>
@@ -36,81 +54,30 @@
 								</div>
 								<ul class="teadesc">
 									<li>
-										<h4>张鹏老师</h4>
+										<h4><s:property value="teaName"/>老师</h4>
 									</li>
 									<li>
-										<span>科目:</span>数学
+										<span>科目:</span><s:property value="project"/>
 									</li>
 									<li>
-										<span>适合对象:</span>初中各层次水平学生
+										<span>适合对象:</span><s:property value="service"/>
 									</li>
 									
 									<li style="line-height: 30px;">
-										<span>教学特色:</span>1965年7月出生的朱界飞当教师已有二十五个年头了，二十多年的教学生涯铸就了他“当了教师，就要当好”的坚定信念，他也以自己突出的业绩擦亮了“教师”这个神圣的称号。近八年来,他一次立功,三次受县嘉奖，一次被评为县优秀教师，多次获乡突出贡献奖、
+										<span>教学特色:</span><s:property value="feature"/>
 									</li>
 								</ul>
 							</li>
-							<li class="clearfix teacherli">
-								<div class="teaimg">
-									<a href="#"><img align="middle" src="../image/teacher/zhangpeng.jpg"/></a>
-									<p class="clearfix">
-										<a href="#"></a>
-										<a href="#" class="last_child"></a>
-									</p>
-								</div>
-								<ul class="teadesc">
-									<li>
-										<h4>张鹏老师</h4>
-									</li>
-									<li>
-										<span>科目:</span>数学
-									</li>
-									<li>
-										<span>适合对象:</span>初中各层次水平学生
-									</li>
-									
-									<li style="line-height: 30px;">
-										<span>教学特色:</span>1965年7月出生的朱界飞当教师已有二十五个年头了，二十多年的教学生涯铸就了他“当了教师，就要当好”的坚定信念，他也以自己突出的业绩擦亮了“教师”这个神圣的称号。近八年来,他一次立功,三次受县嘉奖，一次被评为县优秀教师，多次获乡突出贡献奖、
-									</li>
-								</ul>
-							</li>
-							<li class="clearfix teacherli">
-								<div class="teaimg">
-									<a href="#"><img align="middle" src="../image/teacher/zhangpeng.jpg"/></a>
-									<p class="clearfix">
-										<a href="#"></a>
-										<a href="#" class="last_child"></a>
-									</p>
-								</div>
-								<ul class="teadesc">
-									<li>
-										<h4>张鹏老师</h4>
-									</li>
-									<li>
-										<span>科目:</span>数学
-									</li>
-									<li>
-										<span>适合对象:</span>初中各层次水平学生
-									</li>
-									
-									<li style="line-height: 30px;">
-										<span>教学特色:</span>1965年7月出生的朱界飞当教师已有二十五个年头了，二十多年的教学生涯铸就了他“当了教师，就要当好”的坚定信念，他也以自己突出的业绩擦亮了“教师”这个神圣的称号。近八年来,他一次立功,三次受县嘉奖，一次被评为县优秀教师，多次获乡突出贡献奖、
-									</li>
-								</ul>
-							</li>
+							</s:iterator>
 						</ul>
 					</div>
 					<div id="sturight">
 						<div id="newspanel">
 							<h3><img src="../image/student/newshd.gif"/></h3>
 							<ul>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
+							<s:iterator value="#request.news">
+								<li><a href="../news_detail/<s:property value="id"/>.html"><s:property value="title"/> </a></li>
+							</s:iterator>
 							</ul>
 						</div>
 						<div id="adpanel">
