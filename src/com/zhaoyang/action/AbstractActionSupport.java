@@ -57,4 +57,7 @@ public abstract class AbstractActionSupport extends ActionSupport{
 			setMaxPage((new Long(maxCount/pageSize)).intValue()+1);
 		}
 	}
+	public String absolutePath(String relativePath){
+		return ServletActionContext.getServletContext().getRealPath(relativePath);
+	}
 }
