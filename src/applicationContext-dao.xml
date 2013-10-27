@@ -37,7 +37,7 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean id="zyclassDao" class="com.zhaoyang.dao.ZYClassDao">
+	<bean id="zyClassDao" class="com.zhaoyang.dao.ZYClassDao">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>

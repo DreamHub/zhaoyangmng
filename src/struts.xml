@@ -339,6 +339,7 @@
 		</action>
 		
 	</package>
+	
 	<!-- coolBean start -->
 		<!-- 课程 -->
 	<package name="class" namespace="/class" extends="struts-abstract">
@@ -363,6 +364,34 @@
 		<action name="SubjectAddAction" class="subjectMngAction" method="subjectAdd">
 			<result name="success">/WEB-INF/page/subjectAdd.jsp</result>
 		</action>
+		
+		<action name="ZYClassMngAction" class="zyClassMngAction">
+			<result name="success">/WEB-INF/page/zyClassMng.jsp</result>
+			<result name="error">/background/login.jsp</result>
+		</action>
+		<action name="ZYClassEditPreAction" class="zyClassMngAction" method="zyClassEditPre">
+			<result name="success">/WEB-INF/page/zyClassEdit.jsp</result>
+		</action>
+		<action name="ZYClassEditAction" class="zyClassMngAction" method="zyClassEdit">
+			<result name="error">/WEB-INF/page/zyClassEdit.jsp</result>
+			<result name="success">/WEB-INF/page/zyClassEdit.jsp</result>
+		</action>
+		<action name="ZYClassDelAction" class="zyClassMngAction" method="zyClassDel">
+			<result name="success" type="chain">ZYClassMngAction</result>
+		</action>
+		<action name="ZYClassAddPreAction" class="zyClassMngAction" method="zyClassAddPre">
+			<result name="success">/WEB-INF/page/zyClassAdd.jsp</result>
+			<result name="error">/background/login.jsp</result>
+		</action>
+		<action name="ZYClassAddAction" class="zyClassMngAction" method="zyClassAdd">
+			<result name="success">/WEB-INF/page/zyClassAdd.jsp</result>
+		</action>
+		<action name="ZYClassAddGetNameAction" class="zyClassMngAction" method="zyClassAddGetName">
+		</action>
+		<action name="ZYClassAddGetGradeAction" class="zyClassMngAction" method="zyClassAddGetGrade">
+		</action>
+		
 	</package>
 		<!-- coolBean end -->
+	
 </struts>    

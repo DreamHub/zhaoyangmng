@@ -45,7 +45,7 @@ public class ZYClassDao extends HibernateDaoSupport {
 	}
 
 	public List<ZYClass> findZYClasses(final Integer pageNum,final String pageSize) {
-		final String hql = "from Subject";
+		final String hql = "from ZYClass";
 		List list = getHibernateTemplate().executeFind(new HibernateCallback() {
 			public Object doInHibernate(Session session)
 					throws HibernateException, SQLException {

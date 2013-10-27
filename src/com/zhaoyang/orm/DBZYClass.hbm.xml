@@ -14,6 +14,6 @@
         <property name="imgUrl" column="imgurl" type="java.lang.String"/>
         <property name="teacherName" column="teachername" type="java.lang.String"/>
         <property name="volumn" column="volumn" type="java.lang.Integer"/>
-        <many-to-one name="subject" column="subjectid" class="Subject"/>
+        <many-to-one name="subject" column="subjectid" class="Subject" lazy="false"/>
     </class>
 </hibernate-mapping>

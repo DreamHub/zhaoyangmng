@@ -3,12 +3,15 @@ package com.zhaoyang.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -23,7 +26,51 @@ public class SubjectDao extends HibernateDaoSupport {
 	}
 
 	public List<Subject> findAll() {
-		List<Subject> subjects = this.getHibernateTemplate().find("from Subject c");
+		final List<Subject> subjects = new ArrayList<Subject>();
+		final String sql = "select distinct(gradeCode), grade from subject";
+		getHibernateTemplate().executeFind(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				Statement stmt=session.connection().createStatement();
+				ResultSet rs=stmt.executeQuery(sql);
+				while(rs.next()){
+					Subject subject = new Subject();
+					subject.setGrade(rs.getString("grade"));
+					subject.setGradeCode(rs.getInt("gradeCode"));
+					subjects.add(subject);
+				}
+				rs.close();
+				stmt.close();
+				return null;
+			}
+		});
+		if (subjects != null && subjects.size() > 0) {
+			return subjects;
+		}
+		return null;
+	}
+	
+	public List<Subject> findByGrade(final Integer gradeCode) {
+		final List<Subject> subjects = new ArrayList<Subject>();
+		//有问题，至少挺危险！
+		final String sql = "select distinct(subjectname), id from subject where gradeCode=" + gradeCode;
+		getHibernateTemplate().executeFind(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				Statement stmt=session.connection().createStatement();
+				ResultSet rs=stmt.executeQuery(sql);
+				while(rs.next()){
+					Subject subject = new Subject();
+					subject.setId(rs.getLong("id"));
+					subject.setGrade(rs.getString("subjectname"));
+//					subject.setGradeCode(rs.getInt("gradeCode"));
+					subjects.add(subject);
+				}
+				rs.close();
+				stmt.close();
+				return null;
+			}
+		});
 		if (subjects != null && subjects.size() > 0) {
 			return subjects;
 		}
