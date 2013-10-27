@@ -40,8 +40,11 @@
 		<property name="ruleDao" ref="ruleDao"></property>
 	</bean>
 	<bean id="otherMngAction" class="com.zhaoyang.action.OtherMngAction" scope="prototype">
+		<property name="ruleDao" ref="ruleDao"></property>
 	</bean>
 	<bean id="indexSettingAction" class="com.zhaoyang.action.IndexSettingAction" scope="prototype">
+		<property name="indexImgLoopDao" ref="indexImgLoopDao"></property>
+		<property name="ruleDao" ref="ruleDao"></property>
 	</bean>
 	<bean id="pagesGenerateAction" class="com.zhaoyang.action.PagesGenerateAction" scope="prototype">
 		<property name="newsDao" ref="newsDao"></property>
@@ -50,7 +53,6 @@
 		<property name="teacherDao" ref="teacherDao"></property>
 		<property name="studentDao" ref="studentDao"></property>
 	</bean>
-	
 	<!-- coolBean start -->
 	<bean id="subjectMngAction" class="com.zhaoyang.action.SubjectMngAction" scope="prototype">
 		<property name="subjectDao" ref="subjectDao"></property>
@@ -61,5 +63,4 @@
 		<property name="sysConfigParameter" ref="sysConfigParameter"></property>
 	</bean>
 	<!-- coolBean end -->
-	
 </beans>
