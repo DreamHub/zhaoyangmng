@@ -122,10 +122,10 @@
 									</dt>
 									<dd>
 										<input type="text" name="newsNoList" id="" size="54" value="${newsNoList}"/>
-									</dd>
-									<dd>
+										<br/><br/><br/>
 										<font color="green"><span style="color:red;">*</span>请填写你要依次展示的新闻序号，以逗号隔开。</font>
 									</dd>
+									
 								</dl>
 								<dl class="submit">
 									<input type="submit" name="submit" id="submit" value="提交修改后内容" />
