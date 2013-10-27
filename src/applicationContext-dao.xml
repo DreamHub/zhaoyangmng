@@ -19,13 +19,16 @@
 	</bean>
 	<bean id="noticeDao" class="com.zhaoyang.dao.NoticeDao">
 		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
+			<ref bean="sessionFactory" />
 		</property>
 	</bean>
 	<bean id="teacherDao" class="com.zhaoyang.dao.TeacherDao">
 		<property name="ruleDao" ref="ruleDao"></property>
 	</bean>
 	<bean id="studentDao" class="com.zhaoyang.dao.StudentDao">
+		<property name="ruleDao" ref="ruleDao"></property>
+	</bean>
+	<bean id="indexImgLoopDao" class="com.zhaoyang.dao.IndexImgLoopDao">
 		<property name="ruleDao" ref="ruleDao"></property>
 	</bean>
 	<!-- coolBean start -->
