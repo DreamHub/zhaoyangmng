@@ -1,11 +1,13 @@
 package com.zhaoyang.action;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -59,5 +61,14 @@ public abstract class AbstractActionSupport extends ActionSupport{
 	}
 	public String absolutePath(String relativePath){
 		return ServletActionContext.getServletContext().getRealPath(relativePath);
+	}
+	public String saveImg(File src,String dir,String fileName) throws Exception{
+		String realPath = ServletActionContext.getServletContext().getRealPath("/"+dir);
+		String exp=fileName.substring(fileName.lastIndexOf('.')+1);
+		String newFileName="/zy_"+System.currentTimeMillis()+"."+exp;
+		String newPath=realPath+newFileName;
+		File file=new File(newPath);
+		FileUtils.copyFile(src, file);
+		return dir+newFileName;
 	}
 }
