@@ -14,7 +14,6 @@ import com.zhaoyang.orm.Notice;
 import com.zhaoyang.orm.Rule;
 import com.zhaoyang.orm.Subject;
 import com.zhaoyang.orm.ZYClass;
-import com.zhaoyang.util.UtilForNewsDetail;
 
 public class ZYClassMngAction extends AbstractActionSupport {
 	private ZYClassDao zyClassDao;

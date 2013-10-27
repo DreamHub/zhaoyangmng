@@ -12,7 +12,6 @@ import com.zhaoyang.dao.SubjectDao;
 import com.zhaoyang.orm.Notice;
 import com.zhaoyang.orm.Rule;
 import com.zhaoyang.orm.Subject;
-import com.zhaoyang.util.UtilForNewsDetail;
 
 public class SubjectMngAction extends AbstractActionSupport {
 	private SubjectDao subjectDao;
