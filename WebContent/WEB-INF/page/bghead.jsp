@@ -6,9 +6,9 @@
 		<li><a class="current" href="${path}other/HomePagePreAction">主页</a></li>
 		<li><a href="${path}index/IndexSetPreAction">首页设置</a>
 		    <ul>
-				<li><a href="${path}ntc/NoticeMngAction?pageNum=1" title="">首页图片轮播设置</a></li>
-				<li><a href="${path}ntc/NoticeAddPreAction" title="">新增</a></li>
-				<li><a href="${path}ntc/NoticePanelSetPreAction" title="">公告栏展示</a></li>
+				<li><a href="${path}index/IndexImgLoopMngAction" title="">首页图片轮播</a></li>
+				<li><a href="${path}index/SevenReasonMngAction" title="">七大理由</a></li>
+				<li><a href="${path}index/IndexAdvImgMngAction" title="">广告条幅</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
 		<li><a href="${path}news/NewsMngPreAction">新闻<!--[if IE 7]><!-->
@@ -93,11 +93,11 @@
 		    <ul>
 		    	<li><a href="${path}class/SubjectMngAction?pageNum=1" title="">学科信息管理</a></li>
 				<li><a href="${path}class/ZYClassMngAction?pageNum=1" title="">课程信息管理</a></li>
-			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</ul>
 		</li>
 		<li><a href="${path}rcmt/RecruitmentMngPreAction">其他设置</a>
 		    <ul>
-				<li><a href="${path}ntc/NoticeMngAction?pageNum=1" title="">头部设置</a></li>
+				<li><a href="${path}other/HeadImgMngAction" title="">头部条幅</a></li>
 				<li><a class="sub1" href="${path}dld/DownloadMngAction?pageNum=1" title="">尾部设置<!--[if IE 7]><!-->
 				</a> <!--<![endif]--> <!--[if lte IE 6]><table><tr><td><![endif]-->
 					<ul>
