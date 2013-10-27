@@ -163,11 +163,39 @@ public class IndexSettingAction extends AbstractActionSupport {
 		setSucMsg("修改成功");
 		return SUCCESS;
 	}
+	private File newImg2;
+	private String newImg2FileName;
 	
+	public String getNewImg2FileName() {
+		return newImg2FileName;
+	}
+
+	public void setNewImg2FileName(String newImg2FileName) {
+		this.newImg2FileName = newImg2FileName;
+	}
+
+	public File getNewImg2() {
+		return newImg2;
+	}
+
+	public void setNewImg2(File newImg2) {
+		this.newImg2 = newImg2;
+	}
+
+	
+
 	public String indexAdvImgEdit()throws Exception {
-		
-		indexAdvImgPath1=ruleDao.findRuleByRuleId("IndexAdvImg1").getRuleDef();
-		indexAdvImgPath2=ruleDao.findRuleByRuleId("IndexAdvImg2").getRuleDef();
+		if(newImg==null&&newImg2==null){
+			setErrMsg("不能为空");
+			return SUCCESS;
+		}
+		if(newImg!=null){
+			ruleDao.update("IndexAdvImg1",saveImg(newImg, "image/index", newImgFileName));
+		}
+		if(newImg2!=null){
+			ruleDao.update("IndexAdvImg2",saveImg(newImg2, "image/index", newImg2FileName));
+		}
+		setSucMsg("修改成功");
 		return SUCCESS;
 	}
 }
