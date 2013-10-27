@@ -253,12 +253,44 @@
 		<action name="HomePagePreAction" class="otherMngAction"> 
 			<result name="success">/WEB-INF/page/index-digital.jsp</result>
 		</action>
+		<action name="HeadImgMngAction" class="otherMngAction" method="headImgMng"> 
+			<result name="success">/WEB-INF/page/headBgImgMng.jsp</result>
+		</action>
+		<action name="HeadImgEditAction" class="otherMngAction" method="headImgEdit"> 
+			<result name="success" type="chain">HeadImgMngAction</result>
+		</action>
 	</package>
 	<!-- 首页设置-->
 	<package name="index" namespace="/index" extends="struts-abstract">
 		<action name="IndexSetPreAction" class="indexSettingAction"> 
 			<result name="success">/WEB-INF/page/indexMngPre.jsp</result>
 		</action>
+		<action name="IndexImgLoopMngAction" class="indexSettingAction" method="indexImgLoopMng"> 
+			<result name="success">/WEB-INF/page/indexImgLoopMng.jsp</result>
+		</action>
+		<action name="IndexImgLoopAddAction" class="indexSettingAction" method="indexImgLoopAdd"> 
+			<result name="success" type="chain">IndexImgLoopMngAction</result>
+		</action>
+		<action name="IndexImgLoopEditAction" class="indexSettingAction" method="indexImgLoopEdit"> 
+			<result name="success" type="chain">IndexImgLoopMngAction</result>
+		</action>
+		<action name="IndexImgLoopDelAction" class="indexSettingAction" method="indexImgLoopDel"> 
+			<result name="success" type="chain">IndexImgLoopMngAction</result>
+		</action>
+		
+		<action name="SevenReasonMngAction" class="indexSettingAction" method="sevenReasonMng"> 
+			<result name="success">/WEB-INF/page/sevenReasonMng.jsp</result>
+		</action>
+		<action name="SevenReasonEditAction" class="indexSettingAction" method="sevenReasonEdit"> 
+			<result name="success" type="chain">SevenReasonMngAction</result>
+		</action>
+		<action name="IndexAdvImgMngAction" class="indexSettingAction" method="indexAdvImgMng"> 
+			<result name="success">/WEB-INF/page/indexAdvImgMng.jsp</result>
+		</action>
+		<action name="IndexAdvImgEditAction" class="indexSettingAction" method="indexAdvImgEdit"> 
+			<result name="success" type="chain">IndexAdvImgMngAction</result>
+		</action>
+		
 	</package>
 	<!-- 师生风采 -->
 	<package name="people" namespace="/peo" extends="struts-abstract">
@@ -307,7 +339,6 @@
 		</action>
 		
 	</package>
-	
 	<!-- coolBean start -->
 		<!-- 课程 -->
 	<package name="class" namespace="/class" extends="struts-abstract">
@@ -334,5 +365,4 @@
 		</action>
 	</package>
 		<!-- coolBean end -->
-	
 </struts>    
