@@ -60,7 +60,13 @@ update rule set ruledef='image/recruitment/01.gif' where ruleid='RecruitmentImg'
 insert into rule(ruleid,ruledef) values('TeachersList','[{"id":1,"teaName":"张鹏","service":"初中各层次水平学生","feature":"1965年7月出生的朱界飞当教师已有二十五个年头了，二十多年的教学生涯铸","project":"数学","photoImg":"image/teacher/zhangpeng.jpg"}]');
 insert into rule(ruleid,ruledef) values('StudentsList','[{"id":1,"stuName":"王见","fromSchool":"xxxx","toSchool":"gggg","score":231,"desc":"dssss","imgPath":"image/student/stu02.gif"}]');
 
+insert into rule(ruleid,ruledef) values('IndexImgLoop','[{"id":1,"imgPath":"image/index/adv05.jpg","imgdesc":"xxxooo","href":"http://www.baidu.com"}]');
+insert into rule(ruleid,ruledef) values('SevenReason','abc;qwe;qqq;zzz;zzz;aaa;www');
+insert into rule(ruleid,ruledef) values('IndexAdvImg1','image/index/adv_center.jpg');
 
+insert into rule(ruleid,ruledef) values('IndexAdvImg2','image/index/0f000rgmXKPaPQVUoyuAvs.jpg');
+insert into rule(ruleid,ruledef) values('HeadBgImg','image/20130908101430.jpg');
+select * from rule
 --学科表
 create table subject (
 	id bigint(20) primary key auto_increment,
@@ -90,5 +96,4 @@ create table zyclass (
 );
 
 commit;
-
 
