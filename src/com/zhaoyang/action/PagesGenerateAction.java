@@ -8,16 +8,30 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 
 import com.zhaoyang.dao.NewsDao;
+import com.zhaoyang.dao.SubjectDao;
 import com.zhaoyang.orm.News;
+import com.zhaoyang.orm.Subject;
 import com.zhaoyang.util.OtherUtil;
 
 public class PagesGenerateAction extends AbstractActionSupport {
 	private NewsDao newsDao;
+
+	private SubjectDao subjectDao;
+	
+	public SubjectDao getSubjectDao() {
+		return subjectDao;
+	}
+
+	public void setSubjectDao(SubjectDao subjectDao) {
+		this.subjectDao = subjectDao;
+	}
 
 	public NewsDao getNewsDao() {
 		return newsDao;
@@ -131,6 +145,128 @@ public class PagesGenerateAction extends AbstractActionSupport {
 		String studentHtml=peopleDir+"/student.html";
 		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/people/teacher.jsp", new File(teacherHtml));
 		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/people/student.jsp", new File(studentHtml));
+		setSucMsg("生成成功,<a href='/zhaoyang/people.html' target='_blank'>预览一下</a>");
+		return SUCCESS;
+	}
+	
+	private StringBuffer getBuf(List<Subject> list) {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("[");
+		int listLen = (list.size() - 1);
+		for (int i = 0; i < list.size(); i++) {
+			Subject subject = list.get(i);
+			buffer.append("{\"subject\":\"").append(subject.getSubjectName()).
+			append("\",\"jsId\":\"").append(subject.getId()).append("\"}");
+			if (i != listLen) {
+				buffer.append(",");
+			}
+		}
+		buffer.append("]");
+		return buffer;
+	}
+	
+	/**
+	 * 生成课程页面，当然主要是生成js文件
+	 * @return
+	 * @throws Exception
+	 */
+	public String generateClassHTML() throws Exception {
+		//存放最后的buffer
+		StringBuffer lastBuf = new StringBuffer();
+		lastBuf.append("[");
+		//存放小学的科目信息
+		StringBuffer littleBuf = new StringBuffer();
+		littleBuf.append("{\"schoolGrade\":\"小学\", \"schoolContent\":[");
+		//存放初中的科目信息
+		StringBuffer middleBuf = new StringBuffer();
+		middleBuf.append("{\"schoolGrade\":\"初中\", \"schoolContent\":[");
+		//存放高中的科目信息
+		StringBuffer highBuf = new StringBuffer();
+		highBuf.append("{\"schoolGrade\":\"高中\", \"schoolContent\":[");
+		//各个年级的信息都存放在map里面
+		Map<String, StringBuffer> map = new HashMap<String, StringBuffer>();
+		for (int i = 1; i < 15; i++) {
+			List<Subject> list = subjectDao.findByGrade(i);
+			if (list.size() > 0) {
+				if (i < 7) {
+					littleBuf.append("{\"grade\":\"").append(list.get(0).
+							getGrade()).append("\", \"classList\":").
+							append(getBuf(list)).append("},");
+				} else if (i < 10) {
+					middleBuf.append("{\"grade\":\"").append(list.get(0).
+							getGrade()).append("\", \"classList\":").
+							append(getBuf(list)).append("},");
+				} else if (i < 15) {
+					highBuf.append("{\"grade\":\"").append(list.get(0).
+							getGrade()).append("\", \"classList\":").
+							append(getBuf(list)).append("},");
+				}
+			}	
+		}
+		lastBuf.append(littleBuf).append(",").append(middleBuf).append(",").append(highBuf);
+		System.out.println(lastBuf.toString());
+		
+//		String classDir=absolutePath("/class");
+//		
+//		List<Subject> subjectList = subjectDao.findAllSubjects();
+//		StringBuffer subBuf = new StringBuffer(); 
+//		subBuf.append("[{");
+//		subBuf.append("\"schoolGrade\":\"小学\", \"schoolContent\":[{");
+//		//把每个年级的数据放在map的一个key对应的value里面，年级作为key
+//		for (Subject subject : subjectList) {
+//			if (subject.getGradeCode() < 7) {
+//				
+//				
+//			} else if (subject.getGradeCode() < 10) {
+//				
+//			} else if (subject.getGradeCode() < 15) {
+//				
+//			}  
+//		}
+//		sb.append("{\"code\":1,\"recordCount\":"+newsCount+",\"pageCount\":"+maxSize+",\"data\":[");
+//
+//		String news_detail = ServletActionContext.getServletContext()
+//				.getRealPath("/news_detail");
+//		String realPath = ServletActionContext.getServletContext().getRealPath(
+//				"/js/news/datasrc_news.js");
+//
+//		for (News news : newes) {
+//
+//			sb.append("{\"title\":\"" + news.getTitle() + "\",\"datatime\":\""
+//					+ news.getCreateTime() + "\",\"id\":" + news.getId()
+//					+ ",\"url\":\"/zhaoyang/news_detail/" + news.getId()
+//					+ ".html\"},");
+//
+//			String path = "http://localhost:8080/zhaoyang/news_detail/112.jsp?id="
+//					+ news.getId();
+//			HttpURLConnection conn = (HttpURLConnection) new URL(path)
+//					.openConnection();
+//			conn.setRequestMethod("GET");
+//			if (conn.getResponseCode() == 200) {
+//				InputStream is = conn.getInputStream();
+//				String str = new String(OtherUtil.read(is), "UTF-8");
+//				File detailHtml = new File(news_detail + "/" + news.getId()
+//						+ ".html");
+//				PrintWriter pw = new PrintWriter(detailHtml, "UTF-8");
+//				pw.print(str);
+//				pw.close();
+//			}
+//		}
+//		sb.deleteCharAt(sb.length() - 1);
+//		sb.append("]}");
+//		// 更改 /js/news/datasrc_news.js
+//
+//		File file = new File(realPath);
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+//				new FileOutputStream(file)));
+//		bw.write(sb.toString());
+//		bw.flush();
+//		bw.close();
+		
+//		String teacherHtml=peopleDir+"/teacher.html";
+//		String studentHtml=peopleDir+"/student.html";
+//		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/people/teacher.jsp", new File(teacherHtml));
+//		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/people/student.jsp", new File(studentHtml));
 		setSucMsg("生成成功,<a href='/zhaoyang/people.html' target='_blank'>预览一下</a>");
 		return SUCCESS;
 	}

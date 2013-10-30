@@ -24,6 +24,15 @@ public class SubjectDao extends HibernateDaoSupport {
 	public void save(Subject subject) {
 		this.getHibernateTemplate().save(subject);
 	}
+	
+	//查出所有的学科信息
+	public List<Subject> findAllSubjects() {
+		List<Subject> subjects = this.getHibernateTemplate().find("from Subject c order by c.gradeCode");
+		if (subjects != null && subjects.size() > 0) {
+			return subjects;
+		}
+		return null;
+	}
 
 	public List<Subject> findAll() {
 		final List<Subject> subjects = new ArrayList<Subject>();
@@ -53,7 +62,8 @@ public class SubjectDao extends HibernateDaoSupport {
 	public List<Subject> findByGrade(final Integer gradeCode) {
 		final List<Subject> subjects = new ArrayList<Subject>();
 		//有问题，至少挺危险！
-		final String sql = "select distinct(subjectname), id from subject where gradeCode=" + gradeCode;
+//		final String sql = "select distinct(subjectname), id from subject where gradeCode=" + gradeCode;
+		final String sql = "select grade, subjectname, id from subject where gradeCode=" + gradeCode;
 		getHibernateTemplate().executeFind(new HibernateCallback() {
 			public Object doInHibernate(Session session)
 					throws HibernateException, SQLException {
@@ -62,7 +72,8 @@ public class SubjectDao extends HibernateDaoSupport {
 				while(rs.next()){
 					Subject subject = new Subject();
 					subject.setId(rs.getLong("id"));
-					subject.setGrade(rs.getString("subjectname"));
+					subject.setGrade(rs.getString("grade"));
+					subject.setSubjectName(rs.getString("subjectname"));
 //					subject.setGradeCode(rs.getInt("gradeCode"));
 					subjects.add(subject);
 				}
