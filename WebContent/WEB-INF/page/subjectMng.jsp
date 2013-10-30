@@ -53,7 +53,7 @@
 				<jsp:include page="bgleft.jsp" flush="true"/>
 				<div class="right_content">
 
-					<h2>学科管理</h2>
+					<h2>学科信息管理</h2>
 
 
 					<table id="rounded-corner"
@@ -70,7 +70,7 @@
 						</thead>
 						<tfoot>
 							<tr>
-								<td colspan="6" class="rounded-foot-left"><em>
+								<td colspan="5" class="rounded-foot-left"><em>
 								   当前是第${pageNum}页，共${maxPage}页，每页显示${sysConfigParameter.pageSize}条数据，每页显示数据条数可以在系统设置里面更改。</em>
 								</td>
 								<td class="rounded-foot-right">&nbsp;</td>

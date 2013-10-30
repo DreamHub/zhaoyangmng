@@ -53,8 +53,7 @@
 				<jsp:include page="bgleft.jsp" flush="true"/>
 				<div class="right_content">
 
-					<h2>课程管理</h2>
-
+					<h2>课程信息管理</h2>
 
 					<table id="rounded-corner"
 						summary="2007 Major IT Companies' Profit">

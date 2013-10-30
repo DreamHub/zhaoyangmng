@@ -84,8 +84,7 @@
 			<div class="center_content">
 				<jsp:include page="bgleft.jsp" flush="true" />
 				<div class="right_content">
-					<h2>新增新闻</h2>
-					<h3>新闻内容编辑：</h3>
+					<h2>新增学科</h2>
 					
 					<div class="form">
 						<form action="${path}class/SubjectAddAction" method="post" class="niceform">
@@ -96,7 +95,7 @@
 									</dt>
 									<dd>
 										<!-- <input type="text" name="grade" id="" size="54" value="${grade}"/> -->
-											<select name="gradeCode">
+											<select name="gradeCode" size="1">
 												<option value="1">一年级</option>
 												<option value="2">二年级</option>
 												<option value="3">三年级</option>
