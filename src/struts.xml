@@ -391,7 +391,10 @@
 		<action name="ZYClassAddGetGradeAction" class="zyClassMngAction" method="zyClassAddGetGrade">
 		</action>
 		
-		<action name="ClassMngPreAction" class="pagesGenerateAction" method="generateClassHTML">
+		<action name="ClassMngPreAction" class="zyClassMngAction" method="zyClassMngPre">
+			<result name="success">/WEB-INF/page/classMngPre.jsp</result>
+		</action>
+		<action name="WatchClassHTMLAction" class="pagesGenerateAction" method="generateClassHTML">
 			<result name="success">/WEB-INF/page/classMngPre.jsp</result>
 		</action>
 		

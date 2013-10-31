@@ -38,7 +38,7 @@
 											class="sidebar_icon_right" />
 										<p style="line-height: 25px;">
 											课程预览必须确保您手动生成了相关页面，请先点击<br/>
-											<a href="${path}class/ClassMngPreAction">生成课程页面</a><br/>
+											<a href="${path}class/WatchClassHTMLAction">生成课程页面</a><br/>
 										</p>
 									</div>
 									<div class="sidebar_box_bottom"></div>

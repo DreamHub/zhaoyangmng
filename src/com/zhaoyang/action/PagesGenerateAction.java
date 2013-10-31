@@ -192,7 +192,7 @@ public class PagesGenerateAction extends AbstractActionSupport {
 					littleBuf.append("{\"grade\":\"").append(list.get(0).
 							getGrade()).append("\", \"classList\":").
 							append(getBuf(list)).append("},");
-				} else if (i < 10) {
+				} else if (i < 11) {
 					middleBuf.append("{\"grade\":\"").append(list.get(0).
 							getGrade()).append("\", \"classList\":").
 							append(getBuf(list)).append("},");
@@ -203,11 +203,21 @@ public class PagesGenerateAction extends AbstractActionSupport {
 				}
 			}	
 		}
-		lastBuf.append(littleBuf).append(",").append(middleBuf).append(",").append(highBuf);
-		System.out.println(lastBuf.toString());
+		String resLitBuf = littleBuf.substring(0, (littleBuf.length()-2));
+		String resMidBuf = middleBuf.substring(0, (middleBuf.length()-2));
+		String resHigBuf = highBuf.substring(0, (highBuf.length()-2));
+		String lastString = "[" + resLitBuf + "}]}," + resMidBuf + "}]}," + resHigBuf + "}]}]";
+//		lastBuf.append(littleBuf).append("]},").append(middleBuf).append("]},").append(highBuf);
+//		System.out.println(lastString);
 		
-//		String classDir=absolutePath("/class");
-//		
+		String classDir = absolutePath("/class");
+		String realPath = ServletActionContext.getServletContext().getRealPath("/js/class/datasrc_class.js");
+		File file = new File(realPath);
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+				new FileOutputStream(file)));
+		bw.write(lastString);
+		bw.flush();
+		bw.close();
 //		List<Subject> subjectList = subjectDao.findAllSubjects();
 //		StringBuffer subBuf = new StringBuffer(); 
 //		subBuf.append("[{");
@@ -262,12 +272,12 @@ public class PagesGenerateAction extends AbstractActionSupport {
 //		bw.write(sb.toString());
 //		bw.flush();
 //		bw.close();
-		
+		ServletActionContext.getResponse().setCharacterEncoding("gbk");
 //		String teacherHtml=peopleDir+"/teacher.html";
 //		String studentHtml=peopleDir+"/student.html";
 //		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/people/teacher.jsp", new File(teacherHtml));
 //		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/people/student.jsp", new File(studentHtml));
-		setSucMsg("生成成功,<a href='/zhaoyang/people.html' target='_blank'>预览一下</a>");
+		setSucMsg("生成成功,<a href='/zhaoyang/class.html' target='_blank'>预览一下</a>");
 		return SUCCESS;
 	}
 }
