@@ -16,16 +16,17 @@
 	height: 246px;
 	margin: 10px auto;
 }
-#text li {
-	background: no-repeat url("../image/news/icon2.png") 0 7px;
+#text li{
+	background:no-repeat url("../image/news/icon2.png") 0 7px;
 	padding-left: 10px;
 	line-height: 20px;
 }
-#text a {
-	color: #E47827;
+#text a{
+	/*color: #E47827;*/
+	color:#3A8195;
 }
-#text a:hover {
-	text-decoration: underline;
+#text a:hover{
+	color:#FF8200;
 }
 #about_Nav ul{
 	background: #F3F3F3;
@@ -39,7 +40,7 @@
 }
 #about_Nav ul li a{
 	display: block;
-	width: 100%;
+
 	height: 100%;
 	line-height: 35px;
 	position: relative;

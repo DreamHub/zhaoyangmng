@@ -1,6 +1,14 @@
+<%@page import="com.zhaoyang.orm.Notice"%>
+<%@page import="com.zhaoyang.util.UtilForGenerateNews"%>
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ include file="../variable.jsp"%>
+<%
+	UtilForGenerateNews util = new UtilForGenerateNews();
+	List<Notice> notices=util.gonggaolan();
+	request.setAttribute("notices",notices);
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -174,18 +182,19 @@
 				</div>
 				<div id="about_right">
 					<div id="about_Nav">
+						<h3><img src="/zhaoyang/image/about/20131006231236.jpg" /></h3>
 						<ul>
 							<li>
-								<a href="/gzhaoyang/about.html">学&nbsp;校&nbsp;简&nbsp;介</a>
+								<a href="/zhaoyang/about.html"><img src="/zhaoyang/image/about/hand.png" width="25"/>学&nbsp;校&nbsp;简&nbsp;介</a>
+							</li>
+							<li class="now">
+								<a href="/zhaoyang/about_detail/course.html"><img src="/zhaoyang/image/about/hand.png" width="25"/>办&nbsp;学&nbsp;历&nbsp;程</a>
 							</li>
 							<li>
-								<a href="/gzhaoyang/about_detail/course.html">办&nbsp;学&nbsp;历&nbsp;程</a>
+								<a href="/zhaoyang/about_detail/condition.html"><img src="/zhaoyang/image/about/hand.png" width="25"/>教&nbsp;学&nbsp;环&nbsp;境</a>
 							</li>
 							<li>
-								<a href="#">教&nbsp;学&nbsp;环&nbsp;境</a>
-							</li>
-							<li>
-								<a href="#">办&nbsp;学&nbsp;地&nbsp;址</a>
+								<a href="/zhaoyang/about_detail/address.html"><img src="/zhaoyang/image/about/hand.png" width="25"/>办&nbsp;学&nbsp;地&nbsp;址</a>
 							</li>
 						</ul>
 					</div>
@@ -193,49 +202,10 @@
 					<div id="notice">
 						<div id="text"  style="height:130px; width:90%; overflow:hidden; float:left;margin-top: 60px;margin-left: 10px;">
 							<div>
-								<li>
-									<a href="#">大但是第三方地方对方身份的速身份的速度付费方式</a>
+								<c:forEach items="${notices}" var="notice">
+								<li><a href="notice_detail/${notice.id}.html">${notice.title}</a>
 								</li>
-								<li>
-									<a href="#">大但是第三身份的速度付费方式</a>
-								</li>
-								<li>
-									<a href="#">大但是第三方地方对方身份的速度付费方式身份的速度付费方式</a>
-								</li>
-								<li>
-									<a href="#">大但是第三方地方对方身份的速度付费方式</a>
-								</li>
-								<li>
-									<a href="#">大但是第三方地方对方身份的速度付费方式</a>
-								</li>
-								<li>
-									<a href="#">大但是第三方地方对方身份的速度付费方式</a>
-								</li>
-								<li>
-									<a href="#">大但是第三方地方对方身份的速度付费方式</a>
-								</li>
-								<li>
-									<a href="#">大但是第三方地方对方身份的速度付费方式</a>
-								</li>
-								<li>
-									<a href="#">大但是第三方地方对方身份的速度付费方式</a>
-								</li>
-								<li>
-									<a href="#">大但是第三方地方对方身份的速度付费方式</a>
-								</li>
-								<li>
-									<a href="#">大但是第三方地方对方身份的速度付费方式</a>
-								</li>
-								<li>
-									<a href="#">大但是第三方地方对方身份的速度付费方式</a>
-								</li>
-								<li>
-									<a href="#">大但是第三方地方对方身份的速度付费方式</a>
-								</li>
-								<li>
-									<a href="#">大但是第三方地方对方身份的速度付费方式</a>
-								</li>
-								<br />
+							</c:forEach>
 							</div>
 						</div>
 					</div>

@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -107,7 +108,7 @@ public class UtilForGenerateNews {
 
 		for (News news : newes) {
 			sb.append("{\"title\":\"" + news.getTitle() + "\",\"datatime\":\""
-					+ news.getCreateTime() + "\",\"id\":" + news.getId()
+					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(news.getCreateTime()) + "\",\"id\":" + news.getId()
 					+ ",\"url\":\"/zhaoyang/news_detail/" + news.getId()
 					+ ".html\"},");
 			File newsdetail=new File(action.absolutePath("/news_detail")+"/"+ news.getId()+".html");
@@ -149,7 +150,7 @@ public class UtilForGenerateNews {
 
 		for (Notice news : newes) {
 			sb.append("{\"title\":\"" + news.getTitle() + "\",\"datatime\":\""
-					+ news.getCreateTime() + "\",\"id\":" + news.getId()
+					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(news.getCreateTime()) + "\",\"id\":" + news.getId()
 					+ ",\"url\":\"/zhaoyang/notice_detail/" + news.getId()
 					+ ".html\"},");
 			File newsdetail=new File(action.absolutePath("/notice_detail")+"/"+ news.getId()+".html");

@@ -56,10 +56,10 @@
 							style="height: 130px; width: 90%; overflow: hidden; float: left; margin-top: 60px; margin-left: 10px;">
 							<div>
 								<s:iterator value="notices">
-									<li><a href="#"><s:property value="title" /> </a></li>
+									<li><a href="notice_detail/<s:property value="id" />.html"><s:property value="title" /> </a></li>
 								</s:iterator>
 								<s:iterator value="notices">
-									<li><a href="#"><s:property value="title" /> </a></li>
+									<li><a href="notice_detail/<s:property value="id" />.html"><s:property value="title" /> </a></li>
 								</s:iterator>
 							</div>
 						</div>

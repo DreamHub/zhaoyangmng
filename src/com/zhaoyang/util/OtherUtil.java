@@ -37,9 +37,15 @@ public class OtherUtil {
 	 */
 	public static void copyResourceFromUrl(String url, File toFile) throws Exception {
 		HttpURLConnection conn2 = (HttpURLConnection)new URL(url).openConnection();
+		//JSESSIONID=CD8F7F46F76862E2A9DE69900CBD3DC4
+		String id=ServletActionContext.getRequest().getSession().getId();
+		if(id!=null){
+			conn2.setRequestProperty("Cookie", "JSESSIONID="+id);
+		}
 		if (conn2.getResponseCode() == 200) {
 			InputStream is = conn2.getInputStream();
 			String str = new String(OtherUtil.read(is), "UTF-8");
+			//System.out.println(str);
 			PrintWriter pw = new PrintWriter(toFile, "UTF-8");
 			pw.print(str);
 			pw.close();
@@ -47,6 +53,10 @@ public class OtherUtil {
 	}
 	public static void sendHttpRequestWithNoReturn(String url) throws Exception {
 		HttpURLConnection conn2 = (HttpURLConnection)new URL(url).openConnection();
+		String id=ServletActionContext.getRequest().getSession().getId();
+		if(id!=null){
+			conn2.setRequestProperty("Cookie", "JSESSIONID="+id);
+		}
 		if (conn2.getResponseCode() == 200) {
 			System.out.println("send["+url+"]Yes.");
 		}

@@ -150,7 +150,12 @@
 					$('body').append(div);
 					$.getJSON("/zhaoyang/ajax/GenerateWebsiteAction?temp="+(new Date()).valueOf(),function(data){
 						//alert(data.msg);
-						div.html("网站生成成功<a href='http://localhost:8080/zhaoyang/index.html' target='_blank'>立即访问</a>");
+						if(data.msg=="1"){
+							div.html("网站生成成功<a href='http://localhost:8080/zhaoyang/index.html' target='_blank'>立即访问</a>");
+						}else{
+							div.html("失败");
+						}
+						
 					});
 					
 					$.Zebra_Dialog('<strong>Some dummy content:</strong><br><br>',{

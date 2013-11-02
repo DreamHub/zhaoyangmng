@@ -29,6 +29,7 @@
 		<property name="downloadDao" ref="downloadDao"></property>
 		<property name="ruleDao" ref="ruleDao"></property>
 		<property name="sysConfigParameter" ref="sysConfigParameter"></property>
+		<property name="downloadNoticeDao" ref="downloadNoticeDao"></property>
 	</bean>
 	<bean id="noticeMngAction" class="com.zhaoyang.action.NoticeMngAction" scope="prototype">
 		<property name="noticeDao" ref="noticeDao"></property>

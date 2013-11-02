@@ -74,7 +74,7 @@
 							<div>
 								<s:iterator value="#request.notices">
 									<li>
-									<a href="#"><s:property value="title"/> </a>
+									<a href="<s:property value="id" />.html"><s:property value="title"/> </a>
 								</li>
 								</s:iterator>
 							</div>

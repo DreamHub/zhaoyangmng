@@ -1,7 +1,10 @@
 package com.zhaoyang.orm;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Download implements java.io.Serializable {
+import net.sf.json.JSONString;
+
+public class Download implements java.io.Serializable ,JSONString{
 	
 	private Long id;
 	private String href;
@@ -37,5 +40,11 @@ public class Download implements java.io.Serializable {
 	}
 	public void setSrcType(Integer srcType) {
 		this.srcType = srcType;
+	}
+	@Override
+	public String toJSONString() {
+		// TODO Auto-generated method stub
+		String datetime=new SimpleDateFormat("yyyy-MM-dd").format(uplTime);
+		return "{\"name\":\""+srcName+"\",\"href\":\""+href+"\",\"datetime\":\""+datetime+"\"}";
 	}
 }

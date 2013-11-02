@@ -9,9 +9,13 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import net.sf.json.JsonConfig;
+import net.sf.json.processors.JsonValueProcessor;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -50,7 +54,7 @@ public class UtilForGenerateDownload {
 		for (Map.Entry<Integer, String> entry: downtypes.entrySet()) {
 			List<Download> tmpdownloads=new ArrayList<Download>();
 			for (Download download : downloads) {
-				if(download.getSrcType()==entry.getKey()){
+				if(download.getSrcType().equals(entry.getKey())){
 					tmpdownloads.add(download);
 				}
 			}
@@ -62,6 +66,7 @@ public class UtilForGenerateDownload {
 			srcDownload.setList(tmpdownloads);
 			srcDownloads.add(srcDownload);
 		} 
+	
 		net.sf.json.JSONArray jsonArray=net.sf.json.JSONArray.fromObject(srcDownloads);
 		String AAA=jsonArray.toString();
 		File file2 = new File(action.absolutePath("/js/download/srdownload.js"));

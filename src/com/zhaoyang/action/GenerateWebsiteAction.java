@@ -44,8 +44,10 @@ public class GenerateWebsiteAction extends AbstractActionSupport {
 		//生成foot.html请求foot.jsp
 		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/foot.jsp", new File(absolutePath("/foot.html")));
 		
+		
 		//生成新闻
 		(new UtilForGenerateNews()).generateAllNews(this);
+		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/news/WatchNewsHTMLAction", new File(absolutePath("/news.html")));
 		
 		//学校简介[简介 地址 历程 ]
 		
@@ -60,6 +62,7 @@ public class GenerateWebsiteAction extends AbstractActionSupport {
 		
 		//公告
 		(new UtilForGenerateNews()).generateAllNotices(this);
+		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/ntc/WatchNoticeHTMLAction", new File(absolutePath("/notice.html")));
 		//师生风采
 		OtherUtil.sendHttpRequestWithNoReturn("http://localhost:8080/zhaoyang/peo/GeneratePeopleHTMLAction");
 		//招聘
