@@ -19,6 +19,7 @@ import com.zhaoyang.dao.SubjectDao;
 import com.zhaoyang.orm.News;
 import com.zhaoyang.orm.Subject;
 import com.zhaoyang.util.OtherUtil;
+import com.zhaoyang.util.UtilForGenerateNews;
 
 public class PagesGenerateAction extends AbstractActionSupport {
 	private NewsDao newsDao;
@@ -49,74 +50,16 @@ public class PagesGenerateAction extends AbstractActionSupport {
 	 */
 	public String generateNewsHTML() throws Exception {
 		// 所有新闻按时间降序排列
-		List<News> newes = newsDao.findAll();
-		StringBuilder sb = new StringBuilder();
-		Long newsCount=newsDao.newsCount();
-		Long pageSize=10l;
-		int maxSize=0;;
-		if(newsCount%pageSize==0){
-			maxSize=(new Long(newsCount/pageSize)).intValue();
-		}else{
-			maxSize=(new Long(newsCount/pageSize)).intValue()+1;
-		}
-		sb.append("{\"code\":1,\"recordCount\":"+newsCount+",\"pageCount\":"+maxSize+",\"data\":[");
-
-		String news_detail = ServletActionContext.getServletContext()
-				.getRealPath("/news_detail");
-		String realPath = ServletActionContext.getServletContext().getRealPath(
-				"/js/news/datasrc_news.js");
-
-		for (News news : newes) {
-
-			sb.append("{\"title\":\"" + news.getTitle() + "\",\"datatime\":\""
-					+ news.getCreateTime() + "\",\"id\":" + news.getId()
-					+ ",\"url\":\"/zhaoyang/news_detail/" + news.getId()
-					+ ".html\"},");
-
-			String path = "http://localhost:8080/zhaoyang/news_detail/112.jsp?id="
-					+ news.getId();
-			HttpURLConnection conn = (HttpURLConnection) new URL(path)
-					.openConnection();
-			conn.setRequestMethod("GET");
-			if (conn.getResponseCode() == 200) {
-				InputStream is = conn.getInputStream();
-				String str = new String(OtherUtil.read(is), "UTF-8");
-				File detailHtml = new File(news_detail + "/" + news.getId()
-						+ ".html");
-				PrintWriter pw = new PrintWriter(detailHtml, "UTF-8");
-				pw.print(str);
-				pw.close();
-			}
-		}
-		sb.deleteCharAt(sb.length() - 1);
-		sb.append("]}");
-		// 更改 /js/news/datasrc_news.js
-
-		File file = new File(realPath);
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
-				new FileOutputStream(file)));
-		bw.write(sb.toString());
-		bw.flush();
-		bw.close();
-		// news.js的生成
-		HttpURLConnection conn1 = (HttpURLConnection) new URL(
-				"http://localhost:8080/zhaoyang/js/news/news.jsp")
-				.openConnection();
-		if (conn1.getResponseCode() == 200) {
-			InputStream is = conn1.getInputStream();
-			String str = new String(OtherUtil.read(is), "UTF-8");
-			String newsjs = ServletActionContext.getServletContext()
-					.getRealPath("/js/news/news.js");
-			File newsjsfile = new File(newsjs);
-			PrintWriter pw = new PrintWriter(newsjsfile, "UTF-8");
-			pw.print(str);
-			pw.close();
-		}
-		// news_detail.js的生成
-		String newsjs = absolutePath("/js/news/news_detail.js");
-		File newsjsfile = new File(newsjs);
-		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/js/news/news_detail.jsp", newsjsfile);
+		UtilForGenerateNews utilForGenerateNews= new UtilForGenerateNews();
+		utilForGenerateNews.generateAllNews(this);
 		setSucMsg("新闻页面生成成功,<a href=\"WatchNewsHTMLAction\" target=\"_blank\">预览一下</a>");
+		return SUCCESS;
+	}
+	public String generateNoticeHTML() throws Exception {
+		// 所有新闻按时间降序排列
+		UtilForGenerateNews utilForGenerateNews= new UtilForGenerateNews();
+		utilForGenerateNews.generateAllNotices(this);
+		setSucMsg("公告生成成功,<a href=\"WatchNoticeHTMLAction\" target=\"_blank\">预览一下</a>");
 		return SUCCESS;
 	}
 
@@ -125,11 +68,9 @@ public class PagesGenerateAction extends AbstractActionSupport {
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String generateNewsDetailHTML() throws Exception {
 
 		return SUCCESS;
