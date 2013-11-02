@@ -18,6 +18,14 @@ import com.zhaoyang.orm.Rule;
 
 public class DownloadDao extends HibernateDaoSupport {
 	private static Logger logger = Logger.getLogger(DownloadDao.class);
+	
+	public List<Download> findAll() {
+		List<Download>  newses = this.getHibernateTemplate().find("from Download c order by c.uplTime desc");
+		if (newses != null && newses.size() > 0) {
+			return newses;
+		}
+		return null;
+	}
 
 	public List<Download> findDownloads(final Integer pageNum,final String pageSize) {
 		// TODO Auto-generated method stub

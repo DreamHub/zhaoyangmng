@@ -45,5 +45,10 @@ public class OtherUtil {
 			pw.close();
 		}
 	}
-
+	public static void sendHttpRequestWithNoReturn(String url) throws Exception {
+		HttpURLConnection conn2 = (HttpURLConnection)new URL(url).openConnection();
+		if (conn2.getResponseCode() == 200) {
+			System.out.println("send["+url+"]Yes.");
+		}
+	}
 }

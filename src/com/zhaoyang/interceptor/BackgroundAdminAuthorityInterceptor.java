@@ -1,4 +1,5 @@
 package com.zhaoyang.interceptor;
+
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,16 +20,22 @@ public class BackgroundAdminAuthorityInterceptor implements Interceptor {
 		// TODO Auto-generated method stub
 
 	}
+
 	public String intercept(ActionInvocation actioninvocation) throws Exception {
 		String result = null;
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		String userInfo=(String)session.getAttribute("userInfo");
-		if (userInfo == null||!"admin".equals(userInfo)){
-			return "error";
+		String userInfo = (String) session.getAttribute("userInfo");
+		if (userInfo == null || !"admin".equals(userInfo)) {
+			return "logout";
 		} else {
-			result = actioninvocation.invoke();
-			return result;
+			try {
+				result = actioninvocation.invoke();
+				return result;
+			} catch (Exception e) {
+				//System.out.println(e.);
+				e.printStackTrace();
+				return "error";
+			}
 		}
-		
 	}
 }

@@ -5,10 +5,14 @@ import java.io.File;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+import com.zhaoyang.dao.DownloadDao;
+import com.zhaoyang.dao.DownloadNoticeDao;
+import com.zhaoyang.dao.IndexImgLoopDao;
 import com.zhaoyang.dao.NewsDao;
 import com.zhaoyang.dao.NoticeDao;
 import com.zhaoyang.dao.RuleDao;
 import com.zhaoyang.dao.StudentDao;
+import com.zhaoyang.dao.TailLinkDao;
 import com.zhaoyang.dao.TeacherDao;
 
 public class DaoGenerate {
@@ -17,7 +21,27 @@ public class DaoGenerate {
 	private static NoticeDao noticeDao;
 	private static StudentDao studentDao;
 	private static TeacherDao teacherDao;
+	private static IndexImgLoopDao indexImgLoopDao;
+	private static TailLinkDao tailLinkDao;
+	private static DownloadNoticeDao downloadNoticeDao;
+	private static DownloadDao downloadDao;
 	
+	public static DownloadDao getDownloadDao() {
+		return downloadDao;
+	}
+
+	public static DownloadNoticeDao getDownloadNoticeDao() {
+		return downloadNoticeDao;
+	}
+
+	public static TailLinkDao getTailLinkDao() {
+		return tailLinkDao;
+	}
+
+	public static IndexImgLoopDao getIndexImgLoopDao() {
+		return indexImgLoopDao;
+	}
+
 	public static StudentDao getStudentDao() {
 		return studentDao;
 	}
@@ -43,6 +67,10 @@ public class DaoGenerate {
 		noticeDao = (NoticeDao) ac.getBean("noticeDao");
 		studentDao = (StudentDao) ac.getBean("studentDao");
 		teacherDao = (TeacherDao) ac.getBean("teacherDao");
+		indexImgLoopDao= (IndexImgLoopDao) ac.getBean("indexImgLoopDao");
+		tailLinkDao=(TailLinkDao) ac.getBean("tailLinkDao");
+		downloadNoticeDao=(DownloadNoticeDao) ac.getBean("downloadNoticeDao");
+		downloadDao=(DownloadDao) ac.getBean("downloadDao");
 	}
 	
 	public static NewsDao getNewsDao() {
