@@ -69,7 +69,7 @@ clear:both;
 
 		<div class="header_login">
 			<div class="logo">
-				<a href="#"><img width="50" src="${bgpath}images/3488345_104156604480_1.png" alt="" title=""
+				<a href="#"><img src="${bgpath}images/3488345_104156604480_1.png" alt="" title=""
 					border="0" /> </a>
 			</div>
 
