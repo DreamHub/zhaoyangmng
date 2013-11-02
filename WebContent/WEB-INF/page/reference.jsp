@@ -115,5 +115,56 @@
 </script>
 <link rel="stylesheet" type="text/css" media="all" href="${bgpath}niceforms-default.css" />
 <script type="text/javascript" src="${bgpath}niceforms.js"></script>
-
-
+<style type="text/css">
+.NFSelectRight,.NFSelectOptions li{
+	width: 115px;
+}
+.zywarn{
+	display: block;
+	width: 20px;
+	height:20px;
+	float:left;
+	background:transparent url('${bgpath}css/9_105548_1.jpg') -284px -126px no-repeat;
+}
+.tooltips{
+	text-decoration: none;
+	line-height: 20px;
+}
+</style>
+<script type="text/javascript" src="${bgpath}js/zebra_tooltips.js"></script>
+<link rel="stylesheet" href="${bgpath}css/zebra_tooltips.css" type="text/css"/>
+<script type="text/javascript" src="${bgpath}js/zebra_dialog.js"></script>
+<link rel="stylesheet" href="${bgpath}css/zebra_dialog.css" type="text/css"/>
+<script type="text/javascript">
+	$(function(){
+		new $.Zebra_Tooltips($('.tooltips'), {
+	        'background_color': '#C40000',
+	        'color': '#FFF',
+	        'position': 'right'
+	    });
+		$('.menuitem_green').click(function(){
+			$.getJSON("/zhaoyang/ajax/WebsiteDirPathAction",function(data){
+				if(confirm("你确定生成网站到"+data.websiteDirPath+"目录下吗?")){
+					var str='<div><img src="/zhaoyang/background/images/loading.gif"/><br/>网站正在生成，请耐心等待.<div>';
+					var div=$(str);
+					$('body').append(div);
+					$.getJSON("/zhaoyang/ajax/GenerateWebsiteAction?temp="+(new Date()).valueOf(),function(data){
+						//alert(data.msg);
+						div.html("网站生成成功<a href='http://localhost:8080/zhaoyang/index.html' target='_blank'>立即访问</a>");
+					});
+					
+					$.Zebra_Dialog('<strong>Some dummy content:</strong><br><br>',{
+						source : {
+							'inline' : div
+						},
+						width : 400,
+						title : '新闻内容编辑框',
+						type:false
+					});
+				}else{
+					alert('qwe');
+				}
+			});
+		});
+	});
+</script>

@@ -207,7 +207,7 @@
 										<label for="email">链接:</label>
 									</dt>
 									<dd>
-										<input type="text" name="indexImgLoop.href" id="newhref" size="54"
+										<input type="text" name="indexImgLoop.href" id="newhref" size="48"
 											value="" />
 									</dd>
 								</dl>
@@ -251,7 +251,7 @@
 										<label for="email">链接:</label>
 									</dt>
 									<dd>
-										<input type="text" name="indexImgLoop.href" id="newhref" size="54"
+										<input type="text" name="indexImgLoop.href" id="newhref" size="48"
 											value="" />
 									</dd>
 								</dl>

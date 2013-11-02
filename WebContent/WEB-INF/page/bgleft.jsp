@@ -52,8 +52,8 @@
 				<li><a href="${path}dld/DownloadMngAction?pageNum=1">浏览</a></li>
 			</ul>
 		</div>
-		<a class="menuitem" href="">快速建站</a> <a class="menuitem"
-			href="">网站导航</a> <a class="menuitem_green" href="">快速建站</a> <a class="menuitem_red" href="">系统设置</a>
+		<a class="menuitem"
+			href="">网站导航</a> <a class="menuitem_green" href="#">快速建站</a> <a class="menuitem_red" href="${path}other/PageSizeMngAction">系统设置</a>
 
 	</div>
 

@@ -97,50 +97,25 @@
 			<div class="center_content">
 				<jsp:include page="bgleft.jsp" flush="true" />
 				<div class="right_content">
-					<h2>首页新闻设置</h2>
-					<h3>首页新闻：</h3>
+					<h2>首页下载展示</h2>
+					<h3>首页下载：</h3>
 					
 					<div class="form">
-						<form action="${path}news/IndexNewsSetAction" method="post" class="niceform" enctype="multipart/form-data">
+						<form action="${path}dld/IndexDownloadEditAction" method="post" class="niceform">
 							<fieldset>
 								<dl>
 									<dt>
-										<label for="email">当前缩略图:</label>
-									</dt>
-									<dd style="overflow: hidden;">
-										<img src="${path}${imgPath}" alt="" />
-									</dd>
-								</dl>
-								<dl>
-									<dt>
-										<label for="upload">上传新图片:</label>
+										<label for="comments">下载列表:</label>
 									</dt>
 									<dd>
-										<input type="file" name="newsImg" id="upload" />
+										<input type="text" name="indexDownloadList" id="" size="48" value="${indexDownloadList}"/>
 									</dd>
-								</dl>
-								<dl>
-									<dt>
-										<label for="comments">说明:</label>
-									</dt>
-									<dd>
-										<textarea name="newsDesc" id="comments" rows="5" cols="25">${newsDesc}</textarea>
-									</dd>
-								</dl>
-								<dl>
-									<dt>
-										<label for="comments">新闻列表:</label>
-									</dt>
-									<dd>
-										<input type="text" name="newsNoList" id="" size="48" value="${newsNoList}"/>
-									</dd>
-									
 								</dl>
 								<dl>
 									<dt>
 									</dt>
 									<dd>
-										<a href="#" class="tooltips" title="请填写你要依次展示的新闻序号，以逗号隔开。上传图片时图片不宜过大，以免浪费网络资源。"><span class="zywarn"></span>温馨提示</a>
+										<a href="#" class="tooltips" title="请填写你要依次展示的下载资源序号，以逗号隔开。"><span class="zywarn"></span>温馨提示</a>
 									</dd>
 								</dl>
 								<dl class="submit">
@@ -161,11 +136,6 @@
 							${sucMsg}
 						</div>
 					</s:if>
-					<!-- 预览部分 -->
-					<h3>效果展示：</h3>
-					<div style="text-align: center;padding: 10px;border: 1px solid #CCEAC4;background: #EDFCE9;">
-						<img src="${bgpath}images/20130921143721.jpg"/>	
-					</div>
 					
 
 				</div>

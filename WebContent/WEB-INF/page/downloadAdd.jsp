@@ -75,6 +75,7 @@
 		alert("上传成功");
 	}
 </script>
+
 </head>
 <body>
 	<div id="main_container">
@@ -115,7 +116,7 @@
 										<label for="password">资源标题:</label>
 									</dt>
 									<dd>
-										<input type="text" name="srcName" id="" size="54" />
+										<input type="text" name="srcName" id="" size="48" />
 									</dd>
 								</dl>
 								<dl class="submit">

@@ -78,13 +78,16 @@
 										</label>
 									</dt>
 									<dd>
-										<input type="text" name="sevenReasons" id="" size="54" value="${reason}"/>
+										<input type="text" name="sevenReasons" id="" size="48" value="${reason}"/>
 									</dd>
-									
 								</dl>
 							</c:forEach>
-								<dl class="submit">
-									<font color="green"><span style="color:red;">*</span>&nbsp;&nbsp;请您不要在理由内容里包括分号。</font>
+								<dl>
+									<dt>
+									</dt>
+									<dd style="line-height: 20px;">
+										<a href="#" class="tooltips" title="请您不要在理由内容里包括分号。"><span class="zywarn"></span>温馨提示</a>
+									</dd>
 								</dl>
 								<dl class="submit">
 									<input type="submit" name="submit" id="submit" value="提交修改后内容" />

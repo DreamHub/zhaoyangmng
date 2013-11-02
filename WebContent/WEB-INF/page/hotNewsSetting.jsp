@@ -12,6 +12,17 @@
 <script type="text/javascript" src="${bgpath}xheditor_lang/zh-cn.js"></script>
 <script type="text/javascript" src="${bgpath}js/zebra_dialog.js"></script>
 <link rel="stylesheet" href="${bgpath}css/zebra_dialog.css" type="text/css"/>
+<script type="text/javascript" src="${bgpath}js/zebra_tooltips.js"></script>
+<link rel="stylesheet" href="${bgpath}css/zebra_tooltips.css" type="text/css"/>
+<script type="text/javascript">
+	$(function(){
+		new $.Zebra_Tooltips($('.tooltips'), {
+	        'background_color': '#C40000',
+	        'color': '#FFF',
+	        'position': 'right'
+	    });
+	});
+</script>
 <script type="text/javascript">
 	var div='<div  id="dialog-form2" style="display: none" title="内容修改">'+
 			'<textarea id="elm1" name="elm1" rows="5" cols="40" style="width:100%; height:200px;"></textarea>'+
@@ -113,10 +124,14 @@
 										<label for="comments">新闻列表:</label>
 									</dt>
 									<dd>
-										<input type="text" name="newsNoList" id="" size="54" value="${newsNoList}"/>
+										<input type="text" name="newsNoList" id="" size="48" value="${newsNoList}"/>
 									</dd>
+								</dl>
+								<dl>
+									<dt>
+									</dt>
 									<dd>
-										<font color="green"><span style="color:red;">*</span>请填写你要依次展示的新闻序号，以逗号隔开。上传图片时图片不宜过大，以免浪费网络资源。</font>
+										<a href="#" class="tooltips" title="请填写你要依次展示的新闻序号，以逗号隔开。上传图片时图片不宜过大，以免浪费网络资源。"><span class="zywarn"></span>温馨提示</a>
 									</dd>
 								</dl>
 								<dl class="submit">

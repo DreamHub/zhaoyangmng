@@ -99,8 +99,12 @@
 									<dd>
 										<input type="text" name="noticePanelList" id="" size="54" value="${noticePanelList}"/>
 									</dd>
+								</dl>
+								<dl>
+									<dt>
+									</dt>
 									<dd>
-										<font color="green"><span style="color:red;">*</span>请填写你要依次展示的公告序号，以逗号隔开。</font>
+										<a href="#" class="tooltips" title="请填写你要依次展示的公告序号，以逗号隔开。"><span class="zywarn"></span>温馨提示</a>
 									</dd>
 								</dl>
 								<dl class="submit">

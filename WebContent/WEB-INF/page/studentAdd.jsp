@@ -12,6 +12,7 @@
 <script type="text/javascript" src="${bgpath}xheditor_lang/zh-cn.js"></script>
 <script type="text/javascript" src="${bgpath}js/zebra_dialog.js"></script>
 <link rel="stylesheet" href="${bgpath}css/zebra_dialog.css" type="text/css"/>
+
 <script type="text/javascript">
 	var div='<div  id="dialog-form2" style="display: none" title="内容修改">'+
 			'<textarea id="elm1" name="elm1" rows="5" cols="40" style="width:100%; height:200px;"></textarea>'+

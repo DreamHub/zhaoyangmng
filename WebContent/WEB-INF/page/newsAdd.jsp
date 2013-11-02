@@ -95,7 +95,7 @@
 										<label for="email">标题:</label>
 									</dt>
 									<dd>
-										<input type="text" name="title" id="" size="54" />
+										<input type="text" name="title" id="" size="48" />
 									</dd>
 								</dl>
 								<dl>
@@ -103,7 +103,7 @@
 										<label for="password">简介:</label>
 									</dt>
 									<dd>
-										<input type="text" name="newsDesc" id="" size="54" />
+										<input type="text" name="newsDesc" id="" size="48" />
 									</dd>
 								</dl>
 								<dl>
@@ -111,17 +111,7 @@
 										<label for="password">关键字:</label>
 									</dt>
 									<dd>
-										<input type="text" name="newsKeyword" id="" size="54" />
-									</dd>
-								</dl>
-								<dl>
-									<dt>
-										<label for="interests">其他:</label>
-									</dt>
-									<dd>
-										<input type="checkbox" name="interests" id="" value="" /><label
-											class="check_label">首页展示</label> <input type="checkbox"
-											name="interests" id="" value="" /><label class="check_label">热门话题展示</label>
+										<input type="text" name="newsKeyword" id="" size="48" />
 									</dd>
 								</dl>
 								<dl>

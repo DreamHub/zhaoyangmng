@@ -49,17 +49,7 @@
 </head>
 <body>
 	<div id="main_container">
-		<div class="header">
-			<div class="logo">
-				<a href="#"><img src="${bgpath}images/logo.gif" alt="" title=""
-					border="0" /> </a>
-			</div>
-			<div class="right_header">
-				欢迎您, ${sessionScope.userInfo}, <a href="#">朝之阳官网</a> | <a href="#"
-					class="messages">(3) 消息</a> | <a href="#" class="logout">退出</a>
-			</div>
-			<div class="jclock"></div>
-		</div>
+		<jsp:include page="bgtop.jsp" flush="true" />
 		<div class="main_content">
 			<jsp:include page="bghead.jsp" flush="true" />
 			<div class="center_content">
@@ -78,10 +68,17 @@
 										<input type="hidden" name="ids" value="<s:property value="key"/>"/>
 									</dt>
 									<dd>
-										<input type="text" name="names" id="" size="54" value="<s:property value="value"/>"/>
+										<input type="text" name="names" id="" size="15" value="<s:property value="value"/>"/>
 									</dd>
 								</dl>
 							</s:iterator>
+								<dl>
+									<dt>
+									</dt>
+									<dd>
+										<a href="#" class="tooltips" title="点击【提交修改内容】按钮会保存您当前的修改。"><span class="zywarn"></span>温馨提示</a>
+									</dd>
+								</dl>
 								<dl>
 									<dt>
 										<label for="password"></label>
@@ -131,16 +128,7 @@
 			<div class="clear"></div>
 		</div>
 		<!--end of main content-->
-		<div class="footer">
-			<div class="left_footer">
-				朝之阳后台管理 | Powered by <a href="http://indeziner.com">诚彬工作室</a>
-			</div>
-			<div class="right_footer">
-				<a href="http://indeziner.com"><img
-					src="${bgpath}images/indeziner_logo.gif" alt="" title="" border="0" />
-				</a>
-			</div>
-		</div>
+		<jsp:include page="bgfoot.jsp" flush="true" />
 	</div>
 </body>
 </html>
