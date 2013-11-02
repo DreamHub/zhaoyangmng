@@ -31,6 +31,9 @@
 	<bean id="indexImgLoopDao" class="com.zhaoyang.dao.IndexImgLoopDao">
 		<property name="ruleDao" ref="ruleDao"></property>
 	</bean>
+	<bean id="downloadNoticeDao" class="com.zhaoyang.dao.DownloadNoticeDao">
+		<property name="ruleDao" ref="ruleDao"></property>
+	</bean>
 	<!-- coolBean start -->
 	<bean id="subjectDao" class="com.zhaoyang.dao.SubjectDao">
 		<property name="sessionFactory">
@@ -45,4 +48,7 @@
 	</bean>
 	
 	<!-- coolBean end -->
+	<bean id="tailLinkDao" class="com.zhaoyang.dao.TailLinkDao">
+		<property name="ruleDao" ref="ruleDao"></property>
+	</bean>
 </beans>
