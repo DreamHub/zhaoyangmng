@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
+import com.zhaoyang.dao.RuleDao;
 import com.zhaoyang.dao.StudentDao;
 import com.zhaoyang.dao.TeacherDao;
 import com.zhaoyang.data.Student;
@@ -18,7 +19,17 @@ public class PeoplesMngAction extends AbstractActionSupport {
 	}
 	private TeacherDao teacherDao;
 	private StudentDao studentDao;
+	private RuleDao ruleDao;
 	
+	
+	public RuleDao getRuleDao() {
+		return ruleDao;
+	}
+
+	public void setRuleDao(RuleDao ruleDao) {
+		this.ruleDao = ruleDao;
+	}
+
 	public StudentDao getStudentDao() {
 		return studentDao;
 	}
@@ -289,4 +300,42 @@ public class PeoplesMngAction extends AbstractActionSupport {
 		setSucMsg("修改成功,<a href='StudentMngAction'>去看看</a>");
 		return SUCCESS;
 	}
+	private String indexTeacherList;
+	private String indexStudentList;
+	
+	public String getIndexTeacherList() {
+		return indexTeacherList;
+	}
+
+	public void setIndexTeacherList(String indexTeacherList) {
+		this.indexTeacherList = indexTeacherList;
+	}
+
+	public String getIndexStudentList() {
+		return indexStudentList;
+	}
+
+	public void setIndexStudentList(String indexStudentList) {
+		this.indexStudentList = indexStudentList;
+	}
+	public String indexTeacherStudentListMng() throws Exception {
+		indexTeacherList=ruleDao.findRuleByRuleId("IndexTeacherList").getRuleDef();
+		indexStudentList=ruleDao.findRuleByRuleId("IndexStudentList").getRuleDef();
+		return SUCCESS;
+	}
+	public String indexTeacherStudentListEdit() throws Exception {
+		if(indexTeacherList==null||"".equals(indexTeacherList)){
+			setErrMsg("教师列表不能为空");
+			return SUCCESS;
+		}
+		if(indexStudentList==null||"".equals(indexStudentList)){
+			setErrMsg("学生列表不能为空");
+			return SUCCESS;
+		}
+		ruleDao.update("IndexTeacherList",indexTeacherList);
+		ruleDao.update("indexStudentList",indexStudentList);
+		setSucMsg("修改成功");
+		return SUCCESS;
+	}
+	
 }

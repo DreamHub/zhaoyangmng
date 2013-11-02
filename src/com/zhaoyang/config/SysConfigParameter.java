@@ -8,5 +8,6 @@ public class SysConfigParameter {
 	public void setPageSize(String pageSize) {
 		this.pageSize = pageSize;
 	}
+	
 
 }

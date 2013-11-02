@@ -13,6 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.zhaoyang.dao.DownloadDao;
+import com.zhaoyang.dao.DownloadNoticeDao;
 import com.zhaoyang.dao.RuleDao;
 import com.zhaoyang.data.DownloadNotice;
 import com.zhaoyang.orm.Download;
@@ -362,19 +363,19 @@ public class DownloadMngAction extends AbstractActionSupport {
 	public void setDownloadNotices(List<DownloadNotice> downloadNotices) {
 		this.downloadNotices = downloadNotices;
 	}
+	private DownloadNoticeDao downloadNoticeDao;
+	
+
+	public DownloadNoticeDao getDownloadNoticeDao() {
+		return downloadNoticeDao;
+	}
+
+	public void setDownloadNoticeDao(DownloadNoticeDao downloadNoticeDao) {
+		this.downloadNoticeDao = downloadNoticeDao;
+	}
 
 	public String downloadNoticeMngPre()throws Exception {
-		Rule rule =ruleDao.findRuleByRuleId("DownloadNoticeList");
-		JSONArray array=new JSONArray(rule.getRuleDef());
-		downloadNotices=new ArrayList<DownloadNotice>();
-		for(int i=0;i<array.length();i++){
-			JSONObject jobj=(JSONObject)array.get(i);
-			DownloadNotice downloadNotice=new DownloadNotice();
-			downloadNotice.setId(jobj.getLong("id"));
-			downloadNotice.setContent(jobj.getString("content"));
-			downloadNotice.setHref(jobj.getString("href"));
-			downloadNotices.add(downloadNotice);
-		}
+		downloadNotices=downloadNoticeDao.findAll();
 		return SUCCESS;
 	}
 	private String newhref;
@@ -468,4 +469,28 @@ public class DownloadMngAction extends AbstractActionSupport {
 		}
 		return SUCCESS;
 	}
+	private String indexDownloadList;
+	
+	public String getIndexDownloadList() {
+		return indexDownloadList;
+	}
+
+	public void setIndexDownloadList(String indexDownloadList) {
+		this.indexDownloadList = indexDownloadList;
+	}
+
+	public String indexDownloadMng() throws Exception {
+		indexDownloadList=ruleDao.findRuleByRuleId("IndexDownloadList").getRuleDef();
+		return SUCCESS;
+	}
+	public String indexDownloadEdit() throws Exception {
+		if(indexDownloadList==null||"".equals(indexDownloadList)){
+			setErrMsg("列表不能为空");
+			return SUCCESS;
+		}
+		ruleDao.update("IndexDownloadList", indexDownloadList);
+		setSucMsg("修改成功");
+		return SUCCESS;
+	}
+	
 }

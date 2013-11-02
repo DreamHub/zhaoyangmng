@@ -9,6 +9,7 @@ import com.zhaoyang.dao.NoticeDao;
 import com.zhaoyang.dao.RuleDao;
 import com.zhaoyang.orm.News;
 import com.zhaoyang.orm.Notice;
+import com.zhaoyang.util.UtilForGenerateNews;
 
 public class NoticeMngAction extends AbstractActionSupport {
 	private NoticeDao noticeDao;
@@ -178,5 +179,13 @@ public class NoticeMngAction extends AbstractActionSupport {
 		}
 		return SUCCESS;
 	}
+	public String watchNoticeHTML() throws Exception {
+		//newses=new UtilForGenerateNews().hotNewsList();
+		return SUCCESS;
+	}
+	public String noticeMngPre()throws Exception {
+		return SUCCESS;
+	}
+	
 
 }
