@@ -5,6 +5,7 @@
 	<constant name="struts.multipart.maxSize" value="52428800" />
 	<!-- 配置两个拦截例外 -->
 	<constant name="struts.action.excludePattern" value="/[a-zA-Z]*Servlet.servlet" />
+
 	<!-- 拦截器 -->
 	<package name="struts-abstract" extends="struts-default"
 		namespace="/">
@@ -18,17 +19,35 @@
 		</interceptors>
 		<default-interceptor-ref name="myStack" />
 		<global-results>
-			<result name="error">/background/login.jsp</result>
+			<result name="logout">/background/login.jsp</result>
+			<result name="error">/WEB-INF/page/error.jsp</result>
 		</global-results>
 	</package>
-	
+	<!-- ajax请求拦截器 -->
+	<package name="struts-abstract-forajax" extends="json-default"
+		namespace="/">
+		<interceptors>
+			<interceptor name="authorityInterceptor"
+				class="com.zhaoyang.interceptor.BackgroundAdminAuthorityInterceptor" />
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authorityInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myStack" />
+		<global-results>
+			<result name="logout">/background/login.jsp</result>
+			<result name="error">/WEB-INF/page/error.jsp</result>
+		</global-results>
+	</package>
+
 	<!-- 游客权限 -->
 	<package name="zylogin" namespace="/usr" extends="struts-default">
 		<action name="LoginAction" class="loginAction">
 			<result name="success">/WEB-INF/page/index-digital.jsp</result>
 			<result name="error">/background/login.jsp</result>
 		</action>
-		
+
 	</package>
 	<!-- 用户 -->
 	<package name="user2" namespace="/usr2" extends="struts-abstract">
@@ -36,14 +55,16 @@
 			<result name="success">/background/login.jsp</result>
 		</action>
 	</package>
-	
+
 	<!-- 新闻模块 -->
 	<package name="zyNews" namespace="/news" extends="struts-abstract">
-		
-		<action name="WatchNewsHTMLAction" class="newsMngAction" method="watchNewsHTML">
+
+		<action name="WatchNewsHTMLAction" class="newsMngAction"
+			method="watchNewsHTML">
 			<result name="success">/news.jsp</result>
 		</action>
-		<action name="GenerateNewsHTMLAction" class="pagesGenerateAction" method="generateNewsHTML">
+		<action name="GenerateNewsHTMLAction" class="pagesGenerateAction"
+			method="generateNewsHTML">
 			<result name="success">/WEB-INF/page/newsMngPre.jsp</result>
 		</action>
 		<action name="NewsMngPreAction" class="newsMngAction" method="newsMngPre">
@@ -96,7 +117,7 @@
 	</package>
 	<!-- 学校简介 -->
 	<package name="school" namespace="/scl" extends="struts-abstract">
-	
+
 		<action name="AboutMngAction" class="schoolSettingAction"
 			method="aboutMng">
 			<result name="success">/WEB-INF/page/aboutMng.jsp</result>
@@ -156,7 +177,7 @@
 			method="downloadMngPre">
 			<result name="success">/WEB-INF/page/downloadsMngPre.jsp</result>
 		</action>
-		
+
 		<action name="DownloadSrcTypeMngPreAction" class="downloadMngAction"
 			method="downloadSrcTypeMngPre">
 			<result name="success">/WEB-INF/page/downTypeMng.jsp</result>
@@ -177,191 +198,293 @@
 		<action name="DownloadMngAction" class="downloadMngAction">
 			<result name="success">/WEB-INF/page/downloadsMng.jsp</result>
 		</action>
-		<action name="DownloadAddPreAction" class="downloadMngAction" method="downloadAddPre"> 
+		<action name="DownloadAddPreAction" class="downloadMngAction"
+			method="downloadAddPre">
 			<result name="success">/WEB-INF/page/downloadAdd.jsp</result>
 		</action>
-		<action name="DownloadAddAction" class="downloadMngAction" method="downloadAdd"> 
+		<action name="DownloadAddAction" class="downloadMngAction"
+			method="downloadAdd">
 			<result name="success" type="chain">DownloadAddPreAction</result>
 			<result name="error" type="chain">DownloadAddPreAction</result>
 		</action>
-		<action name="DownloadDelAction" class="downloadMngAction" method="downloadDel"> 
+		<action name="DownloadDelAction" class="downloadMngAction"
+			method="downloadDel">
 			<result name="success" type="chain">DownloadMngAction</result>
 		</action>
-		<action name="DownloadEditPreAction" class="downloadMngAction" method="downloadEditPre"> 
+		<action name="DownloadEditPreAction" class="downloadMngAction"
+			method="downloadEditPre">
 			<result name="success">/WEB-INF/page/downloadEdit.jsp</result>
 		</action>
-		<action name="DownloadEditAction" class="downloadMngAction" method="downloadEdit"> 
+		<action name="DownloadEditAction" class="downloadMngAction"
+			method="downloadEdit">
 			<result name="success" type="chain">DownloadEditPreAction</result>
+		</action>
+		<action name="IndexDownloadMngAction" class="downloadMngAction"
+			method="indexDownloadMng">
+			<result name="success">/WEB-INF/page/indexDownloadSetting.jsp</result>
+		</action>
+		<action name="IndexDownloadEditAction" class="downloadMngAction"
+			method="indexDownloadEdit">
+			<result name="success">/WEB-INF/page/indexDownloadSetting.jsp</result>
 		</action>
 	</package>
 	<!-- 公告 -->
 	<package name="notice" namespace="/ntc" extends="struts-abstract">
-		<action name="NoticeAddPreAction" class="noticeMngAction" method="noticeAddPre"> 
+		<action name="NoticeMngPreAction" class="noticeMngAction" method="noticeMngPre">
+			<result name="success">/WEB-INF/page/noticeMngPre.jsp</result>
+		</action>
+		<action name="NoticeAddPreAction" class="noticeMngAction"
+			method="noticeAddPre">
 			<result name="success">/WEB-INF/page/noticeAdd.jsp</result>
 		</action>
-		<action name="NoticeAddAction" class="noticeMngAction" method="noticeAdd"> 
+		<action name="NoticeAddAction" class="noticeMngAction" method="noticeAdd">
 			<result name="success">/WEB-INF/page/noticeAdd.jsp</result>
 		</action>
-		<action name="NoticeMngAction" class="noticeMngAction"> 
+		<action name="NoticeMngAction" class="noticeMngAction">
 			<result name="success">/WEB-INF/page/noticeMng.jsp</result>
 		</action>
-		<action name="NoticeEditPreAction" class="noticeMngAction" method="noticeEditPre"> 
+		<action name="NoticeEditPreAction" class="noticeMngAction"
+			method="noticeEditPre">
 			<result name="success">/WEB-INF/page/noticeEdit.jsp</result>
 		</action>
 		<action name="NoticeDelAction" class="noticeMngAction" method="noticeDel">
 			<result name="success" type="chain">NoticeMngAction</result>
 		</action>
-		<action name="NoticePanelSetPreAction" class="noticeMngAction" method="noticePanelSetPre">
+		<action name="NoticePanelSetPreAction" class="noticeMngAction"
+			method="noticePanelSetPre">
 			<result name="success">/WEB-INF/page/noticePanelSetting.jsp</result>
 		</action>
-		<action name="NoticePanelSetAction" class="noticeMngAction" method="noticePanelSet">
+		<action name="NoticePanelSetAction" class="noticeMngAction"
+			method="noticePanelSet">
 			<result name="success" type="chain">NoticePanelSetPreAction</result>
+		</action>
+		<action name="WatchNoticeHTMLAction" class="noticeMngAction"
+			method="watchNoticeHTML">
+			<result name="success">/notice.jsp</result>
+		</action>
+		
+		<action name="GenerateNoticeHTMLAction" class="pagesGenerateAction"
+			method="generateNoticeHTML">
+			<result name="success">/WEB-INF/page/noticeMngPre.jsp</result>
 		</action>
 	</package>
 	<!-- 招聘 -->
 	<package name="recruitment" namespace="/rcmt" extends="struts-abstract">
-		<action name="WatchRecruitmentHTMLAction" class="recruitmentMngAction" method="watchRecruitmentHTML"> 
+		<action name="WatchRecruitmentHTMLAction" class="recruitmentMngAction"
+			method="watchRecruitmentHTML">
 			<result name="success">/recruitment.jsp</result>
 		</action>
-		<action name="RecruitmentMngPreAction" class="recruitmentMngAction" method="recruitmentMngPre"> 
+		<action name="RecruitmentMngPreAction" class="recruitmentMngAction"
+			method="recruitmentMngPre">
 			<result name="success">/WEB-INF/page/recruitmentMng.jsp</result>
 		</action>
-		<action name="RecruitmentInfoMngAction" class="recruitmentMngAction" method="recruitmentInfoMng"> 
+		<action name="RecruitmentInfoMngAction" class="recruitmentMngAction"
+			method="recruitmentInfoMng">
 			<result name="success">/WEB-INF/page/recruitmentInfoMng.jsp</result>
 		</action>
-		<action name="RecruitmentInfoAddAction" class="recruitmentMngAction" method="recruitmentInfoAdd"> 
+		<action name="RecruitmentInfoAddAction" class="recruitmentMngAction"
+			method="recruitmentInfoAdd">
 			<result name="success">/WEB-INF/page/recruitmentInfoMng.jsp</result>
 		</action>
-		<action name="RecruitmentInfoDelAction" class="recruitmentMngAction" method="recruitmentInfoDel"> 
+		<action name="RecruitmentInfoDelAction" class="recruitmentMngAction"
+			method="recruitmentInfoDel">
 			<result name="success">/WEB-INF/page/recruitmentInfoMng.jsp</result>
 		</action>
-		<action name="RecruitmentInfoEditAction" class="recruitmentMngAction" method="recruitmentInfoEdit"> 
+		<action name="RecruitmentInfoEditAction" class="recruitmentMngAction"
+			method="recruitmentInfoEdit">
 			<result name="success">/WEB-INF/page/recruitmentInfoMng.jsp</result>
 		</action>
-		<action name="HengfuSetPreAction" class="recruitmentMngAction" method="hengfuSetPre"> 
+		<action name="HengfuSetPreAction" class="recruitmentMngAction"
+			method="hengfuSetPre">
 			<result name="success">/WEB-INF/page/hengfuImgSet.jsp</result>
 		</action>
-		<action name="HengfuSetAction" class="recruitmentMngAction" method="hengfuSet"> 
+		<action name="HengfuSetAction" class="recruitmentMngAction"
+			method="hengfuSet">
 			<result name="success" type="chain">HengfuSetPreAction</result>
 		</action>
-		
-		
-		
+
+
+
 	</package>
+
 	<!-- 其他设置 -->
 	<package name="other" namespace="/other" extends="struts-abstract">
-		<action name="HomePagePreAction" class="otherMngAction"> 
+		<action name="HomePagePreAction" class="otherMngAction">
 			<result name="success">/WEB-INF/page/index-digital.jsp</result>
 		</action>
-		<action name="HeadImgMngAction" class="otherMngAction" method="headImgMng"> 
+		<action name="HeadImgMngAction" class="otherMngAction" method="headImgMng">
 			<result name="success">/WEB-INF/page/headBgImgMng.jsp</result>
 		</action>
-		<action name="HeadImgEditAction" class="otherMngAction" method="headImgEdit"> 
+		<action name="HeadImgEditAction" class="otherMngAction" method="headImgEdit">
 			<result name="success" type="chain">HeadImgMngAction</result>
 		</action>
+		<action name="TailLinkMngAction" class="otherMngAction" method="tailLinkMng">
+			<result name="success">/WEB-INF/page/tailLinkMng.jsp</result>
+		</action>
+		<action name="TailLinkAddAction" class="otherMngAction" method="tailLinkAdd">
+			<result name="success" type="chain">TailLinkMngAction</result>
+		</action>
+		<action name="TailLinkDelAction" class="otherMngAction" method="tailLinkDel">
+			<result name="success" type="chain">TailLinkMngAction</result>
+		</action>
+		<action name="TailDescAndStmtMngAction" class="otherMngAction"
+			method="tailDescAndStmtMng">
+			<result name="success">/WEB-INF/page/tailDescAndStmtMng.jsp</result>
+		</action>
+		<action name="TailDescAndStmtEditAction" class="otherMngAction"
+			method="tailDescAndStmtEdit">
+			<result name="success" type="chain">TailDescAndStmtMngAction</result>
+		</action>
+
+		<action name="PageSizeMngAction" class="systemMngAction"
+			method="pageSizeMng">
+			<result name="success">/WEB-INF/page/systemSetting.jsp</result>
+		</action>
+
+		<action name="PageSizeEditAction" class="systemMngAction"
+			method="pageSizeEdit">
+			<result name="success" type="chain">PageSizeMngAction</result>
+		</action>
+
 	</package>
-	<!-- 首页设置-->
+	<!-- 首页设置 -->
 	<package name="index" namespace="/index" extends="struts-abstract">
-		<action name="IndexSetPreAction" class="indexSettingAction"> 
+		<action name="IndexSetPreAction" class="indexSettingAction">
 			<result name="success">/WEB-INF/page/indexMngPre.jsp</result>
 		</action>
-		<action name="IndexImgLoopMngAction" class="indexSettingAction" method="indexImgLoopMng"> 
+		<action name="IndexImgLoopMngAction" class="indexSettingAction"
+			method="indexImgLoopMng">
 			<result name="success">/WEB-INF/page/indexImgLoopMng.jsp</result>
 		</action>
-		<action name="IndexImgLoopAddAction" class="indexSettingAction" method="indexImgLoopAdd"> 
+		<action name="IndexImgLoopAddAction" class="indexSettingAction"
+			method="indexImgLoopAdd">
 			<result name="success" type="chain">IndexImgLoopMngAction</result>
 		</action>
-		<action name="IndexImgLoopEditAction" class="indexSettingAction" method="indexImgLoopEdit"> 
+		<action name="IndexImgLoopEditAction" class="indexSettingAction"
+			method="indexImgLoopEdit">
 			<result name="success" type="chain">IndexImgLoopMngAction</result>
 		</action>
-		<action name="IndexImgLoopDelAction" class="indexSettingAction" method="indexImgLoopDel"> 
+		<action name="IndexImgLoopDelAction" class="indexSettingAction"
+			method="indexImgLoopDel">
 			<result name="success" type="chain">IndexImgLoopMngAction</result>
 		</action>
-		
-		<action name="SevenReasonMngAction" class="indexSettingAction" method="sevenReasonMng"> 
+
+		<action name="SevenReasonMngAction" class="indexSettingAction"
+			method="sevenReasonMng">
 			<result name="success">/WEB-INF/page/sevenReasonMng.jsp</result>
 		</action>
-		<action name="SevenReasonEditAction" class="indexSettingAction" method="sevenReasonEdit"> 
+		<action name="SevenReasonEditAction" class="indexSettingAction"
+			method="sevenReasonEdit">
 			<result name="success" type="chain">SevenReasonMngAction</result>
 		</action>
-		<action name="IndexAdvImgMngAction" class="indexSettingAction" method="indexAdvImgMng"> 
+		<action name="IndexAdvImgMngAction" class="indexSettingAction"
+			method="indexAdvImgMng">
 			<result name="success">/WEB-INF/page/indexAdvImgMng.jsp</result>
 		</action>
-		<action name="IndexAdvImgEditAction" class="indexSettingAction" method="indexAdvImgEdit"> 
+		<action name="IndexAdvImgEditAction" class="indexSettingAction"
+			method="indexAdvImgEdit">
 			<result name="success" type="chain">IndexAdvImgMngAction</result>
 		</action>
-		
+
 	</package>
 	<!-- 师生风采 -->
 	<package name="people" namespace="/peo" extends="struts-abstract">
-		<action name="PeoplesMngPreAction" class="peoplesMngAction" method="peoplesMngPre"> 
+		<action name="PeoplesMngPreAction" class="peoplesMngAction"
+			method="peoplesMngPre">
 			<result name="success">/WEB-INF/page/peoplesMngPre.jsp</result>
 		</action>
-		<action name="TeacherMngAction" class="peoplesMngAction" method="teacherMng"> 
+		<action name="TeacherMngAction" class="peoplesMngAction"
+			method="teacherMng">
 			<result name="success">/WEB-INF/page/teacherMng.jsp</result>
 		</action>
-		<action name="StudentMngAction" class="peoplesMngAction" method="studentMng"> 
+		<action name="StudentMngAction" class="peoplesMngAction"
+			method="studentMng">
 			<result name="success">/WEB-INF/page/studentMng.jsp</result>
 		</action>
-		<action name="TeacherDelAction" class="peoplesMngAction" method="teacherDel"> 
+		<action name="TeacherDelAction" class="peoplesMngAction"
+			method="teacherDel">
 			<result name="success">/WEB-INF/page/teacherMng.jsp</result>
 		</action>
-		<action name="TeacherAddPreAction" class="peoplesMngAction" method="teacherAddPre"> 
+		<action name="TeacherAddPreAction" class="peoplesMngAction"
+			method="teacherAddPre">
 			<result name="success">/WEB-INF/page/teacherAdd.jsp</result>
 		</action>
-		<action name="TeacherAddAction" class="peoplesMngAction" method="teacherAdd"> 
+		<action name="TeacherAddAction" class="peoplesMngAction"
+			method="teacherAdd">
 			<result name="success">/WEB-INF/page/teacherAdd.jsp</result>
 		</action>
-		<action name="TeacherEditPreAction" class="peoplesMngAction" method="teacherEditPre"> 
+		<action name="TeacherEditPreAction" class="peoplesMngAction"
+			method="teacherEditPre">
 			<result name="success">/WEB-INF/page/teacherEdit.jsp</result>
 		</action>
-		<action name="TeacherEditAction" class="peoplesMngAction" method="teacherEdit"> 
+		<action name="TeacherEditAction" class="peoplesMngAction"
+			method="teacherEdit">
 			<result name="success" type="chain">TeacherEditPreAction</result>
 		</action>
-		
-		<action name="StudentDelAction" class="peoplesMngAction" method="studentDel"> 
+
+		<action name="StudentDelAction" class="peoplesMngAction"
+			method="studentDel">
 			<result name="success">/WEB-INF/page/studentMng.jsp</result>
 		</action>
-		<action name="StudentAddPreAction" class="peoplesMngAction" method="studentAddPre"> 
+		<action name="StudentAddPreAction" class="peoplesMngAction"
+			method="studentAddPre">
 			<result name="success">/WEB-INF/page/studentAdd.jsp</result>
 		</action>
-		<action name="StudentAddAction" class="peoplesMngAction" method="studentAdd"> 
+		<action name="StudentAddAction" class="peoplesMngAction"
+			method="studentAdd">
 			<result name="success">/WEB-INF/page/studentAdd.jsp</result>
 		</action>
-		<action name="StudentEditPreAction" class="peoplesMngAction" method="studentEditPre"> 
+		<action name="StudentEditPreAction" class="peoplesMngAction"
+			method="studentEditPre">
 			<result name="success">/WEB-INF/page/studentEdit.jsp</result>
 		</action>
-		<action name="StudentEditAction" class="peoplesMngAction" method="studentEdit"> 
+		<action name="StudentEditAction" class="peoplesMngAction"
+			method="studentEdit">
 			<result name="success" type="chain">StudentEditPreAction</result>
 		</action>
-		<action name="GeneratePeopleHTMLAction" class="pagesGenerateAction" method="generatePeopleHTML"> 
+		<action name="GeneratePeopleHTMLAction" class="pagesGenerateAction"
+			method="generatePeopleHTML">
 			<result name="success">/WEB-INF/page/peoplesMngPre.jsp</result>
 		</action>
 		
+		<action name="IndexTeacherStudentListMngAction" class="peoplesMngAction"
+			method="indexTeacherStudentListMng">
+			<result name="success">/WEB-INF/page/indexPeopleSetting.jsp</result>
+		</action>
+		<action name="IndexTeacherStudentListEditAction" class="peoplesMngAction"
+			method="indexTeacherStudentListEdit">
+			<result name="success" type="chain">IndexTeacherStudentListMngAction</result>
+		</action>
+
 	</package>
 	
 	<!-- coolBean start -->
-		<!-- 课程 -->
+	<!-- 课程 -->
 	<package name="class" namespace="/class" extends="struts-abstract">
 		<action name="SubjectMngAction" class="subjectMngAction">
 			<result name="success">/WEB-INF/page/subjectMng.jsp</result>
 			<result name="error">/background/login.jsp</result>
 		</action>
-		<action name="SubjectDelAction" class="subjectMngAction" method="subjectDel">
+		<action name="SubjectDelAction" class="subjectMngAction"
+			method="subjectDel">
 			<result name="success" type="chain">SubjectMngAction</result>
 		</action>
-		<action name="SubjectEditPreAction" class="subjectMngAction" method="subjectEditPre">
+		<action name="SubjectEditPreAction" class="subjectMngAction"
+			method="subjectEditPre">
 			<result name="success">/WEB-INF/page/subjectEdit.jsp</result>
 		</action>
-		<action name="SubjectEditAction" class="subjectMngAction" method="subjectEdit">
+		<action name="SubjectEditAction" class="subjectMngAction"
+			method="subjectEdit">
 			<result name="error">/WEB-INF/page/subjectEdit.jsp</result>
 			<result name="success">/WEB-INF/page/subjectEdit.jsp</result>
 		</action>
-		<action name="SubjectAddPreAction" class="subjectMngAction" method="subjectAddPre">
+		<action name="SubjectAddPreAction" class="subjectMngAction"
+			method="subjectAddPre">
 			<result name="success">/WEB-INF/page/subjectAdd.jsp</result>
 			<result name="error">/background/login.jsp</result>
 		</action>
-		<action name="SubjectAddAction" class="subjectMngAction" method="subjectAdd">
+		<action name="SubjectAddAction" class="subjectMngAction"
+			method="subjectAdd">
 			<result name="success">/WEB-INF/page/subjectAdd.jsp</result>
 		</action>
 		
@@ -400,5 +523,20 @@
 		
 	</package>
 		<!-- coolBean end -->
+	
+	<!-- 响应ajax交互 -->
+
+	<package name="ajaxface" namespace="/ajax" extends="struts-abstract-forajax">
+		<action name="GenerateWebsiteAction" class="generateWebsiteAction">
+			<result name="success" type="json">
+				<param name="includeProperties">msg.*</param>
+			</result>
+		</action>
+		<action name="WebsiteDirPathAction" class="systemMngAction" method="pageSizeMng">
+			<result name="success" type="json">
+				<param name="includeProperties">websiteDirPath.*</param>
+			</result>
+		</action>
+	</package>
 	
 </struts>    
