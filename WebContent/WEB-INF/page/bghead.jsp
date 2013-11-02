@@ -58,9 +58,10 @@
 					</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 				</li>
 				<li><a href="${path}dld/DownloadNoticeMngPreAction" title="">切换广告管理</a></li>
+				<li><a href="${path}dld/IndexDownloadMngAction" title="">首页下载信息</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
-		<li><a href="${path}ntc/NoticeMngAction?pageNum=1">公告<!--[if IE 7]><!--> </a> <!--<![endif]-->
+		<li><a href="${path}ntc/NoticeMngPreAction">公告<!--[if IE 7]><!--> </a> <!--<![endif]-->
 			<!--[if lte IE 6]><table><tr><td><![endif]-->
 			<ul>
 				<li><a href="${path}ntc/NoticeMngAction?pageNum=1" title="">浏览</a></li>
@@ -72,6 +73,7 @@
 		    <ul>
 				<li><a href="${path}peo/TeacherMngAction" title="">教师信息管理</a></li>
 				<li><a href="${path}peo/StudentMngAction" title="">学生信息管理</a></li>
+				<li><a href="${path}peo/IndexTeacherStudentListMngAction" title="">首页师生信息</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
 		
@@ -80,6 +82,7 @@
 				<li><a href="${path}rcmt/RecruitmentInfoMngAction" title="">招聘信息管理</a></li>
 				<li><a href="${path}rcmt/HengfuSetPreAction" title="">条幅图片更改</a></li>
 				<li><a href="${path}rcmt/WatchRecruitmentHTMLAction" title="" target="_blank">人才招聘预览</a></li>
+				<li><a href="${path}rcmt/HengfuSetPreAction" title="">首页招聘信息</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
 		<li><a href="${path}rcmt/RecruitmentMngPreAction">常见问题</a>
@@ -98,15 +101,14 @@
 		<li><a href="${path}rcmt/RecruitmentMngPreAction">其他设置</a>
 		    <ul>
 				<li><a href="${path}other/HeadImgMngAction" title="">头部条幅</a></li>
-				<li><a class="sub1" href="${path}dld/DownloadMngAction?pageNum=1" title="">尾部设置<!--[if IE 7]><!-->
+				<li><a class="sub1" href="#" title="">尾部设置<!--[if IE 7]><!-->
 				</a> <!--<![endif]--> <!--[if lte IE 6]><table><tr><td><![endif]-->
 					<ul>
-						<li><a href="${path}dld/DownloadAddPreAction" title="">链接设置</a></li>
-						<li><a href="${path}dld/DownloadAddPreAction" title="">尾部简介设置</a></li>
-						<li><a href="${path}dld/DownloadMngAction?pageNum=1" title="">网站声明设置</a></li>
+						<li><a href="${path}other/TailLinkMngAction" title="">链接设置</a></li>
+						<li><a href="${path}other/TailDescAndStmtMngAction" title="">尾部简介和网站声明</a></li>
 					</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 				</li>
-				<li><a href="${path}rcmt/WatchRecruitmentHTMLAction" title="" target="_blank">系统设置</a></li>
+				<li><a href="${path}other/PageSizeMngAction" title="">系统设置</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
 	</ul>
