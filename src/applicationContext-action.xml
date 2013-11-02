@@ -41,6 +41,7 @@
 	</bean>
 	<bean id="otherMngAction" class="com.zhaoyang.action.OtherMngAction" scope="prototype">
 		<property name="ruleDao" ref="ruleDao"></property>
+		<property name="tailLinkDao" ref="tailLinkDao"></property>
 	</bean>
 	<bean id="indexSettingAction" class="com.zhaoyang.action.IndexSettingAction" scope="prototype">
 		<property name="indexImgLoopDao" ref="indexImgLoopDao"></property>
@@ -53,6 +54,7 @@
 	<bean id="peoplesMngAction" class="com.zhaoyang.action.PeoplesMngAction" scope="prototype">
 		<property name="teacherDao" ref="teacherDao"></property>
 		<property name="studentDao" ref="studentDao"></property>
+		<property name="ruleDao" ref="ruleDao"></property>
 	</bean>
 	<!-- coolBean start -->
 	<bean id="subjectMngAction" class="com.zhaoyang.action.SubjectMngAction" scope="prototype">
@@ -64,4 +66,12 @@
 		<property name="sysConfigParameter" ref="sysConfigParameter"></property>
 	</bean>
 	<!-- coolBean end -->
+	
+	<bean id="systemMngAction" class="com.zhaoyang.action.SystemMngAction" scope="prototype">
+		<property name="sysConfigParameter" ref="sysConfigParameter"></property>
+		<property name="ruleDao" ref="ruleDao"></property>
+	</bean>
+	
+	<bean id="generateWebsiteAction" class="com.zhaoyang.action.GenerateWebsiteAction" scope="prototype">
+	</bean>
 </beans>
