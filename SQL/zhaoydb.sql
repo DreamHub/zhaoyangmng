@@ -36,7 +36,7 @@ insert into rule(ruleid,ruledef) values("DownloadNoticeList","矿院;马鞍山;�
 insert into rule(ruleid,ruledef,ruletype) values("DownloadSrcType","1,2,3,4","语文,数学,英语,历史");
 insert into rule(ruleid,ruledef) values("NoticePanelList","1,2,3");
 update rule set ruledef='[{"content":"把被选元素逐渐改变至给定的不透明度","href":"http://www.baidu.com","id":1}]' where ruleid="DownloadNoticeList";
-
+select * from rule where ruleid='DownloadSrcType';
 create table download(
 	id bigint(20) primary key auto_increment,
 	href varchar(100),
@@ -66,6 +66,16 @@ insert into rule(ruleid,ruledef) values('IndexAdvImg1','image/index/adv_center.j
 
 insert into rule(ruleid,ruledef) values('IndexAdvImg2','image/index/0f000rgmXKPaPQVUoyuAvs.jpg');
 insert into rule(ruleid,ruledef) values('HeadBgImg','image/20130908101430.jpg');
+insert into rule(ruleid,ruledef) values('TailLinkList','[{"id":1,"href":"http://www.baidu.com","text":"返回"}]');
+insert into rule(ruleid,ruledef) values('TailDescFirst','avcasasa');
+insert into rule(ruleid,ruledef) values('TailDescSecond','avcasasa');
+insert into rule(ruleid,ruledef) values('TailDescThird','avcasasa');
+insert into rule(ruleid,ruledef) values('WebsiteStatement','aaaaaaaaaaaaaaaa');
+insert into rule(ruleid,ruledef) values('IndexTeacherList','1,2,3');
+insert into rule(ruleid,ruledef) values('IndexStudentList','1,2,3');
+insert into rule(ruleid,ruledef) values('IndexDownloadList','1,2,3');
+insert into rule(ruleid,ruledef) values('WebsiteDirPath','D:/tmp');
+update rule set ruledef='d:/tmp' where ruleid='WebsiteDirPath';
 select * from rule
 --学科表
 create table subject (
