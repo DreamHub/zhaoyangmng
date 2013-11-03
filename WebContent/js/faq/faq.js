@@ -19,7 +19,7 @@ function change_page(i) {
 		var this_li = $('#product-support-faq-ul li').eq(j);
 		this_li.append('<div class="anchor"><a name="anchor-' + (i + 1) + '"></a></div>');
 
-		this_li.append('<div onclick="expand_collapseData(this)" class="div-01 clearfix"><h2 class="p1 fl"><a class="a-1"><strong>' + srs[i].queNo + '.' + srs[i].question + '</strong></a></h2></div>');
+		this_li.append('<div onclick="expand_collapseData(this)" class="div-01 clearfix"><h2 class="p1 fl"><a class="a-1"><strong>' + (i+1) + '.' + srs[i].question + '</strong></a></h2></div>');
 
 		this_li.append('<div onclick="expandData(this)" class="div-02"><img width="104" height="14" src="image/faq/img_con_cn_faqs_01.jpg" class="expand_data"></div>');
 
