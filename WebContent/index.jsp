@@ -1,3 +1,5 @@
+<%@page import="com.zhaoyang.data.Faq"%>
+<%@page import="com.zhaoyang.util.UtilForGenerateFaq"%>
 <%@page import="com.zhaoyang.data.Teacher"%>
 <%@page import="com.zhaoyang.data.Student"%>
 <%@page import="com.zhaoyang.util.UtilForGeneratePeople"%>
@@ -39,6 +41,9 @@
 	request.setAttribute("students",students);
 	List<Teacher> teachers=utilForGeneratePeople.indexTeacherList();
 	request.setAttribute("teachers",teachers);
+	UtilForGenerateFaq utilForGenerateFaq=new UtilForGenerateFaq();
+	List<Faq> faqs=utilForGenerateFaq.indexFaqList();
+	request.setAttribute("faqs",faqs);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -281,27 +286,12 @@
 						</ul>
 					</div>
 					<div class="faqblock">
-						<h2><img src="image/index/faqsfdds1.png"/><span><a href="#">更多>></a></span></h2>
+						<h2><img src="image/index/faqsfdds1.png"/><span><a href="faq.html">更多>></a></span></h2>
 						<img src="image/index/pic16.jpg" width="100%" height="130"/>
 						<ul>
-							<li>
-								<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代?</a>
-							</li>
-							<li>
-								<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代?</a>
-							</li>
-							<li>
-								<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代?</a>
-							</li>
-							<li>
-								<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代?</a>
-							</li>
-							<li>
-								<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代?</a>
-							</li>
-							<li>
-								<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代?</a>
-							</li>
+							<s:iterator value="#request.faqs">
+								<li><a href="#"><s:property value="question"/></a></li>
+							</s:iterator>
 						</ul>
 					</div>
 					<div class="goodclasses" style="padding-bottom: 0;">

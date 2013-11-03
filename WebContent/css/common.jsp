@@ -154,3 +154,39 @@ img {
 #bottom_nav_con ul li a:hover{
 	text-decoration: underline;
 }
+#floatMenu {
+	position: absolute;
+	top: 150px;
+	left: 40px;
+	width: 110px;
+	height: 250px;
+	padding-top: 100px;
+	padding-left: 20px;
+	z-index: 229929;
+	background: no-repeat url("../image/qq_wpa_yo2u.png");
+}
+#popDiv{
+	background: no-repeat url("../image/popwinbg.png");
+	width: 400px;
+	height: 200px;
+	position: fixed;
+	z-index: 1000;
+	left:20px;
+	top:20px;
+}
+#popDiv .closebt{
+	position: absolute;
+	left: 370px;
+	top: 17px;
+	display: block;
+	width: 13px;
+	height: 13px;
+}
+#popDiv .zixun{
+	position: absolute;
+	left: 213px;
+	top: 125px;
+	display: block;
+	width: 109px;
+	height: 43px;
+}

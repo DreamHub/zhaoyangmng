@@ -7,6 +7,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import com.zhaoyang.dao.DownloadDao;
 import com.zhaoyang.dao.DownloadNoticeDao;
+import com.zhaoyang.dao.FaqDao;
 import com.zhaoyang.dao.IndexImgLoopDao;
 import com.zhaoyang.dao.NewsDao;
 import com.zhaoyang.dao.NoticeDao;
@@ -25,7 +26,12 @@ public class DaoGenerate {
 	private static TailLinkDao tailLinkDao;
 	private static DownloadNoticeDao downloadNoticeDao;
 	private static DownloadDao downloadDao;
+	private static FaqDao faqDao;
 	
+	public static FaqDao getFaqDao() {
+		return faqDao;
+	}
+
 	public static DownloadDao getDownloadDao() {
 		return downloadDao;
 	}
@@ -71,6 +77,7 @@ public class DaoGenerate {
 		tailLinkDao=(TailLinkDao) ac.getBean("tailLinkDao");
 		downloadNoticeDao=(DownloadNoticeDao) ac.getBean("downloadNoticeDao");
 		downloadDao=(DownloadDao) ac.getBean("downloadDao");
+		faqDao=(FaqDao) ac.getBean("faqDao");
 	}
 	
 	public static NewsDao getNewsDao() {

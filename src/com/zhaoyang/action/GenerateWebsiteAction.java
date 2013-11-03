@@ -18,6 +18,7 @@ import com.zhaoyang.orm.News;
 import com.zhaoyang.util.DaoGenerate;
 import com.zhaoyang.util.OtherUtil;
 import com.zhaoyang.util.UtilForGenerateDownload;
+import com.zhaoyang.util.UtilForGenerateFaq;
 import com.zhaoyang.util.UtilForGenerateNews;
 
 public class GenerateWebsiteAction extends AbstractActionSupport {
@@ -71,7 +72,7 @@ public class GenerateWebsiteAction extends AbstractActionSupport {
 		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/rcmt/WatchRecruitmentHTMLAction", new File(absolutePath("/recruitment.html")));
 		
 		//常见问题
-		
+		(new UtilForGenerateFaq()).generateAllFaqs(this);
 		//课程
 		//其他设置
 		//http://localhost:8080/zhaoyang/peo/GeneratePeopleHTMLAction
@@ -100,6 +101,8 @@ public class GenerateWebsiteAction extends AbstractActionSupport {
 		OtherUtil.copyFile(new File(absolutePath("/download.html")),new File(rootDir.getAbsolutePath()+"/download.html"));
 		OtherUtil.copyFile(new File(absolutePath("/people.html")),new File(rootDir.getAbsolutePath()+"/people.html"));
 		OtherUtil.copyFile(new File(absolutePath("/head.html")),new File(rootDir.getAbsolutePath()+"/head.html"));
+		OtherUtil.copyFile(new File(absolutePath("/connectUs.html")),new File(rootDir.getAbsolutePath()+"/connectUs.html"));
+		OtherUtil.copyFile(new File(absolutePath("/about.html")),new File(rootDir.getAbsolutePath()+"/about.html"));
 		//FileUtils.copyFile(new File(absolutePath("/people")), new File(rootDir.getPath()+"/people"));
 		//ServletActionContext.get
 		System.out.println(absolutePath("/"));
