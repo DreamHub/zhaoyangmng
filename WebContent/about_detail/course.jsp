@@ -30,10 +30,10 @@
 			#about_course {
 				position: relative;
 				width: 600px;
-				height: 900px;
+				height: 980px;
 				margin-top: 100px;
 				font-size: 16px;
-				margin-left: 50px;
+				margin-left: 40px;
 			}
 			.instanceflag {
 				position: absolute;
@@ -53,10 +53,12 @@
 				top: 20px;
 				z-index: 0;
 				background: #FCFCFC;
-				color: #0000FF;
-				text-align: center;
-				padding: 20px 20px;
+				color: #3A8195;
+				text-align: left;
+				line-height:25px;
+				padding: 10px 15px;
 				display: none;
+				font-size: 12px;
 			}
 			.headline-arr {
 				border-color: transparent #6699C9;
@@ -78,16 +80,18 @@
 			.event_title {
 				position: absolute;
 				left: 30px;
-				background: blue;
+				background: #6699C9;
 				width: 170px;
 				height: 40px;
 				top: -50px;
 				line-height: 40px;
 				color: white;
 				text-align: center;
+				font-size: 14px;
+				font-weight: bold;
 			}
 			.headline-arr2 {
-				border-color: #0000FF transparent;
+				border-color: #6699C9 transparent;
 				border-style: solid;
 				border-width: 10px 10px 0px;
 				left: 98px;
@@ -103,8 +107,10 @@
 				height: 30px;
 				line-height: 30px;
 				background: #C4CDD6;
-				color: blue;
 				text-align: center;
+				color: #FFFFFF;
+    			font-size: 14px;
+  				font-weight: bold;
 			}
 			.headline-arr3 {
 				border-color: transparent #C4CDD6;
@@ -158,25 +164,31 @@
 						<span class="headline-arr3"></span>
 						<span class="instanceflag"></span>
 						<div class="eventContent">
-							<a href="#">郝校长在向山镇成立办学地点，招收8名同学。</a>
+							郝校长在向山镇成立办学地点，招收8名同学。郝校长在向山镇成立办学地点，招收8名同学。
 						</div>
 						<span class="event_time">2010-10-10</span>
 						<span class="headline-arr3"></span>
 						<span class="instanceflag"></span>
 						<div class="eventContent">
-							确立以朝阳为辅导学校名称，取义xxxxx。
+							确立以朝阳为辅导学校名称，取义xxxxx。郝校长在向山镇成立办学地点，招收8名同学。
 						</div>
 						<span class="event_time">2010-10-10</span>
 						<span class="headline-arr3"></span>
 						<span class="instanceflag"></span>
 						<div class="eventContent">
-							矿院分校成立，学生规模超过百人，朝阳收到广大家长一致好评。
+							矿院分校成立，学生规模超过百人，朝阳收到广大家长一致好评。郝校长在向山镇成立办学地点，招收8名同学。
 						</div>
 						<span class="event_time">2010-10-10</span>
 						<span class="headline-arr3"></span>
 						<span class="instanceflag"></span>
 						<div class="eventContent">
-							朝之阳辅导学校正式成立，郝首福任校长。学生规模突破200人。升学率高达90%。
+							朝之阳辅导学校正式成立，郝首福任校长。学生规模突破200人。升学率高达90%。郝校长在向山镇成立办学地点，招收8名同学。
+						</div>
+						<span class="event_time">2010-10-10</span>
+						<span class="headline-arr3"></span>
+						<span class="instanceflag"></span>
+						<div class="eventContent">
+							朝之阳辅导学校正式成立，郝首福任校长。学生规模突破200人。升学率高达90%。郝校长在向山镇成立办学地点，招收8名同学。
 						</div>
 					</div>
 				</div>
@@ -203,7 +215,7 @@
 						<div id="text"  style="height:130px; width:90%; overflow:hidden; float:left;margin-top: 60px;margin-left: 10px;">
 							<div>
 								<c:forEach items="${notices}" var="notice">
-								<li><a href="notice_detail/${notice.id}.html">${notice.title}</a>
+								<li><a href="../notice_detail/${notice.id}.html">${notice.title}</a>
 								</li>
 							</c:forEach>
 							</div>

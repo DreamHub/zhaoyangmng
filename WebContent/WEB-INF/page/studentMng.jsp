@@ -44,6 +44,7 @@
 								<th scope="col" class="rounded-company">序号</th>
 								<th scope="col" class="rounded">姓名</th>
 								<th scope="col" class="rounded">简介</th>
+								<th scope="col" class="rounded">头像</th>
 								<th scope="col" class="rounded">编辑</th>
 								<th scope="col" class="rounded-q4">删除</th>
 							</tr>
@@ -64,6 +65,8 @@
 									<td><s:property value="stuName" />
 									</td>
 									<td><s:property value="desc" />
+									</td>
+									<td><img style="border: 1px solid #ccc;" src="${path}<s:property value="imgPath" />" width="100" height="50"/>
 									</td>
 									<td><a
 										href="${path}peo/StudentEditPreAction?id=<s:property value="id"/>" class="recruitmentEditBt" content='<s:property value="content" />' id='<s:property value="id" />'><img

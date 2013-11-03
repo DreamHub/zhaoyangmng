@@ -89,6 +89,14 @@ public class UtilForGenerateNews {
 		}
 		return newses;
 	}
+	public String indexNewsSmallImg(){
+		RuleDao ruleDao=DaoGenerate.getRuleDao();
+		return ruleDao.findRuleByRuleId("IndexNewsSmallImg").getRuleDef();
+	}
+	public String indexNewsDesc(){
+		RuleDao ruleDao=DaoGenerate.getRuleDao();
+		return ruleDao.findRuleByRuleId("IndexNewsDesc").getRuleDef();
+	}
 	public void generateAllNews(AbstractActionSupport action) throws Exception{
 		NewsDao newsDao=DaoGenerate.getNewsDao();
 		List<News> newes = newsDao.findAll();

@@ -20,6 +20,7 @@ import net.sf.json.processors.JsonValueProcessor;
 import org.apache.struts2.ServletActionContext;
 
 import com.zhaoyang.action.AbstractActionSupport;
+import com.zhaoyang.dao.DownloadDao;
 import com.zhaoyang.dao.NewsDao;
 import com.zhaoyang.dao.NoticeDao;
 import com.zhaoyang.dao.RuleDao;
@@ -75,5 +76,18 @@ public class UtilForGenerateDownload {
 		bw2.write(AAA);
 		bw2.flush();
 		bw2.close();
+	}
+	public List<Download> indexDownloadList(){
+		String indexDownloadList=DaoGenerate.getRuleDao().findRuleByRuleId("IndexDownloadList").getRuleDef();
+		DownloadDao downloadDao=DaoGenerate.getDownloadDao();
+		String[] ids=indexDownloadList.split(",");
+		List<Download> downloads=new ArrayList<Download>();
+		for (int i = 0; i < ids.length; i++) {
+			Download download=downloadDao.findById(Long.parseLong(ids[i]));
+			if(download!=null){
+				downloads.add(download);
+			}
+		}
+		return downloads;
 	}
 }

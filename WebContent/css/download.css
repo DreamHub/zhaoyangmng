@@ -51,7 +51,7 @@
 #downloadmenu li a span{
 	left: 80px;
 	top: 10px;
-	color:#0048E6;
+	color:#3A8195;
 	font-size: 14px;
 	float:right;
 	margin-right: 90px;
@@ -81,4 +81,10 @@
 }
 #notice{
 	text-align: center;
+}
+#notice a{
+	color:#3A8195;
+}
+#notice a:hover{
+	text-decoration: underline;
 }

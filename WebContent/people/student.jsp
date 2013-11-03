@@ -1,3 +1,5 @@
+<%@page import="com.zhaoyang.util.UtilForGenerateNews"%>
+<%@page import="com.zhaoyang.orm.News"%>
 <%@page import="com.zhaoyang.data.Student"%>
 <%@page import="com.zhaoyang.util.UtilForGeneratePeople"%>
 <%@ page language="java" import="java.util.*"
@@ -7,8 +9,11 @@
 <%@ include file="../variable.jsp"%>
 <%
 UtilForGeneratePeople util=new UtilForGeneratePeople();
+UtilForGenerateNews util2 = new UtilForGenerateNews();
 List<Student> students=util.findAllStudent();
 request.setAttribute("students",students);
+List<News> news=util2.indexNewsList();
+request.setAttribute("news",news);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -69,13 +74,10 @@ request.setAttribute("students",students);
 						<div id="newspanel">
 							<h3><img src="../image/student/newshd.gif"/></h3>
 							<ul>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
-								<li><a href="#">朝之阳陪伴我一起成长.... </a></li>
+							<s:iterator value="#request.news">
+								<li><a href="../news_detail/<s:property value="id"/>.html"><s:property value="title"/> </a></li>
+							</s:iterator>
+							
 							</ul>
 						</div>
 						<div id="adpanel">

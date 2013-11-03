@@ -1,3 +1,10 @@
+<%@page import="com.zhaoyang.data.Teacher"%>
+<%@page import="com.zhaoyang.data.Student"%>
+<%@page import="com.zhaoyang.util.UtilForGeneratePeople"%>
+<%@page import="com.zhaoyang.orm.Download"%>
+<%@page import="com.zhaoyang.util.UtilForGenerateDownload"%>
+<%@page import="com.zhaoyang.orm.News"%>
+<%@page import="com.zhaoyang.util.UtilForGenerateNews"%>
 <%@page import="com.zhaoyang.data.IndexImgLoop"%>
 <%@page import="com.zhaoyang.util.UtilForGenerateIndex"%>
 <%@ page language="java" import="java.util.*"
@@ -18,7 +25,20 @@
 	request.setAttribute("indexAdvImg1",indexAdvImg1);
 	
 	request.setAttribute("indexAdvImg2",indexAdvImg2);
+	UtilForGenerateNews util2 = new UtilForGenerateNews();
+	List<News> news=util2.indexNewsList();
+	request.setAttribute("news",news);
+	request.setAttribute("indexNewsDesc",util2.indexNewsDesc());
+	request.setAttribute("indexNewsSmallImg",util2.indexNewsSmallImg());
 	
+	UtilForGenerateDownload utilForGenerateDownload=new UtilForGenerateDownload();
+	List<Download> downloads=utilForGenerateDownload.indexDownloadList();
+	request.setAttribute("downloads",downloads);
+	UtilForGeneratePeople utilForGeneratePeople=new UtilForGeneratePeople();
+	List<Student> students=utilForGeneratePeople.indexStudentList();
+	request.setAttribute("students",students);
+	List<Teacher> teachers=utilForGeneratePeople.indexTeacherList();
+	request.setAttribute("teachers",teachers);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -75,37 +95,22 @@
 				<div class="clearfix" style="margin-top: 5px">
 					<div class="leftblock">
 						<div class="newsblock">
-							<h2><img src="image/index/jiaoyu.jpg"/><span><a href="#">更多>></a></span></h2>
+							<h2><img src="image/index/jiaoyu.jpg"/><span><a href="news.html">更多>></a></span></h2>
 							<table style="margin-top: 7px;">
 								<tr>
-									<td style="padding-left: 10px;"><img src="image/index/2013-36_6116457.jpg" width="110px;" align="middle"/></td>
-									<td style="padding: 3px;line-height: 22px;">美国海军作战部副部长格林纳特上将9月5日在华盛顿的讲话中首次提到，美国将在日本部署濒海战斗...<a href="#">详细>></a></td>
+									<td style="padding-left: 10px;"><img src="<s:property value="#request.indexNewsSmallImg"/>" width="110px;" align="middle"/></td>
+									<td style="padding: 3px;line-height: 22px;"><s:property value="#request.indexNewsDesc"/>...<a href="news_detail/<s:property value="#request.news.get(0).id"/>.html">详细>></a></td>
 								</tr>
 							</table>
 
 							<ul>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
+								<s:iterator value="#request.news">
+									<li><a href="news_detail/<s:property value="id"/>.html"><s:property value="title"/> </a></li>
+								</s:iterator>
 							</ul>
 						</div>
 						<div class="newsblock" style="margin-top: 6px;">
-							<h2><img src="image/index/xiazai.png"/><span><a href="#">更多>></a></span></h2>
+							<h2><img src="image/index/xiazai.png"/><span><a href="download.html">更多>></a></span></h2>
 							<!-- <table style="margin-top: 7px;">
 								<tr>
 									<td style="padding-left: 10px;"><img src="image/index/2013-36_6116457.jpg" width="110px;" align="middle"/></td>
@@ -114,98 +119,73 @@
 							</table> -->
 
 							<ul style="margin-top: 1px;">
+								<s:iterator value="#request.downloads">
 								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-								<li>
-									<a href="#">鲁迅《风筝》被初中语文教材删掉 被贾平凹等取代</a>
-								</li>
-
+									<a href="download.html"><s:property value="srcName"/></a>
+									</li>
+								</s:iterator>
 							</ul>
 						</div>
 					</div>
 					<div class="rightblock">
 
 						<div class="students">
-							<h2><img src="image/index/xsal.jpg"/><span><a href="#">更多>></a></span></h2>
+							<h2><img src="image/index/xsal.jpg"/><span><a href="people/student.html">更多>></a></span></h2>
 							<div>
 								<table class="studentTable">
 									<tr>
-										<td><img src="image/index/s_zhao1.jpg" align="center"/></td>
-										<td><h3>学生姓名:张三
+									
+										<td><img src="<s:property value="#request.students.get(0).imgPath"/>" align="center"/></td>
+										<td><h3>学生姓名:<s:property value="#request.students.get(0).stuName"/>
 										<br/>
-										高考总成绩:644分
+										高考总成绩:<s:property value="#request.students.get(0).score"/>分
 										<br/>
-										录取学校:清华大学</h3>
+										录取学校:<s:property value="#request.students.get(0).toSchool"/></h3>
 										<p class="studesc">
-											启儒学校三高教师 张老师，高级教师，初中化学，济南市化学学会会员；济南市学科带头人；市级优秀班主任。... <a href="#">详细>></a>
+											<s:property value="#request.students.get(0).desc"/>... <a href="people/student.html">详细>></a>
 										</p></td>
-										<td><img src="image/index/s_zhao1.jpg" align="center"/></td>
-										<td><h3>学生姓名:张三
+										<td><img src="<s:property value="#request.students.get(1).imgPath"/>" align="center"/></td>
+										<td><h3>学生姓名:<s:property value="#request.students.get(1).stuName"/>
 										<br/>
-										高考总成绩:644分
+										高考总成绩:<s:property value="#request.students.get(1).score"/>分
 										<br/>
-										录取学校:清华大学</h3>
+										录取学校:<s:property value="#request.students.get(1).toSchool"/></h3>
 										<p class="studesc">
-											启儒学校三高教师 张老师，高级教师，初中化学，济南市化学学会会员；济南市学科带头人；市级优秀班主任。... <a href="#">详细>></a>
+											<s:property value="#request.students.get(1).desc"/>... <a href="people/student.html">详细>></a>
 										</p></td>
 									</tr>
 									<tr>
-										<td><img src="image/index/s_zhao1.jpg" align="center"/></td>
-										<td><h3>学生姓名:张三
+										<td><img src="<s:property value="#request.students.get(2).imgPath"/>" align="center"/></td>
+										<td><h3>学生姓名:<s:property value="#request.students.get(2).stuName"/>
 										<br/>
-										高考总成绩:644分
+										高考总成绩:<s:property value="#request.students.get(2).score"/>分
 										<br/>
-										录取学校:清华大学</h3>
+										录取学校:<s:property value="#request.students.get(2).toSchool"/></h3>
 										<p class="studesc">
-											启儒学校三高教师 张老师，高级教师，初中化学，济南市化学学会会员；济南市学科带头人；市级优秀班主任。... <a href="#">详细>></a>
+											<s:property value="#request.students.get(2).desc"/>... <a href="people/student.html">详细>></a>
 										</p></td>
-										<td><img src="image/index/s_zhao1.jpg" align="center"/></td>
-										<td><h3>学生姓名:张三
+										<td><img src="<s:property value="#request.students.get(3).imgPath"/>" align="center"/></td>
+										<td><h3>学生姓名:<s:property value="#request.students.get(3).stuName"/>
 										<br/>
-										高考总成绩:644分
+										高考总成绩:<s:property value="#request.students.get(3).score"/>分
 										<br/>
-										录取学校:清华大学</h3>
+										录取学校:<s:property value="#request.students.get(3).toSchool"/></h3>
 										<p class="studesc">
-											启儒学校三高教师 张老师，高级教师，初中化学，济南市化学学会会员；济南市学科带头人；市级优秀班主任。... <a href="#">详细>></a>
+											<s:property value="#request.students.get(3).desc"/>... <a href="people/student.html">详细>></a>
 										</p></td>
 									</tr>
 								</table>
 							</div>
 						</div>
 						<div class="students" style="margin-top: 7px;">
-							<h2><img src="image/index/msfc.jpg"/><span><a href="#">更多>></a></span></h2>
+							<h2><img src="image/index/msfc.jpg"/><span><a href="people/teacher.html">更多>></a></span></h2>
 							<div>
 								<div id="img1" style="overflow:hidden;" >
 									<table>
 										<tr>
-											<td><img src="image/index/20121212134637-49103.jpg" style="width:184px; height:139px;" /></td>
-											<td><img src="image/index/2012121313260-91048.jpg" style="width:184px; height:139px;" /></td>
-											<td><img src="image/index/20121213133046-59173.jpg" style="width:184px; height:139px;" /></td>
-											<td><img src="image/index/2012121313368-21855.jpg" style="width:184px; height:139px;" /></td>
-											<td><img src="image/index/20121213133911-11218.jpg" style="width:184px; height:139px;" /></td>
-											<td><img src="image/index/20121213134242-31364.jpg" style="width:184px; height:139px;" /></td>
+										<s:iterator value="#request.teachers">
+											<td><a href="people/teacher.html"><img src="<s:property value="photoImg"/>" style="width:184px; height:139px;" /></a></td>
+										</s:iterator>
 										</tr>
 									</table>
 								</div>

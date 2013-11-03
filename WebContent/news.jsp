@@ -66,7 +66,7 @@
 						style="height: 130px; width: 90%; overflow: hidden; float: left; margin-top: 60px; margin-left: 10px;">
 						<div>
 							<c:forEach items="${notices}" var="notice">
-								<li><a href="#">${notice.title}</a>
+								<li><a href="notice_detail/${notice.id}.html">${notice.title}</a>
 								</li>
 							</c:forEach>
 						</div>

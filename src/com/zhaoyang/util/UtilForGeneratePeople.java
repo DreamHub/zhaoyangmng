@@ -1,6 +1,9 @@
 package com.zhaoyang.util;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.mapping.Array;
 
 import com.zhaoyang.dao.RuleDao;
 import com.zhaoyang.dao.StudentDao;
@@ -28,5 +31,34 @@ public class UtilForGeneratePeople {
 		StudentDao studentDao=DaoGenerate.getStudentDao();
 		return studentDao.findAll();
 	}
+	//indexTeacherList=ruleDao.findRuleByRuleId("IndexTeacherList").getRuleDef();
+	//indexStudentList=ruleDao.findRuleByRuleId("IndexStudentList").getRuleDef();
+	public List<Student> indexStudentList() throws Exception{
+		StudentDao studentDao=DaoGenerate.getStudentDao();
+		String indexStudentList=DaoGenerate.getRuleDao().findRuleByRuleId("IndexStudentList").getRuleDef();
+		String[] ids=indexStudentList.split(",");
+		List<Student> students=new ArrayList<Student>();
+		for (int i = 0; i < ids.length; i++) {
+			Student student=studentDao.findById(Long.parseLong(ids[i]));
+			if(student!=null){
+				students.add(student);
+			}
+		}
+		return students;
+		
+	} 
+	public List<Teacher> indexTeacherList() throws Exception{
+		TeacherDao teacherDao=DaoGenerate.getTeacherDao();
+		String indexStudentList=DaoGenerate.getRuleDao().findRuleByRuleId("IndexTeacherList").getRuleDef();
+		String[] ids=indexStudentList.split(",");
+		List<Teacher> students=new ArrayList<Teacher>();
+		for (int i = 0; i < ids.length; i++) {
+			Teacher student=teacherDao.findById(Long.parseLong(ids[i]));
+			if(student!=null){
+				students.add(student);
+			}
+		}
+		return students;
+	} 
 	
 }
