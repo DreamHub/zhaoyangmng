@@ -13,93 +13,94 @@
 <script type="text/javascript" src="${bgpath}js/zebra_dialog.js"></script>
 <link rel="stylesheet" href="${bgpath}css/zebra_dialog.css"
 	type="text/css" />
-<script type="text/javascript">
-	var div='<div  id="dialog-form2" style="display: none" title="招聘信息">'+
-	''+
-	'<textarea id="elm1" name="elm1" rows="5" cols="40" style="width:684px; height:200px;"></textarea>'+
-	'<br />'+
-	'</div>';
-	$(function() {
-		$('.recruitmentEditBt').bind('click', function(e) {
-			$('body').append($(div));
-			var aaaa=$(this);
-			$('#elm1').val(aaaa.attr('content'));
-			$.Zebra_Dialog('<strong>内容:</strong><br><br>', {
-				source : {
-					'inline' : $('#dialog-form2')
-				},
-				width : 900,
-				position : ['center','top + 50'],
-				buttons : [{caption:'保存',callback:function(){
-					var newcontent=$('#elm1').val();
-					var id=aaaa.attr("id");
-					if(newcontent==null||newcontent==''){
-						alert('招聘信息不能为空');
-						return false;
-					}
-					postData("${path}rcmt/RecruitmentInfoEditAction",{'newcontent' : newcontent,'id':id});
-					$('#dialog-form2').remove();
-					return true;
-				}}],
-				title : '修改招聘信息',
-				type:false
-			});
-			$('#dialog-form2').css("display","block");
-			$('#elm1').xheditor({
-				upImgUrl : "${path}upl/UploadPicAction",
-				upImgExt : "jpg,jpeg,gif,png",
-				onUpload : insertUpload,
-				tools:'Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,FontColor,BackColor,Removeformat,Align,List,Link,Img,Emot,Table,Source,Preview',
-				emotPath:'${bgpath}/xheditor_emot/',
-				urlType:'root',
-				html5Upload:false
-			});
-		});
-		$('.bt_green').bind('click', function(e) {
-			$('body').append($(div));
-			//$('#elm1').val($('#showNews').html());
-			e.preventDefault();
-			$.Zebra_Dialog('<strong>内容:</strong><br><br>', {
-				source : {
-					'inline' : $('#dialog-form2')
-				},
-				width : 900,
-				position : ['center','top + 50'],
-				buttons : [{caption:'确定',callback:function(){
-					var newcontent=$('#elm1').val();
-					if(newcontent==null||newcontent==''){
-						alert('招聘信息不能为空');
-						return false;
-					}
-					postData("${path}rcmt/RecruitmentInfoAddAction",{'newcontent' : newcontent});
-					$('#dialog-form2').remove();
-					return true;
-				}}],
-				title : '添加招聘信息',
-				type:false
-			});
-			$('#dialog-form2').css("display","block");
-			$('#elm1').xheditor({
-				upImgUrl : "${path}upl/UploadPicAction",
-				upImgExt : "jpg,jpeg,gif,png",
-				onUpload : insertUpload,
-				tools:'Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,FontColor,BackColor,Removeformat,Align,List,Link,Img,Emot,Table,Source,Preview',
-				emotPath:'${bgpath}/xheditor_emot/',
-				urlType:'root',
-				html5Upload:false
-			});
-		});
-	});
-	
-	function insertUpload(msg) {
-		//alert(msg);
-		if(msg == "上传失败"){
-			alert("上传被拦截,请先登录");
-			msg="";
-			return;
+	<style type="text/css">
+		.ZebraDialog .ZebraDialog_BodyOuter{
+			background: white;
 		}
-		alert("上传成功");
-	}
+		.ZebraDialog .ZebraDialog_Icon{
+			padding-left: 2px;
+		}
+	</style>
+<script type="text/javascript">
+	$(function() {
+		var newnoticedl=$('#newnoticedl');
+		var editpanel=$('#editpanel');
+		
+		$('.bt_green').click(function() {
+			$('body').append(newnoticedl);
+			$.Zebra_Dialog( {
+				source : {
+					'inline' : newnoticedl
+				},
+				width : 650,
+				position : [ 'center', 'top + 50' ],
+				buttons : [ {
+					caption : '确认',
+					callback : function() {
+						
+						return true;
+					}
+				} ],
+				title : '新增下载类型',
+				type : false
+			});
+			$('.ZebraDialog_Body > div:first').css("padding-top","10px");
+			$('.ZebraDialog_Body > div:first').css("padding-top","1px");
+			$('.ZebraDialog_Body > div:first').css("padding-top","2px");
+			newnoticedl.find('input[type="submit"]').click(function(){
+				var href=newnoticedl.find('input[name="faq.question"]').val();
+				var imgDesc=newnoticedl.find('textarea[name="faq.answer"]').val();
+				if(href==null||href==''){
+					alert("问题不能为空");
+					return false;
+				}
+				if(imgDesc==null||imgDesc==''){
+					alert("答案不能为空");
+					return false;
+				}
+				return true;
+			});
+		});
+		$('.editbt').click(function(){
+			$('body').append(editpanel);
+			editpanel.find('input[name="faq.queNo"]').val($(this).attr("queNo"));
+			editpanel.find('input[name="faq.queNo"]').parent().append(($(this).attr("queNo")));
+			editpanel.find('input[name="faq.question"]').val($(this).attr("question"));
+			editpanel.find('textarea[name="faq.answer"]').val($(this).attr("answer"));
+			$.Zebra_Dialog( {
+				source : {
+					'inline' : editpanel
+				},
+				width : 650,
+				buttons : [ {
+					caption : '确认',
+					callback : function() {
+						
+						return true;
+					}
+				} ],
+				title : '修改',
+				type : false
+			});
+			$('.ZebraDialog_Body > div:first').css("padding-top","10px");
+			$('.ZebraDialog_Body > div:first').css("padding-top","1px");
+			$('.ZebraDialog_Body > div:first').css("padding-top","2px");
+			editpanel.find('input[type="submit"]').click(function(){
+				var href=editpanel.find('input[name="faq.question"]').val();
+				var imgDesc=editpanel.find('textarea[name="faq.answer"]').val();
+				if(href==null||href==''){
+					alert("问题不能为空");
+					return false;
+				}
+				if(imgDesc==null||imgDesc==''){
+					alert("答案不能为空");
+					return false;
+				}
+				return true;
+			});
+		});
+		
+	});
 </script>
 </head>
 <body>
@@ -114,7 +115,7 @@
 				<jsp:include page="bgleft.jsp" flush="true" />
 				<div class="right_content">
 
-					<h2>招聘信息管理11</h2>
+					<h2>首页轮播图片管理</h2>
 
 
 					<table id="rounded-corner"
@@ -122,7 +123,7 @@
 						<thead>
 							<tr>
 								<th scope="col" class="rounded-company">序号</th>
-								<th scope="col" class="rounded">内容</th>
+								<th scope="col" class="rounded">问题</th>
 								<th scope="col" class="rounded">编辑</th>
 								<th scope="col" class="rounded-q4">删除</th>
 							</tr>
@@ -140,15 +141,14 @@
 								<tr>
 									<td><s:property value="queNo" />
 									</td>
-									<td><s:property value="question" />
+									<td><s:property value="question" /></td>
+									<td>
+										<a class="editbt" href="#" answer="<s:property value="answer" />" question="<s:property value="question" />" queNo="<s:property value="queNo" />">
+											<img src="${bgpath}images/user_edit.png" alt="" title="" border="0"/> 
+										</a>
 									</td>
 									<td><a
-										href="#" class="recruitmentEditBt" content='<s:property value="content" />' id='<s:property value="id" />'><img
-											src="${bgpath}images/user_edit.png" alt="" title=""
-											border="0"/> </a>
-									</td>
-									<td><a
-										href="${path}rcmt/RecruitmentInfoDelAction?id=<s:property value="id"/>"
+										href="${path}index/IndexImgLoopDelAction?indexImgLoop.id=<s:property value="id"/>"
 										class="ask"><img src="${bgpath}images/trash.png" alt=""
 											title="" border="0" /> </a>
 									</td>
@@ -157,7 +157,7 @@
 						</tbody>
 					</table>
 
-					<a href="#" class="bt_green"><span class="bt_green_lft"></span><strong>添加招聘信息</strong><span
+					<a href="#" class="bt_green"><span class="bt_green_lft"></span><strong>添加</strong><span
 						class="bt_green_r"></span> </a>
 
 					<s:if test="#request.sucMsg != null">
@@ -166,15 +166,67 @@
 					<s:if test="#request.errMsg != null">
 						<div class="error_box">${errMsg}</div>
 					</s:if>
-					<div id="newnoticedl" style="display: none;">
-						<dl>
-							<dt>
-								<label for="email">内容:</label>
-							</dt>
-							<dd>
-								<textarea rows="10" cols="30" name="newcontent"></textarea>
-							</dd>
-						</dl>
+					<div style="width: 0;height: 0;overflow: hidden;">
+						<div id="newnoticedl" class="form">
+							<form action="${path}faq/FaqAddAction" method="post" class="niceform" id="imgloopform">
+							<fieldset>
+								<dl>
+									<dt>
+										<label for="email">问题:</label>
+									</dt>
+									<dd>
+										<input type="text" name="faq.question" id="newhref" size="48"
+											value="" />
+									</dd>
+								</dl>	
+								<dl>
+									<dt>
+										<label for="email">答案:</label>
+									</dt>
+									<dd>
+										<textarea id="elm1" name="faq.answer" rows="3" cols="30"></textarea>
+									</dd>
+								</dl>
+								<dl class="submit">
+									<input type="submit" name="submit" id="submit" value="保存"/>
+								</dl>
+								</fieldset>
+							</form>
+						</div>
+						<div id="editpanel" class="form">
+							<form action="${path}faq/FaqEditAction" method="post" class="niceform" id="imgloopform">
+							<fieldset>
+								<dl>
+									<dt>
+										<label for="email">序号:</label>
+									</dt>
+									<dd>
+										<input type="hidden" name="faq.queNo"/>
+									</dd>
+								</dl>
+								<dl>
+									<dt>
+										<label for="email">问题:</label>
+									</dt>
+									<dd>
+										<input type="text" name="faq.question" id="newhref" size="48"
+											value="" />
+									</dd>
+								</dl>	
+								<dl>
+									<dt>
+										<label for="email">答案:</label>
+									</dt>
+									<dd>
+										<textarea id="elm1" name="faq.answer" rows="3" cols="30"></textarea>
+									</dd>
+								</dl>
+								<dl class="submit">
+									<input type="submit" name="submit" id="submit" value="提交修改内容"/>
+								</dl>
+								</fieldset>
+							</form>
+						</div>
 					</div>
 				</div>
 				<!-- end of right content-->

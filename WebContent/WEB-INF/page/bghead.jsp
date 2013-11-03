@@ -85,11 +85,10 @@
 				<li><a href="${path}rcmt/HengfuSetPreAction" title="">首页招聘信息</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
-		<li><a href="${path}rcmt/RecruitmentMngPreAction">常见问题</a>
+		<li><a href="#">常见问题</a>
 		    <ul>
 				<li><a href="${path}faq/FaqMngAction" title="">查看所有问题</a></li>
-				<li><a href="${path}ntc/NoticeAddPreAction" title="">新增</a></li>
-				<li><a href="${path}rcmt/WatchRecruitmentHTMLAction" title="" target="_blank">人才招聘预览</a></li>
+				<li><a href="${path}faq/IndexFaqListMngAction" title="">首页常见问题展示</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
 		<li><a href="${path}class/ClassMngPreAction">课程</a>

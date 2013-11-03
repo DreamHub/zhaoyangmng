@@ -542,5 +542,19 @@
 		<action name="FaqMngAction" class="faqMngAction">
 			<result name="success">/WEB-INF/page/faqInfoMng.jsp</result>
 		</action>
+		<action name="FaqEditAction" class="faqMngAction" method="faqEdit">
+			<result name="success" type="chain">FaqMngAction</result>
+		</action>
+		<action name="FaqAddAction" class="faqMngAction" method="faqAdd">
+			<result name="success" type="chain">FaqMngAction</result>
+		</action>
+		<action name="IndexFaqListMngAction" class="faqMngAction" method="indexFaqListMng">
+			<result name="success">/WEB-INF/page/indexFaqListSetting.jsp</result>
+		</action>
+		<action name="IndexFaqListEditAction" class="faqMngAction" method="indexFaqListEdit">
+			<result name="success" type="chain">IndexFaqListMngAction</result>
+		</action>
+		
+		
 	</package>
 </struts>    
