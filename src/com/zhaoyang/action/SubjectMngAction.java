@@ -110,9 +110,13 @@ public class SubjectMngAction extends AbstractActionSupport {
 		subject.setGradeCode(gradeCode);
 		subject.setSubjectName(subjectName);
 		
-		subjectDao.save(subject);
-		System.out.println("新增成功，<a href='SubjectMngAction?pageNum=1'>去看看</a>");
-		setSucMsg("新增成功，<a href='SubjectMngAction?pageNum=1'>去看看</a>");
+		if (!subjectDao.findByGradeAndSubName(grade, subjectName)) {
+			subjectDao.save(subject);
+			System.out.println("新增成功，<a href='SubjectMngAction?pageNum=1'>去看看</a>");
+			setSucMsg("新增成功，<a href='SubjectMngAction?pageNum=1'>去看看</a>");
+		} else {
+			setErrMsg("该学科已经存在！");
+		}
 		return SUCCESS;
 	}
 
@@ -209,9 +213,14 @@ public class SubjectMngAction extends AbstractActionSupport {
 		subject.setGradeCode(gradeCode);
 		subject.setSubjectName(subjectName);
 
-		subjectDao.updateSubject(subject);
-		System.out.println("修改成功，<a href='SubjectMngAction?pageNum=1'>去看看</a>");
-		setSucMsg("修改成功，<a href='SubjectMngAction?pageNum=1'>去看看</a>");
+		if (!subjectDao.findByIdAndGradeAndSubName(id, grade, subjectName)) {
+			subjectDao.updateSubject(subject);
+			System.out.println("修改成功，<a href='SubjectMngAction?pageNum=1'>去看看</a>");
+			setSucMsg("修改成功，<a href='SubjectMngAction?pageNum=1'>去看看</a>");
+		} else {
+			setErrMsg("该学科已经存在！");
+		}
+		
 		return SUCCESS;
 	}
 	

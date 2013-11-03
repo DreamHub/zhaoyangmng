@@ -11,13 +11,16 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.struts2.ServletActionContext;
 
 import com.zhaoyang.dao.NewsDao;
 import com.zhaoyang.dao.SubjectDao;
+import com.zhaoyang.dao.ZYClassDao;
 import com.zhaoyang.orm.News;
 import com.zhaoyang.orm.Subject;
+import com.zhaoyang.orm.ZYClass;
 import com.zhaoyang.util.OtherUtil;
 import com.zhaoyang.util.UtilForGenerateNews;
 
@@ -25,7 +28,16 @@ public class PagesGenerateAction extends AbstractActionSupport {
 	private NewsDao newsDao;
 
 	private SubjectDao subjectDao;
+	private ZYClassDao zyClassDao;
 	
+	public ZYClassDao getZyClassDao() {
+		return zyClassDao;
+	}
+
+	public void setZyClassDao(ZYClassDao zyClassDao) {
+		this.zyClassDao = zyClassDao;
+	}
+
 	public SubjectDao getSubjectDao() {
 		return subjectDao;
 	}
@@ -62,7 +74,7 @@ public class PagesGenerateAction extends AbstractActionSupport {
 		setSucMsg("公告生成成功,<a href=\"WatchNoticeHTMLAction\" target=\"_blank\">预览一下</a>");
 		return SUCCESS;
 	}
-
+	
 	private Long id;
 
 	public Long getId() {
@@ -148,10 +160,8 @@ public class PagesGenerateAction extends AbstractActionSupport {
 		String resMidBuf = middleBuf.substring(0, (middleBuf.length()-2));
 		String resHigBuf = highBuf.substring(0, (highBuf.length()-2));
 		String lastString = "[" + resLitBuf + "}]}," + resMidBuf + "}]}," + resHigBuf + "}]}]";
-//		lastBuf.append(littleBuf).append("]},").append(middleBuf).append("]},").append(highBuf);
-//		System.out.println(lastString);
+		System.out.println(lastString);
 		
-		String classDir = absolutePath("/class");
 		String realPath = ServletActionContext.getServletContext().getRealPath("/js/class/datasrc_class.js");
 		File file = new File(realPath);
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
@@ -159,65 +169,106 @@ public class PagesGenerateAction extends AbstractActionSupport {
 		bw.write(lastString);
 		bw.flush();
 		bw.close();
-//		List<Subject> subjectList = subjectDao.findAllSubjects();
-//		StringBuffer subBuf = new StringBuffer(); 
-//		subBuf.append("[{");
-//		subBuf.append("\"schoolGrade\":\"小学\", \"schoolContent\":[{");
-//		//把每个年级的数据放在map的一个key对应的value里面，年级作为key
-//		for (Subject subject : subjectList) {
-//			if (subject.getGradeCode() < 7) {
-//				
-//				
-//			} else if (subject.getGradeCode() < 10) {
-//				
-//			} else if (subject.getGradeCode() < 15) {
-//				
-//			}  
-//		}
-//		sb.append("{\"code\":1,\"recordCount\":"+newsCount+",\"pageCount\":"+maxSize+",\"data\":[");
-//
-//		String news_detail = ServletActionContext.getServletContext()
-//				.getRealPath("/news_detail");
-//		String realPath = ServletActionContext.getServletContext().getRealPath(
-//				"/js/news/datasrc_news.js");
-//
-//		for (News news : newes) {
-//
-//			sb.append("{\"title\":\"" + news.getTitle() + "\",\"datatime\":\""
-//					+ news.getCreateTime() + "\",\"id\":" + news.getId()
-//					+ ",\"url\":\"/zhaoyang/news_detail/" + news.getId()
-//					+ ".html\"},");
-//
-//			String path = "http://localhost:8080/zhaoyang/news_detail/112.jsp?id="
-//					+ news.getId();
-//			HttpURLConnection conn = (HttpURLConnection) new URL(path)
-//					.openConnection();
-//			conn.setRequestMethod("GET");
-//			if (conn.getResponseCode() == 200) {
-//				InputStream is = conn.getInputStream();
-//				String str = new String(OtherUtil.read(is), "UTF-8");
-//				File detailHtml = new File(news_detail + "/" + news.getId()
-//						+ ".html");
-//				PrintWriter pw = new PrintWriter(detailHtml, "UTF-8");
-//				pw.print(str);
-//				pw.close();
-//			}
-//		}
-//		sb.deleteCharAt(sb.length() - 1);
-//		sb.append("]}");
-//		// 更改 /js/news/datasrc_news.js
-//
-//		File file = new File(realPath);
-//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
-//				new FileOutputStream(file)));
-//		bw.write(sb.toString());
-//		bw.flush();
-//		bw.close();
-		ServletActionContext.getResponse().setCharacterEncoding("gbk");
-//		String teacherHtml=peopleDir+"/teacher.html";
-//		String studentHtml=peopleDir+"/student.html";
-//		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/people/teacher.jsp", new File(teacherHtml));
-//		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/people/student.jsp", new File(studentHtml));
+		
+		//生成特色课程的js，分别是小学、初中和高中
+		
+		//小学
+		StringBuffer chaLitBuf = new StringBuffer("[");
+		//初中
+		StringBuffer chaMidBuf = new StringBuffer("[");
+		//高中
+		StringBuffer chaHigBuf = new StringBuffer("[");
+		List<ZYClass> zyClasses = zyClassDao.findClassesForType("characteristic");
+		for (ZYClass zyClass : zyClasses) {
+			int gradeCode = zyClass.getSubject().getGradeCode(); 
+			String subjectName = zyClass.getSubject().getSubjectName();
+			String volumn = zyClass.getSubject().getGrade() + (zyClass.getVolumn()==1?"上册":"下册");
+			String dealDetail = zyClass.getDetail().replaceAll("\"", "\'");
+			if (gradeCode > 0 && gradeCode < 7) {
+				//生成小学特色课程的js内容
+				chaLitBuf.append("{\"className\":\"").append(zyClass.getClassName()).append("\",\"imgUrl\":\"").
+				append(zyClass.getImgUrl()).append("\",\"teacherName\":\"").append("主讲教师：").append(zyClass.getTeacherName()).
+				append("\",\"subjectName\":\"").append("科　　目：").append(subjectName).append("\",\"volumn\":\"").append("年级学期：").
+				append(volumn).append("\",\"cliTitle\":\"").append("查看详细信息").append("\",\"detail\":\"").append(dealDetail).
+				append("\"},");
+			} else if (gradeCode > 6 && gradeCode < 11) {
+				//生成初学特色课程的js内容
+				chaMidBuf.append("{\"className\":\"").append(zyClass.getClassName()).append("\",\"imgUrl\":\"").
+				append(zyClass.getImgUrl()).append("\",\"teacherName\":\"").append("主讲教师：").append(zyClass.getTeacherName()).
+				append("\",\"subjectName\":\"").append("科　　目：").append(subjectName).append("\",\"volumn\":\"").append("年级学期：").
+				append(volumn).append("\",\"cliTitle\":\"").append("查看详细信息").append("\",\"detail\":\"").append(dealDetail).
+				append("\"},");
+			} else if (gradeCode > 10 && gradeCode < 15) {
+				//生成高中特色课程的js内容				
+				chaHigBuf.append("{\"className\":\"").append(zyClass.getClassName()).append("\",\"imgUrl\":\"").
+				append(zyClass.getImgUrl()).append("\",\"teacherName\":\"").append("主讲教师：").append(zyClass.getTeacherName()).
+				append("\",\"subjectName\":\"").append("科　　目：").append(subjectName).append("\",\"volumn\":\"").append("年级学期：").
+				append(volumn).append("\",\"cliTitle\":\"").append("查看详细信息").append("\",\"detail\":\"").append(dealDetail).
+				append("\"},");
+			}
+		}
+		
+//		String realPath1 = ServletActionContext.getServletContext().getRealPath("/js/class/cba_class.js");
+		String classDir = absolutePath("/js");
+		if (chaLitBuf.length() >= 2) {
+			String chaLitResult = null;	
+			chaLitResult = chaLitBuf.substring(0, (chaLitBuf.length() - 1)) + "]";
+			File chaLitFile = new File(classDir + "\\class\\chaLitClass.js");
+			BufferedWriter chaLitBw = new BufferedWriter(new OutputStreamWriter(
+					new FileOutputStream(chaLitFile)));
+			chaLitBw.write(chaLitResult);
+			chaLitBw.flush();
+			chaLitBw.close();
+		}
+		if (chaMidBuf.length() >= 2) {
+			String chaMidResult = null;
+			chaMidResult = chaMidBuf.substring(0, (chaMidBuf.length() - 1)) + "]";
+			File chaMidFile = new File(classDir + "\\class\\chaMidClass.js");
+			BufferedWriter chaMidBw = new BufferedWriter(new OutputStreamWriter(
+					new FileOutputStream(chaMidFile)));
+			chaMidBw.write(chaMidResult);
+			chaMidBw.flush();
+			chaMidBw.close();
+		}
+		if (chaHigBuf.length() >= 2) {
+			String chaHigResult = null;
+			chaHigResult = chaHigBuf.substring(0, (chaHigBuf.length() - 1)) + "]";
+			File chaHigFile = new File(classDir + "\\class\\chaHigClass.js");
+			BufferedWriter chaHigBw = new BufferedWriter(new OutputStreamWriter(
+					new FileOutputStream(chaHigFile)));
+			chaHigBw.write(chaHigResult);
+			chaHigBw.flush();
+			chaHigBw.close();
+		}
+		
+		// 生成普通课程的js   
+		//格式：srclass_jsId.js
+		List<Subject> subjects = subjectDao.findAllSubjects();
+		for (Subject subject : subjects) {
+			Set<ZYClass> classes = subject.getZyClasses();
+			String subjectName = subject.getSubjectName();
+			StringBuffer sonDataJsBuf = new StringBuffer("[");
+			
+			for (ZYClass zyClass : classes) {
+				String dealDetail = zyClass.getDetail().replaceAll("\"", "\'");
+				String volumn = subject.getGrade() + (zyClass.getVolumn()==1?"上册":"下册");
+				sonDataJsBuf.append("{\"className\":\"").append(zyClass.getClassName()).append("\",\"imgUrl\":\"").
+				append(zyClass.getImgUrl()).append("\",\"teacherName\":\"").append("主讲教师：").append(zyClass.getTeacherName()).
+				append("\",\"subjectName\":\"").append("科　　目：").append(subjectName).append("\",\"volumn\":\"").append("年级学期：").
+				append(volumn).append("\",\"cliTitle\":\"").append("查看详细信息").append("\",\"detail\":\"").append(dealDetail).
+				append("\"},");
+			}
+			String sonDataJsResult = null;
+			sonDataJsResult = sonDataJsBuf.substring(0, (sonDataJsBuf.length() - 1)) + "]";
+			File chaMidFile = new File(classDir + "\\class\\srclass_" + subject.getId() +".js");
+			BufferedWriter sonDataJsBw = new BufferedWriter(new OutputStreamWriter(
+					new FileOutputStream(chaMidFile)));
+			sonDataJsBw.write(sonDataJsResult);
+			sonDataJsBw.flush();
+			sonDataJsBw.close();
+			
+		}
+		
 		setSucMsg("生成成功,<a href='/zhaoyang/class.html' target='_blank'>预览一下</a>");
 		return SUCCESS;
 	}

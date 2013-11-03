@@ -11,53 +11,26 @@
 		<script type="text/javascript" src="js/index/fsrPMD.js"></script>
 		<script src="js/class/jquery.idTabs.js"></script>
 		<script src="js/class/jquery.stylish-select.js"></script>
+		<script src="js/class/popUp.js"></script>
 		<script src="js/class/class.js"></script>
+		
+		<script type="text/javascript">
+			$(function() {
+				$('#common_head').load("head.html");
+				$('#common_foot').load("foot.html");
+			});
+		</script>
 		
 	</head>
 
 	<body>
 		<div class="wrap">
-			<div class="head">
-				<div id="logo">
-					<a href="#"><img src="image/utsing.gif" /></a>
-				</div>
-			</div>
-			<div class="nav">
-				<ul>
-					<li>
-						<a href="index.html">首页</a>
-					</li>
-					<li>
-						<a href="#">学校简介</a>
-					</li>
-					<li>
-						<a href="news.html">新闻动态</a>
-					</li>
-					<li>
-						<a href="#">课程中心</a>
-					</li>
-					<li>
-						<a href="#">师生风采</a>
-					</li>
-					<li>
-						<a href="download.html">资源下载</a>
-					</li>
-					<li>
-						<a href="faq.html">常见问题</a>
-					</li>
-					<li>
-						<a href="#">地图导航</a>
-					</li>
-					<li>
-						<a href="#">人才招聘</a>
-					</li>
-					<li>
-						<a href="connectUs.html">联系我们</a>
-					</li>
-				</ul>
-			</div>
-
+			<div id="common_head"></div>
 			<div class="main">
+				<p class="bread_crumb">
+					首页&nbsp;>>&nbsp;<span>课程</span>
+				</p>
+			
 				<div id="wrap">
 					<div class="col1">
 						<div class="cmbox box1">
@@ -70,28 +43,6 @@
 						</div>
 						
 					</div>
-					<!--
-					
-										<div class="col1-2">
-											<div class="teachers">
-												<h2><img src="image/index/msfc.jpg"/><span><a href="#">鏇村>></a></span></h2>
-												<div style="padding: 0px 5px 5px 5px">
-													<div id="teachers_show_id" style="overflow:hidden;" >
-														<table>
-															<tr>
-																<td><img src="image/index/20121212134637-49103.jpg" style="width:184px; height:139px;" /></td>
-																<td><img src="image/index/2012121313260-91048.jpg" style="width:184px; height:139px;" /></td>
-																<td><img src="image/index/20121213133046-59173.jpg" style="width:184px; height:139px;" /></td>
-																<td><img src="image/index/2012121313368-21855.jpg" style="width:184px; height:139px;" /></td>
-																<td><img src="image/index/20121213133911-11218.jpg" style="width:184px; height:139px;" /></td>
-																<td><img src="image/index/20121213134242-31364.jpg" style="width:184px; height:139px;" /></td>
-															</tr>
-														</table>
-													</div>
-												</div>
-											</div>
-										</div>-->
-					
 					
 					<div class="col2">
 						<div class="box2">
@@ -100,13 +51,13 @@
 								<div style="margin-left: 10px; width:770px;margin-top:16px">
 									<ul style="margin-bottom: 0px">
 										<li>
-											<a id="a_one" href="#li_one" class="noSelected"  onclick="return productContent('one','小学')">小学</a>
+											<a id="a_one" href="#li_one" class="noSelected"  onclick="return productContent('one','chaLitClass.js')">小学</a>
 										</li>
 										<li>
-											<a id="a_two" href="#li_two" class="noSelected" onclick="return productContent('two','初中')">初中</a>
+											<a id="a_two" href="#li_two" class="noSelected" onclick="return productContent('two','chaMidClass.js')">初中</a>
 										</li>
 										<li>
-											<a id="a_three" href="#li_three" class="noSelected" onclick="return productContent('three','高中')">高中</a>
+											<a id="a_three" href="#li_three" class="noSelected" onclick="return productContent('three','chaHigClass.js')">高中</a>
 										</li>
 									</ul>
 									<div id="li_one" style="background-color: #FFFFFF; margin-top: 0px">
@@ -136,6 +87,7 @@
 				</div>
 
 			</div>
+			<div id="common_foot"></div>
 		</div>
 
 	</body>

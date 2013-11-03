@@ -3,6 +3,8 @@ package com.zhaoyang.orm;
 //课程bean
 public class ZYClass {
 	private Long id;
+	//课程类型
+	private String classType;
 	//课程名称
 	private String className;
 	//图片URL
@@ -13,7 +15,15 @@ public class ZYClass {
 	private Integer volumn;
 	//课程对应的学科
 	private Subject subject;
+	//课程详细信息
+	private String detail;
 	
+	public String getDetail() {
+		return detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
 	public Subject getSubject() {
 		return subject;
 	}
@@ -25,6 +35,12 @@ public class ZYClass {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public String getClassType() {
+		return classType;
+	}
+	public void setClassType(String classType) {
+		this.classType = classType;
 	}
 	public String getClassName() {
 		return className;

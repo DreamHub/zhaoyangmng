@@ -11,9 +11,9 @@
             <generator class="native" />
         </id>
         <property name="grade" column="grade" type="java.lang.String"/>
+		<property name="subjectName" column="subjectname" type="java.lang.String"/>
         <property name="gradeCode" column="gradecode" type="java.lang.Integer"/>
-        <property name="subjectName" column="subjectname" type="java.lang.String"/>
-        <set name="zyClasses">
+        <set name="zyClasses" lazy="false">
         	<key column="subjectid"/>
         	<one-to-many class="ZYClass"/>
         </set>

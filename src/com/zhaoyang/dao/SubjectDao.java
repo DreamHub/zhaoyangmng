@@ -34,6 +34,7 @@ public class SubjectDao extends HibernateDaoSupport {
 		return null;
 	}
 
+	//找出所有年级和年级code
 	public List<Subject> findAll() {
 		final List<Subject> subjects = new ArrayList<Subject>();
 		final String sql = "select distinct(gradeCode), grade from subject";
@@ -87,7 +88,55 @@ public class SubjectDao extends HibernateDaoSupport {
 		}
 		return null;
 	}
-
+	
+	//根据小学、初中、高中三个条件对应的不同gradeCode进行查询
+	public List<Subject> findByTwoGrade(final Integer startGrade, final Integer endGrade) {
+		final List<Subject> subjects = new ArrayList<Subject>();
+		//有问题，至少挺危险！
+//		final String sql = "select distinct(subjectname), id from subject where gradeCode=" + gradeCode;
+		final String sql = "select grade, subjectname, id from subject where gradeCode>" + startGrade + " and gradeCode<" + endGrade;
+		getHibernateTemplate().executeFind(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				Statement stmt=session.connection().createStatement();
+				ResultSet rs=stmt.executeQuery(sql);
+				while(rs.next()){
+					Subject subject = new Subject();
+					subject.setId(rs.getLong("id"));
+					subject.setGrade(rs.getString("grade"));
+					subject.setSubjectName(rs.getString("subjectname"));
+//					subject.setGradeCode(rs.getInt("gradeCode"));
+					subjects.add(subject);
+				}
+				rs.close();
+				stmt.close();
+				return null;
+			}
+		});
+		if (subjects != null && subjects.size() > 0) {
+			return subjects;
+		}
+		return null;
+	}
+	
+	public List<Subject> findSubjects2(final Integer startGrade,final Integer endGrade) {
+		final String hql = "from Subject s where s.gradeCode>:startGrade and s.gradeCode<:endGrade";
+		List list = getHibernateTemplate().executeFind(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				Query query = session.createQuery(hql);
+				query.setInteger("startGrade", startGrade);
+				query.setInteger("endGrade", endGrade);
+				List list = query.list();
+				return list;
+			}
+		});
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+		return null;
+	}
+	
 	public List<Subject> findSubjects(final Integer pageNum,final String pageSize) {
 		final String hql = "from Subject";
 		List list = getHibernateTemplate().executeFind(new HibernateCallback() {
@@ -144,5 +193,50 @@ public class SubjectDao extends HibernateDaoSupport {
 		subject2.setGradeCode(subject.getGradeCode());
 		subject2.setSubjectName(subject.getSubjectName());
 		getHibernateTemplate().update(subject2);
+	}
+	
+	//执行增加操作前，根据“年级”和“学科名称”判断数据库中是否有该组数据，
+	//若有，就不执行增加操作，返回true
+	public boolean findByGradeAndSubName(final String grade, final String subjectName) {
+		
+		boolean result = false;
+		final String hql = "from Subject s where s.grade=:grade and s.subjectName=:subjectName";
+		List list = getHibernateTemplate().executeFind(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				Query query = session.createQuery(hql);
+				query.setString("grade", grade);
+				query.setString("subjectName", subjectName);
+				List list = query.list();
+				return list;
+			}
+		});
+		if (list != null && list.size() > 0) {
+			result = true;
+		}
+		return result;
+	}
+	
+	//执行更新操作前，根据id、“年级”和“学科名称”判断数据库中是否有该组数据，
+	//若有，就不执行增加操作，返回true
+	public boolean findByIdAndGradeAndSubName(final Long id, final String grade, final String subjectName) {
+		
+		boolean result = false;
+		final String hql = "from Subject s where s.id!=:id and s.grade=:grade and s.subjectName=:subjectName";
+		List list = getHibernateTemplate().executeFind(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				Query query = session.createQuery(hql);
+				query.setLong("id", id);
+				query.setString("grade", grade);
+				query.setString("subjectName", subjectName);
+				List list = query.list();
+				return list;
+			}
+		});
+		if (list != null && list.size() > 0) {
+			result = true;
+		}
+		return result;
 	}
 }

@@ -130,6 +130,17 @@
 							<fieldset>
 								<dl>
 									<dt>
+										<label for="email">课程类型:</label>
+									</dt>
+									<dd>
+											<select name="classType">
+												<option value="normal">普通课程</option>
+												<option value="characteristic">特色课程</option>
+											</select>
+									</dd>
+								</dl>
+								<dl>
+									<dt>
 										<label for="email">年级:</label>
 									</dt>
 									<dd>
@@ -195,6 +206,17 @@
 									</dd>
 								</dl>
 								
+								<dl>
+									<dt>
+										<label for="password">详细信息:</label>
+									</dt>
+									<dd style="width: 150px;">
+										<a href="#" class="bt_green"><span class="bt_green_lft"></span><strong>点此增加详细信息</strong><span
+											class="bt_green_r"></span> </a>
+										<input name="detail" type="hidden" id="content"/>
+									</dd>
+								</dl>
+								
 								<dl class="submit">
 									<input type="submit" name="submit" id="submit" value="提交修改后内容" />
 								</dl>
@@ -214,6 +236,14 @@
 						</div>
 					</s:if>
 
+					<!-- 预览部分 -->
+					<h3>预览墙：</h3>
+					<div id="showNews" style="display: block;width: 100%">
+						
+					</div>
+					<div class="warning_box" style="display: none">
+							内容为空,无法预览
+					</div>
 				</div>
 				<!-- end of right content-->
 			</div>

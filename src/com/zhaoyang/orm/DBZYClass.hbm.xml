@@ -10,10 +10,13 @@
             <column name="id" />
             <generator class="native" />
         </id>
+        <property name="classType" column="classtype" type="java.lang.String"/>
         <property name="className" column="classname" type="java.lang.String"/>
         <property name="imgUrl" column="imgurl" type="java.lang.String"/>
         <property name="teacherName" column="teachername" type="java.lang.String"/>
         <property name="volumn" column="volumn" type="java.lang.Integer"/>
+        <property name="detail" column="detail" type="java.lang.String"/>
+        
         <many-to-one name="subject" column="subjectid" class="Subject" lazy="false"/>
     </class>
 </hibernate-mapping>

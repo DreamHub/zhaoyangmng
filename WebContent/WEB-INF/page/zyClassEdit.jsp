@@ -121,6 +121,21 @@
 								</dl>
 								<dl>
 									<dt>
+										<label for="email">课程类型:</label>
+									</dt>
+									<dd>
+											<select name="classType">
+												<option value="normal"
+													<c:if test="${classType eq 'normal' }">selected="selected"</c:if>
+												>普通课程</option>
+												<option value="characteristic"
+													<c:if test="${classType eq 'characteristic' }">selected="selected"</c:if>
+												>特色课程</option>
+											</select>
+									</dd>
+								</dl>
+								<dl>
+									<dt>
 										<label for="email">年级:</label>
 									</dt>
 									<dd>
@@ -129,7 +144,7 @@
 												
 												<c:forEach items="${subjects}" var="subject">
 													<option value="${subject.gradeCode }"
-														<c:if test="${subject.grade eq grade}">
+														<c:if test="${subject.gradeCode eq gradeCode}">
 															selected="selected"
 														</c:if>
 													>${subject.grade}</option>
@@ -187,7 +202,17 @@
 										<input type="text" name="volumn" id="" size="54" value="${volumn}"/>
 									</dd>
 								</dl>
-								
+								<dl>
+									<dt>
+										<label for="password">详细信息:</label>
+									</dt>
+									<dd style="width: 150px;">
+										<a href="#" class="bt_green"><span class="bt_green_lft"></span><strong>点此修改详细信息</strong><span
+											class="bt_green_r"></span> </a>
+										<input name="detail" type="hidden" id="content" value="<s:property value="detail" escape="true"/>" style="display: none"/>
+									</dd>
+									
+								</dl>
 								<dl class="submit">
 									<input type="submit" name="submit" id="submit" value="提交修改后内容" />
 								</dl>
@@ -206,7 +231,14 @@
 							${sucMsg}
 						</div>
 					</s:if>
-
+					<!-- 预览部分 -->
+					<h3>预览墙：</h3>
+					<div id="showNews" style="display: block;width: 100%">
+						
+					</div>
+					<div class="warning_box" style="display: none">
+							内容为空,无法预览
+					</div>
 				</div>
 				<!-- end of right content-->
 			</div>

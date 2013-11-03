@@ -24,6 +24,16 @@ public class ZYClassMngAction extends AbstractActionSupport {
 	private Integer gradeCode;
 	private String subjectName;
 	
+	private String classType;
+	public String getClassType() {
+		return classType;
+	}
+
+	public void setClassType(String classType) {
+		this.classType = classType;
+	}
+
+
 	private String className;
 	private String imgUrl;
 	private String teacherName;
@@ -31,7 +41,17 @@ public class ZYClassMngAction extends AbstractActionSupport {
 	
 	private File classImg;
 	private String classImgFileName;
+	private String detail;
 	
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+
+
 	private List<Subject> subjects;
 //	private List grade
 	
@@ -200,6 +220,10 @@ public class ZYClassMngAction extends AbstractActionSupport {
 			setErrMsg("请填写学期");
 			return SUCCESS;
 		}
+		if (detail == null || "".equals(detail)) {
+			setErrMsg("详细信息不能为空");
+			return SUCCESS;
+		}
 		grade = getGradeName(gradeCode);
 
 		String realPath = ServletActionContext.getServletContext().getRealPath("/image/class");
@@ -217,10 +241,12 @@ public class ZYClassMngAction extends AbstractActionSupport {
 		Subject subject = new Subject();
 		subject.setId(subjectId);
 		
+		zyClass.setClassType(classType);
 		zyClass.setClassName(className);
 		zyClass.setImgUrl(imgUrl);
 		zyClass.setTeacherName(teacherName);
 		zyClass.setVolumn(volumn);
+		zyClass.setDetail(detail);
 		
 		zyClass.setSubject(subject);
 		
@@ -273,6 +299,7 @@ public class ZYClassMngAction extends AbstractActionSupport {
 		subjects = zyClassDao.getSubjectDao().findAll();
 		ZYClass zyClass=zyClassDao.findById(id);
 		if(zyClass!=null){
+			setClassType(zyClass.getClassType());
 			setClassName(zyClass.getClassName());
 			setGrade(getGradeName(zyClass.getSubject().getGradeCode()));
 			setGradeCode(zyClass.getSubject().getGradeCode());
@@ -280,6 +307,7 @@ public class ZYClassMngAction extends AbstractActionSupport {
 			setImgUrl(zyClass.getImgUrl());
 			setTeacherName(zyClass.getTeacherName());
 			setVolumn(zyClass.getVolumn());
+			setDetail(zyClass.getDetail());
 		}
 		return SUCCESS;
 	}
@@ -294,13 +322,15 @@ public class ZYClassMngAction extends AbstractActionSupport {
 		case 5:grade = "五年级";break;
 		case 6:grade = "六年级";break;
 		
-		case 7:grade = "初一";break;
-		case 8:grade = "初二";break;
-		case 9:grade = "初三";break;
+		case 7:grade = "七年级";break;
+		case 8:grade = "八年级";break;
+		case 9:grade = "九年级";break;
+		case 10:grade = "中考复习专区";
 		
-		case 10:grade = "高一";break;
-		case 11:grade = "高二";break;
-		case 12:grade = "高三";break;
+		case 11:grade = "高一";break;
+		case 12:grade = "高二";break;
+		case 13:grade = "高三";break;
+		case 14:grade = "高考复习专区";break;
 		}
 		return grade;
 	}
@@ -333,6 +363,10 @@ public class ZYClassMngAction extends AbstractActionSupport {
 			setErrMsg("请填写学期");
 			return SUCCESS;
 		}
+		if (detail == null || "".equals(detail)) {
+			setErrMsg("详细信息不能为空");
+			return SUCCESS;
+		}
 //		grade = getGradeName(gradeCode);
 
 		String realPath = ServletActionContext.getServletContext().getRealPath("/image/class");
@@ -350,10 +384,12 @@ public class ZYClassMngAction extends AbstractActionSupport {
 
 		ZYClass zyClass = new ZYClass();
 		zyClass.setId(id);
+		zyClass.setClassType(classType);
 		zyClass.setClassName(className);
 		zyClass.setImgUrl(imgUrl);
 		zyClass.setTeacherName(teacherName);
 		zyClass.setVolumn(volumn);
+		zyClass.setDetail(detail);
 		
 		Subject subject = new Subject();
 		subject.setId(subjectId);
@@ -373,9 +409,9 @@ public class ZYClassMngAction extends AbstractActionSupport {
 		List<Subject> subjects = zyClassDao.getSubjectDao().findByGrade(gradeCode);
 		int subLength = subjects.size();
 		for (int i = 0; i < (subLength-1); i++) {
-			gradeBuf.append("{\"name\":\"").append(subjects.get(i).getGrade()).append("\",\"id\":\"").append(subjects.get(i).getId()).append("\"},");
+			gradeBuf.append("{\"name\":\"").append(subjects.get(i).getSubjectName()).append("\",\"id\":\"").append(subjects.get(i).getId()).append("\"},");
 		}
-		gradeBuf.append("{\"name\":\"").append(subjects.get((subLength-1)).getGrade()).append("\",\"id\":\"").append(subjects.get(subLength-1).getId()).append("\"}");
+		gradeBuf.append("{\"name\":\"").append(subjects.get((subLength-1)).getSubjectName()).append("\",\"id\":\"").append(subjects.get(subLength-1).getId()).append("\"}");
 		gradeBuf.append("]");
 		ServletActionContext.getResponse().getWriter().write(gradeBuf.toString());
 	}

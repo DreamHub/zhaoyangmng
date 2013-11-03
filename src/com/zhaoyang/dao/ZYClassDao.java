@@ -96,10 +96,30 @@ public class ZYClassDao extends HibernateDaoSupport {
 		// TODO Auto-generated method stub
 		//???为什么还要找出来，直接update subject不行？
 		ZYClass zyClass2=(ZYClass)getHibernateTemplate().get(ZYClass.class, zyClass.getId());
+		zyClass2.setClassType(zyClass.getClassType());
 		zyClass2.setClassName(zyClass.getClassName());
 		zyClass2.setImgUrl(zyClass.getImgUrl());
 		zyClass2.setTeacherName(zyClass.getTeacherName());
 		zyClass2.setVolumn(zyClass.getVolumn());
 		getHibernateTemplate().update(zyClass2);
+	}
+	
+
+	//根据课程类别，查找课程
+	public List<ZYClass> findClassesForType(final String classType) {
+		final String hql = "from ZYClass s where s.classType=:classType";
+		List list = getHibernateTemplate().executeFind(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				Query query = session.createQuery(hql);
+				query.setString("classType", classType);
+				List list = query.list();
+				return list;
+			}
+		});
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+		return null;
 	}
 }
