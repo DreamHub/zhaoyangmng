@@ -10,10 +10,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
 import com.zhaoyang.dao.NewsDao;
 import com.zhaoyang.orm.News;
+import com.zhaoyang.util.DaoGenerate;
 import com.zhaoyang.util.OtherUtil;
 import com.zhaoyang.util.UtilForGenerateDownload;
 import com.zhaoyang.util.UtilForGenerateNews;
@@ -73,6 +75,35 @@ public class GenerateWebsiteAction extends AbstractActionSupport {
 		//课程
 		//其他设置
 		//http://localhost:8080/zhaoyang/peo/GeneratePeopleHTMLAction
+		String websiteDirPath=DaoGenerate.getRuleDao().findRuleByRuleId("WebsiteDirPath").getRuleDef();
+		File rootDir=new File(websiteDirPath);
+		if(!rootDir.exists()){
+			rootDir.mkdirs();
+		}
+		//rootDir.c
+		OtherUtil.copyDirectiory(absolutePath("/people"),rootDir.getAbsolutePath()+"/people");
+		OtherUtil.copyDirectiory(absolutePath("/notice_detail"),rootDir.getAbsolutePath()+"/notice_detail");
+		OtherUtil.copyDirectiory(absolutePath("/news_detail"),rootDir.getAbsolutePath()+"/news_detail");
+		OtherUtil.copyDirectiory(absolutePath("/js"),rootDir.getAbsolutePath()+"/js");
+		OtherUtil.copyDirectiory(absolutePath("/class"),rootDir.getAbsolutePath()+"/class");
+		OtherUtil.copyDirectiory(absolutePath("/about_detail"),rootDir.getAbsolutePath()+"/about_detail");
+		OtherUtil.copyDirectiory(absolutePath("/image"),rootDir.getAbsolutePath()+"/image");
+		OtherUtil.copyDirectiory(absolutePath("/css"),rootDir.getAbsolutePath()+"/css");
+		OtherUtil.copyDirectiory(absolutePath("/downloads"),rootDir.getAbsolutePath()+"/downloads");
+		//OtherUtil.copyDirectiory(absolutePath("/downloads"),rootDir.getAbsolutePath()+"/downloads");
+		OtherUtil.copyFile(new File(absolutePath("/index.html")),new File(rootDir.getAbsolutePath()+"/index.html"));
+		OtherUtil.copyFile(new File(absolutePath("/news.html")),new File(rootDir.getAbsolutePath()+"/news.html"));
+		OtherUtil.copyFile(new File(absolutePath("/notice.html")),new File(rootDir.getAbsolutePath()+"/notice.html"));
+		OtherUtil.copyFile(new File(absolutePath("/faq.html")),new File(rootDir.getAbsolutePath()+"/faq.html"));
+		OtherUtil.copyFile(new File(absolutePath("/recruitment.html")),new File(rootDir.getAbsolutePath()+"/recruitment.html"));
+		OtherUtil.copyFile(new File(absolutePath("/foot.html")),new File(rootDir.getAbsolutePath()+"/foot.html"));
+		OtherUtil.copyFile(new File(absolutePath("/download.html")),new File(rootDir.getAbsolutePath()+"/download.html"));
+		OtherUtil.copyFile(new File(absolutePath("/people.html")),new File(rootDir.getAbsolutePath()+"/people.html"));
+		OtherUtil.copyFile(new File(absolutePath("/head.html")),new File(rootDir.getAbsolutePath()+"/head.html"));
+		//FileUtils.copyFile(new File(absolutePath("/people")), new File(rootDir.getPath()+"/people"));
+		//ServletActionContext.get
+		System.out.println(absolutePath("/"));
+		
 		msg="1";
 		return SUCCESS;
 	}
