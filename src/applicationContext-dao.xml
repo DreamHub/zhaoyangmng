@@ -51,4 +51,7 @@
 	<bean id="tailLinkDao" class="com.zhaoyang.dao.TailLinkDao">
 		<property name="ruleDao" ref="ruleDao"></property>
 	</bean>
+	<bean id="faqDao" class="com.zhaoyang.dao.FaqDao">
+		<property name="ruleDao" ref="ruleDao"></property>
+	</bean>
 </beans>

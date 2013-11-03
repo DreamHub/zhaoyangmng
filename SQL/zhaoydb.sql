@@ -76,6 +76,7 @@ insert into rule(ruleid,ruledef) values('IndexStudentList','1,2,3');
 insert into rule(ruleid,ruledef) values('IndexDownloadList','1,2,3');
 insert into rule(ruleid,ruledef) values('WebsiteDirPath','D:/tmp');
 update rule set ruledef='d:/tmp' where ruleid='WebsiteDirPath';
+insert into rule(ruleid,ruledef) values('FaqList','[{"queNo":"1","question":"报辅导班具体联系方式是什么？","answer":"郝校长：15715555678"}]');
 select * from rule
 --学科表
 create table subject (

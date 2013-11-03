@@ -538,5 +538,9 @@
 			</result>
 		</action>
 	</package>
-	
+	<package name="faq" namespace="/faq" extends="struts-abstract">
+		<action name="FaqMngAction" class="faqMngAction">
+			<result name="success">/WEB-INF/page/faqInfoMng.jsp</result>
+		</action>
+	</package>
 </struts>    
