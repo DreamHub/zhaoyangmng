@@ -506,7 +506,7 @@
 			<result name="success">/WEB-INF/page/zyClassAdd.jsp</result>
 		</action>
 		<action name="ZYClassAddAction" class="zyClassMngAction" method="zyClassAdd">
-			<result name="success">/WEB-INF/page/zyClassAdd.jsp</result>
+			<result name="success" type="chain">ZYClassAddPreAction</result>
 		</action>
 		<action name="ZYClassAddGetNameAction" class="zyClassMngAction" method="zyClassAddGetName">
 		</action>
