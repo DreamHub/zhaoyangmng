@@ -504,7 +504,6 @@
 		</action>
 		<action name="ZYClassAddPreAction" class="zyClassMngAction" method="zyClassAddPre">
 			<result name="success">/WEB-INF/page/zyClassAdd.jsp</result>
-			<result name="error">/background/login.jsp</result>
 		</action>
 		<action name="ZYClassAddAction" class="zyClassMngAction" method="zyClassAdd">
 			<result name="success">/WEB-INF/page/zyClassAdd.jsp</result>
