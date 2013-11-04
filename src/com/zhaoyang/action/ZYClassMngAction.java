@@ -34,7 +34,7 @@ public class ZYClassMngAction extends AbstractActionSupport {
 	}
 
 
-	private String className;
+	private String myClassName;
 	private String imgUrl;
 	private String teacherName;
 	private Integer volumn;
@@ -98,12 +98,12 @@ public class ZYClassMngAction extends AbstractActionSupport {
 		this.zyClassDao = zyClassDao;
 	}
 
-	public String getClassName() {
-		return className;
+	public String getMyClassName() {
+		return myClassName;
 	}
 
-	public void setClassName(String className) {
-		this.className = className;
+	public void setMyClassName(String myClassName) {
+		this.myClassName = myClassName;
 	}
 
 	public String getImgUrl() {
@@ -204,7 +204,7 @@ public class ZYClassMngAction extends AbstractActionSupport {
 			setErrMsg("学科名称不能为空");
 			return SUCCESS;
 		}
-		if (className == null || "".equals(className)) {
+		if (myClassName == null || "".equals(myClassName)) {
 			setErrMsg("课程名称不能为空");
 			return SUCCESS;
 		}
@@ -242,7 +242,7 @@ public class ZYClassMngAction extends AbstractActionSupport {
 		subject.setId(subjectId);
 		
 		zyClass.setClassType(classType);
-		zyClass.setClassName(className);
+		zyClass.setClassName(myClassName);
 		zyClass.setImgUrl(imgUrl);
 		zyClass.setTeacherName(teacherName);
 		zyClass.setVolumn(volumn);
@@ -300,7 +300,7 @@ public class ZYClassMngAction extends AbstractActionSupport {
 		ZYClass zyClass=zyClassDao.findById(id);
 		if(zyClass!=null){
 			setClassType(zyClass.getClassType());
-			setClassName(zyClass.getClassName());
+			setMyClassName(zyClass.getClassName());
 			setGrade(getGradeName(zyClass.getSubject().getGradeCode()));
 			setGradeCode(zyClass.getSubject().getGradeCode());
 			setSubjectName(zyClass.getSubject().getSubjectName());
@@ -346,7 +346,7 @@ public class ZYClassMngAction extends AbstractActionSupport {
 			setErrMsg("学科名称不能为空");
 			return SUCCESS;
 		}*/
-		if (className == null || "".equals(className)) {
+		if (myClassName == null || "".equals(myClassName)) {
 			setErrMsg("课程名称不能为空");
 			return SUCCESS;
 		}
@@ -385,7 +385,7 @@ public class ZYClassMngAction extends AbstractActionSupport {
 		ZYClass zyClass = new ZYClass();
 		zyClass.setId(id);
 		zyClass.setClassType(classType);
-		zyClass.setClassName(className);
+		zyClass.setClassName(myClassName);
 		zyClass.setImgUrl(imgUrl);
 		zyClass.setTeacherName(teacherName);
 		zyClass.setVolumn(volumn);
