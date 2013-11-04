@@ -22,6 +22,10 @@
 			'</div>';
 	$(function() {
 		getClassList();
+		$('#gradeId').parent().find('.NFSelectOptions li a').click(function(){
+			getClassList();
+		});
+		
 		if($('#content').val()==null||$('#content').val()==""){
 			$('.warning_box').css("display","block");
 		}else{
@@ -68,6 +72,7 @@
 		});
 	});
 	function getClassList() {
+		//alert("change");
 		$('#subjectId').empty();
 		$('#subjectId').parent().find('.NFSelectOptions').empty();
 		$.ajax({
