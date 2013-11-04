@@ -98,14 +98,16 @@ delete from subject where id=3;
 commit;
 
 --课程表
+drop table zyclass;
 create table zyclass (
 	id bigint(20) primary key auto_increment,
+	classtype varchar(20),
 	classname varchar(20),
 	imgurl varchar(50),
 	teachername varchar(10),
 	volumn int(1),
+	detail text,
 	subjectid bigint(20) references subject(id)
 );
-
 commit;
 
