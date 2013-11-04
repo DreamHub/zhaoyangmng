@@ -21,9 +21,7 @@
 			'</p>'+
 			'</div>';
 	$(function() {
-		
 		getClassList();
-		
 		if($('#content').val()==null||$('#content').val()==""){
 			$('.warning_box').css("display","block");
 		}else{
@@ -68,8 +66,29 @@
 				html5Upload:false
 			});
 		});
-	    
 	});
+	function getClassList() {
+		$('#subjectId').empty();
+		$('#subjectId').parent().find('.NFSelectOptions').empty();
+		$.ajax({
+	            type: "post",
+	            dataType: "json",
+	            url: "class/ZYClassAddGetNameAction?gradeCode="+$('#gradeId').val(),
+	            success: function (msg) {
+	            	//alert(msg.toString());
+	                for (i in msg) {
+	                	$('#subjectId').append('<option value=' + msg[i].id + '>'+msg[i].name+'</option');
+	                	$('#subjectId').parent().find('.NFSelectOptions').append('<li><a href="javascript:;">'+msg[i].name+'</a></li>');
+	                	
+	                	if(i==0){
+	                		$('#subjectId').parent().find('.NFSelectRight').text(msg[i].name);
+	                	}
+	                	$('#subjectId').find('option:eq(0)').select();
+	                }
+	                
+	            }
+		 });
+	}
 	function insertUpload(msg) {
 		//alert(msg);
 		if(msg == "上传失败"){
@@ -79,39 +98,6 @@
 		}
 		alert("上传成功");
 	}
-	
-	function getClassList() {
-		$('#subjectId').empty();
-		        $.ajax({
-		            type: "post",
-		            dataType: "json",
-		            url: "class/ZYClassAddGetNameAction?gradeCode="+$('#gradeId').val(),
-		            success: function (msg) {
-		                for (i in msg) {
-		                	$('#subjectId').append('<option value=' + msg[i].id + '>'+msg[i].name+'</option');
-		                }
-		                //$("tbody").append(str);
-		            }
-		        });
-	}
-	
-	function getGradeList() {
-		$.ajax({
-            type: "post",
-            dataType: "json",
-            url: "class/ZYClassAddGetGradeAction",
-            success: function (msg) {
-                var str = "";
-                for (i in msg) {
-                	$('#gradeId').append('<option>'+msg[i].name+'</option');
-                    //str += "<tr><td>" + msg[i].id + "</td><td>" + msg[i].name + "</td><td>" + msg[i].cla + "</td><td>" + msg[i].sex + "</td><td>" + msg[i].tel + "</td></tr>";
-                }
-                //$("tbody").append(str);
-            }
-        });
-	}
-	
-	
 </script>
 </head>
 <body>
@@ -133,7 +119,7 @@
 										<label for="email">课程类型:</label>
 									</dt>
 									<dd>
-											<select name="classType">
+											<select name="classType" size="1" id="classType">
 												<option value="normal">普通课程</option>
 												<option value="characteristic">特色课程</option>
 											</select>
@@ -144,9 +130,7 @@
 										<label for="email">年级:</label>
 									</dt>
 									<dd>
-										<!-- <input type="text" name="grade" id="" size="54" value="${grade}"/>  onclick="getGradeList()" -->
-											<select id="gradeId" name="gradeCode" onchange="getClassList()">
-												<!-- <option value="0">请选择年级</option> -->
+											<select id="gradeId" name="gradeCode" onchange="getClassList()"  size="1">
 												<s:iterator value="subjects">
 													<option value="<s:property value="gradeCode"/>"><s:property value="grade"/></option>
 												</s:iterator>
@@ -159,7 +143,11 @@
 									</dt>
 									<dd>
 										<!-- <input type="text" name="subjectName" id="" size="54"/> -->
-										<select id="subjectId" name="subjectId">
+										<select id="subjectId" name="subjectId" size="1">
+											<option>--请选择--</option>
+											<option>--请选择2--</option>
+											<option>--请选择3--</option>
+											<option>--请选择4--</option>
 										</select>
 									</dd>
 								</dl>
@@ -168,7 +156,7 @@
 										<label for="password">课程名称:</label>
 									</dt>
 									<dd>
-										<input type="text" name="className" id="" size="54"/>
+										<input type="text" name="myClassName" id="" size="48"/>
 									</dd>
 								</dl>
 								<c:if test="${not empty imgUrl}">
@@ -194,7 +182,7 @@
 										<label for="password">教师姓名:</label>
 									</dt>
 									<dd>
-										<input type="text" name="teacherName" id="" size="54"/>
+										<input type="text" name="teacherName" id="" size="15"/>
 									</dd>
 								</dl>
 								<dl>
@@ -202,7 +190,7 @@
 										<label for="password">学期:</label>
 									</dt>
 									<dd>
-										<input type="text" name="volumn" id="" size="54"/>
+										<input type="text" name="volumn" id="" size="15"/>
 									</dd>
 								</dl>
 								
@@ -210,15 +198,14 @@
 									<dt>
 										<label for="password">详细信息:</label>
 									</dt>
-									<dd style="width: 150px;">
+									<dd style="width: 200px;">
 										<a href="#" class="bt_green"><span class="bt_green_lft"></span><strong>点此增加详细信息</strong><span
 											class="bt_green_r"></span> </a>
 										<input name="detail" type="hidden" id="content"/>
 									</dd>
 								</dl>
-								
 								<dl class="submit">
-									<input type="submit" name="submit" id="submit" value="提交修改后内容" />
+									<input type="submit" name="submit" id="submit" value="保存" />
 								</dl>
 							</fieldset>
 
@@ -244,6 +231,7 @@
 					<div class="warning_box" style="display: none">
 							内容为空,无法预览
 					</div>
+
 				</div>
 				<!-- end of right content-->
 			</div>
