@@ -72,7 +72,7 @@
 						</thead>
 						<tfoot>
 							<tr>
-								<td colspan="6" class="rounded-foot-left"><em>
+								<td colspan="8" class="rounded-foot-left"><em>
 								   当前是第${pageNum}页，共${maxPage}页，每页显示${sysConfigParameter.pageSize}条数据，每页显示数据条数可以在系统设置里面更改。</em>
 								</td>
 								<td class="rounded-foot-right">&nbsp;</td>
