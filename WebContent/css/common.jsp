@@ -67,6 +67,7 @@ ul {
 	text-decoration: none;
 	color: white;
 	font-size: 14px;
+	font-family:'Microsoft YaHei';
 }
 #logo {
 	position: absolute;
