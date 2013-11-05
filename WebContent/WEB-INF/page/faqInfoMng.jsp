@@ -115,7 +115,7 @@
 				<jsp:include page="bgleft.jsp" flush="true" />
 				<div class="right_content">
 
-					<h2>首页轮播图片管理</h2>
+					<h2>常见问题管理</h2>
 
 
 					<table id="rounded-corner"
