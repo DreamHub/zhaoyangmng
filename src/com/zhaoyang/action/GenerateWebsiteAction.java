@@ -90,7 +90,11 @@ public class GenerateWebsiteAction extends AbstractActionSupport {
 		OtherUtil.copyDirectiory(absolutePath("/about_detail"),rootDir.getAbsolutePath()+"/about_detail");
 		OtherUtil.copyDirectiory(absolutePath("/image"),rootDir.getAbsolutePath()+"/image");
 		OtherUtil.copyDirectiory(absolutePath("/css"),rootDir.getAbsolutePath()+"/css");
+		try{
 		OtherUtil.copyDirectiory(absolutePath("/downloads"),rootDir.getAbsolutePath()+"/downloads");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		//OtherUtil.copyDirectiory(absolutePath("/downloads"),rootDir.getAbsolutePath()+"/downloads");
 		OtherUtil.copyFile(new File(absolutePath("/index.html")),new File(rootDir.getAbsolutePath()+"/index.html"));
 		OtherUtil.copyFile(new File(absolutePath("/news.html")),new File(rootDir.getAbsolutePath()+"/news.html"));
