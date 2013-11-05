@@ -21,10 +21,9 @@
 			'</p>'+
 			'</div>';
 	$(function() {
-		getClassList();
-		$('#gradeId').parent().find('.NFSelectOptions li a').click(function(){
-			getClassList();
-		});
+		//getClassList();
+		setTimeout("init()",200);
+		
 		
 		if($('#content').val()==null||$('#content').val()==""){
 			$('.warning_box').css("display","block");
@@ -70,6 +69,7 @@
 				html5Upload:false
 			});
 		});
+		
 	});
 	function getClassList() {
 		//alert("change");
@@ -93,6 +93,13 @@
 	                
 	            }
 		 });
+		
+	}
+	function init(){
+		getClassList();
+		$('#gradeId').parent().find('.NFSelectOptions li a').click(function(){
+			getClassList();
+		});
 	}
 	function insertUpload(msg) {
 		//alert(msg);
@@ -195,7 +202,10 @@
 										<label for="password">学期:</label>
 									</dt>
 									<dd>
-										<input type="text" name="volumn" id="" size="15"/>
+										<select id="volumn" name="volumn" size="1">
+											<option value="1" selected="selected">上学期</option>
+											<option value="2">下学期</option>
+										</select>
 									</dd>
 								</dl>
 								
@@ -244,16 +254,7 @@
 			<div class="clear"></div>
 		</div>
 		<!--end of main content-->
-		<div class="footer">
-			<div class="left_footer">
-				朝之阳后台管理 | Powered by <a href="http://indeziner.com">诚彬工作室</a>
-			</div>
-			<div class="right_footer">
-				<a href="http://indeziner.com"><img
-					src="${bgpath}images/indeziner_logo.gif" alt="" title="" border="0" />
-				</a>
-			</div>
-		</div>
+		<jsp:include page="bgfoot.jsp" flush="true"/>
 	</div>
 </body>
 </html>

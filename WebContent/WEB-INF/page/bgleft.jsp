@@ -53,7 +53,7 @@
 			</ul>
 		</div>
 		<a class="menuitem"
-			href="">网站导航</a> <a class="menuitem_green" href="#">快速建站</a> <a class="menuitem_red" href="${path}other/PageSizeMngAction">系统设置</a>
+			href="#" onclick="javascript:alert('暂不支持此功能');return false;">网站导航</a> <a class="menuitem_green" href="#">快速建站</a> <a class="menuitem_red" href="${path}other/PageSizeMngAction">系统设置</a>
 
 	</div>
 
@@ -61,11 +61,10 @@
 	<div class="sidebar_box">
 		<div class="sidebar_box_top"></div>
 		<div class="sidebar_box_content">
-			<h3>User help desk</h3>
+			<h3>如何快速建站</h3>
 			<img src="${bgpath}images/info.png" alt="" title=""
 				class="sidebar_icon_right" />
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-				do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			<p>点击快捷菜单上的【快速建站】按钮，等待进度条完成之后，完整会保存在指定的目录下面，你也可以点击【立即预览】链接，此时预览的效果即是网站的最终效果。</p>
 		</div>
 		<div class="sidebar_box_bottom"></div>
 	</div>
@@ -73,46 +72,11 @@
 	<div class="sidebar_box">
 		<div class="sidebar_box_top"></div>
 		<div class="sidebar_box_content">
-			<h4>如何快速建站</h4>
+			<h4>建站之前的准备</h4>
 			<img src="${bgpath}images/notice.png" alt="" title=""
 				class="sidebar_icon_right" />
-			<p>当数据库中数据更新后，如果想把内容挂到服务器上，那么只需要点击快速建站之后，系统处理完成后.</p>
+			<p>建站之前，需要您在主菜单中点击相关功能，编辑网站需要的相关数据。</p>
 		</div>
 		<div class="sidebar_box_bottom"></div>
 	</div>
-
-	<div class="sidebar_box">
-		<div class="sidebar_box_top"></div>
-		<div class="sidebar_box_content">
-			<h5>Download photos</h5>
-			<img src="${bgpath}images/photo.png" alt="" title=""
-				class="sidebar_icon_right" />
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-				do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-		</div>
-		<div class="sidebar_box_bottom"></div>
-	</div>
-
-	<div class="sidebar_box">
-		<div class="sidebar_box_top"></div>
-		<div class="sidebar_box_content">
-			<h3>To do List</h3>
-			<img src="${bgpath}images/info.png" alt="" title=""
-				class="sidebar_icon_right" />
-			<ul>
-				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-				<li>Lorem ipsum dolor sit ametconsectetur <strong>adipisicing</strong>
-					elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-					aliqua.</li>
-				<li>Lorem ipsum dolor sit amet, consectetur <a href="#">adipisicing</a>
-					elit.</li>
-				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-			</ul>
-		</div>
-		<div class="sidebar_box_bottom"></div>
-	</div>
-
-
 </div>

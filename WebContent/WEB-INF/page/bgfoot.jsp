@@ -6,8 +6,8 @@
 		朝之阳后台管理 | Powered by <a href="http://indeziner.com">DreamHub</a>
 	</div>
 	<div class="right_footer">
-		<a href="http://indeziner.com"><img
-			src="${bgpath}images/indeziner_logo.gif" alt="" title="" border="0" />
+		合作伙伴：<a href="#"><img
+			src="${bgpath}images/dreamhublogo.png" alt="" title="" border="0" width="50"/>
 		</a>
 	</div>
 	
