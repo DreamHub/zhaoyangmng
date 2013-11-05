@@ -17,7 +17,10 @@
 			<jsp:include page="bghead.jsp" flush="true" />
 			<div class="center_content">
 				<jsp:include page="bgleft.jsp" flush="true"/>
-				<div class="right_content">主体内容</div>
+				<div class="right_content">
+					<img src="${bgpath}/images/home.jpg" width="100%"/>
+				
+				</div>
 				<!-- end of right content-->
 
 
