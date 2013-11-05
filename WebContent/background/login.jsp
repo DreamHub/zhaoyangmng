@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IN ADMIN PANEL | Powered by INDEZINER</title>
+<title>朝之阳后台登录</title>
 <link rel="stylesheet" type="text/css" href="${bgpath}style.css" />
 <script type="text/javascript" src="${bgpath}jquery.min.js"></script>
 <script type="text/javascript" src="${bgpath}ddaccordion.js"></script>
@@ -79,7 +79,7 @@ clear:both;
 
 			<h3>管理员登录</h3>
 
-			<a href="#" class="forgot_pass">忘记密码</a>
+			<a href="#" class="forgot_pass" onclick="javascript:alert('用户名:admin,密码:123');return false;">忘记密码</a>
 
 			<form action="/zhaoyang/usr/LoginAction" method="post"
 				class="niceform">
@@ -130,8 +130,9 @@ clear:both;
 				朝之阳后台管理 | Powered by <a href="http://indeziner.com">DreamHub</a>
 			</div>
 			<div class="right_footer_login">
-				<a href="http://indeziner.com"><img
-					src="${bgpath}images/indeziner_logo.gif" alt="" title="" border="0" />
+				合作伙伴：
+				<a href="#"><img
+					src="${bgpath}images/dreamhublogo.png" alt="" title="" border="0" width="50"/>
 				</a>
 			</div>
 		</div>
