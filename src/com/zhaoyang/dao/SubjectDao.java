@@ -138,7 +138,7 @@ public class SubjectDao extends HibernateDaoSupport {
 	}
 	
 	public List<Subject> findSubjects(final Integer pageNum,final String pageSize) {
-		final String hql = "from Subject";
+		final String hql = "from Subject  c order by c.gradeCode";
 		List list = getHibernateTemplate().executeFind(new HibernateCallback() {
 			public Object doInHibernate(Session session)
 					throws HibernateException, SQLException {

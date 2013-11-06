@@ -1,14 +1,24 @@
 $(function() {
-	
-	$.getJSON("../js/class/datasrc_class.js", function(data) {
+	$.getJSON("../js/class/datasrc_class.js?rnd=" + Math.random(), function(data) {
 		deal_data(data);
 	});
 	var flag = location.href.indexOf("?jsId");
 	var jsId = location.href.substr(flag+6);
 	var jsFileName = "../js/class/srclass_" + jsId + ".js";
 	productContent(jsFileName);
+	getCondition(jsId);
 });
-	
+
+function getCondition(jsId) {
+	$.getJSON("../js/class/search_condition.js?rnd=" + Math.random(), function(data) {
+		$.each(data, function(i){
+			if(data[i].pageId == jsId){
+				$('#displaysearchstring').text(data[i].condition);
+			}
+		})
+	});
+}
+
 function deal_data(myData) {
 	$('#allsortId').empty();
 	$.each(myData, function(i) {

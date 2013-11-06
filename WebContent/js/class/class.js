@@ -1,5 +1,5 @@
 $(function() {
-	$.getJSON("js/class/datasrc_class.js", function(data) {
+	$.getJSON("js/class/datasrc_class.js?rnd=" + Math.random(), function(data) {
 		deal_data(data);
 	
     //获取排行
