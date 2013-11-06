@@ -202,7 +202,7 @@
 										<label for="password">学期:</label>
 									</dt>
 									<dd>
-										<select id="volumn" name="volumn" size="1">
+										<select id="volumn" size="1" name="volumn">
 											<option value="1" selected="selected">上学期</option>
 											<option value="2">下学期</option>
 										</select>

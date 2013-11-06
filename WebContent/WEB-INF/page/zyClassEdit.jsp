@@ -23,7 +23,9 @@
 	$(function() {
 		
 		getClassList();
-		
+		$('#gradeId').parent().find('.NFSelectOptions li a').click(function(){
+			getClassList();
+		});
 		if($('#content').val()==null||$('#content').val()==""){
 			$('.warning_box').css("display","block");
 		}else{
@@ -82,18 +84,27 @@
 	
 
 	function getClassList() {
+		//alert("change");
 		$('#subjectId').empty();
-		        $.ajax({
-		            type: "post",
-		            dataType: "json",
-		            url: "class/ZYClassAddGetNameAction?gradeCode="+$('#gradeId').val(),
-		            success: function (msg) {
-		                for (i in msg) {
-		                	$('#subjectId').append('<option value=' + msg[i].id + '>'+msg[i].name+'</option');
-		                }
-		                //$("tbody").append(str);
-		            }
-		        });
+		$('#subjectId').parent().find('.NFSelectOptions').empty();
+		$.ajax({
+	            type: "post",
+	            dataType: "json",
+	            url: "class/ZYClassAddGetNameAction?gradeCode="+$('#gradeId').val(),
+	            success: function (msg) {
+	            	//alert(msg.toString());
+	                for (i in msg) {
+	                	$('#subjectId').append('<option value=' + msg[i].id + '>'+msg[i].name+'</option');
+	                	$('#subjectId').parent().find('.NFSelectOptions').append('<li><a href="javascript:;">'+msg[i].name+'</a></li>');
+	                	
+	                	if(i==0){
+	                		$('#subjectId').parent().find('.NFSelectRight').text(msg[i].name);
+	                	}
+	                	$('#subjectId').find('option:eq(0)').select();
+	                }
+	                
+	            }
+		 });
 	}
 </script>
 </head>
@@ -124,7 +135,7 @@
 										<label for="email">课程类型:</label>
 									</dt>
 									<dd>
-											<select name="classType">
+											<select size="1" name="classType">
 												<option value="normal"
 													<c:if test="${classType eq 'normal' }">selected="selected"</c:if>
 												>普通课程</option>
@@ -140,7 +151,7 @@
 									</dt>
 									<dd>
 										<!-- <input type="text" name="grade" id="" size="54" value="${grade}"/> -->
-											<select id="gradeId" name="grade" onchange="getClassList()">
+											<select id="gradeId" size="1" name="grade" onchange="getClassList()">
 												
 												<c:forEach items="${subjects}" var="subject">
 													<option value="${subject.gradeCode }"
@@ -157,8 +168,7 @@
 										<label for="password">学科名称:</label>
 									</dt>
 									<dd>
-										<%-- <input type="text" name="subjectName" id="" size="54" value="${subjectName}"/> --%>
-										<select id="subjectId" name="subjectId">
+										<select id="subjectId" size="1" name="subjectId">
 										</select>
 									</dd>
 								</dl>
@@ -167,7 +177,7 @@
 										<label for="password">课程名称:</label>
 									</dt>
 									<dd>
-										<input type="text" name="className" id="" size="54" value="${className}"/>
+										<input type="text" name="myClassName" id="" size="54" value="${myClassName}"/>
 									</dd>
 								</dl>
 								<dl>
@@ -199,7 +209,15 @@
 										<label for="password">学期:</label>
 									</dt>
 									<dd>
-										<input type="text" name="volumn" id="" size="54" value="${volumn}"/>
+										<%-- <input type="text" name="volumn" id="" size="54" value="${volumn}"/> --%>
+										<select name="volumn">
+											<option value="1" 
+												<c:if test="${volumn == 1 }">selected="selected"</c:if>
+											>上学期</option>
+											<option value="2" 
+												<c:if test="${volumn == 2 }">selected="selected"</c:if>
+											>下学期</option>
+										</select>
 									</dd>
 								</dl>
 								<dl>

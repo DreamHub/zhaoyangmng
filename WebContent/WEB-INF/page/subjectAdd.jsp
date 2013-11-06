@@ -108,7 +108,6 @@
 												<option value="10">高一</option>
 												<option value="11">高二</option>
 												<option value="12">高三</option>
-												<option value="13">其他</option>
 											</select>
 									</dd>
 								</dl>

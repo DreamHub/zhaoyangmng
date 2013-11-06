@@ -37,7 +37,7 @@ public class SubjectDao extends HibernateDaoSupport {
 	//找出所有年级和年级code
 	public List<Subject> findAll() {
 		final List<Subject> subjects = new ArrayList<Subject>();
-		final String sql = "select distinct(gradeCode), grade from subject";
+		final String sql = "select distinct(gradeCode), grade from subject order by gradeCode";
 		getHibernateTemplate().executeFind(new HibernateCallback() {
 			public Object doInHibernate(Session session)
 					throws HibernateException, SQLException {
