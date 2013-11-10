@@ -13,7 +13,7 @@
 <script type="text/javascript" src="${bgpath}js/zebra_dialog.js"></script>
 <link rel="stylesheet" href="${bgpath}css/zebra_dialog.css" type="text/css"/>
 <script type="text/javascript">
-	var div='<div  id="dialog-form2" style="display: none" title="内容修改">'+
+	var div='<div  id="dialog-form2" title="内容修改">'+
 			'<textarea id="elm1" name="elm1" rows="5" cols="40" style="width:684px; height:200px;"></textarea>'+
 			'<br />'+
 			'<p style="height: 40px; line-height: 40px; padding: 0; margin: 0;">'+
@@ -23,13 +23,12 @@
 	$(function() {
 		//getClassList();
 		setTimeout("init()",200);
-		
-		
 		if($('#content').val()==null||$('#content').val()==""){
 			$('.warning_box').css("display","block");
-		}else{
-			$('#showNews').html($('#content').val());
 		}
+		/*else{
+			$('#showNews').html($('#content').val());
+		}*/
 		$('.bt_green').bind('click', function(e) {
 			$('body').append($(div));
 			$('#elm1').val($('#showNews').html());
@@ -52,7 +51,7 @@
 						$('.warning_box').css("display","none");
 						$('#content').val($('#elm1').val());
 					}
-					$('#dialog-form2').remove();
+					$('.ZebraDialog').remove();
 					return true;
 				}}],
 				title : '新闻内容编辑框',
