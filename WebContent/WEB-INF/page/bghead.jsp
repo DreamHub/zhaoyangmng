@@ -24,19 +24,19 @@
 		<li><a href="${path}scl/AboutMngAction">学校简介<!--[if IE 7]><!--> </a> <!--<![endif]-->
 			<!--[if lte IE 6]><table><tr><td><![endif]-->
 			<ul>
-				<li><a class="sub1" href="" title="">办学地址</a>
+				<li><a class="sub1" href="#" title="">办学地址</a>
 					<ul>
 						<li><a href="${path}scl/AddressSetPreAction" title="">办学地址修改</a></li>
 						<li><a href="${path}scl/WatchAddressHTMLAction" title="" target="_blank">办学地址预览</a></li>
 					</ul>
 				</li>
-				<li><a class="sub1" href="" title="">学校简介</a> 
+				<li><a class="sub1" href="#" title="">学校简介</a> 
 					<ul>
 						<li><a href="${path}scl/WatchAboutHTMLAction" title="" target="_blank">学校简介预览</a></li>
 						<li><a href="${path}scl/SchoolDescSetPreAction" title="">学校简介修改</a></li>
 					</ul> 
 				</li>
-				<li><a class="sub1" href="" title="">教学环境</a> 
+				<li><a class="sub1" href="#" title="">教学环境</a> 
 					<ul>
 						<li><a href="${path}scl/WatchConditionHTMLAction" title="" target="_blank">教学环境预览</a></li>
 						<li><a href="${path}scl/ConditionSetPreAction" title="">教学环境修改</a></li>
