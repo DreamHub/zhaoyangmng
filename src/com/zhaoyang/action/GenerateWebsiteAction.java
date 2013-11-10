@@ -109,7 +109,7 @@ public class GenerateWebsiteAction extends AbstractActionSupport {
 		OtherUtil.copyFile(new File(absolutePath("/about.html")),new File(rootDir.getAbsolutePath()+"/about.html"));
 		//FileUtils.copyFile(new File(absolutePath("/people")), new File(rootDir.getPath()+"/people"));
 		//ServletActionContext.get
-		System.out.println(absolutePath("/"));
+		//System.out.println(absolutePath("/"));
 		
 		msg="1";
 		return SUCCESS;
