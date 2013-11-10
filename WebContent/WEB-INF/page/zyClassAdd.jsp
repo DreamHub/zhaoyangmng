@@ -74,7 +74,14 @@
 	function getClassList() {
 		//alert("change");
 		$('#subjectId').empty();
+		//document.getElementById("myBtn").onclick
+		//var event=$('#subjectId').parent().find('.NFSelectOptions li a').get(0).onclick;
+		//console.log(event);
 		$('#subjectId').parent().find('.NFSelectOptions').empty();
+		
+		
+
+
 		$.ajax({
 	            type: "post",
 	            dataType: "json",
@@ -88,9 +95,15 @@
 	                	if(i==0){
 	                		$('#subjectId').parent().find('.NFSelectRight').text(msg[i].name);
 	                	}
-	                	$('#subjectId').find('option:eq(0)').select();
+	                	$('#subjectId').find('option:eq(0)').attr("selected",true);
 	                }
-	                
+	                $('#subjectId').parent().find('.NFSelectOptions li a').click(function(){
+	                	 $('#subjectId').parent().find('.NFSelectRight').text($(this).text());
+	                	 var index=$('#subjectId').parent().find('.NFSelectOptions li').index($(this).parent());
+	                	 var str='option:eq('+index+')';
+	                	 $('#subjectId').find(str).attr("selected",true);
+	                	 //console.log($('#subjectId').val());
+	                });
 	            }
 		 });
 		
