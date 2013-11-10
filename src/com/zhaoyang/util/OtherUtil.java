@@ -90,7 +90,7 @@ public class OtherUtil {
 	public static void copyFile(File sourceFile, File targetFile) throws IOException {
 		String filename=sourceFile.getName();
 		String exp=filename.substring(filename.lastIndexOf(".")+1, filename.length());
-		System.out.println(exp);
+		//System.out.println(exp);
 		if("jsp".equals(exp)){
 			return;
 		}
