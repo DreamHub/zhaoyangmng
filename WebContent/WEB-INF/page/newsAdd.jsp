@@ -46,7 +46,7 @@
 						$('.warning_box').css("display","none");
 						$('#content').val($('#elm1').val());
 					}
-					$('#dialog-form2').remove();
+					$('.ZebraDialog').remove();
 					return true;
 				}}],
 				title : '新闻内容编辑框',
