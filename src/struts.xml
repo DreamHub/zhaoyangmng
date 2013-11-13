@@ -226,6 +226,7 @@
 		<action name="IndexDownloadEditAction" class="downloadMngAction"
 			method="indexDownloadEdit">
 			<result name="success">/WEB-INF/page/indexDownloadSetting.jsp</result>
+			<result name="input">/WEB-INF/page/indexDownloadSetting.jsp</result>
 		</action>
 	</package>
 	<!-- 公告 -->

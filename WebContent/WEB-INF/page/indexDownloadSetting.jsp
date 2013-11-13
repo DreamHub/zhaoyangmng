@@ -88,7 +88,16 @@
 		alert("上传成功");
 	}
 </script>
+<style type="text/css">
+	.errorMessage{
+		list-style: none;
+		color: red;
+		padding: 0;
+		margin: 0;
+	}
+</style>
 </head>
+
 <body>
 	<div id="main_container">
 		<jsp:include page="bgtop.jsp" flush="true" />
@@ -118,6 +127,13 @@
 										<a href="#" class="tooltips" title="请填写你要依次展示的下载资源序号，以逗号隔开。"><span class="zywarn"></span>温馨提示</a>
 									</dd>
 								</dl>
+								<dl>
+									<dt>
+									</dt>
+									<dd>
+										<s:fielderror/>
+									</dd>
+								</dl>
 								<dl class="submit">
 									<input type="submit" name="submit" id="submit" value="提交修改后内容" />
 								</dl>
@@ -145,16 +161,7 @@
 			<div class="clear"></div>
 		</div>
 		<!--end of main content-->
-		<div class="footer">
-			<div class="left_footer">
-				朝之阳后台管理 | Powered by <a href="http://indeziner.com">诚彬工作室</a>
-			</div>
-			<div class="right_footer">
-				<a href="http://indeziner.com"><img
-					src="${bgpath}images/indeziner_logo.gif" alt="" title="" border="0" />
-				</a>
-			</div>
-		</div>
+		<jsp:include page="bgfoot.jsp" flush="true" />
 	</div>
 </body>
 </html>
