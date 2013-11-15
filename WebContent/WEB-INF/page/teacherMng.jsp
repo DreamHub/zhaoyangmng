@@ -47,7 +47,7 @@
 						</thead>
 						<tfoot>
 							<tr>
-								<td colspan="4" class="rounded-foot-left"><em> 当前共有<s:property
+								<td colspan="5" class="rounded-foot-left"><em> 当前共有<s:property
 											value="teachers.size" />条记录 </em></td>
 								<td class="rounded-foot-right">&nbsp;</td>
 
