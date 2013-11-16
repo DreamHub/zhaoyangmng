@@ -34,6 +34,8 @@ public class BackgroundAdminAuthorityInterceptor implements Interceptor {
 			} catch (Exception e) {
 				//System.out.println(e.);
 				e.printStackTrace();
+				//e.get
+				session.setAttribute("errormsg", e.getMessage());
 				return "error";
 			}
 		}

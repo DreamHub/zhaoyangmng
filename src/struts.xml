@@ -72,11 +72,9 @@
 		</action>
 		<action name="NewsMngAction" class="newsMngAction">
 			<result name="success">/WEB-INF/page/newsMng.jsp</result>
-			<result name="error">/background/login.jsp</result>
 		</action>
 		<action name="NewsAddPreAction" class="newsMngAction" method="newsAddPre">
 			<result name="success">/WEB-INF/page/newsAdd.jsp</result>
-			<result name="error">/background/login.jsp</result>
 		</action>
 		<action name="NewsAddAction" class="newsMngAction" method="newsAdd">
 			<result name="success">/WEB-INF/page/newsAdd.jsp</result>
@@ -464,7 +462,6 @@
 	<package name="class" namespace="/class" extends="struts-abstract">
 		<action name="SubjectMngAction" class="subjectMngAction">
 			<result name="success">/WEB-INF/page/subjectMng.jsp</result>
-			<result name="error">/background/login.jsp</result>
 		</action>
 		<action name="SubjectDelAction" class="subjectMngAction"
 			method="subjectDel">
@@ -482,7 +479,6 @@
 		<action name="SubjectAddPreAction" class="subjectMngAction"
 			method="subjectAddPre">
 			<result name="success">/WEB-INF/page/subjectAdd.jsp</result>
-			<result name="error">/background/login.jsp</result>
 		</action>
 		<action name="SubjectAddAction" class="subjectMngAction"
 			method="subjectAdd">
@@ -491,7 +487,6 @@
 		
 		<action name="ZYClassMngAction" class="zyClassMngAction">
 			<result name="success">/WEB-INF/page/zyClassMng.jsp</result>
-			<result name="error">/background/login.jsp</result>
 		</action>
 		<action name="ZYClassEditPreAction" class="zyClassMngAction" method="zyClassEditPre">
 			<result name="success">/WEB-INF/page/zyClassEdit.jsp</result>
