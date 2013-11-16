@@ -43,6 +43,21 @@
 			$(this).val("");
 			$(this).css("color","black");
 		});
+		//jquery Post请求登录;ajax登录，之后请求HomePageAction
+		$('.niceform').submit(function(){
+			var userName=$('input[name="userName"]').val();
+			var userPwd=$('input[name="userPwd"]').val();
+			$.getJSON("${path}ajaxnoauth/LoginAction?temp="+(new Date()).valueOf(),{'userName':userName,'userPwd':userPwd},function(data){
+				if(data.msg=="1"){
+					window.location='${path}other/HomePagePreAction';
+				}else{
+					//alert(data.msg);
+					$("#EEE").text(data.msg);
+				}
+			});
+			return false;
+		});
+		
 	});
 	
 </script>
@@ -112,8 +127,9 @@ clear:both;
 							<label></label>
 						</dt>
 						<dd>
-							<input type="checkbox" name="interests" id="" value="" /> <label
-								class="check_label">记住我</label>
+							<span id="EEE" style="color:red;"></span>
+							<!-- <input type="checkbox" name="interests" id="" value="" /> <label
+								class="check_label">记住我</label> -->
 						</dd>
 					</dl>
 					<dl class="submit">

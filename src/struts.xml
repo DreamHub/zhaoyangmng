@@ -524,7 +524,7 @@
 	</package>
 		<!-- coolBean end -->
 	
-	<!-- 响应ajax交互 -->
+	<!-- 响应ajax交互 需要验证-->
 
 	<package name="ajaxface" namespace="/ajax" extends="struts-abstract-forajax">
 		<action name="GenerateWebsiteAction" class="generateWebsiteAction">
@@ -535,6 +535,17 @@
 		<action name="WebsiteDirPathAction" class="systemMngAction" method="pageSizeMng">
 			<result name="success" type="json">
 				<param name="includeProperties">websiteDirPath.*</param>
+			</result>
+		</action>
+	</package>
+	<!-- 无验证ajax请求 -->
+	<package name="ajaxfacenoauth" namespace="/ajaxnoauth" extends="json-default">
+		<action name="LoginAction" class="loginAction">
+			<result name="success" type="json">
+				<param name="includeProperties">msg.*</param>
+			</result>
+			<result name="error" type="json">
+				<param name="includeProperties">msg.*</param>
 			</result>
 		</action>
 	</package>
@@ -554,7 +565,5 @@
 		<action name="IndexFaqListEditAction" class="faqMngAction" method="indexFaqListEdit">
 			<result name="success" type="chain">IndexFaqListMngAction</result>
 		</action>
-		
-		
 	</package>
 </struts>    
