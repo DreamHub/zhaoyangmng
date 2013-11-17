@@ -144,13 +144,17 @@ public class DownloadMngAction extends AbstractActionSupport {
 
 	public String deleteDownloadSrcType() throws Exception {
 		Rule rule = ruleDao.findRuleByRuleId("DownloadSrcType");
+		if(rule.getRuleDef().split(",").length<=3){
+			setErrMsg("下载类型不能小于三个");
+			return SUCCESS;
+		}
 		String newIds = rule.getRuleDef().substring(0,
 				rule.getRuleDef().lastIndexOf(","));
+		
 		String newNames = rule.getRuleType().substring(0,
 				rule.getRuleType().lastIndexOf(","));
 		ruleDao.update("DownloadSrcType", newIds, newNames);
 		setSucMsg("删除类型成功");
-		forward("DownloadSrcTypeMngPreAction");
 		return SUCCESS;
 	}
 

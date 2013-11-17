@@ -187,7 +187,7 @@
 		</action>
 		<action name="DeleteDownloadSrcTypeAction" class="downloadMngAction"
 			method="deleteDownloadSrcType">
-			<result name="success">/WEB-INF/page/downTypeMng.jsp</result>
+			<result name="success" type="chain">DownloadSrcTypeMngPreAction</result>
 		</action>
 		<action name="DownloadSrcTypeEditAction" class="downloadMngAction"
 			method="downloadSrcTypeEdit">
