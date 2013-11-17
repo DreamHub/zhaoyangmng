@@ -163,12 +163,12 @@
 						
 					});
 					
-					$.Zebra_Dialog('<strong>Some dummy content:</strong><br><br>',{
+					$.Zebra_Dialog({
 						source : {
 							'inline' : div
 						},
 						width : 400,
-						title : '新闻内容编辑框',
+						title : '快速建站',
 						type:false
 					});
 				}else{
