@@ -91,7 +91,7 @@
 						<ul>
 							<c:forEach items="${sevenReasons}" var="reason" varStatus="rindex">
 								<li>
-								一、&nbsp;&nbsp;&nbsp;&nbsp;${reason}
+								<img src="image/index/checkbox.jpg" width="20" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;${reason}
 							</li>
 							</c:forEach>
 						</ul>
