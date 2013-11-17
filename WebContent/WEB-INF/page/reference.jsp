@@ -65,37 +65,41 @@
 		document.body.removeChild(temp);
 	}
 	function pagaable(pageNum,maxPage,url){
+		if(maxPage==0){
+			$('.pagination').empty();
+			return;
+		}
 		//共一页
 		if(maxPage==1){
 			$('.pagination').empty();
-			$('.pagination').append('<span class="disabled"><< prev</span><span class="current">1</span><span class="disabled">next >></span>');
+			$('.pagination').append('<span class="disabled"><< 上一页</span><span class="current">1</span><span class="disabled">下一页 >></span>');
 		}else
 		//第一页
 		if(maxPage>1&&pageNum==1){
-			var str='<span class="disabled"><< prev</span><span class="current">1</span>';
+			var str='<span class="disabled"><< 上一页</span><span class="current">1</span>';
 			for(var i=2;i<=maxPage;i++){
 				var a='<a href="'+url+'?pageNum='+i+'">'+i+'</a>';
 				str += a;
 			}
-			var next='<a href="'+url+'?pageNum='+(pageNum+1)+'">next >></a>';
+			var next='<a href="'+url+'?pageNum='+(pageNum+1)+'">下一页 >></a>';
 			str+=next;
 			$('.pagination').empty();
 			$('.pagination').append(str);
 		}else
 		//最后一页
 		if(maxPage>1&&pageNum==maxPage){
-			var str='<a href="'+url+'?pageNum='+(pageNum-1)+'"><< prev</a>';
+			var str='<a href="'+url+'?pageNum='+(pageNum-1)+'"><< 上一页</a>';
 			for(var i=1;i<maxPage;i++){
 				var a='<a href="'+url+'?pageNum='+i+'">'+i+'</a>';
 				str += a;
 			}
-			var next='<span class="current">'+maxPage+'</span><span class="disabled">next >></span>';
+			var next='<span class="current">'+maxPage+'</span><span class="disabled">下一页 >></span>';
 			str+=next;
 			$('.pagination').empty();
 			$('.pagination').append(str);
 		}else{
 		//其他
-			var str='<a href="'+url+'?pageNum='+(pageNum-1)+'"><< prev</a>';
+			var str='<a href="'+url+'?pageNum='+(pageNum-1)+'"><< 上一页</a>';
 			for(var i=1;i<=maxPage;i++){
 				if(i!=pageNum){
 					var a='<a href="'+url+'?pageNum='+i+'">'+i+'</a>';
@@ -106,7 +110,7 @@
 				}
 				
 			}
-			var next='<a href="'+url+'?pageNum='+(pageNum+1)+'">next >></a>';
+			var next='<a href="'+url+'?pageNum='+(pageNum+1)+'">下一页 >></a>';
 			str+=next;
 			$('.pagination').empty();
 			$('.pagination').append(str);
@@ -131,6 +135,7 @@
 	line-height: 20px;
 }
 </style>
+
 <script type="text/javascript" src="${bgpath}js/zebra_tooltips.js"></script>
 <link rel="stylesheet" href="${bgpath}css/zebra_tooltips.css" type="text/css"/>
 <script type="text/javascript" src="${bgpath}js/zebra_dialog.js"></script>

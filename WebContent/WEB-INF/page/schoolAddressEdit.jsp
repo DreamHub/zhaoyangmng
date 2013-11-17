@@ -12,13 +12,18 @@
 <script type="text/javascript" src="${bgpath}xheditor_lang/zh-cn.js"></script>
 <script type="text/javascript" src="${bgpath}js/zebra_dialog.js"></script>
 <link rel="stylesheet" href="${bgpath}css/zebra_dialog.css" type="text/css"/>
+<style type="text/css">
+		.ZebraDialog .ZebraDialog_Icon{
+			padding-left: 20px;
+			width: 700px;
+		}
+		#dialog-form2{
+			margin: 0 auto;
+		}
+</style>
 <script type="text/javascript">
 	var div='<div  id="dialog-form2" style="display: none" title="内容修改">'+
 			'<textarea id="elm1" name="elm1" rows="5" cols="40" style="width:705px; height:250px;"></textarea>'+
-			'<br />'+
-			'<p style="height: 40px; line-height: 40px; padding: 0; margin: 0;">'+
-			'<input type="checkbox" name="ssss" checked="checked"/>&nbsp;预览'+
-			'</p>'+
 			'</div>';
 	$(function() {
 		if($('#content').val()==null||$('#content').val()==""){
@@ -30,13 +35,13 @@
 			$('body').append($(div));
 			$('#elm1').val($('#showNews').html());
 			e.preventDefault();
-			$.Zebra_Dialog('<strong>Some dummy content:</strong><br><br>', {
+			$.Zebra_Dialog({
 				source : {
 					'inline' : $('#dialog-form2')
 				},
-				width : 900,
+				width : 755,
 				position : ['center','top + 50'],
-				buttons : [{caption:'确定',callback:function(){
+				buttons : [{caption:'取消',callback:function(){$('#dialog-form2').remove();return true;}},{caption:'确定',callback:function(){
 					if($('#elm1').val()==null||$('#elm1').val()==""){
 						$('.warning_box').css("display","block");
 						$('#showNews').empty();
@@ -51,7 +56,7 @@
 					$('#dialog-form2').remove();
 					return true;
 				}}],
-				title : '新闻内容编辑框',
+				title : '内容编辑',
 				type:false
 			});
 			$('#dialog-form2').css("display","block");

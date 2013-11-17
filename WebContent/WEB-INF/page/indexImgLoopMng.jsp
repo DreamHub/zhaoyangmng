@@ -11,14 +11,14 @@
 <script type="text/javascript" src="${bgpath}js/zebra_dialog.js"></script>
 <link rel="stylesheet" href="${bgpath}css/zebra_dialog.css"
 	type="text/css" />
-	<style type="text/css">
+<style type="text/css">
 		.ZebraDialog .ZebraDialog_BodyOuter{
 			background: white;
 		}
 		.ZebraDialog .ZebraDialog_Icon{
 			padding-left: 2px;
 		}
-	</style>
+</style>
 <script type="text/javascript">
 	$(function() {
 		var newnoticedl=$('#newnoticedl');
@@ -33,13 +33,13 @@
 				width : 650,
 				position : [ 'center', 'top + 50' ],
 				buttons : [ {
-					caption : '确认',
+					caption : '取消',
 					callback : function() {
 						
 						return true;
 					}
 				} ],
-				title : '新增下载类型',
+				title : '新增',
 				type : false
 			});
 			$('.ZebraDialog_Body > div:first').css("padding-top","10px");
@@ -64,7 +64,7 @@
 				width : 650,
 				position : [ 'center', 'top + 50' ],
 				buttons : [ {
-					caption : '确认',
+					caption : '取消',
 					callback : function() {
 						
 						return true;

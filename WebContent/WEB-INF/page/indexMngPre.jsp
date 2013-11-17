@@ -36,10 +36,7 @@
 										<img src="${bgpath}images/info.png" alt="" title=""
 											class="sidebar_icon_right" />
 										<p style="line-height: 25px;">
-											学校简介部分可更改的内容为<br/><a href="${path}scl/AddressSetPreAction">办学地址页面修改</a>,<br/>
-											<a href="${path}scl/SchoolDescSetPreAction">学校简介页面修改</a>，<br/><a href="${path}scl/ConditionSetPreAction">教学环境页面修改</a>，在编辑页面内容时，你不必担心预览的格式会出现混乱，因为
-											我们的编辑器严格设置在1：1的宽度比例，所以你编辑的内容就是页面上显示的内容。
-											
+											首页设置包括：<a href="${path}index/IndexImgLoopMngAction">图片轮播设置</a>，<a href="${path}index/SevenReasonMngAction">七大理由修改</a>，<a href="${path}index/IndexAdvImgMngAction">广告横幅修改</a>三个部分。
 										</p>
 									</div>
 									<div class="sidebar_box_bottom"></div>

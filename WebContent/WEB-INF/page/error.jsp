@@ -19,8 +19,6 @@
 				<jsp:include page="bgleft.jsp" flush="true"/>
 				<div class="right_content">
 					<br/>
-					<br/>
-					<br/>
 					<h3 style="color: red;font-size: 50px;"><img width="50px;" align="top" src="${path}background/css/error.gif"/>糟糕，服务器出错了!</h3>
 					<p style="overflow: hidden;color: #ccc;">错误信息：${errormsg}</p>
 				

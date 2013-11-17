@@ -50,17 +50,7 @@
 </head>
 <body>
 	<div id="main_container">
-		<div class="header">
-			<div class="logo">
-				<a href="#"><img src="${bgpath}images/logo.gif" alt="" title=""
-					border="0" /> </a>
-			</div>
-			<div class="right_header">
-				欢迎您, ${sessionScope.userInfo}, <a href="#">朝之阳官网</a> | <a href="#"
-					class="messages">(3) 消息</a> | <a href="#" class="logout">退出</a>
-			</div>
-			<div class="jclock"></div>
-		</div>
+		<jsp:include page="bgtop.jsp" flush="true" />
 		<div class="main_content">
 			<jsp:include page="bghead.jsp" flush="true" />
 			<div class="center_content">
@@ -116,16 +106,7 @@
 			<div class="clear"></div>
 		</div>
 		<!--end of main content-->
-		<div class="footer">
-			<div class="left_footer">
-				朝之阳后台管理 | Powered by <a href="http://indeziner.com">诚彬工作室</a>
-			</div>
-			<div class="right_footer">
-				<a href="http://indeziner.com"><img
-					src="${bgpath}images/indeziner_logo.gif" alt="" title="" border="0" />
-				</a>
-			</div>
-		</div>
+		<jsp:include page="bgfoot.jsp" flush="true" />
 	</div>
 </body>
 </html>

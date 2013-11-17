@@ -3,7 +3,7 @@
 <%@ include file="variable.jsp"%>
 <div class="header">
 	<div class="logo">
-		<a href="#"><img 
+		<a href="${path}other/HomePagePreAction"><img 
 			src="${bgpath}images/3488345_104156604480_1.png" alt="" title=""
 			border="0" /> </a>
 	</div>
