@@ -17,6 +17,7 @@ import com.zhaoyang.dao.NewsDao;
 import com.zhaoyang.orm.News;
 import com.zhaoyang.util.DaoGenerate;
 import com.zhaoyang.util.OtherUtil;
+import com.zhaoyang.util.UtilForGenerateClass;
 import com.zhaoyang.util.UtilForGenerateDownload;
 import com.zhaoyang.util.UtilForGenerateFaq;
 import com.zhaoyang.util.UtilForGenerateNews;
@@ -74,6 +75,7 @@ public class GenerateWebsiteAction extends AbstractActionSupport {
 		//常见问题
 		(new UtilForGenerateFaq()).generateAllFaqs(this);
 		//课程
+		(new UtilForGenerateClass()).generateAllClass(this);
 		//其他设置
 		//http://localhost:8080/zhaoyang/peo/GeneratePeopleHTMLAction
 		String websiteDirPath=DaoGenerate.getRuleDao().findRuleByRuleId("WebsiteDirPath").getRuleDef();

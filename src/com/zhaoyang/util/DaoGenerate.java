@@ -13,8 +13,10 @@ import com.zhaoyang.dao.NewsDao;
 import com.zhaoyang.dao.NoticeDao;
 import com.zhaoyang.dao.RuleDao;
 import com.zhaoyang.dao.StudentDao;
+import com.zhaoyang.dao.SubjectDao;
 import com.zhaoyang.dao.TailLinkDao;
 import com.zhaoyang.dao.TeacherDao;
+import com.zhaoyang.dao.ZYClassDao;
 
 public class DaoGenerate {
 	private static NewsDao newsDao;
@@ -27,7 +29,19 @@ public class DaoGenerate {
 	private static DownloadNoticeDao downloadNoticeDao;
 	private static DownloadDao downloadDao;
 	private static FaqDao faqDao;
+	private static SubjectDao subjectDao;
+	private static ZYClassDao zyClassDao;
 	
+	
+	
+	public static ZYClassDao getZyClassDao() {
+		return zyClassDao;
+	}
+
+	public static SubjectDao getSubjectDao() {
+		return subjectDao;
+	}
+
 	public static FaqDao getFaqDao() {
 		return faqDao;
 	}
@@ -77,6 +91,8 @@ public class DaoGenerate {
 		tailLinkDao=(TailLinkDao) ac.getBean("tailLinkDao");
 		downloadNoticeDao=(DownloadNoticeDao) ac.getBean("downloadNoticeDao");
 		downloadDao=(DownloadDao) ac.getBean("downloadDao");
+		subjectDao=(SubjectDao) ac.getBean("subjectDao");
+		zyClassDao=(ZYClassDao) ac.getBean("zyClassDao");
 		faqDao=(FaqDao) ac.getBean("faqDao");
 	}
 	
