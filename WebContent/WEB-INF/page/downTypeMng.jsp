@@ -13,6 +13,7 @@
 <script type="text/javascript" src="${bgpath}js/zebra_dialog.js"></script>
 <link rel="stylesheet" href="${bgpath}css/zebra_dialog.css" type="text/css"/>
 <script type="text/javascript">
+	
 	$(function() {
 		$('.bt_red').click(function(){
 			if(confirm("确认删除吗?")){
@@ -20,10 +21,12 @@
 			}
 			return false;
 		});
+		var myBaby = $('#newtypedl');
 		$('.bt_green').click(function(){
+			
 			$.Zebra_Dialog('<strong>新增下载类型:</strong><br><br>', {
 				source : {
-					'inline' : $('#newtypedl')
+					'inline' : myBaby
 				},
 				width : 800,
 				position : ['center','top + 50'],
@@ -42,7 +45,8 @@
 				title : '新增下载类型',
 				type:false
 			});
-			$('#newtypedl').css("display","block");
+			//$('#newtypedl').css("display","block");
+			myBaby.css("display","block");
 		});
 	});
 </script>
@@ -57,7 +61,7 @@
 				<div class="right_content">
 					<h2>下载资源类型管理</h2>
 					<h3>下载资源类型编辑：</h3>
-					<div class="form">
+					<div id="forAddInput" class="form">
 						<form action="${path}dld/DownloadSrcTypeEditAction" method="post" class="niceform">
 						<fieldset>
 							<s:iterator value="downtypes">
@@ -100,7 +104,7 @@
 											<input type="text" name="newtype" id="newtype" size="54" value=""/>
 										</dd>
 									</dl>
-								</div>
+								</div> 
 								
 								<dl class="submit">
 									<input type="submit" name="submit" id="submit" value="提交修改后内容" />

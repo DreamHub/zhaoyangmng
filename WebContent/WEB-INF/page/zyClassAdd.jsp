@@ -16,9 +16,6 @@
 	var div='<div  id="dialog-form2" title="内容修改">'+
 			'<textarea id="elm1" name="elm1" rows="5" cols="40" style="width:684px; height:200px;"></textarea>'+
 			'<br />'+
-			'<p style="height: 40px; line-height: 40px; padding: 0; margin: 0;">'+
-			'<input type="checkbox" name="ssss" checked="checked"/>&nbsp;预览'+
-			'</p>'+
 			'</div>';
 	$(function() {
 		//getClassList();
@@ -33,7 +30,7 @@
 			$('body').append($(div));
 			$('#elm1').val($('#showNews').html());
 			e.preventDefault();
-			$.Zebra_Dialog('<strong>Some dummy content:</strong><br><br>', {
+			$.Zebra_Dialog('<strong>课程详细信息:</strong><br><br>', {
 				source : {
 					'inline' : $('#dialog-form2')
 				},
@@ -54,7 +51,7 @@
 					$('.ZebraDialog').remove();
 					return true;
 				}}],
-				title : '新闻内容编辑框',
+				title : '课程详细信息编辑框',
 				type:false
 			});
 			$('#dialog-form2').css("display","block");
@@ -71,22 +68,14 @@
 		
 	});
 	function getClassList() {
-		//alert("change");
 		$('#subjectId').empty();
-		//document.getElementById("myBtn").onclick
-		//var event=$('#subjectId').parent().find('.NFSelectOptions li a').get(0).onclick;
-		//console.log(event);
 		$('#subjectId').parent().find('.NFSelectOptions').empty();
-		
-		
-
 
 		$.ajax({
 	            type: "post",
 	            dataType: "json",
 	            url: "class/ZYClassAddGetNameAction?gradeCode="+$('#gradeId').val(),
 	            success: function (msg) {
-	            	//alert(msg.toString());
 	                for (i in msg) {
 	                	$('#subjectId').append('<option value=' + msg[i].id + '>'+msg[i].name+'</option');
 	                	$('#subjectId').parent().find('.NFSelectOptions').append('<li><a href="javascript:;">'+msg[i].name+'</a></li>');
@@ -101,7 +90,6 @@
 	                	 var index=$('#subjectId').parent().find('.NFSelectOptions li').index($(this).parent());
 	                	 var str='option:eq('+index+')';
 	                	 $('#subjectId').find(str).attr("selected",true);
-	                	 //console.log($('#subjectId').val());
 	                });
 	            }
 		 });
@@ -166,7 +154,6 @@
 										<label for="password">学科名称:</label>
 									</dt>
 									<dd>
-										<!-- <input type="text" name="subjectName" id="" size="54"/> -->
 										<select id="subjectId" name="subjectId" size="1">
 											<option>--请选择--</option>
 											<option>--请选择2--</option>

@@ -545,6 +545,10 @@
 		</action>
 	</package>
 	<package name="faq" namespace="/faq" extends="struts-abstract">
+		<action name="FaqDelAction" class="faqMngAction"
+			method="faqDel">
+			<result name="success" type="chain">FaqMngAction</result>
+		</action>
 		<action name="FaqMngAction" class="faqMngAction">
 			<result name="success">/WEB-INF/page/faqInfoMng.jsp</result>
 		</action>

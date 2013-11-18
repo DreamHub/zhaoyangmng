@@ -13,29 +13,24 @@
 <script type="text/javascript" src="${bgpath}js/zebra_dialog.js"></script>
 <link rel="stylesheet" href="${bgpath}css/zebra_dialog.css" type="text/css"/>
 <script type="text/javascript">
-	var div='<div  id="dialog-form2" style="display: none" title="内容修改">'+
+	var div='<div  id="dialog-form2" title="内容修改">'+
 			'<textarea id="elm1" name="elm1" rows="5" cols="40" style="width:684px; height:200px;"></textarea>'+
 			'<br />'+
-			'<p style="height: 40px; line-height: 40px; padding: 0; margin: 0;">'+
-			'<input type="checkbox" name="ssss" checked="checked"/>&nbsp;预览'+
-			'</p>'+
 			'</div>';
 	$(function() {
-		
-		getClassList();
-		$('#gradeId').parent().find('.NFSelectOptions li a').click(function(){
-			getClassList();
-		});
+		//getClassList();
+		setTimeout("init()",200);
 		if($('#content').val()==null||$('#content').val()==""){
 			$('.warning_box').css("display","block");
-		}else{
-			$('#showNews').html($('#content').val());
 		}
+		/*else{
+			$('#showNews').html($('#content').val());
+		}*/
 		$('.bt_green').bind('click', function(e) {
 			$('body').append($(div));
 			$('#elm1').val($('#showNews').html());
 			e.preventDefault();
-			$.Zebra_Dialog('<strong>Some dummy content:</strong><br><br>', {
+			$.Zebra_Dialog('<strong>课程详细信息:</strong><br><br>', {
 				source : {
 					'inline' : $('#dialog-form2')
 				},
@@ -53,10 +48,10 @@
 						$('.warning_box').css("display","none");
 						$('#content').val($('#elm1').val());
 					}
-					$('#dialog-form2').remove();
+					$('.ZebraDialog').remove();
 					return true;
 				}}],
-				title : '新闻内容编辑框',
+				title : '课程详细信息编辑框',
 				type:false
 			});
 			$('#dialog-form2').css("display","block");
@@ -70,8 +65,51 @@
 				html5Upload:false
 			});
 		});
-	    
+		
 	});
+	
+	var justBegain = 1;
+	function getClassList() {
+		$('#subjectId').empty();
+		$('#subjectId').parent().find('.NFSelectOptions').empty();
+
+		$.ajax({
+	            type: "post",
+	            dataType: "json",
+	            url: "class/ZYClassAddGetNameAction?gradeCode="+$('#gradeId').val(),
+	            success: function (msg) {
+	                for (i in msg) {
+	                	$('#subjectId').append('<option value=' + msg[i].id + '>'+msg[i].name+'</option');
+	                	$('#subjectId').parent().find('.NFSelectOptions').append('<li><a href="javascript:;">'+msg[i].name+'</a></li>');
+	                	if(justBegain == 0) {
+		                	if(i==0){
+		                		$('#subjectId').parent().find('.NFSelectRight').text(msg[i].name);
+		                	}
+		                	$('#subjectId').find('option:eq(0)').attr("selected",true);
+	                	} else {
+	                		if($('#forSubject').val() == msg[i].name) {
+	                			$('#subjectId').parent().find('.NFSelectRight').text(msg[i].name);
+	                			$('#subjectId').find('option:eq(' + i + ')').attr("selected",true);
+	                		}
+	                	}
+	                }
+	                justBegain = 1;
+	                $('#subjectId').parent().find('.NFSelectOptions li a').click(function(){
+	                	 $('#subjectId').parent().find('.NFSelectRight').text($(this).text());
+	                	 var index=$('#subjectId').parent().find('.NFSelectOptions li').index($(this).parent());
+	                	 var str='option:eq('+index+')';
+	                	 $('#subjectId').find(str).attr("selected",true);
+	                });
+	            }
+		 });
+		
+	}
+	function init(){
+		getClassList();
+		$('#gradeId').parent().find('.NFSelectOptions li a').click(function(){
+			getClassList();
+		});
+	}
 	function insertUpload(msg) {
 		//alert(msg);
 		if(msg == "上传失败"){
@@ -80,31 +118,6 @@
 			return;
 		}
 		alert("上传成功");
-	}
-	
-
-	function getClassList() {
-		//alert("change");
-		$('#subjectId').empty();
-		$('#subjectId').parent().find('.NFSelectOptions').empty();
-		$.ajax({
-	            type: "post",
-	            dataType: "json",
-	            url: "class/ZYClassAddGetNameAction?gradeCode="+$('#gradeId').val(),
-	            success: function (msg) {
-	            	//alert(msg.toString());
-	                for (i in msg) {
-	                	$('#subjectId').append('<option value=' + msg[i].id + '>'+msg[i].name+'</option');
-	                	$('#subjectId').parent().find('.NFSelectOptions').append('<li><a href="javascript:;">'+msg[i].name+'</a></li>');
-	                	
-	                	if(i==0){
-	                		$('#subjectId').parent().find('.NFSelectRight').text(msg[i].name);
-	                	}
-	                	$('#subjectId').find('option:eq(0)').select();
-	                }
-	                
-	            }
-		 });
 	}
 </script>
 </head>
@@ -116,7 +129,7 @@
 			<div class="center_content">
 				<jsp:include page="bgleft.jsp" flush="true" />
 				<div class="right_content">
-					<h2>修改课程</h2>
+					<h2>增加课程</h2>
 					<h3>课程信息编辑：</h3>
 					
 					<div class="form">
@@ -129,13 +142,13 @@
 									<dd style="margin: 0;height: 35px;line-height: 35px;padding-left: 10px;">
 										${id}<input type="hidden" name="id" value="${id}"/>
 									</dd>
-								</dl>
+								</dl> 
 								<dl>
 									<dt>
 										<label for="email">课程类型:</label>
 									</dt>
 									<dd>
-											<select size="1" name="classType">
+											<select name="classType" size="1" id="classType">
 												<option value="normal"
 													<c:if test="${classType eq 'normal' }">selected="selected"</c:if>
 												>普通课程</option>
@@ -150,9 +163,7 @@
 										<label for="email">年级:</label>
 									</dt>
 									<dd>
-										<!-- <input type="text" name="grade" id="" size="54" value="${grade}"/> -->
 											<select id="gradeId" size="1" name="grade" onchange="getClassList()">
-												
 												<c:forEach items="${subjects}" var="subject">
 													<option value="${subject.gradeCode }"
 														<c:if test="${subject.gradeCode eq gradeCode}">
@@ -168,8 +179,13 @@
 										<label for="password">学科名称:</label>
 									</dt>
 									<dd>
-										<select id="subjectId" size="1" name="subjectId">
+										<select id="subjectId" name="subjectId" size="1">
+											<option>--请选择--</option>
+											<option>--请选择2--</option>
+											<option>--请选择3--</option>
+											<option>--请选择4--</option>
 										</select>
+										<input type="hidden" id="forSubject" name="forSubject" value="${subjectName }"/>
 									</dd>
 								</dl>
 								<dl>
@@ -177,17 +193,19 @@
 										<label for="password">课程名称:</label>
 									</dt>
 									<dd>
-										<input type="text" name="myClassName" id="" size="54" value="${myClassName}"/>
+										<input type="text" name="myClassName" id="" size="48"/>
 									</dd>
 								</dl>
-								<dl>
-									<dt>
-										<label for="email">当前缩略图:</label>
-									</dt>
-									<dd style="overflow: hidden;">
-										<img src="${path}${imgUrl}" alt="" />
-									</dd>
-								</dl>
+								<c:if test="${not empty imgUrl}">
+									<dl>
+										<dt>
+											<label for="email">当前缩略图:</label>
+										</dt>
+										<dd style="overflow: hidden;">
+											<img src="${path}${imgUrl}" alt="" />
+										</dd>
+									</dl>
+								</c:if>	
 								<dl>
 									<dt>
 										<label for="upload">上传新图片:</label>
@@ -201,7 +219,7 @@
 										<label for="password">教师姓名:</label>
 									</dt>
 									<dd>
-										<input type="text" name="teacherName" id="" size="54" value="${teacherName}"/>
+										<input type="text" name="teacherName" id="" size="15"/>
 									</dd>
 								</dl>
 								<dl>
@@ -209,30 +227,25 @@
 										<label for="password">学期:</label>
 									</dt>
 									<dd>
-										<%-- <input type="text" name="volumn" id="" size="54" value="${volumn}"/> --%>
-										<select name="volumn">
-											<option value="1" 
-												<c:if test="${volumn == 1 }">selected="selected"</c:if>
-											>上学期</option>
-											<option value="2" 
-												<c:if test="${volumn == 2 }">selected="selected"</c:if>
-											>下学期</option>
+										<select id="volumn" size="1" name="volumn">
+											<option value="1" selected="selected">上学期</option>
+											<option value="2">下学期</option>
 										</select>
 									</dd>
 								</dl>
+								
 								<dl>
 									<dt>
 										<label for="password">详细信息:</label>
 									</dt>
-									<dd style="width: 150px;">
-										<a href="#" class="bt_green"><span class="bt_green_lft"></span><strong>点此修改详细信息</strong><span
+									<dd style="width: 200px;">
+										<a href="#" class="bt_green"><span class="bt_green_lft"></span><strong>点此增加详细信息</strong><span
 											class="bt_green_r"></span> </a>
-										<input name="detail" type="hidden" id="content" value="<s:property value="detail" escape="true"/>" style="display: none"/>
+										<input name="detail" type="hidden" id="content"/>
 									</dd>
-									
 								</dl>
 								<dl class="submit">
-									<input type="submit" name="submit" id="submit" value="提交修改后内容" />
+									<input type="submit" name="submit" id="submit" value="保存" />
 								</dl>
 							</fieldset>
 
@@ -249,6 +262,7 @@
 							${sucMsg}
 						</div>
 					</s:if>
+
 					<!-- 预览部分 -->
 					<h3>预览墙：</h3>
 					<div id="showNews" style="display: block;width: 100%">
@@ -257,6 +271,7 @@
 					<div class="warning_box" style="display: none">
 							内容为空,无法预览
 					</div>
+
 				</div>
 				<!-- end of right content-->
 			</div>
@@ -264,16 +279,7 @@
 			<div class="clear"></div>
 		</div>
 		<!--end of main content-->
-		<div class="footer">
-			<div class="left_footer">
-				朝之阳后台管理 | Powered by <a href="http://indeziner.com">诚彬工作室</a>
-			</div>
-			<div class="right_footer">
-				<a href="http://indeziner.com"><img
-					src="${bgpath}images/indeziner_logo.gif" alt="" title="" border="0" />
-				</a>
-			</div>
-		</div>
+		<jsp:include page="bgfoot.jsp" flush="true"/>
 	</div>
 </body>
 </html>

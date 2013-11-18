@@ -29,6 +29,7 @@ public class FaqDao {
 		for(int i=0;i<array.length();i++){
 			JSONObject jobj=(JSONObject)array.get(i);
 			Faq student=new Faq();
+			
 			student.setQueNo(jobj.getLong("queNo"));
 			student.setQuestion(jobj.getString("question"));
 			student.setAnswer(jobj.getString("answer"));

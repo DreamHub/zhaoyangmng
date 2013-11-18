@@ -15,10 +15,11 @@
 	type="text/css" />
 <script type="text/javascript">
 	$(function() {
+		var myframe = $('#newnoticedl');
 		$('.bt_green').click(function() {
 			$.Zebra_Dialog('<strong>新增下载类型:</strong><br><br>', {
 				source : {
-					'inline' : $('#newnoticedl')
+					'inline' : myframe
 				},
 				width : 800,
 				position : [ 'center', 'top + 50' ],
@@ -42,7 +43,7 @@
 				title : '新增下载类型',
 				type : false
 			});
-			$('#newnoticedl').css("display", "block");
+			myframe.css("display", "block");
 		});
 	});
 </script>
@@ -113,25 +114,29 @@
 					<s:if test="#request.errMsg != null">
 						<div class="error_box">${errMsg}</div>
 					</s:if>
-					<div id="newnoticedl" style="display: none;">
-						<dl>
-							<dt>
-								<label for="email">内容:</label>
-							</dt>
-							<dd>
-								<input type="text" name="newcontent" id="newcontent" size="54"
-									value="" />
-							</dd>
-						</dl>
-						<dl>
-							<dt>
-								<label for="email">链接:</label>
-							</dt>
-							<dd>
-								<input type="text" name="newhref" id="newhref" size="54"
-									value="" />
-							</dd>
-						</dl>
+					<div id="newnoticedl" class="form" style="display:none">
+						<form action="${path}dld/DownloadNoticeAddAction" method="post" class="niceform" id="imgloopform">
+							<fieldset>
+								<dl>
+									<dt>
+										<label for="email">内容:</label>
+									</dt>
+									<dd>
+										<input type="text" name="newcontent" id="newcontent" size="54"
+											value="" />
+									</dd>
+								</dl>
+								<dl>
+									<dt>
+										<label for="email">链接:</label>
+									</dt>
+									<dd>
+										<input type="text" name="newhref" id="newhref" size="54"
+											value="" />
+									</dd>
+								</dl>
+							</fieldset>
+						</form>	
 					</div>
 				</div>
 				<!-- end of right content-->

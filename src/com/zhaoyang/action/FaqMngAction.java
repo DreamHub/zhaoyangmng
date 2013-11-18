@@ -43,6 +43,18 @@ public class FaqMngAction extends AbstractActionSupport {
 	public void setFaq(Faq faq) {
 		this.faq = faq;
 	}
+	
+	public String faqDel() throws Exception {
+		// TODO Auto-generated method stub
+		
+		if(faqDao.delete(faq.getQueNo())){
+			setSucMsg("删除成功");
+		}else{
+			setErrMsg("删除失败");
+		}
+		
+		return SUCCESS;
+	}
 
 	public String faqEdit() throws Exception {
 		// TODO Auto-generated method stub

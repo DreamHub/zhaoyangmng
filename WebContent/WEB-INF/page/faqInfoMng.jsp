@@ -41,7 +41,7 @@
 						return true;
 					}
 				} ],
-				title : '新增下载类型',
+				title : '新增常见问题',
 				type : false
 			});
 			$('.ZebraDialog_Body > div:first').css("padding-top","10px");
@@ -148,7 +148,7 @@
 										</a>
 									</td>
 									<td><a
-										href="${path}index/IndexImgLoopDelAction?indexImgLoop.id=<s:property value="id"/>"
+										href='${path}faq/FaqDelAction?faq.queNo=<s:property value="queNo"/>'
 										class="ask"><img src="${bgpath}images/trash.png" alt=""
 											title="" border="0" /> </a>
 									</td>
