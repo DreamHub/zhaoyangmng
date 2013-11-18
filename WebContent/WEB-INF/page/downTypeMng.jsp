@@ -12,6 +12,14 @@
 <script type="text/javascript" src="${bgpath}xheditor_lang/zh-cn.js"></script>
 <script type="text/javascript" src="${bgpath}js/zebra_dialog.js"></script>
 <link rel="stylesheet" href="${bgpath}css/zebra_dialog.css" type="text/css"/>
+<style type="text/css">
+		.ZebraDialog .ZebraDialog_BodyOuter{
+			background: white;
+		}
+		.ZebraDialog .ZebraDialog_Icon{
+			padding-left: 2px;
+		}
+</style>
 <script type="text/javascript">
 	
 	$(function() {
@@ -24,13 +32,19 @@
 		var myBaby = $('#newtypedl');
 		$('.bt_green').click(function(){
 			
-			$.Zebra_Dialog('<strong>新增下载类型:</strong><br><br>', {
+			$.Zebra_Dialog({
 				source : {
 					'inline' : myBaby
 				},
-				width : 800,
+				width : 650,
 				position : ['center','top + 50'],
-				buttons : [{caption:'新增',callback:function(){
+				buttons : [{
+					caption : '取消',
+					callback : function() {
+						
+						return true;
+					}
+				},{caption:'新增',callback:function(){
 					var newtype=$('#newtype').val();
 					if(newtype==null||newtype==""){
 						alert("类型名称不能为空");
@@ -95,16 +109,19 @@
 											class="bt_green_r"></span> </a>
 									</dd>
 								</dl>
-								<div id="newtypedl" style="display: none;width:600px;height:100px;background: white;padding: 30px;">
-									<dl>
-										<dt>
-											<label for="email">类型名称:</label>
-										</dt>
-										<dd>
-											<input type="text" name="newtype" id="newtype" size="54" value=""/>
-										</dd>
-									</dl>
-								</div> 
+								<div style="width: 0;height: 0;overflow: hidden;">
+									<div id="newtypedl">
+										<dl>
+											<dt>
+												<label for="email">类型名称:</label>
+											</dt>
+											<dd>
+												<input type="text" name="newtype" id="newtype" size="15" value=""/>
+											</dd>
+										</dl>
+									</div>
+								</div>
+								 
 								
 								<dl class="submit">
 									<input type="submit" name="submit" id="submit" value="提交修改后内容" />
