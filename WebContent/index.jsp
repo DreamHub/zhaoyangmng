@@ -140,7 +140,7 @@
 								<table class="studentTable">
 									<tr>
 									
-										<td><img src="<s:property value="#request.students.get(0).imgPath"/>" align="center"/></td>
+										<td><img width="150" src="<s:property value="#request.students.get(0).imgPath"/>" align="center"/></td>
 										<td><h3>学生姓名:<s:property value="#request.students.get(0).stuName"/>
 										<br/>
 										高考总成绩:<s:property value="#request.students.get(0).score"/>分
@@ -149,7 +149,7 @@
 										<p class="studesc">
 											<s:property value="#request.students.get(0).desc"/>... <a href="people/student.html">详细>></a>
 										</p></td>
-										<td><img src="<s:property value="#request.students.get(1).imgPath"/>" align="center"/></td>
+										<td><img width="150" src="<s:property value="#request.students.get(1).imgPath"/>" align="center"/></td>
 										<td><h3>学生姓名:<s:property value="#request.students.get(1).stuName"/>
 										<br/>
 										高考总成绩:<s:property value="#request.students.get(1).score"/>分
@@ -160,7 +160,7 @@
 										</p></td>
 									</tr>
 									<tr>
-										<td><img src="<s:property value="#request.students.get(2).imgPath"/>" align="center"/></td>
+										<td><img width="150" src="<s:property value="#request.students.get(2).imgPath"/>" align="center"/></td>
 										<td><h3>学生姓名:<s:property value="#request.students.get(2).stuName"/>
 										<br/>
 										高考总成绩:<s:property value="#request.students.get(2).score"/>分
@@ -169,7 +169,7 @@
 										<p class="studesc">
 											<s:property value="#request.students.get(2).desc"/>... <a href="people/student.html">详细>></a>
 										</p></td>
-										<td><img src="<s:property value="#request.students.get(3).imgPath"/>" align="center"/></td>
+										<td><img width="150" src="<s:property value="#request.students.get(3).imgPath"/>" align="center"/></td>
 										<td><h3>学生姓名:<s:property value="#request.students.get(3).stuName"/>
 										<br/>
 										高考总成绩:<s:property value="#request.students.get(3).score"/>分
@@ -290,7 +290,7 @@
 						<img src="image/index/pic16.jpg" width="100%" height="130"/>
 						<ul>
 							<s:iterator value="#request.faqs">
-								<li><a href="#"><s:property value="question"/></a></li>
+								<li><a href="faq.html"><s:property value="question"/></a></li>
 							</s:iterator>
 						</ul>
 					</div>
