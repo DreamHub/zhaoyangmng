@@ -106,8 +106,7 @@
 										<label for="email">年级:</label>
 									</dt>
 									<dd>
-										<!-- <input type="text" name="grade" id="" size="54" value="${grade}"/> -->
-											<select name="gradeCode">
+											<select name="gradeCode" size="1">
 												<option value="${gradeCode}"
 												<c:if test="${1 == gradeCode}">selected="selected"</c:if>
 												>一年级</option>
@@ -144,9 +143,6 @@
 												<option value="${gradeCode}"
 												<c:if test="${12 == gradeCode}">selected="selected"</c:if>
 												>高三</option>
-												<option value="${gradeCode}"
-												<c:if test="${13 == gradeCode}">selected="selected"</c:if>
-												>其他</option>
 											</select>
 									</dd>
 								</dl>

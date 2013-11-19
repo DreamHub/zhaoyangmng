@@ -89,7 +89,11 @@
 									<td><s:property value="subject.subjectName"/></td>
 									<td><s:property value="className"/></td>
 									<td><s:property value="teacherName"/></td>
-									<td><s:property value="volumn"/></td>
+									<td>
+										<s:if test='%{volumn=="1"}'>上</s:if>
+										<s:else>下</s:else>
+										<%-- <s:property value="volumn"/> --%>
+									</td>
 
 									<td><a href="${path}class/ZYClassEditPreAction?id=<s:property value="id"/>"><img
 											src="${bgpath}images/user_edit.png" alt="" title=""

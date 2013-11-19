@@ -129,7 +129,7 @@
 			<div class="center_content">
 				<jsp:include page="bgleft.jsp" flush="true" />
 				<div class="right_content">
-					<h2>增加课程</h2>
+					<h2>修改课程</h2>
 					<h3>课程信息编辑：</h3>
 					
 					<div class="form">
@@ -193,7 +193,7 @@
 										<label for="password">课程名称:</label>
 									</dt>
 									<dd>
-										<input type="text" name="myClassName" id="" size="48"/>
+										<input type="text" name="myClassName" id="" size="54" value="${myClassName}"/>
 									</dd>
 								</dl>
 								<c:if test="${not empty imgUrl}">
@@ -219,7 +219,8 @@
 										<label for="password">教师姓名:</label>
 									</dt>
 									<dd>
-										<input type="text" name="teacherName" id="" size="15"/>
+										<input type="text" name="teacherName" id="" size="54" value="${teacherName}"/>
+										<!-- <input type="text" name="teacherName" id="" size="15"/> -->
 									</dd>
 								</dl>
 								<dl>
@@ -228,8 +229,12 @@
 									</dt>
 									<dd>
 										<select id="volumn" size="1" name="volumn">
-											<option value="1" selected="selected">上学期</option>
-											<option value="2">下学期</option>
+											<option value="1" 
+												<c:if test="${volumn == 1 }">selected="selected"</c:if>
+											>上学期</option>
+											<option value="2" 
+												<c:if test="${volumn == 2 }">selected="selected"</c:if>
+											>下学期</option>
 										</select>
 									</dd>
 								</dl>

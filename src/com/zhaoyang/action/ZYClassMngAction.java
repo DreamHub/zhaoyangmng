@@ -337,35 +337,26 @@ public class ZYClassMngAction extends AbstractActionSupport {
 	
 	public String zyClassEdit() throws Exception {
 		//???不确定能不能返回int类型
-		/*
-		if (gradeCode == 0) {
-			setErrMsg("年级不能为空");
-			return SUCCESS;
-		}*/
-		/*if (subjectName == null || "".equals(subjectName)) {
-			setErrMsg("学科名称不能为空");
-			return SUCCESS;
-		}*/
 		if (myClassName == null || "".equals(myClassName)) {
 			setErrMsg("课程名称不能为空");
-			return SUCCESS;
+			return ERROR;
 		}
 		
 		if (classImg == null) {
 			setErrMsg("上传图片不能为空");
-			return SUCCESS;
+			return ERROR;
 		}
 		if (teacherName == null || "".equals(teacherName)) {
 			setErrMsg("教师姓名不能为空");
-			return SUCCESS;
+			return ERROR;
 		}
 		if (volumn == 0) {
 			setErrMsg("请填写学期");
-			return SUCCESS;
+			return ERROR;
 		}
 		if (detail == null || "".equals(detail)) {
 			setErrMsg("详细信息不能为空");
-			return SUCCESS;
+			return ERROR;
 		}
 //		grade = getGradeName(gradeCode);
 

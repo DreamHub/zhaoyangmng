@@ -94,7 +94,6 @@
 										<label for="email">年级:</label>
 									</dt>
 									<dd>
-										<!-- <input type="text" name="grade" id="" size="54" value="${grade}"/> -->
 											<select name="gradeCode" size="1">
 												<option value="1">一年级</option>
 												<option value="2">二年级</option>
