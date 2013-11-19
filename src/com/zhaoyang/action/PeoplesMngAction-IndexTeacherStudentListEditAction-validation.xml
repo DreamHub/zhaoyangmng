@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="indexTeacherList">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>请输入教师列表</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">true</param>
+			<param name="expression"><![CDATA[(\d{1}(,\d)*)]]></param>
+			<message>教师列表：您输入的格式不正确</message>
+		</field-validator>
+	</field>
+	<field name="indexStudentList">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>请输入学生列表</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">true</param>
+			<param name="expression"><![CDATA[(\d{1}(,\d)*)]]></param>
+			<message>学生列表：您输入的格式不正确</message>
+		</field-validator>
+	</field>
+</validators>

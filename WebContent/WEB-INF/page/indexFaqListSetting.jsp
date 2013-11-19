@@ -88,6 +88,14 @@
 		alert("上传成功");
 	}
 </script>
+<style type="text/css">
+	.errorMessage{
+		list-style: none;
+		color: red;
+		padding: 0;
+		margin: 0;
+	}
+</style>
 </head>
 <body>
 	<div id="main_container">
@@ -116,6 +124,13 @@
 									</dt>
 									<dd>
 										<a href="#" class="tooltips" title="请填写你要依次展示的下载资源序号，以逗号隔开。"><span class="zywarn"></span>温馨提示</a>
+									</dd>
+								</dl>
+								<dl>
+									<dt>
+									</dt>
+									<dd>
+										<s:fielderror/>
 									</dd>
 								</dl>
 								<dl class="submit">

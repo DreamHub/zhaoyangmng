@@ -97,6 +97,7 @@
 		<action name="IndexNewsSetAction" class="newsSettingAction"
 			method="indexNewsSet">
 			<result name="success">/WEB-INF/page/indexNewsSetting.jsp</result>
+			<result name="input">/WEB-INF/page/indexNewsSetting.jsp</result>
 		</action>
 		<action name="HotNewsSetPreAction" class="newsSettingAction"
 			method="hotNewsSetPre">
@@ -105,6 +106,7 @@
 		<action name="HotNewsSetAction" class="newsSettingAction"
 			method="hotNewsSet">
 			<result name="success">/WEB-INF/page/hotNewsSetting.jsp</result>
+			<result name="input">/WEB-INF/page/hotNewsSetting.jsp</result>
 		</action>
 	</package>
 	<!-- 上传 -->
@@ -256,6 +258,7 @@
 		<action name="NoticePanelSetAction" class="noticeMngAction"
 			method="noticePanelSet">
 			<result name="success" type="chain">NoticePanelSetPreAction</result>
+			<result name="input">/WEB-INF/page/noticePanelSetting.jsp</result>
 		</action>
 		<action name="WatchNoticeHTMLAction" class="noticeMngAction"
 			method="watchNoticeHTML">
@@ -456,6 +459,7 @@
 		<action name="IndexTeacherStudentListEditAction" class="peoplesMngAction"
 			method="indexTeacherStudentListEdit">
 			<result name="success" type="chain">IndexTeacherStudentListMngAction</result>
+			<result name="input">/WEB-INF/page/indexPeopleSetting.jsp</result>
 		</action>
 
 	</package>
@@ -495,8 +499,7 @@
 			<result name="success">/WEB-INF/page/zyClassEdit.jsp</result>
 		</action>
 		<action name="ZYClassEditAction" class="zyClassMngAction" method="zyClassEdit">
-			<result name="error">/WEB-INF/page/zyClassEdit.jsp</result>
-			<result name="success">/WEB-INF/page/zyClassEdit.jsp</result>
+			<result name="success" type="chain">ZYClassEditPreAction</result>
 		</action>
 		<action name="ZYClassDelAction" class="zyClassMngAction" method="zyClassDel">
 			<result name="success" type="chain">ZYClassMngAction</result>
@@ -566,6 +569,7 @@
 		</action>
 		<action name="IndexFaqListEditAction" class="faqMngAction" method="indexFaqListEdit">
 			<result name="success" type="chain">IndexFaqListMngAction</result>
+			<result name="input">/WEB-INF/page/indexFaqListSetting.jsp</result>
 		</action>
 	</package>
 </struts>    

@@ -339,24 +339,24 @@ public class ZYClassMngAction extends AbstractActionSupport {
 		//???不确定能不能返回int类型
 		if (myClassName == null || "".equals(myClassName)) {
 			setErrMsg("课程名称不能为空");
-			return ERROR;
+			return SUCCESS;
 		}
 		
 		if (classImg == null) {
 			setErrMsg("上传图片不能为空");
-			return ERROR;
+			return SUCCESS;
 		}
 		if (teacherName == null || "".equals(teacherName)) {
 			setErrMsg("教师姓名不能为空");
-			return ERROR;
+			return SUCCESS;
 		}
 		if (volumn == 0) {
 			setErrMsg("请填写学期");
-			return ERROR;
+			return SUCCESS;
 		}
 		if (detail == null || "".equals(detail)) {
 			setErrMsg("详细信息不能为空");
-			return ERROR;
+			return SUCCESS;
 		}
 //		grade = getGradeName(gradeCode);
 
