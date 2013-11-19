@@ -37,8 +37,8 @@
 										<img src="${bgpath}images/notice.png" alt="" title=""
 											class="sidebar_icon_right" />
 										<p style="line-height: 25px;">
-											新闻预览必须确保您手动生成了相关页面，请先点击<br/>
-											<a href="${path}ntc/GenerateNoticeHTMLAction">生成新闻页面</a><br/>
+											公告预览必须确保您手动生成了相关页面，请先点击<br/>
+											<a href="${path}ntc/GenerateNoticeHTMLAction">生成相关页面</a><br/>
 										</p>
 									</div>
 									<div class="sidebar_box_bottom"></div>

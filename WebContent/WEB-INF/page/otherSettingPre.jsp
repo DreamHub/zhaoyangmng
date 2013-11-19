@@ -25,39 +25,10 @@
 				<jsp:include page="bgleft.jsp" flush="true" />
 				<div class="right_content">
 
-					<h2>师生风采管理</h2>
+					<h2>其他设置</h2>
 					<table>
 						<tr>
-							<td valign="top">
-								<div class="sidebar_box">
-									<div class="sidebar_box_top"></div>
-									<div class="sidebar_box_content">
-										<h4>页面预览</h4>
-										<img src="${bgpath}images/notice.png" alt="" title=""
-											class="sidebar_icon_right" />
-										<p style="line-height: 25px;">
-											师生风采页面预览之前必须确保您手动生成了相关页面，请先点击<br/>
-											<a href="${path}peo/GeneratePeopleHTMLAction">生成相关页面</a><br/>
-										</p>
-									</div>
-									<div class="sidebar_box_bottom"></div>
-								</div>
-							</td>
-							<td valign="top">
-								<div class="sidebar_box">
-									<div class="sidebar_box_top"></div>
-									<div class="sidebar_box_content">
-										<h4>新闻栏展示设置</h4>
-										<img src="${bgpath}images/notice.png" alt="" title=""
-											class="sidebar_icon_right" />
-										<p style="line-height: 25px;">
-											预览之前请先确保新闻栏列表的完整和正确，点击进入<br/>
-											<a href="${path}news/IndexNewsSetPreAction">新闻栏展示设置</a><br/>
-										</p>
-									</div>
-									<div class="sidebar_box_bottom"></div>
-								</div>
-							</td>
+							
 							<td valign="top">
 								<div class="sidebar_box">
 									<div class="sidebar_box_top"></div>
@@ -66,9 +37,11 @@
 										<img src="${bgpath}images/info.png" alt="" title=""
 											class="sidebar_icon_right" />
 										<p style="line-height: 25px;">
-											师生风采包括学生风采和教师风采，修改学生信息请点击<br/>
-											<a href="${path}peo/StudentMngAction">学生信息设置</a><br/>
-											修改教师信息，请点击<br/><a href="${path}peo/TeacherMngAction">教师信息设置</a>
+											其他设置包括：<br/>
+											<a href="${path}other/HeadImgMngAction">页面头部横幅设置</a><br/>
+											<a href="${path}other/TailLinkMngAction">尾部链接设置</a><br/>
+											<a href="${path}other/TailDescAndStmtMngAction">尾部简介和声明设置</a><br/>
+											<a href="${path}other/PageSizeMngAction">系统设置</a><br/>
 										</p>
 									</div>
 									<div class="sidebar_box_bottom"></div>

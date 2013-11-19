@@ -344,6 +344,9 @@
 			method="pageSizeEdit">
 			<result name="success" type="chain">PageSizeMngAction</result>
 		</action>
+		<action name="OtherSettingMngPre" class="otherMngAction">
+			<result name="success">/WEB-INF/page/otherSettingPre.jsp</result>
+		</action>
 
 	</package>
 	<!-- 首页设置 -->
@@ -402,7 +405,7 @@
 		</action>
 		<action name="TeacherDelAction" class="peoplesMngAction"
 			method="teacherDel">
-			<result name="success">/WEB-INF/page/teacherMng.jsp</result>
+			<result name="success" type="chain">TeacherMngAction</result>
 		</action>
 		<action name="TeacherAddPreAction" class="peoplesMngAction"
 			method="teacherAddPre">
@@ -423,7 +426,7 @@
 
 		<action name="StudentDelAction" class="peoplesMngAction"
 			method="studentDel">
-			<result name="success">/WEB-INF/page/studentMng.jsp</result>
+			<result name="success" type="chain">StudentMngAction</result>
 		</action>
 		<action name="StudentAddPreAction" class="peoplesMngAction"
 			method="studentAddPre">

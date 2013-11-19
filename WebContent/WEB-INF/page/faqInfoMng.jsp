@@ -35,7 +35,7 @@
 				width : 650,
 				position : [ 'center', 'top + 50' ],
 				buttons : [ {
-					caption : '确认',
+					caption : '取消',
 					callback : function() {
 						
 						return true;

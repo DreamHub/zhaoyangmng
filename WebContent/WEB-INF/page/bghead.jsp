@@ -85,7 +85,7 @@
 				<li><a href="${path}rcmt/HengfuSetPreAction" title="">首页招聘信息</a></li>
 			</ul> <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 		</li>
-		<li><a href="#">常见问题</a>
+		<li><a href="${path}faq/FaqMngAction">常见问题</a>
 		    <ul>
 				<li><a href="${path}faq/FaqMngAction" title="">查看所有问题</a></li>
 				<li><a href="${path}faq/IndexFaqListMngAction" title="">首页常见问题展示</a></li>
@@ -97,7 +97,7 @@
 				<li><a href="${path}class/ZYClassMngAction?pageNum=1" title="">课程信息管理</a></li>
 			</ul>
 		</li>
-		<li><a href="${path}rcmt/RecruitmentMngPreAction">其他设置</a>
+		<li><a href="${path}other/OtherSettingMngPre">其他设置</a>
 		    <ul>
 				<li><a href="${path}other/HeadImgMngAction" title="">头部条幅</a></li>
 				<li><a class="sub1" href="#" title="">尾部设置<!--[if IE 7]><!-->
