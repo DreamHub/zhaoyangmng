@@ -12,44 +12,29 @@
 
 	<div class="sidebarmenu">
 
-		<a class="menuitem submenuheader" href="">页面预览</a>
+		<a class="menuitem submenuheader" href="">首页设置</a>
 		<div class="submenu">
 			<ul>
-				<li><a href="${path}rcmt/WatchRecruitmentHTMLAction" target="_blank">*人才招聘*预览</a></li>
-				<li><a href="${path}news/NewsAddPreAction">新增新闻</a></li>
-				<li><a href="${path}news/IndexNewsSetPreAction">首页新闻设置</a></li>
-				<li><a href="${path}news/HotNewsSetPreAction">热门话题设置</a></li>
+				<li><a href="${path}index/IndexImgLoopMngAction" title="">首页图片轮播</a></li>
+				<li><a href="${path}index/SevenReasonMngAction" title="">七大理由</a></li>
+				<li><a href="${path}index/IndexAdvImgMngAction" title="">广告条幅</a></li>
 			</ul>
 		</div>
 		<a class="menuitem submenuheader" href="">新闻管理</a>
 		<div class="submenu">
 			<ul>
-				<li><a href="${path}news/NewsMngAction?pageNum=1">浏览新闻</a></li>
-				<li><a href="${path}news/NewsAddPreAction">新增新闻</a></li>
-				<li><a href="${path}news/IndexNewsSetPreAction">首页新闻设置</a></li>
-				<li><a href="${path}news/HotNewsSetPreAction">热门话题设置</a></li>
+				<li><a href="${path}news/NewsMngAction?pageNum=1" title="">浏览新闻</a></li>
+				<li><a href="${path}news/NewsAddPreAction" title="">新增新闻</a></li>
+				<li><a href="${path}news/IndexNewsSetPreAction" title="">首页新闻展示</a></li>
+				<li><a href="${path}news/HotNewsSetPreAction" title="">热门新闻展示</a></li>
 			</ul>
 		</div>
 		<a class="menuitem submenuheader" href="">学校简介</a>
 		<div class="submenu">
 			<ul>
 				<li><a href="${path}scl/SchoolDescSetPreAction">学校简介修改</a></li>
-				<li><a href="">教学环境修改</a></li>
-				<li><a href="">办学地址修改</a></li>
-			</ul>
-		</div>
-		<a class="menuitem submenuheader" href="">下载管理</a>
-		<div class="submenu">
-			<ul>
-				<li><a href="${path}dld/DownloadAddPreAction">上传</a></li>
-				<li><a href="${path}dld/DownloadMngAction?pageNum=1">浏览</a></li>
-			</ul>
-		</div>
-		<a class="menuitem submenuheader" href="">公告管理</a>
-		<div class="submenu">
-			<ul>
-				<li><a href="${path}dld/DownloadAddPreAction">新增</a></li>
-				<li><a href="${path}dld/DownloadMngAction?pageNum=1">浏览</a></li>
+				<li><a href="${path}scl/ConditionSetPreAction" title="">教学环境修改</a></li>
+				<li><a href="${path}scl/AddressSetPreAction" title="">办学地址修改</a></li>
 			</ul>
 		</div>
 		<a class="menuitem"
