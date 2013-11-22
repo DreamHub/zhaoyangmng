@@ -60,10 +60,12 @@ public class GenerateWebsiteAction extends AbstractActionSupport {
 		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/scl/WatchConditionHTMLAction", new File(absolutePath("/about_detail/condition.html")));
 		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/about_detail/course.jsp", new File(absolutePath("/about_detail/course.html")));
 		
-		
+		try{
 		//下载  notice.js srcdownload.js
 		(new UtilForGenerateDownload()).generateAllDownloads(this);
-		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		//公告
 		(new UtilForGenerateNews()).generateAllNotices(this);
 		OtherUtil.copyResourceFromUrl("http://localhost:8080/zhaoyang/ntc/WatchNoticeHTMLAction", new File(absolutePath("/notice.html")));
