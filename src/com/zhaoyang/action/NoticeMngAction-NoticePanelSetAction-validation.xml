@@ -9,7 +9,7 @@
 		</field-validator>
 		<field-validator type="regex">
 			<param name="trim">true</param>
-			<param name="expression"><![CDATA[(\d{1}(,\d)*)]]></param>
+			<param name="expression"><![CDATA[(\d+(,\d+)*)]]></param>
 			<message>您输入的格式不正确</message>
 		</field-validator>
 	</field>
