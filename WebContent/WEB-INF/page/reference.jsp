@@ -172,7 +172,7 @@
 						type:false
 					});
 				}else{
-					alert('qwe');
+					//alert('qwe');
 				}
 			});
 		});
