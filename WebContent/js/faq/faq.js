@@ -4,7 +4,7 @@ var notices;
 var index = 0;
 var curPage = 0;
 $(function() {
-	$.getJSON("js/faq/srfaq.js", function(data) {
+	$.getJSON("js/faq/srfaq.js?rnd=" + Math.random(), function(data) {
 		srs = data;
 		show_page_point(data);
 		change_page(0, data.length);		
