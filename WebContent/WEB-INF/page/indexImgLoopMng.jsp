@@ -47,6 +47,25 @@
 			$('.ZebraDialog_Body > div:first').css("padding-top","2px");
 			//alert("asd");
 			//$('.ZebraDialog_Body > div:first').css("padding-top","100px");
+			newnoticedl.find('input[type="submit"]').click(function(){
+				var file=newnoticedl.find('input[name="newImg"]').val();
+				var href=newnoticedl.find('input[name="indexImgLoop.href"]').val();
+				//alert(href);
+				var imgDesc=newnoticedl.find('textarea[name="indexImgLoop.imgdesc"]').val();
+				if(file==null||file==''){
+					alert("上传图片不能为空");
+					return false;
+				}
+				if(href==null||href==''){
+					alert("链接不能为空");
+					return false;
+				}
+				if(imgDesc==null||imgDesc==''){
+					alert("描述不能为空");
+					return false;
+				}
+				return true;
+			});
 		});
 		$('.editbt').click(function(){
 			var imgPath=$(this).attr('imgPath');
@@ -93,29 +112,6 @@
 		});
 		
 	});
-	function validate(){
-		//alert('ssss');
-		var file=$('input[name="newImg"]').val();
-		//alert(file);
-		var href=$('input[name="indexImgLoop.href"]').val();
-		//alert(href);
-		var imgDesc=$('textarea[name="indexImgLoop.imgdesc"]').val();
-		
-		//alert(imgDesc);
-		if(file==null){
-			alert("上传图片不能为空");
-			return false;
-		}
-		if(href==null||href==''){
-			alert("链接不能为空");
-			return false;
-		}
-		if(imgDesc==null||imgDesc==''){
-			alert("描述不能为空");
-			return false;
-		}
-		return true;
-	}
 </script>
 </head>
 <body>
@@ -220,7 +216,7 @@
 									</dd>
 								</dl>
 								<dl class="submit">
-									<input type="submit" name="submit" id="submit" value="保存" onclick="return validate()"/>
+									<input type="submit" name="submit" id="submit" value="保存"/>
 								</dl>
 								</fieldset>
 							</form>
