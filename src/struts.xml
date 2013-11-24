@@ -96,7 +96,7 @@
 		</action>
 		<action name="IndexNewsSetAction" class="newsSettingAction"
 			method="indexNewsSet">
-			<result name="success">/WEB-INF/page/indexNewsSetting.jsp</result>
+			<result name="success" type="chain">IndexNewsSetPreAction</result>
 			<result name="input">/WEB-INF/page/indexNewsSetting.jsp</result>
 		</action>
 		<action name="HotNewsSetPreAction" class="newsSettingAction"
