@@ -73,17 +73,17 @@ public class NewsSettingAction extends AbstractActionSupport {
 	public String indexNewsSet() throws Exception {
 		if(newsImg==null){
 			setErrMsg("上传图片不能为空");
-			forward("IndexNewsSetPreAction", ServletActionContext.getRequest(),ServletActionContext.getResponse());
+			//forward("IndexNewsSetPreAction", ServletActionContext.getRequest(),ServletActionContext.getResponse());
 			return SUCCESS;
 		}
 		if(newsDesc==null||"".equals(newsDesc)){
 			setErrMsg("说明不能为空");
-			forward("IndexNewsSetPreAction", ServletActionContext.getRequest(),ServletActionContext.getResponse());
+			//forward("IndexNewsSetPreAction", ServletActionContext.getRequest(),ServletActionContext.getResponse());
 			return SUCCESS;
 		}
 		if(newsNoList==null||"".equals(newsNoList)){
 			setErrMsg("新闻列表不能为空");
-			forward("IndexNewsSetPreAction", ServletActionContext.getRequest(),ServletActionContext.getResponse());
+			//forward("IndexNewsSetPreAction", ServletActionContext.getRequest(),ServletActionContext.getResponse());
 			return SUCCESS;
 		}
 		// TODO Auto-generated method stub
@@ -99,7 +99,7 @@ public class NewsSettingAction extends AbstractActionSupport {
 		
 		imgPath="image/index"+fileName;
 		setSucMsg("首页新闻修改成功");
-		forward("IndexNewsSetPreAction", ServletActionContext.getRequest(),ServletActionContext.getResponse());
+		//forward("IndexNewsSetPreAction", ServletActionContext.getRequest(),ServletActionContext.getResponse());
 		return SUCCESS;
 	}
 	public String hotNewsSet() throws Exception{
